@@ -1,0 +1,169 @@
+{% extends "layout.html.twig" %}
+
+  {% block css %}
+
+  {% endblock %}
+  {% block javascript %}
+
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      <script type="text/javascript">
+
+          $(document).ready(function(){
+              $(".btnDelete").click(function(){
+                  $("#myModal").modal('show');
+              });
+          });
+      </script>
+
+      <script>
+
+
+
+          function confirmation(id) {
+
+              var id_examen = document.getElementsByName("id_examen");
+
+              var i;
+
+              for(i = 0; i < id_examen.length; i++)
+              {
+                 return suppression(id);
+              }
+
+          }
+
+          function suppression(id_examen){
+
+             var id_form = document.getElementById("delete_form"+id_examen);
+              deleteExam(id_examen);
+
+          }
+
+        function deleteExam(id_examen) {
+            var id_form = document.getElementById("delete_form"+id_examen);
+            alert(id_examen);
+            id_form.submit();
+        }
+
+
+      </script>
+
+
+  {% endblock %}
+
+
+{% block title %}
+   Listes des Examens
+        <span style="font-size:14px; ">
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href='{{ path('addexam') }}' >
+                    <span style="margin-left:80px; font-size:14px;">
+                         <i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp; Ajouter un Examen
+                     </span>
+                </a>
+            {% endif %}
+        </span>
+{% endblock %}
+
+{% block content %}
+    <div class="box box-primary">
+        <div class="box-header">
+            {#Affiche un message d'ajout réussi#}
+            {% for success in app.session.getFlashBag.get('success') %}
+                <div class="alert alert-success myfade">
+                    {{ success }}
+                </div>
+            {% endfor %}
+            {% for danger in app.session.getFlashBag.get('danger') %}
+                <div class="alert alert-danger myfade">
+                    {{ danger }}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="box-body">
+            <table id="example1" class="table table-hover table-striped">
+                <thead>
+                    <tr style="background-color: #3c8dbc">
+                        <th style="text-align: center; border: 1px solid darkgrey;">Semestre</th>
+                        <th style="text-align: center; border: 1px solid darkgrey;"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;&nbsp;Date</th>
+                        <th style="text-align: center; border: 1px solid darkgrey;">Examen</th>
+                        <th style="text-align: center; border: 1px solid darkgrey;">Matière</th>
+                        <th style="text-align: center; border: 1px solid darkgrey;">Classe</th>
+                        {% if is_granted('ROLE_FORMATEUR') %}
+                            <th style="text-align: center; border: 1px solid darkgrey; width: 90px">Noter</th>
+                        {% endif %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <th style="text-align: center; border: 1px solid darkgrey; width: 90px">Modifier</th>
+                            <th style="text-align: center; border: 1px solid darkgrey; width: 90px">Supprimer</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for examen in examens %}
+                        <tr>
+                            <td style="text-align: center; border: 1px solid darkgrey; width:70px;">{{ examen.getSemestre() }}</td>
+                            <td style="text-align: center; border: 1px solid darkgrey;">{{ examen.getDateExamen() }}</td>
+                            <td style="text-align: center; border: 1px solid darkgrey;">{{ examen.getExamenName() }}</td>
+                            <td style="text-align: center; border: 1px solid darkgrey;">{{ examen.discipline.getNameDiscipline() }}</td>
+                            <td style="text-align: center; border: 1px solid darkgrey;">{{ examen.class.getClassName() }}</td>
+                            {% if is_granted('ROLE_FORMATEUR') %}
+                                <td style="text-align: center; border: 1px solid darkgrey;">
+                                    <form action="{{ path('notelist', {'id_discipline': examen.discipline.getIdDiscipline(), 'id_examen': examen.getIdExamen()}) }}" method="post" >
+                                        <div class="btn-group">
+                                            <button type="submit" class="btn btn-success btn-flat">
+                                                <i class="fa fa-plus"></i>
+                                                <input type='hidden' id="id_class" name="id_class" value="{{ examen.class.getIdClassName() }}">
+                                                <input type='hidden' id="id_examen" name="id_examen" value="{{ examen.getIdExamen() }}">
+                                            </button>
+                                        </div>
+                                    </form>
+                                </td>
+                            {% endif %}
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <td style="text-align: center; border: 1px solid darkgrey;">
+                                    <form action="{{ app.request.basepath }}/exam_edit" method="post" >
+                                        <div class="btn-group">
+                                            <button type="submit" class="btn btn-warning btn-flat">
+                                                <i class="fa fa-pencil"></i>
+                                                <input type='hidden' name="id_examen" value="{{ examen.getIdExamen() }}">
+                                            </button>
+                                        </div>
+                                    </form>
+                                </td>
+                                <td style="text-align: center; border: 1px solid darkgrey; ">
+                              
+                                    <form action="{{ app.request.basepath }}/exam_delete/id" method="post" >
+                                        <div class="btn-group">
+                                            <div class="bs-example">
+                                                <button type="submit"  class="btn btn-danger btn-flat" onclick="return confirm('Etes-vous sûr(e) de vouloir supprimer l\'examen de {{ examen.getExamenName() }} ?')">
+                                                    <i class="fa fa-trash" ></i>
+                                                    <input type='hidden' name="id_examen" value="{{ examen.getIdExamen() }}">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                             {% endif %}
+         
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th style="text-align: center; border: 1px solid darkgrey;">Semestre</th>
+                        <th style="text-align: center; border: 1px solid darkgrey;">Date</th>
+                        <th style="text-align: center; border: 1px solid darkgrey;">Examen</th>
+                        <th style="text-align: center; border: 1px solid darkgrey;">Matière</th>
+                        <th style="text-align: center; border: 1px solid darkgrey;">Classe</th>
+                        {% if is_granted('ROLE_FORMATEUR') %}
+                            <th style="text-align: center; border: 1px solid darkgrey;">Noter</th>
+                        {% endif %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <th style="text-align: center; border: 1px solid darkgrey;">Modifier</th>
+                            <th style="text-align: center; border: 1px solid darkgrey;">Supprimer</th>
+                        {% endif %}
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "layout.html.twig" %}
+{% block title %}
+    <div class="">
+        {{ examen.getExamenName() }} de la classe {{ taclasse.getClassName() }}
+    </div>
+{% endblock %}
+
+{% block content %}
+    {% if is_granted('ROLE_FORMATEUR') %}
+        <form action="{{ path('addnote') }}" method="post"  >
+            <input type="hidden" value="{{ taclasse.getIdClassName() }}" name="id_classname"  >
+            <input type="hidden" name="id_examen" value="{{ examen.getIdExamen() }}" >
+            <div class="box">
+                <div class="box-body" style="margin-left:20px">
+                    <table id="example1" class="table table-hover table-striped">
+                        <thead>
+                        <tr style="background-color: #3c8dbc">
+                            <th style="text-align: center; border: 1px solid darkgrey;">Etudiant</th>
+                            {% if is_granted('ROLE_FORMATEUR') or is_granted('ROLE_USER') %}
+                                <th style="text-align: center; border: 1px solid darkgrey;width: 90px">Note</th>
+                                <th style="text-align: center; border: 1px solid darkgrey;width: 290px">Appréciations et Commentaires</th>
+                            {% endif %}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <input type='hidden' id="id_examen" name="id_examen" value="{{ examen.getIdExamen() }}">
+                        {% for note in studentbyclass %}
+                            <tr>
+                                <td style="text-align: center; border: 1px solid darkgrey;">
+                                    {{ note.getName()~' '~note.getFirstname() }}
+                                </td>
+                                {% if is_granted('ROLE_FORMATEUR') %}
+                                        <td style="text-align: center; border: 1px solid darkgrey;">
+                                            <input type="text" class="form-control" style="border-radius: 3px" placeholder="Ex : 10" name="note_student[]">
+                                            <input type="hidden" name="id_student[]" value="{{ note.getIdStudent() }}" >
+                                        </td>
+                                        <td style="text-align: center;width:550px; border: 1px solid darkgrey;">
+                                            <input type="text" class="form-control" style="border-radius: 3px" placeholder="Ex : Doit persévérer" name="judgment[]">
+                                        </td>
+                                    <input type='hidden' id="id_examen" name="id_examen" value="{{ examen.getIdExamen() }}">
+                                    {#{% endif %}#}
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                        <div class="" style="float:right; margin-:15px; width:180px;">
+                            <label>Coefficient de l'examen</label>
+                            <input type="number" class="form-control" readonly name="coeff_examen" value="{{ examen.getCoeffExamen() }}">
+                        </div>
+                        <div class="btn-group" style="float:right;  margin:25px; width:150px;" >
+                            <button type="submit" class="btn btn-warning btn-flat">
+                                <i class="fa fa-plus"> Ajouter les Notes</i>
+                                <input type='hidden' id="id_examen" name="id_examen" value="{{ examen.getIdExamen() }}">
+                            </button>
+                        </div>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    {% endif %}
+{% endblock %}

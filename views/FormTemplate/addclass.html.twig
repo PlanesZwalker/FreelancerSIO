@@ -1,0 +1,95 @@
+{% extends "layout.html.twig" %}
+
+{% block css %}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"
+          xmlns="http://www.w3.org/1999/html">
+{% endblock %}
+
+{% block title %}
+    {% if classname is defined %}
+        Formulaire de modification de la classe <strong>{{ classname.getClassName() }}</strong>
+    {% else %}
+        Formulaire d'ajout d'une classe
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="box box-primary">
+        <form class="form-horizontal" method="post" action="{{ path('class') }}" style="margin-left:20px">
+            <div class="box-body">
+                {% if classname is defined %}
+                    <input type="hidden" id="id_class" name="id_class" class="form-control" value="{{ classname.getIdClassName() }}">
+                    <div class="form-group">
+                        <label for="#">Type de classe<span style="color: red;">*</span></label>
+                        <input type="text" id="class_type" name="class_type" style="width: 25%; border-radius: 3px" class="form-control" value="{{ classname.getClassType() }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="#">Classe<span style="color: red;">*</span></label>
+                        <input type="text" id="class_name" name="class_name" style="width: 25%; border-radius: 3px" class="form-control" value="{{ classname.getClassName() }}">
+                    </div>
+                    <div class="form-group" style="width:50%;">
+                        <label for="#">Date de passage d'examen final<span style="color: red;">*</span></label>
+                        <div class="input-group" >
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="number" min="2014" max="2100" maxlength="4" id="year" name="year" style="width: 23%; border-radius: 3px" class="form-control" value="{{ classname.getClassYear() }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="#">Option</label>
+                        <input type="text" id="option" name="option" style="width: 25%; border-radius: 3px" class="form-control" value="{{ classname.getClassOption() }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="#">Description</label>
+                        <input type="text" id="description" name="description" style="width: 25%; border-radius: 3px" class="form-control" value="{{ classname.getDescription() }}">
+                    </div>
+                    <form action="{{ path('class') }}" method="post">
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-info pull-right">Enregistrer</button>
+                        </div>
+                    </form>
+                    <small style="color: red;">*Champs obligatoires</small>
+                {% else %}
+                    <div class="form-group">
+                        <label for="#">Type de classe<span style="color: red;">*</span></label>
+                        <input type="text" name="class_type" class="form-control" style="width: 25%; border-radius: 3px" id="#" placeholder="Ex : Licence, Master, BTS...">
+                    </div>
+                    <div class="form-group">
+                        <label for="#">Classe<span style="color: red;">*</span></label>
+                        <input type="text" name="class_name" class="form-control" style="width: 25%; border-radius: 3px" id="#" placeholder="Ex : SIO 2">
+                    </div>
+                    <div class="form-group">
+                        <label for="#">Date de passage d'examen final<span style="color: red;">*</span></label>
+                        <div class="input-group" >
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="number" min="2014" max="2100" maxlength="4" id="year" name="year" style="width: 23%; border-radius: 3px" class="form-control" placeholder="2016...">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="#">Option</label>
+                        <input type="text" name="option" class="form-control" style="width: 25%; border-radius: 3px" id="#" placeholder="SLAM">
+                    </div>
+                    <div class="form-group">
+                        <label for="#">Description</label>
+                        <textarea class="form-control" name="description" rows="3" placeholder="Ex : Le parcours SLAM du BTS SIO vise à former des développeurs ..." style="width: 25%; border-radius: 3px" id="#"></textarea>
+                    </div>
+                    <small style="color: red;">*Champs obligatoires</small>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-info pull-right">Enregistrer</button>
+                    </div>
+                {% endif %}
+                <!-- /.box-body -->
+                {% for success in app.session.getFlashBag.get('success') %}
+                    <div class="alert alert-success fade">
+                        {{ success }}
+                    </div>
+                {% endfor %}
+            </div>
+        </form>
+    <!-- /.box-footer -->
+    </div>
+
+{% endblock %}

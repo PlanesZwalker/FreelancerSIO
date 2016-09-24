@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>FreelanceAtorETAraison</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/themes/AdminLTE/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ app.request.basepath }}/themes/AdminLTE/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/themes/AdminLTE/plugins/select2/select2.min.css">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/themes/AdminLTE/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/css/styles.css">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/themes/AdminLTE/plugins/morris/morris.css">
+    <link rel="stylesheet" href="{{ app.request.basepath }}/themes/AdminLTE/plugins/morris/morris.css">
+    <link rel="icon" type="image/png" href="{{ app.request.basepath }}/img/iconsite.png" />
+
+    {% block css %}
+    
+    {% endblock %}
+
+    <!-- jQuery 2.1.4 -->
+    <script src="{{ app.request.basepath }}/themes/AdminLTE/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="{{ app.request.basepath }}/themes/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{ app.request.basepath }}/themes/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js"></script>
+
+    <!-- Slimscroll -->
+    <script src="{{ app.request.basepath }}/themes/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="{{ app.request.basepath }}/themes/AdminLTE/plugins/fastclick/fastclick.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ app.request.basepath }}/themes/AdminLTE/dist/js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{ app.request.basepath }}/themes/AdminLTE/dist/js/demo.js"></script>
+    <!-- fullCalendar 2.2.5 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+
+    <script src="{{ app.request.basepath }}/js/ajoutStyles.js"></script>
+    
+    <script src="{{ app.request.basepath }}/themes/AdminLTE/dist/js/demo.js"></script>
+    <script src="{{ app.request.basepath }}/themes/AdminLTE/plugins/fastclick/fastclick.js"></script>
+    <script src="{{ app.request.basepath }}/themes/AdminLTE/plugins/morris/morris.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="{{ app.request.basepath }}/themes/AdminLTE/plugins/chartjs/Chart.min.js"></script>
+
+    <script>
+        $(function () {
+            $("#example1").DataTable();
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false
+            });
+        });
+    </script>
+    {% block javascript %}
+    
+    {% endblock %}
+    
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <!-- Main Header -->
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="{{ path('accueil') }}" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><img src="{{ app.request.basepath }}/img/iconsite.png" width="27px" height="27px"></span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg" style="font-size: 17.5px"><img src="{{ app.request.basepath }}/img/iconsite.png" width="15px" height="15px">&nbsp;<b>Free</b>Lancer</span>
+            </a>
+
+            <!-- Header Navbar-->
+            <nav class="navbar navbar-static-top" role="navigation" style="height:40px">
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+
+                <!-- Navbar Right Menu -->
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account Menu -->
+                        <li class="dropdown">
+                            <a class="dropdown-toggle">
+                                <span class="hidden-xs"><b>Bienvenue, {{ app.user.username }}</b></span>
+                            </a>
+                        </li>
+                   {% if is_granted('ROLE_ADMIN') %}
+                        <li>
+                            <a href="{{ path('admintab') }}" data-toggle=""><i class="fa fa-gears"></i></a>
+                        </li>
+                   {% endif %}
+                   <li>
+                       {% if app.user %}
+                            <a href="{{ path('logout') }}" class="dropdown">
+                                <i class="glyphicon glyphicon-off"></i>
+                       {% else %}
+                               <a href="{{ path('login') }}" class="dropdown">
+                       {% endif %}
+                               </a>
+                            </a>
+                   </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+          <!-- Sidebar Menu -->
+            <ul class="sidebar-menu">
+                <li class="header"></li>
+                <li class="#"><a href="{{ path('accueil') }}"><i class="fa fa-home"></i> <span>Accueil</span></a></li>
+                <li><a href="{{ path('calendar') }}"><i class="fa fa-calendar"></i><span>Mon Profil</span></a></li>
+                <li class="treeview">
+                    <a href=""><i class="fa fa-university"></i><span>Tests</span><i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li><a href="{{ path('addclass') }}"><i class="fa fa-plus"></i>Ajouter un Test</a></li>
+                        {% endif %}
+                        {% if is_granted('ROLE_FORMATEUR') or is_granted('ROLE_USER') %}
+                            <li><a href="{{ path('classeslist') }}"><i class="glyphicon glyphicon-th-list"></i>Liste des tests</a></li>
+                        {% endif %}
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href=""><i class="fa fa-pencil"></i><span>Projets</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li><a href="{{ path('addexam') }}"><i class="fa fa-plus"></i>Modifier/ Supprimer un projet</a></li>
+                        {% endif %}
+                        {% if is_granted('ROLE_FORMATEUR') or is_granted('ROLE_USER') %}
+                            <li><a href="{{ path('examlist') }}"><i class="glyphicon glyphicon-th-list"></i>Liste des projets</a></li>
+                        {% endif %}
+                        {% if is_granted('ROLE_FORMATEUR') or is_granted('ROLE_USER') %}
+                            <li><a href="{{ path('examlist') }}"><i class="glyphicon glyphicon-th-list"></i>Projets réalisés</a></li>
+                        {% endif %}
+                        {% if is_granted('ROLE_FORMATEUR') or is_granted('ROLE_USER') %}
+                            <li><a href="{{ path('examlist') }}"><i class="glyphicon glyphicon-th-list"></i>Projet</a></li>
+                        {% endif %}
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href=""><i class="fa fa-wrench"></i>Contrats</span><i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ path('admintab') }}"><i class="glyphicon glyphicon-dashboard"></i>Facturation</a></li>
+                        <li><a href="{{ path('addPerson') }}"><i class="glyphicon glyphicon-th-list"></i>Transaction Paypal</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href=""><i class="fa fa-mortar-board"></i><span>Competences</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li><a href="{{ path('addstudent') }}"><i class="fa fa-user-plus"></i>Ajouter une competence</a></li>
+                        {% endif %}
+                        {% if is_granted('ROLE_FORMATEUR') or is_granted('ROLE_USER') %}
+                            <li><a href="{{ path('studentslist') }}"><i class="glyphicon glyphicon-th-list"></i>Liste des competences</a></li>
+                            <li><a href="{{ path('studentstats') }}"><i class="glyphicon glyphicon-stats"></i>Statistiques</a></li>
+                        {% endif %}
+                    </ul>
+                </li>
+                {% if is_granted('ROLE_ADMIN') and is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <li class="treeview">
+                        <a href=""><i class="fa fa-wrench"></i><span>Messages / Commentaires</span><i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{ path('admintab') }}"><i class="glyphicon glyphicon-dashboard"></i>Forum</a></li>
+                            <li><a href="{{ path('addPerson') }}"><i class="glyphicon glyphicon-th-list"></i>Categories</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href=""><i class="fa fa-wrench"></i><span>Administration</span><i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{ path('admintab') }}"><i class="glyphicon glyphicon-dashboard"></i>Tableau de Bord</a></li>
+                            <li><a href="{{ path('addPerson') }}"><i class="glyphicon glyphicon-th-list"></i>FreeLancer</a></li>
+                            <li><a href="{{ path('addPerson') }}"><i class="glyphicon glyphicon-th-list"></i>Societe</a></li>
+                            <li><a href="{{ path('listGroup') }}"><i class="glyphicon glyphicon-th-list"></i>Moderateur</a></li>
+                        </ul>
+                    </li>
+                {% endif %}
+            </ul>
+            <!-- /.sidebar-menu -->
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                {% block title %}Titre de la page{% endblock %}
+                <small>{% block titledescription %}{# Description de la page #}{% endblock %}</small>
+            </h1>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+            {% block content %}Contenu de la page{% endblock %}
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+</div>
+
+<!-- Main Footer -->
+<footer class="main-footer" >
+    <!-- To the right -->
+    <!-- Default to the left -->
+    <strong style="height:25px;">Mentions légales &copy; 2016-2017 <a href="#">FreelancerPPE</a>.</strong> Tous droits réservés.
+</footer>
+
+
+
+<!-- ./wrapper -->
+{% block javascript_end %}
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. Slimscroll is required when using the
+     fixed layout. -->
+{% endblock %}
+</body>
+</html>

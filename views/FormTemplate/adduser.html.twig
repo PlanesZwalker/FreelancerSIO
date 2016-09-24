@@ -1,0 +1,145 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+    {% if user is defined %}
+        Formulaire de modification de l'utilisateur {{ user.username }}
+    {% else %}
+        Formulaire d'ajout d'utilisateur
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="box box-primary">
+   
+        <form role="form" method="post" action="{{ path('user_added') }}">
+            <div class="box-body" style="margin-left:2rem; width: 90%; ">
+                {% if user is defined %}
+                    <input type="hidden" id="id_user" name="id_user" class="form-control" value="{{ user.getIdUsers() }}">
+                    <div class="form-group" >
+                        <label>Nom d'utilisateur<span style="color:red;">*</span></label>
+                        {#Ajoute le login de l'utilisateur#}
+                        <input type="text" style=" width: 25% ;border-radius: 3px" id="username" name="username" class="form-control" value="{{ user.getUsername() }}">
+                    </div>
+                    <div class="form-group">
+                        <label>Nom</label>
+                        {#Ajoute le nom de l'utilisateur#}
+                        <input type="text" id="name" name="name" style=" width: 25% ;border-radius: 3px" class="form-control" value="{{ user.getName() }}">
+                    </div>
+                    <div class="form-group">
+                        <label>Prénoma</label>
+                        {#Ajoute le prénom de l'utilisateur#}
+                        <input type="text" id="firstname" name="firstname" style=" width: 25% ;border-radius: 3px" class="form-control" value="{{ user.getFirstName() }}">
+                    </div>
+                    <div class="form-group">
+                        <label>Rôle <span style="color:red;">*</span></label>
+                        <input type="text" id="role" name="role" style=" width: 25% ;border-radius: 3px" class="form-control" value="{{ user.getRole() }}" readonly>
+                        <label>Nouveau rôle <span style="color:red;">*</span></label>
+                        {#Crée une liste déroulte de 3 roles d'utilisateur#}
+                        <select name="role" class="form-control" style=" width: 25% ;border-radius: 3px">
+                            <option>ROLE_ADMIN</option>
+                            <option>ROLE_FORMATEUR</option>
+                            <option>ROLE_USER</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Matière enseignée</label>
+                        {#Ajoute la matière de l'utilisateur (optionnel)#}
+                        <input type="text" id="discipline" name="discipline" style=" width: 25% ;border-radius: 3px" class="form-control" value="{{ user.discipline.getNameDiscipline() }}" readonly>
+                        <label>Nouvelle matière enseignée</label>
+                        <select class="form-control" id="sel3" name="id_discipline"  style="border-radius: 3px; width: 25%">
+                            {% for discipline in matieres %}
+                                {% if discipline.getIdDiscipline() == null %}
+                                    <option></option>
+                                {% endif %}
+                                {% if discipline.getIdDiscipline() == user.discipline.getIdDiscipline() %}
+                                    <option value="{{ user.discipline.getIdDiscipline() }} ">{{ discipline.getNameDiscipline() }}</option>
+                                {% endif %}
+                                <option value="{{ discipline.getIdDiscipline() }}">{{ discipline.getNameDiscipline() }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Email <span style="color:red;">*</span></label>
+                        {#Ajoute l'adresse mail de l'utilisateur#}
+                        <input type="email" id="mail" name="mail" style=" width: 25% ;border-radius: 3px" class="form-control" value="{{ user.getMail() }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="#">N° de téléphone</label>
+                        {#Ajoute le numéro de téléphone de l'étudiant#}
+                        <input type="tel" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"
+                               class="form-control" style=" width: 25% ;border-radius: 3px" id="#" name="phone" value="{{ 0~''~user.getTel() }}">
+                    </div>
+                    <div class="form-group">
+                        <label>Mot de passe</label>
+                        {#Ajoute le mot de passe de l'utilisateur#}
+                        <input type="password" id="password" name="password" style=" width: 25% ;border-radius: 3px" class="form-control" placeholder="">
+                    </div>
+                {% else %}
+                    <div class="form-group" >
+                        <label>Login <span style="color:red;">*</span></label>
+                        {#Ajoute le login de l'utilisateur#}
+                        <input type="text" style=" width: 25% ;border-radius: 3px" name="username" class="form-control" required placeholder="Ex : jdUFIP2015">
+                    </div>
+                    <div class="form-group">
+                        <label>Nom</label>
+                        {#Ajoute le nom de l'utilisateur#}
+                        <input type="text" name="name" style=" width: 25% ;border-radius: 3px" class="form-control" placeholder="Ex : Dupont">
+                    </div>
+                    <div class="form-group">
+                        <label>Prénom</label>
+                        {#Ajoute le prénom de l'utilisateur#}
+                        <input type="text" name="firstname" style=" width: 25% ;border-radius: 3px" class="form-control" placeholder="Ex : Jean">
+                    </div>
+                    <div class="form-group">
+                        <label>Matière enseignée</label>
+                        {#Ajoute la matière de l'utilisateur (optionnel)#}
+                        <select class="form-control" id="sel3" name="id_discipline"  style="border-radius: 3px; width: 25%">
+                            <option></option>
+                            {% for discipline in matieres %}
+                                <option value="{{ discipline.getIdDiscipline() }}">{{ discipline.getNameDiscipline() }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Rôle <span style="color:red;">*</span></label>
+                        {#Crée une liste déroulante de 3 roles d'utilisateur#}
+                        <select  name="role" class="form-control" style=" width: 25% ;border-radius: 3px" >
+                            <option>ROLE_ADMIN</option>
+                            <option>ROLE_FORMATEUR</option>
+                            <option>ROLE_USER</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Email  <span style="color:red;">*</span></label>
+                        {#Ajoute l'adresse mail de l'utilisateur#}
+                        <input type="email"  name="mail" style=" width: 25% ;border-radius: 3px" class="form-control" id="inputEmail3" required placeholder="Ex : jdufip@gmail.com ...">
+                    </div>
+                    <div class="form-group">
+                        <label for="#">N° de téléphone</label>
+                        {#Ajoute le numéro de téléphone de l'étudiant#}
+                        <input type="tel" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"
+                               class="form-control" style=" width: 25% ;border-radius: 3px" id="#" name="phone" placeholder="Ex : 0656543487">
+                    </div>
+                    <div class="form-group">
+                        <label>Mot de passe <span style="color:red;">*</span></label>
+                        {#Ajoute le mot de passe de l'utilisateur#}
+                        <input type="password"  name="password" style=" width: 25% ;border-radius: 3px" class="form-control" placeholder="Minimum 6 caractères">
+                    </div>
+                {% endif %}
+            </div>
+            <div class="box-footer">
+                <button type="submit" class="btn btn-info pull-right">Enregistrer</button>
+            </div>
+            {#Affiche un message d'ajout réussi#}
+            {% for success in app.session.getFlashBag.get('success') %}
+                <div class="alert alert-success fade">
+                    {{ success }}
+                </div>
+            {% endfor %}
+          
+        </form>
+      
+    </div>
+
+{% endblock %}

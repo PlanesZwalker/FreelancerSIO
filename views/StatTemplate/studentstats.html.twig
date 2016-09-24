@@ -1,0 +1,75 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+   Statistiques sur les Etudiants
+{% endblock %}
+
+{% block javascript %}
+
+{% endblock %}
+
+{% block content %}
+
+    <!-- Div pour afficher le nombre d'étudiants total -->
+ <div class="body">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+
+                <!-- /.box-header -->
+                <div class="box">
+                    <div class="box-body">
+                        <table id="example1" class="table table-hover table-striped">
+                            <thead>
+                                <tr style="background-color: #3c8dbc">
+                                    <th style="text-align: center; border: 1px solid darkgrey;">Nom</th>
+                                    <th style="text-align: center; border: 1px solid darkgrey;">Prénom</th>
+                                    <th style="text-align: center; border: 1px solid darkgrey;">Classe</th>
+                                    <th style="text-align: center; border: 1px solid darkgrey;">Statut</th>
+                                    <th style="text-align: center; border: 1px solid darkgrey;">Voir les Notes</th>
+                                    <th style="text-align: center; border: 1px solid darkgrey;">Voir les Statistiques</th>
+                                </tr>
+                            </thead>
+                            <tr>
+                            {% for etudiant in students %}
+                                <td style="text-align: center; border: 1px solid darkgrey;" >{{ etudiant.getName() }}</td>
+                                <td style="text-align: center; border: 1px solid darkgrey;">{{ etudiant.getFirstname() }}</td>
+                                <td style="text-align: center; border: 1px solid darkgrey;">{{ etudiant.class.getClassName() }}</td>
+                                <td style="text-align: center; border: 1px solid darkgrey;">{{ etudiant.statut.getStatutStudent() }}</td>
+                                <td style="text-align: center; border: 1px solid darkgrey;">
+                                {% if etudiant.getClass.getIdClassName() %}
+                                    <form action="{{ path('listnote', {'id_student':etudiant.getIdStudent()}) }}" method="post" >
+                                        <div class="btn-group">
+                                            <button type="submit" class="btn btn-success btn-flat">
+                                                <i class="glyphicon glyphicon-stats"></i>
+                                                <input type="hidden" id='id_student' name='id_student' value="{{ etudiant.getIdStudent() }}">
+                                            </button>
+                                        </div>
+                                    </form>
+                                {% endif %}
+                                </td>
+                                <td style="text-align: center; border: 1px solid darkgrey;">
+                                    {% if etudiant.getClass.getIdClassName() %}
+                                    <form action="{{ path('statByStudent', {'id_class': etudiant.getClass.getIdClassName() }, {'id_student': etudiant.getIdStudent()}) }}" method="post" >
+                                        <div class="btn-group">
+                                            <button type="submit" class="btn btn-warning btn-flat">
+                                                <i class="fa fa-bar-chart"></i>
+                                                <input type="hidden" id="id_student" name="id_student" value="{{ etudiant.getIdStudent() }}">
+                                                <input type="hidden" id="id_class" name="id_class" value="{{ etudiant.getClass.getIdClassName() }}">
+                                            </button>
+                                        </div>
+                                    </form>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+             </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
