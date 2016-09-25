@@ -7,9 +7,9 @@
 
 {% block title %}
     {% if classname is defined %}
-        Formulaire de modification de la classe <strong>{{ classname.getClassName() }}</strong>
+        Formulaire de modification d'un projet <strong>{{ classname.getClassName() }}</strong>
     {% else %}
-        Formulaire d'ajout d'une classe
+        Formulaire d'ajout de projet
     {% endif %}
 {% endblock %}
 
@@ -20,15 +20,15 @@
                 {% if classname is defined %}
                     <input type="hidden" id="id_class" name="id_class" class="form-control" value="{{ classname.getIdClassName() }}">
                     <div class="form-group">
-                        <label for="#">Type de classe<span style="color: red;">*</span></label>
+                        <label for="#">Type projet<span style="color: red;">*</span></label>
                         <input type="text" id="class_type" name="class_type" style="width: 25%; border-radius: 3px" class="form-control" value="{{ classname.getClassType() }}">
                     </div>
                     <div class="form-group">
-                        <label for="#">Classe<span style="color: red;">*</span></label>
+                        <label for="#">Projet<span style="color: red;">*</span></label>
                         <input type="text" id="class_name" name="class_name" style="width: 25%; border-radius: 3px" class="form-control" value="{{ classname.getClassName() }}">
                     </div>
                     <div class="form-group" style="width:50%;">
-                        <label for="#">Date de passage d'examen final<span style="color: red;">*</span></label>
+                        <label for="#">Date de debut<span style="color: red;">*</span></label>
                         <div class="input-group" >
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
@@ -52,15 +52,15 @@
                     <small style="color: red;">*Champs obligatoires</small>
                 {% else %}
                     <div class="form-group">
-                        <label for="#">Type de classe<span style="color: red;">*</span></label>
-                        <input type="text" name="class_type" class="form-control" style="width: 25%; border-radius: 3px" id="#" placeholder="Ex : Licence, Master, BTS...">
+                        <label for="#">Type de projet<span style="color: red;">*</span></label>
+                        <input type="text" name="class_type" class="form-control" style="width: 25%; border-radius: 3px" id="#" placeholder="Ex : Site web, Application Mobile">
                     </div>
                     <div class="form-group">
-                        <label for="#">Classe<span style="color: red;">*</span></label>
-                        <input type="text" name="class_name" class="form-control" style="width: 25%; border-radius: 3px" id="#" placeholder="Ex : SIO 2">
+                        <label for="#">Projet<span style="color: red;">*</span></label>
+                        <input type="text" name="class_name" class="form-control" style="width: 25%; border-radius: 3px" id="#" placeholder="Ex : Plateforme pour freelancer">
                     </div>
                     <div class="form-group">
-                        <label for="#">Date de passage d'examen final<span style="color: red;">*</span></label>
+                        <label for="#">Date de debut<span style="color: red;">*</span></label>
                         <div class="input-group" >
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
@@ -70,11 +70,11 @@
                     </div>
                     <div class="form-group">
                         <label for="#">Option</label>
-                        <input type="text" name="option" class="form-control" style="width: 25%; border-radius: 3px" id="#" placeholder="SLAM">
+                        <input type="text" name="option" class="form-control" style="width: 25%; border-radius: 3px" id="#" placeholder="Prix, Duree">
                     </div>
                     <div class="form-group">
                         <label for="#">Description</label>
-                        <textarea class="form-control" name="description" rows="3" placeholder="Ex : Le parcours SLAM du BTS SIO vise à former des développeurs ..." style="width: 25%; border-radius: 3px" id="#"></textarea>
+                        <textarea class="form-control" name="description" rows="3" placeholder="Ex : Ce projet a pour finalité de proposer une plateforme pour les freelancers ..." style="width: 25%; border-radius: 3px" id="#"></textarea>
                     </div>
                     <small style="color: red;">*Champs obligatoires</small>
                     <div class="box-footer">

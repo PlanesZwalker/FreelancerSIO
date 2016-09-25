@@ -8,10 +8,10 @@
 
   {% endblock %}
 {% block title %}
-    Liste des Etudiants &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Liste des Freelancers &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <span style="font-size:14px;">
         {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('addstudent') }}"><i class="fa fa-plus"></i>&nbsp; Ajouter un étudiant</a>
+            <a href="{{ path('addstudent') }}"><i class="fa fa-plus"></i>&nbsp; Ajouter un freelancer</a>
         {% endif %}
     </span>
 {% endblock %}
@@ -45,8 +45,8 @@
                                 <th style="text-align: center; border: 1px solid darkgrey;">Adresse mail</th>
                                 <th style="text-align: center; border: 1px solid darkgrey;">N° de téléphone</th>
                                 <th style="text-align: center; border: 1px solid darkgrey;">Adresse</th>
-                                <th style="text-align: center; border: 1px solid darkgrey;">Classe</th>
-                                <th style="text-align: center; border: 1px solid darkgrey;">Statut</th>
+                                <th style="text-align: center; border: 1px solid darkgrey;">Catégorie</th>
+                            
                                 {% if is_granted('ROLE_ADMIN') %}
                                     <th style="text-align: center; border: 1px solid darkgrey;">Modifier</th>
                                     <th style="text-align: center; border: 1px solid darkgrey;">Supprimer</th>
@@ -55,7 +55,7 @@
                         </thead>
                         
                         {% for etudiant in students  %}
-                            <tr>
+                            <tr style="color:black;">
                                 <td style="text-align: center; border: 1px solid darkgrey;" >{{ etudiant.name }}</td>
                                 <td style="text-align: center; border: 1px solid darkgrey;">{{ etudiant.firstname }}</td>
                                 <td style="text-align: center; border: 1px solid darkgrey;">{{ etudiant.birthday }}</td>
@@ -64,7 +64,7 @@
                                 <td style="text-align: center; border: 1px solid darkgrey;">{{ etudiant.address }}</td>
                                 
                                 <td style="text-align: center; border: 1px solid darkgrey;">{{ etudiant.class.getClassName() }}</td>
-                                <td style="text-align: center; border: 1px solid darkgrey;">{{ etudiant.statut.getStatutStudent() }}</td>
+                               
                                 {% if is_granted('ROLE_ADMIN') %}
                                     <td style="text-align: center; border: 1px solid darkgrey;">
                                         <form action="{{ path('student_edit', {'id_student': etudiant.getIdStudent() }) }}" method="post" >
@@ -94,15 +94,15 @@
                             </tr>
                         {% endfor %}
                         <tfoot>
-                        <tr>
+                        <tr class="odd">
                             <th style="text-align: center; border: 1px solid darkgrey;">Nom</th>
                             <th style="text-align: center; border: 1px solid darkgrey;">Prénom</th>
                             <th style="text-align: center; border: 1px solid darkgrey;">Date de Naissance</th>
                             <th style="text-align: center; border: 1px solid darkgrey;">Adresse mail</th>
                             <th style="text-align: center; border: 1px solid darkgrey;">N° de téléphone</th>
                             <th style="text-align: center; border: 1px solid darkgrey;">Adresse</th>
-                            <th style="text-align: center; border: 1px solid darkgrey;">Classe</th>
-                            <th style="text-align: center; border: 1px solid darkgrey;">Statut</th>
+                            <th style="text-align: center; border: 1px solid darkgrey;">Catégorie</th>
+
                             {% if is_granted('ROLE_ADMIN') %}
                                 <th style="text-align: center; border: 1px solid darkgrey;">Modifier</th>
                                 <th style="text-align: center; border: 1px solid darkgrey;">Supprimer</th>

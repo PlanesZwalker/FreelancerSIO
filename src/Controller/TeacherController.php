@@ -53,11 +53,11 @@ class TeacherController
     public function addIndexAction(Application $app) {
         
         $teachers = $app['dao.user']->findAll();
-        $discipline = $app['dao.discipline']->findAll();
+   //     $discipline = $app['dao.discipline']->findAll();
 
         return $app['twig']->render('FormTemplate/addteacher.html.twig', array(
             'teachers' => $teachers,
-            'matieres' => $discipline,
+    //        'matieres' => $discipline,
         ));
     }
 
@@ -79,7 +79,7 @@ class TeacherController
             $newTeacher->setIdUsers($request->request->get('id_user'));
         }
 
-        $discipline = $app['dao.discipline']->findDiscipline($request->request->get('id_discipline'));
+       // $discipline = $app['dao.discipline']->findDiscipline($request->request->get('id_discipline'));
 
         $newTeacher->setUsername($request->request->get('username'));
         $newTeacher->setName($request->request->get('name'));
@@ -87,12 +87,12 @@ class TeacherController
         $newTeacher->setPassword($request->request->get('password'));
         $newTeacher->setTel($request->request->get('tel'));
         $newTeacher->setMail($request->request->get('mail'));
-        $newTeacher->setRole('ROLE_FORMATEUR');
+        $newTeacher->setRole('ROLE_FREELANCER');
         $newTeacher->setDtCreate(date('Y-m-d H:i:s'));
         $newTeacher->setDtUpdate(date('Y-m-d H:i:s'));
-        $newTeacher->setDiscipline($discipline);
+    //    $newTeacher->setDiscipline($discipline);
 
-        $disciplines = $app['dao.discipline']->findAll();
+      //  $disciplines = $app['dao.discipline']->findAll();
         $id_user = $request->request->get('id_user');
         $newTeacher->setSalt($salt);
         $encoder = $app['security.encoder.digest'];
@@ -101,11 +101,11 @@ class TeacherController
         $app['dao.user']->saveUser($newTeacher);
       
        if (null !== $id_user) {
-            $app['session']->getFlashBag()->add('success', 'Le formateur a bien été modifié !'); //message flash success si réussi
+            $app['session']->getFlashBag()->add('success', 'La société a bien été modifiée !'); //message flash success si réussi
 
             return $app->redirect($app['url_generator']->generate('teacherlist'));
         } else {
-            $app['session']->getFlashBag()->add('success', 'Le formateur a bien été ajouté !'); //message flash success si réussi
+            $app['session']->getFlashBag()->add('success', 'La société a bien été ajoutée !'); //message flash success si réussi
 
             return $app->redirect($app['url_generator']->generate('teacherlist'));
         }
@@ -121,11 +121,11 @@ class TeacherController
         $id_teacher = $request->request->get('id_user');
         
         $teacher = $app['dao.teacher']->findTeacher($id_teacher);
-        $disciplines = $app['dao.discipline']->findAll();
+  //      $disciplines = $app['dao.discipline']->findAll();
 
         return $app['twig']->render('FormTemplate/addteacher.html.twig', array(
             'teacher' => $teacher,
-            'matieres' => $disciplines,
+    //        'matieres' => $disciplines,
             'id_user' => $id_teacher
         
         ));       
@@ -187,7 +187,7 @@ class TeacherController
 
         $app['dao.user']->deleteUser($newTeacher->getIdUsers());
 
-        $app['session']->getFlashBag()->add('danger', 'Professeur supprimé !');
+        $app['session']->getFlashBag()->add('danger', 'Société supprimée !');
 
         $teachers = $app['dao.user']->findAll();
 
@@ -205,7 +205,7 @@ class TeacherController
 
         $app['dao.user']->deleteUser($newTeacher->getIdUsers());
 
-        $app['session']->getFlashBag()->add('danger', 'Professeur supprimé !');
+        $app['session']->getFlashBag()->add('danger', 'Société supprimée !');
 
         // On redirige vers le tableau des professeurs
 

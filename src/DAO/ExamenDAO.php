@@ -14,13 +14,13 @@ use freelancerppe\Domain\Examen;
 class ExamenDAO extends DAO
 {
     private $classDAO;
-    private $disciplineDAO;
+  //  private $disciplineDAO;
 
-    public function setDisciplineDAO(DisciplineDAO $_disciplineDAO)
+/*    public function setDisciplineDAO(DisciplineDAO $_disciplineDAO)
     {
         $this->disciplineDAO = $_disciplineDAO;
     }
-
+*/
     public function setClassDAO(ClassNameDAO $_classDAO)
     {
         $this->classDAO = $_classDAO;
@@ -57,7 +57,7 @@ class ExamenDAO extends DAO
     Retourne un examen par l'id
 
      ********************************************************/
-
+/*
     public function findDisciplineByExamen($id)
     {
         $sql = "SELECT *
@@ -75,7 +75,7 @@ class ExamenDAO extends DAO
 
 
     }
-
+*/
 /**************************************************
       @return array
 
@@ -133,7 +133,7 @@ class ExamenDAO extends DAO
             'description'           => $_examen->getDescriptionExamen(),
             'semestre'              => $_examen->getSemestre(),
             'id_class'              => $_examen->getClass()->getIdClassName(),
-            'id_discipline'         => $_examen->getDiscipline()->getIdDiscipline(),
+       //     'id_discipline'         => $_examen->getDiscipline()->getIdDiscipline(),
             'dt_create'             => $_examen->getDtCreate(),
             'dt_update'             => $_examen->getDtUpdate(),
         );
@@ -225,13 +225,13 @@ class ExamenDAO extends DAO
             $exam->setClass($class);
         }
 
-        if(array_key_exists('id_discipline', $row))
+    /*    if(array_key_exists('id_discipline', $row))
         {
             $disciplineID = $row['id_discipline'];
             $discipline = $this->disciplineDAO->findDiscipline($disciplineID);
 
             $exam->setDiscipline($discipline);
-        }
+        }*/
         return $exam;
     }
 

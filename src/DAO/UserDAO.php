@@ -19,16 +19,17 @@ use freelancerppe\Domain\User;
 
 class UserDAO extends DAO implements UserProviderInterface
 {
-    public $disciplineDAO;
+  //  public $disciplineDAO;
 
     /**
      * @param mixed $_disciplineDAO
      */
-    public function setDisciplineDAO(DisciplineDAO $_disciplineDAO)
+ /*   public function setDisciplineDAO(DisciplineDAO $_disciplineDAO)
     {
         $this->disciplineDAO = $_disciplineDAO;
     }
-
+    */
+    
     /**
      * @param $id
      * @return User
@@ -36,6 +37,8 @@ class UserDAO extends DAO implements UserProviderInterface
      *
      * Retourne un utilisateur via son id
      */
+    
+
     public function findUser($id)
     {
         $sql = "SELECT * FROM users WHERE id_users=?";
@@ -74,7 +77,7 @@ class UserDAO extends DAO implements UserProviderInterface
     public function findAllTeacher()
     {
         $sql = "SELECT * FROM users"
-            . " WHERE uti_role = 'ROLE_FORMATEUR'";
+            . " WHERE uti_role = 'ROLE_FREELANCER'";
 
         $res = $this->getDb()->fetchAll($sql);
         $teachers = array();
@@ -155,8 +158,8 @@ class UserDAO extends DAO implements UserProviderInterface
             'dt_create'     => $user->getDtCreate(),
             'dt_update'     => $user->getDtUpdate(),
 
-            'id_discipline' => $user->getDiscipline()->getIdDiscipline(),
-        );
+        
+        ); //   'id_discipline' => $user->getDiscipline()->getIdDiscipline(),
         
         //on modifie
         if($user->getIdUsers())
@@ -198,7 +201,7 @@ class UserDAO extends DAO implements UserProviderInterface
         $user->setDtCreate($row['dt_create']);
         $user->setDtUpdate($row['dt_update']);
 
-        if(array_key_exists('id_discipline', $row))
+     /*   if(array_key_exists('id_discipline', $row))
         {
             $disciplineID = $row['id_discipline'];
             if($disciplineID == 0)
@@ -209,7 +212,7 @@ class UserDAO extends DAO implements UserProviderInterface
                 $user->setDiscipline($discipline);
             }
         }
-             
+           */  
         return $user;
     }
 }

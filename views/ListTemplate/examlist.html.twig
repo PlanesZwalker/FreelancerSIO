@@ -53,12 +53,12 @@
 
 
 {% block title %}
-   Listes des Examens
+   Listes des Tests
         <span style="font-size:14px; ">
             {% if is_granted('ROLE_ADMIN') %}
                 <a href='{{ path('addexam') }}' >
                     <span style="margin-left:80px; font-size:14px;">
-                         <i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp; Ajouter un Examen
+                         <i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp; Ajouter un Test
                      </span>
                 </a>
             {% endif %}
@@ -84,12 +84,12 @@
             <table id="example1" class="table table-hover table-striped">
                 <thead>
                     <tr style="background-color: #3c8dbc">
-                        <th style="text-align: center; border: 1px solid darkgrey;">Semestre</th>
+                        <th style="text-align: center; border: 1px solid darkgrey;">Nombre de participants</th>
                         <th style="text-align: center; border: 1px solid darkgrey;"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;&nbsp;Date</th>
-                        <th style="text-align: center; border: 1px solid darkgrey;">Examen</th>
-                        <th style="text-align: center; border: 1px solid darkgrey;">Matière</th>
-                        <th style="text-align: center; border: 1px solid darkgrey;">Classe</th>
-                        {% if is_granted('ROLE_FORMATEUR') %}
+                        <th style="text-align: center; border: 1px solid darkgrey;">Nom du Test</th>
+                        <th style="text-align: center; border: 1px solid darkgrey;">Catégorie</th>
+                        <th style="text-align: center; border: 1px solid darkgrey;">Projet rattaché</th>
+                        {% if is_granted('ROLE_FREELANCER') %}
                             <th style="text-align: center; border: 1px solid darkgrey; width: 90px">Noter</th>
                         {% endif %}
                         {% if is_granted('ROLE_ADMIN') %}
@@ -100,15 +100,15 @@
                 </thead>
                 <tbody>
                     {% for examen in examens %}
-                        <tr>
+                        <tr style="color:black">
                             <td style="text-align: center; border: 1px solid darkgrey; width:70px;">{{ examen.getSemestre() }}</td>
                             <td style="text-align: center; border: 1px solid darkgrey;">{{ examen.getDateExamen() }}</td>
                             <td style="text-align: center; border: 1px solid darkgrey;">{{ examen.getExamenName() }}</td>
-                            <td style="text-align: center; border: 1px solid darkgrey;">{{ examen.discipline.getNameDiscipline() }}</td>
+                            <td style="text-align: center; border: 1px solid darkgrey;">{# examen.discipline.getNameDiscipline() #}</td>
                             <td style="text-align: center; border: 1px solid darkgrey;">{{ examen.class.getClassName() }}</td>
-                            {% if is_granted('ROLE_FORMATEUR') %}
+                            {% if is_granted('ROLE_FREELANCER') %}
                                 <td style="text-align: center; border: 1px solid darkgrey;">
-                                    <form action="{{ path('notelist', {'id_discipline': examen.discipline.getIdDiscipline(), 'id_examen': examen.getIdExamen()}) }}" method="post" >
+                                    <form action="{{ path('notelist', {'id_examen': examen.getIdExamen()}) }}" method="post" >
                                         <div class="btn-group">
                                             <button type="submit" class="btn btn-success btn-flat">
                                                 <i class="fa fa-plus"></i>
@@ -121,7 +121,7 @@
                             {% endif %}
                             {% if is_granted('ROLE_ADMIN') %}
                                 <td style="text-align: center; border: 1px solid darkgrey;">
-                                    <form action="{{ app.request.basepath }}/exam_edit" method="post" >
+                                    <form action="{{ path('exam_edit') }}" method="post" >
                                         <div class="btn-group">
                                             <button type="submit" class="btn btn-warning btn-flat">
                                                 <i class="fa fa-pencil"></i>
@@ -135,7 +135,7 @@
                                     <form action="{{ app.request.basepath }}/exam_delete/id" method="post" >
                                         <div class="btn-group">
                                             <div class="bs-example">
-                                                <button type="submit"  class="btn btn-danger btn-flat" onclick="return confirm('Etes-vous sûr(e) de vouloir supprimer l\'examen de {{ examen.getExamenName() }} ?')">
+                                                <button type="submit"  class="btn btn-danger btn-flat" onclick="return confirm('Etes-vous sûr(e) de vouloir supprimer le test de {{ examen.getExamenName() }} ?')">
                                                     <i class="fa fa-trash" ></i>
                                                     <input type='hidden' name="id_examen" value="{{ examen.getIdExamen() }}">
                                                 </button>
@@ -148,13 +148,13 @@
                     {% endfor %}
                 </tbody>
                 <tfoot>
-                    <tr>
-                        <th style="text-align: center; border: 1px solid darkgrey;">Semestre</th>
+                    <tr class="odd">
+                        <th style="text-align: center; border: 1px solid darkgrey;">Nombre de particpants</th>
                         <th style="text-align: center; border: 1px solid darkgrey;">Date</th>
-                        <th style="text-align: center; border: 1px solid darkgrey;">Examen</th>
-                        <th style="text-align: center; border: 1px solid darkgrey;">Matière</th>
-                        <th style="text-align: center; border: 1px solid darkgrey;">Classe</th>
-                        {% if is_granted('ROLE_FORMATEUR') %}
+                        <th style="text-align: center; border: 1px solid darkgrey;">Nom du Test</th>
+                        <th style="text-align: center; border: 1px solid darkgrey;">Catégorie</th>
+                        <th style="text-align: center; border: 1px solid darkgrey;">Projet rattaché</th>
+                        {% if is_granted('ROLE_FREELANCER') %}
                             <th style="text-align: center; border: 1px solid darkgrey;">Noter</th>
                         {% endif %}
                         {% if is_granted('ROLE_ADMIN') %}

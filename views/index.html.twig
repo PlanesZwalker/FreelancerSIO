@@ -1,9 +1,8 @@
 {% extends "layout.html.twig" %}
 
 {% block title %}
-    <div style="height:40px;">
-        <span class="mynewtitle">Accueil Free Lancer<span>
-        <img src="img/iconsite.png" style="float:right;width:18%;height:18%; margin-right:1%; "/>
+    <div style="height:30px;"> 
+        <span class="mynewtitle">Accueil Free Lancer</span>
     </div>
 {% endblock %}
 
@@ -20,10 +19,8 @@
             <div class="icon">
                 <i class="ion ion-person-add"></i>
             </div>
-            <a href="{{ path('userslist') }}" class="small-box-footer" >Liste des utilisateurs &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('userslist') }}" class="small-box-footer" >Modifier / Supprimer un utilisateur &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
             <a href="{{ path('adduser') }}" class="small-box-footer">Ajouter un utilisateur &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-            <a href="{{ path('adduser') }}" class="small-box-footer">Modifier  un utilisateur &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-            <a href="{{ path('adduser') }}" class="small-box-footer">Supprimer un utilisateur &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
 
@@ -37,11 +34,8 @@
             <div class="icon">
                 <i class="fa fa-university"></i>
             </div>
-            <a href="{{ path('classeslist') }}" class="small-box-footer" >Liste des Projets &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('classeslist') }}" class="small-box-footer" >Modifier / Supprimer un projet &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
             <a href="{{ path('addclass') }}" class="small-box-footer" >Créer un Projet &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-            <a href="{{ path('addclass') }}" class="small-box-footer" >Modifier un Projet &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-            <a href="{{ path('addclass') }}" class="small-box-footer" >Supprimer un Projet &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-            <a href="{{ path('addclass') }}" class="small-box-footer" >Publier un Projet &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
 
@@ -55,13 +49,10 @@
             <div class="icon">
                 <i class="fa fa-mortar-board"></i>
             </div>
-            <a href="{{ path('studentslist') }}" class="small-box-footer">Liste des Freelancers &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('studentslist') }}" class="small-box-footer">Modifier / Supprimer des Freelancers &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
             <a href="{{ path('addstudent') }}" class="small-box-footer">Ajouter un Freelancer &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-            <a href="{{ path('addstudent') }}" class="small-box-footer">Desactiver un Freelancer &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-            <a href="{{ path('addstudent') }}" class="small-box-footer">Supprimer un Freelancer &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-            <a href="{{ path('addnote') }}" class="small-box-footer">Editer Profil Freelancer &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
         </div>
-    </div>
+    </div>    
 
     <div class="col-lg-4 col-xs-8">
          <!-- small box -->
@@ -73,10 +64,8 @@
              <div class="icon">
                  <i class="fa fa-newspaper-o"></i>
              </div>
-             <a href="{{ path('disciplineslist') }}" class="small-box-footer">Liste des sociétés &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-             <a href="{{ path('adddiscipline') }}" class="small-box-footer">Ajouter une société&nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-             <a href="{{ path('adddiscipline') }}" class="small-box-footer">Modifier une société&nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-             <a href="{{ path('adddiscipline') }}" class="small-box-footer">Supprimer une société&nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+             <a href="{{ path('teacherlist') }}" class="small-box-footer">Modifier / Supprimer des sociétés &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+             <a href="{{ path('teacher') }}" class="small-box-footer">Ajouter une société &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
          </div>
      </div>
 
@@ -90,11 +79,8 @@
             <div class="icon">
                 <i class="fa fa-pencil"></i>
             </div>
-            <a href="{{ path('examlist') }}" class="small-box-footer" >Liste des Tests &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-            <a href="{{ path('addexam') }}" class="small-box-footer" >Ajouter un Test &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-            <a href="{{ path('addexam') }}" class="small-box-footer" >Modifier un Test &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-            <a href="{{ path('addexam') }}" class="small-box-footer" >Supprimer un Test &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-            <a href="{{ path('addexam') }}" class="small-box-footer" >Publier un Test &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('examlist') }}" class="small-box-footer" >Modifier / Supprimer un test &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('addexam') }}" class="small-box-footer" >Ajouter un test &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
 
@@ -110,9 +96,6 @@
             </div>
             <a href="{{ path('classeslist') }}" class="small-box-footer" >Liste des compétences &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
             <a href="{{ path('classeslist') }}" class="small-box-footer" >Ajouter une compétence &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-            <a href="{{ path('classeslist') }}" class="small-box-footer" >Supprimer une compétence &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-            <a href="{{ path('classeslist') }}" class="small-box-footer" >Attribuer une compétence &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
-            <a href="{{ path('classeslist') }}" class="small-box-footer" >Modifier une compétence &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
 
@@ -126,9 +109,9 @@
             <div class="icon">
                 <i class="fa fa-calendar"></i>
             </div>
-            <a href="{{ path('calendar') }}" class="small-box-footer">Visiter le Forum<i class="fa fa-arrow-circle-right"></i></a>
-            <a href="{{ path('calendar') }}" class="small-box-footer">Ajouter un message sur le Forum<i class="fa fa-arrow-circle-right"></i></a>
-            <a href="{{ path('calendar') }}" class="small-box-footer">Modérer un message sur le Forum<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('calendar') }}" class="small-box-footer">Visiter le Forum &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('calendar') }}" class="small-box-footer">Ajouter un message sur le Forum &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('calendar') }}" class="small-box-footer">Modérer un message sur le Forum &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
 
@@ -143,10 +126,10 @@
             <div class="icon">
                 <i class="fa fa-calendar"></i>
             </div>
-            <a href="{{ path('calendar') }}" class="small-box-footer">Accéder à ma messagerie<i class="fa fa-arrow-circle-right"></i></a>
-            <a href="{{ path('calendar') }}" class="small-box-footer">Envoyer un message à une société<i class="fa fa-arrow-circle-right"></i></a>
-            <a href="{{ path('calendar') }}" class="small-box-footer">Envoyer un message à un freelancer<i class="fa fa-arrow-circle-right"></i></a>
-            <a href="{{ path('calendar') }}" class="small-box-footer">Envoyer un message à un Modérateur<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('calendar') }}" class="small-box-footer">Accéder à ma messagerie &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('calendar') }}" class="small-box-footer">Envoyer un message à une société &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('calendar') }}" class="small-box-footer">Envoyer un message à un freelancer &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('calendar') }}" class="small-box-footer">Envoyer un message à un Modérateur &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
 

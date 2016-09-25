@@ -16,7 +16,7 @@
                         <th style="text-align: center; border: 1px solid darkgrey;">Nom</th>
                         <th style="text-align: center; border: 1px solid darkgrey;">Prénom</th>
                         <th style="text-align: center; border: 1px solid darkgrey;">Classe</th>
-                        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_FORMATEUR') %}
+                        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_FREELANCER') %}
                             <th style="text-align: center; border: 1px solid darkgrey;">Modifier</th>
                             <th style="text-align: center; border: 1px solid darkgrey;">Supprimer</th>
                         {% endif %}

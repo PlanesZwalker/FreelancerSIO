@@ -15,16 +15,16 @@ use freelancerppe\Domain\Discipline;
 
 class TeacherDAO extends DAO
 {
-    public $disciplineDAO;
+   // public $disciplineDAO;
 
     /**
      * @param mixed $_disciplineDAO
      */
-    public function setDisciplineDAO(DisciplineDAO $_disciplineDAO)
+   /* public function setDisciplineDAO(DisciplineDAO $_disciplineDAO)
     {
         $this->disciplineDAO = $_disciplineDAO;
     }
-
+*/
     /**
      * @param $id
      * @return Teacher
@@ -34,7 +34,7 @@ class TeacherDAO extends DAO
      */
     public function findTeacher($id)
     {
-        $sql = "SELECT * FROM users WHERE role='ROLE_FORMATEUR' AND id_users=? ";
+        $sql = "SELECT * FROM users WHERE role='ROLE_SOCIETE' AND id_users=? ";
         $row = $this->getDb()->fetchAssoc($sql, array($id));
 
         if($row){
@@ -52,7 +52,7 @@ class TeacherDAO extends DAO
      */
     public function findAll()
     {
-        $sql = "SELECT * FROM users WHERE role='ROLE_FORMATEUR' ORDER BY id_users";
+        $sql = "SELECT * FROM users WHERE role='SOCIETE' ORDER BY id_users";
 
         $res = $this->getDb()->fetchAll($sql);
 
@@ -72,7 +72,7 @@ class TeacherDAO extends DAO
      */
     public function countAll()
     {
-        $sql = "SELECT * FROM users WHERE role='ROLE_FORMATEUR' ORDER BY id";
+        $sql = "SELECT * FROM users WHERE role='ROLE_SOCIETE' ORDER BY id";
 
         $res = $this->getDb()->fetchAll($sql);
 
@@ -107,7 +107,7 @@ class TeacherDAO extends DAO
             'dt_create'     => $_user->getDtCreate(),
             'dt_update'     => $_user->getDtUpdate(),
 
-            'id_discipline' => $_user->getDiscipline()->getIdDiscipline(),
+          //  'id_discipline' => $_user->getDiscipline()->getIdDiscipline(),
         );
 
         //on modifie  
@@ -161,7 +161,7 @@ class TeacherDAO extends DAO
         $teacher->setDtCreate($row['dt_create']);
         $teacher->setDtUpdate($row['dt_update']);
 
-        if(array_key_exists('id_discipline', $row))
+      /*  if(array_key_exists('id_discipline', $row))
         {
             $disciplineID = $row['id_discipline'];
             if($disciplineID == 0)
@@ -171,7 +171,7 @@ class TeacherDAO extends DAO
                 $discipline = $this->disciplineDAO->findDiscipline($disciplineID);
                 $teacher->setDiscipline($discipline);
             }
-        }
+        }*/
 
         return $teacher;
     }

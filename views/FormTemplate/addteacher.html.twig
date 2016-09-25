@@ -8,7 +8,7 @@
     {% if teacher is defined %}
         Formulaire de modification de {{ teacher.getUsername() }}
     {% else %}
-        Formulaire d'ajout d'un professeur
+        Formulaire d'ajout d'une société
     {% endif %}
 {% endblock %}
 
@@ -38,18 +38,19 @@
                     <div class="form-group">
                         <label for="#">N° de téléphone</label>
                         {#Ajoute le numéro de téléphone du professeur#}
-                        <input type="tel" id="tel" name="tel" style=" width: 25% ;border-radius: 3px" class="form-control" value="{{ teacher.getTel() }}">
+                        <input type="text" id="tel" name="tel" style=" width: 25% ;border-radius: 3px" class="form-control" value="{{ teacher.getTel() }}">
                     </div>
                     <div class="form-group">
                         <label for="#">Matière enseignée<span style="color: red;">*</span></label>
-                        <input id="discipline" name="old_discipline" style=" width: 25% ;border-radius: 3px" class="form-control" value="{{ teacher.discipline.getNameDiscipline() }}" readonly>
+                        <input id="discipline" name="old_discipline" style=" width: 25% ;border-radius: 3px" class="form-control" value="{# teacher.discipline.getNameDiscipline() #}" readonly>
                         <label for="#">Nouvelle Matière enseignée<span style="color: red;">*</span></label>
-                        {#Crée une liste déroulante des nom de matières#}
-                        <select class="form-control" id="sel3" name="id_discipline"  style="border-radius: 3px; width: 25%" >
-                            {% for discipline in matieres %}
-                                <option id="discipline" name="discipline" value="{{ teacher.discipline.getIdDiscipline() }}">{{ discipline.getNameDiscipline() }}</option>
-                            {% endfor %}
-                        </select>
+                        {#Crée une liste déroulante des nom de matières
+                        
+                         {# <select class="form-control" id="sel3" name="id_discipline"  style="border-radius: 3px; width: 25%" >
+                           {%for discipline in matieres %}
+                                <option id="discipline" name="discipline" value="{{ teacher.discipline.getIdDiscipline() }}">{{ discipline.getNameDiscipline()}}</option>
+                            {% endfor %} 
+                        </select>#}
                     </div>
                     <div class="form-group">
                         <label>Email <span style="color:red;">*</span></label>
@@ -86,15 +87,15 @@
                     <div class="form-group">
                         <label for="#">N° de téléphone</label>
                         {#Ajoute le numéro de téléphone du professeur#}
-                        <input type="tel" class="form-control" style=" width: 25% ;border-radius: 3px" id="#" name="tel" placeholder="Ex : 0656543487">
+                        <input type="text" class="form-control" style=" width: 25% ;border-radius: 3px" id="#" name="tel" placeholder="Ex : 0656543487">
                     </div>
                     <div class="form-group">
                         <label for="#">Matière enseignée <span style="color: red;">*</span></label>
                         {#Crée une liste déroulante des nom de matières#}
                         <select class="form-control" id="sel3" name="id_discipline"  style="border-radius: 3px; width: 25%">
-                            {% for discipline in matieres %}
+                            {#% for discipline in matieres %}
                                 <option value="{{ discipline.getIdDiscipline() }}">{{ discipline.getNameDiscipline() }}</option>
-                            {% endfor %}
+                            {% endfor #}
                         </select>
                     </div>
                     <div class="form-group">

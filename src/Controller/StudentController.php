@@ -49,11 +49,11 @@ class StudentController
     {
 
         $classes = $app['dao.className']->findAll();
-        $statuts = $app['dao.statutStudent']->findAll();
+     //   $statuts = $app['dao.statutStudent']->findAll();
 
         return $app['twig']->render('FormTemplate/addstudent.html.twig', array(
             'classes' => $classes,
-            'statuts' => $statuts,
+      //      'statuts' => $statuts,
         ));
     }
 
@@ -64,7 +64,7 @@ class StudentController
         $newStudent = new Student();
 
         $class = $app['dao.className']->findClassname($request->request->get('classname'));
-        $statuts = $app['dao.statutStudent']->findStatut($request->request->get('statut'));
+  //      $statuts = $app['dao.statutStudent']->findStatut($request->request->get('statut'));
 
         if (null !== $request->request->get('id_student')) {
             $newStudent->setIdStudent($request->request->get('id_student'));
@@ -79,18 +79,18 @@ class StudentController
         $newStudent->setDtCreate(date('Y-m-d H:i:s'));
         $newStudent->setDtUpdate(date('Y-m-d H:i:s'));
         $newStudent->setClass($class);
-        $newStudent->setStatut($statuts);
+   //     $newStudent->setStatut($statuts);
 
         $app['dao.student']->saveStudent($newStudent);
 
         $classes = $app['dao.className']->findAll();
 
         if (null !== $request->request->get('id_student')) {
-            $app['session']->getFlashBag()->add('success', 'L\'étudiant a bien été modifié !'); //message flash success si réussi
+            $app['session']->getFlashBag()->add('success', 'Le Freelancer a bien été modifié !'); //message flash success si réussi
 
             return $app->redirect($app['url_generator']->generate('studentslist'));
         } else {
-            $app['session']->getFlashBag()->add('success', 'L\'étudiant a bien été ajouté !'); //message flash success si réussi
+            $app['session']->getFlashBag()->add('success', 'Le Freelancer a bien été ajouté !'); //message flash success si réussi
 
             return $app->redirect($app['url_generator']->generate('studentslist'));
         }
@@ -106,12 +106,12 @@ class StudentController
 
         $student = $app['dao.student']->findStudent($id_student);
         $classes = $app['dao.className']->findAll();
-        $statuts = $app['dao.statutStudent']->findAll();
+    //    $statuts = $app['dao.statutStudent']->findAll();
 
         return $app['twig']->render('FormTemplate/addstudent.html.twig', array(
             'student' => $student,
             'classes' => $classes,
-            'statuts' => $statuts,
+        //    'statuts' => $statuts,
 
         ));
     }

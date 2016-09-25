@@ -20,7 +20,7 @@ class Student
     private $student_address;
     private $student_tel;
 
-    private $statut;
+   // private $statut;
     private $class;
     private $examen;
 
@@ -113,18 +113,18 @@ class Student
     /**
      * @return mixed
      */
-    public function getStatut()
+   /* public function getStatut()
     {
         return $this->statut;
     }
-
+*/
     /**
      * @param mixed $statut
      */
-    public function setStatut(StatutStudent $statut)
+   /* public function setStatut(StatutStudent $statut)
     {
         $this->statut = $statut;
-    }
+    }*/
     //endregion
 
 

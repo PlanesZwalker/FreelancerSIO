@@ -56,7 +56,7 @@ $app->get('/profilstudent', "freelancerppe\Controller\ParentController::afficheP
 /**
  *
  *
- *               ETUDIANTS
+ *               FREELANCER
  *
  *                                                            TABLEAU DE BORD
  *                                            Routes pour la gestion des etudiants
@@ -93,7 +93,7 @@ $app->get('/studentstats',  "freelancerppe\Controller\StudentController::student
 /**
  *
  *
- *           STATUT ETUDIANT
+ *           STATUT FREELANCER
  *
  *                                                              AJOUT
  */
@@ -138,9 +138,9 @@ $app->post('/user_delete/id', "freelancerppe\Controller\UserController::deleteUs
 /**
  *
  *
- *             CLASSES
+ *             PROJETS
  *
- *                                                 TABLEAU DE BORD DE GESTION DES CLASSES
+ *                                                 TABLEAU DE BORD DE GESTION DES PROJETS
  */
 $app->match('/classetab', "freelancerppe\Controller\ClassNameController::indexAction")->bind('classetab');
 /**
@@ -241,7 +241,7 @@ $app->post('/listnote',"freelancerppe\Controller\EvaluationController::listNoteA
 /**
  *
  *
- *            EXAMEN
+ *            TEST
  *
  *                                                                  AJOUT
  */
@@ -267,7 +267,7 @@ $app->post('/exam_delete/id', "freelancerppe\Controller\ExamenController::delete
 /**
  *
  *
- *           PROFESSEUR
+ *           SOCIETES
  *
  *                                                                 AJOUT
  */

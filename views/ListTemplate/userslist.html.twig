@@ -39,7 +39,7 @@
                             </tr>
                         </thead>
                         {% for user in users %}
-                            <tr>
+                            <tr style="color:black;">
                                 <td class="mytd" >{{ user.getUsername() }}</td>
                                 <input type="hidden" value="{{ user.getUsername() }}" name="username"  >
                                 <td class="mytd" >{{ user.getName() }}</td>
@@ -49,12 +49,12 @@
                                 <td class="mytdmin">{{ user.getRole() }}</td>
                                 <input type="hidden" value="{{ user.getRole() }}" name="role"  >
                                 <td class="mytd">{{ user.getDescription() }}</td>
-                                <input type="hidden" value="{{ user.discipline.getNameDiscipline() }}" name="description"  >
+                                <input type="hidden" value="{# user.discipline.getNameDiscipline() #}" name="description"  >
                                 <td class="mytd">{{ user.getMail() }}</td>
                                 <input type="hidden" value="{{ user.getMail() }}" name="mail"  >
                                 <td class="mytdminus">
                                     {# formulaire de modification de l'utilisateur via l'id_user  #}
-                                    <form action="{{ path('user_edit', {'id_user': user.getIdUsers() }) }}" method="post" >
+                                    <form action="{{ path('user_edit') }}" method="post" >
                                         <div class="btn-group">
                                             <button type="submit" class="btn btn-warning btn-flat">
                                                 <i class="fa fa-pencil"></i>
@@ -77,15 +77,15 @@
                             </tr>
                         {% endfor %}
                         <tfoot>
-                            <tr>
-                                <th style="text-align: center; border: 1px solid darkgrey;">Login</th>
-                                <th style="text-align: center; border: 1px solid darkgrey;">Nom</th>
-                                <th style="text-align: center; border: 1px solid darkgrey;">Prénom</th>
-                                <th style="text-align: center; border: 1px solid darkgrey;">Rôle</th>
-                                <th style="text-align: center; border: 1px solid darkgrey;">Description</th>
-                                <th style="text-align: center; border: 1px solid darkgrey;">Adresse Mail</th>
-                                <th style="text-align: center; border: 1px solid darkgrey;">Modifier</th>
-                                <th style="text-align: center; border: 1px solid darkgrey;">Supprimer</th>
+                            <tr class="odd" >
+                                <th  style="text-align: center; border: 1px solid darkgrey;">Login</th>
+                                <th  style="text-align: center; border: 1px solid darkgrey;">Nom</th>
+                                <th  style="text-align: center; border: 1px solid darkgrey;">Prénom</th>
+                                <th  style="text-align: center; border: 1px solid darkgrey;">Rôle</th>
+                                <th  style="text-align: center; border: 1px solid darkgrey;">Description</th>
+                                <th  style="text-align: center; border: 1px solid darkgrey;">Adresse Mail</th>
+                                <th  style="text-align: center; border: 1px solid darkgrey;">Modifier</th>
+                                <th  style="text-align: center; border: 1px solid darkgrey;">Supprimer</th>
                             </tr>
                         </tfoot>
                     </table>

@@ -22,10 +22,10 @@
 {% block title %}
     {% if examen is defined %}
         <meta name="viewport" content="initial-scale=1">
-        Formulaire de modification de l'examen ou contrôle : {{ examen.getExamenName() }}
+        Formulaire de modification du test : {{ examen.getExamenName() }}
     {% else %}
         <meta name="viewport" content="initial-scale=1">
-        Formulaire d'ajout d'examens et contrôles
+        Formulaire d'ajout de tests
     {% endif %}
 {% endblock %}
 
@@ -40,13 +40,13 @@
         <form class="form-horizontal" method="post" action="{{ path('exam_edited') }}" style="margin-left:20px">
 
                 <div class="form-group">
-                    <label for="#">Nom de l'examen<span style="color: red;">*</span></label>
+                    <label for="#">Nom du test<span style="color: red;">*</span></label>
                     {# nom de l'examen#}
                     <input style="border-radius: 3px; width: 25%" type="text" class="form-control" name="name" placeholder="" value="{{ examen.getExamenName() }}" >
                     <input type="hidden" value="{{ examen.getIdExamen() }}" name="id_examen" >
                 </div>
                 <div class="form-group">
-                    <label for="#">Classe<span style="color: red;">*</span></label>
+                    <label for="#">Catégorie<span style="color: red;">*</span></label>
                     {#Crée une liste déroulante des nom de classe#}
                     <select class="form-control" name="classname" style="border-radius: 3px; width: 25%">
                         {% for classe in classes %}
@@ -57,8 +57,8 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="#">Matière<span style="color: red;">*</span></label>
-                    {#Crée une liste déroulante des matières#}
+                    <label for="#">Difficulté<span style="color: red;">*</span></label>
+                    {#Crée une liste déroulante des matières
                     <select class="form-control" name="discipline" style="border-radius: 3px; width: 25%">
                         <option style="border-radius: 3px" value="{{ examen.discipline.getIdDiscipline() }}">{{ examen.discipline.getNameDiscipline() }}</option>
                         {% for matiere in matieres %}
@@ -66,7 +66,7 @@
                             {{ matiere.getNameDiscipline() }}
                         </option>
                         {% endfor %}
-                    </select>
+                    </select>#}
                 </div>
                 <div class="form-group" style="width:10%;">
                     <label for="#">Coefficient<span style="color: red;">*</span></label>
@@ -76,7 +76,7 @@
 
                 {# Semestre range #}
                 <div class="form-group" style="width:10%;">
-                    <label for="#">Semestre<span style="color: red;">*</span></label>
+                    <label for="#">Nombre de Participants<span style="color: red;">*</span></label>
                         <input type="number" step="any" min="0" max="2"  class="form-control" value="{{ examen.getSemestre() }}" name="semestre" >
                 </div>
 
@@ -110,12 +110,12 @@
 
              <form class="form-horizontal" method="post" action="{{ path('added_exam') }}" style="margin-left:20px">
                 <div class="form-group">
-                    <label for="#">Nom de l'examen<span style="color: red;">*</span></label>
+                    <label for="#">Nom du test<span style="color: red;">*</span></label>
                     {#Ajoute le nom d'un examen#}
                     <input style="border-radius: 3px; width: 25%" type="text" class="form-control" name="name" placeholder=""/>
                 </div>
                 <div class="form-group">
-                    <label for="#">Classe<span style="color: red;">*</span></label>
+                    <label for="#">Catégorie<span style="color: red;">*</span></label>
                     {#Crée une liste déroulante des nom de classe#}
                     <select class="form-control" name="classname" style="border-radius: 3px; width: 25%">
                         {% for classe in classes %}
@@ -126,15 +126,15 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="#">Matière<span style="color: red;">*</span></label>
-                    {#Crée une liste déroulante des matières#}
+                    <label for="#">Difficulté<span style="color: red;">*</span></label>
+                    {#Crée une liste déroulante des matières
                     <select class="form-control" name="discipline" style="border-radius: 3px; width: 25%">
                         {% for matiere in matieres %}
                             <option style="border-radius: 3px" value="{{ matiere.getIdDiscipline() }}">
                                 {{ matiere.getNameDiscipline() }}
                             </option>
                         {% endfor %}
-                    </select>
+                    </select>#}
                 </div>
                 <div class="form-group" style="width:150px;">
                     <label for="#">Coefficient<span style="color: red;">*</span></label>
@@ -144,7 +144,7 @@
 
                 {#Semestre range #}
                 <div class="form-group" style="width:150px;">
-                    <label for="#">Semestre<span style="color: red;">*</span></label>
+                    <label for="#">Nombre de Participants<span style="color: red;">*</span></label>
                     <div class="input-group" >
                         <input type="number" step="any" min="0" max="2" class="form-control" value="1" name="semestre">
                     </div>

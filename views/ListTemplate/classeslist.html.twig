@@ -2,10 +2,10 @@
 {% extends "layout.html.twig" %}
 
 {% block title %}
-    Liste des classes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Liste des projets &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <span style="font-size:14px;">
         {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('addclass') }}"><i class="fa fa-plus"></i>&nbsp; Ajouter un classe</a>
+            <a href="{{ path('addclass') }}"><i class="fa fa-plus"></i>&nbsp; Ajouter un projet</a>
         {% endif %}
   </span>
 {% endblock %}
@@ -33,22 +33,22 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr style="background-color: #3c8dbc">
-                                <th style="text-align: center; border: 1px solid darkgrey;">Nom de la classe</th>
-                                <th style="text-align: center; border: 1px solid darkgrey;">Option</th>
-                                <th style="text-align: center; border: 1px solid darkgrey;">Année</th>
-                                <th style="text-align: center; border: 1px solid darkgrey;">Description</th>
-                                <th style="text-align: center; border: 1px solid darkgrey;">Nombre d'Etudiants</th>
-                                <th style="text-align: center; border: 1px solid darkgrey;">Voir les étudiants</th>
+                                <th class="odd" style="text-align: center; border: 1px solid darkgrey;">Nom du projet</th>
+                                <th class="odd" style="text-align: center; border: 1px solid darkgrey;">Option</th>
+                                <th class="odd" style="text-align: center; border: 1px solid darkgrey;">Année</th>
+                                <th class="odd" style="text-align: center; border: 1px solid darkgrey;">Description</th>
+                                <th class="odd" style="text-align: center; border: 1px solid darkgrey;">Nombre d'Etudiants</th>
+                                <th class="odd" style="text-align: center; border: 1px solid darkgrey;">Voir les étudiants</th>
                                 {% if is_granted('ROLE_ADMIN') %}
-                                    <th style="text-align: center; border: 1px solid darkgrey;">Modifier</th>
-                                    <th style="text-align: center; border: 1px solid darkgrey;">Supprimer</th>
+                                    <th class="odd" style="text-align: center; border: 1px solid darkgrey;">Modifier</th>
+                                    <th class="odd" style="text-align: center; border: 1px solid darkgrey;">Supprimer</th>
                                 {% endif %}
                             </tr>
                             </thead>
                             <tbody>
                             {% for classe in classes %}
                                 {% for key in StudentByClass|keys if key == classe.getIdClassName() %}
-                                        <tr>
+                                        <tr style="color:black;">
                                             <td style="text-align: center; border: 1px solid darkgrey;" >{{ classe.getClassName() }}</td>
                                             <td style="text-align: center; border: 1px solid darkgrey;">{{ classe.getClassOption() }}</td>
                                             <td style="text-align: center; border: 1px solid darkgrey;">{{ classe.getClassYear() }}</td>
@@ -93,15 +93,15 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th style="text-align: center; border: 1px solid darkgrey;">Nom de la classe</th>
-                                <th style="text-align: center; border: 1px solid darkgrey;">Option</th>
-                                <th style="text-align: center; border: 1px solid darkgrey;">Année</th>
-                                <th style="text-align: center; border: 1px solid darkgrey;">Description</th>
-                                <th style="text-align: center; border: 1px solid darkgrey;">Nombre d'Etudiants</th>
-                                <th style="text-align: center; border: 1px solid darkgrey;">Voir les étudiants</th>
+                                <th class="odd" style="text-align: center; border: 1px solid darkgrey;">Nom du projet</th>
+                                <th class="odd" style="text-align: center; border: 1px solid darkgrey;">Option</th>
+                                <th class="odd" style="text-align: center; border: 1px solid darkgrey;">Année</th>
+                                <th class="odd" style="text-align: center; border: 1px solid darkgrey;">Description</th>
+                                <th class="odd" style="text-align: center; border: 1px solid darkgrey;">Nombre d'Etudiants</th>
+                                <th class="odd" style="text-align: center; border: 1px solid darkgrey;">Voir les étudiants</th>
                                 {% if is_granted('ROLE_ADMIN') %}
-                                <th style="text-align: center; border: 1px solid darkgrey;">Modifier</th>
-                                <th style="text-align: center; border: 1px solid darkgrey;">Supprimer</th>
+                                <th class="odd" style="text-align: center; border: 1px solid darkgrey;">Modifier</th>
+                                <th class="odd" style="text-align: center; border: 1px solid darkgrey;">Supprimer</th>
                                 {% endif %}
                             </tr>
                             </tfoot>

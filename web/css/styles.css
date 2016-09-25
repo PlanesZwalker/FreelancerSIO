@@ -120,7 +120,7 @@
 
 .mynewtitle{
 
-    .background-color:#fff; border-radius:8px; padding:2px;float:right;
+  
 }
 
 
@@ -145,19 +145,24 @@
     border-radius: 12px;
     text-shadow:1px 2px 2px black;
     font-weight:900;
-
+    padding:-2px;
 }
 
 .skin-blue .treeview-menu > li > a{
-    border-radius: 10px;
+
     background-color: black;
 
 }
+.skin-blue .treeview-menu > li{
+    width:215px;
+    border-radius:0px 0px 8px 8px;
 
-.skin-blue .sidebar-menu > li > .treeview-menu{
-    border-radius: 10px;
-    background-color: #001a35;
 }
+
+.skin-blue .sidebar-menu > li > .treeview-menu :hover{
+    background-color: #605CA8;
+}
+
 
 .content-wrapper{
     background-color: #F6F6F6;
@@ -184,7 +189,7 @@
 }
 
 .skin-blue .main-header .logo:hover{
-    background-color: #605ca8;
+    background-color: #23D0D6;
     border-radius: 20px;
 }
 
@@ -194,14 +199,47 @@
 /****************************************/
 
 .login-page{
-    background-color: #FFF;
+    background-color: #001F3F;
+        
 }
 
 
 .login-box-body{
-    background-color: lightskyblue;
-    border-radius: 20px;
+    background-color: #fff;
+    border-radius:20px ;
 }
+
+.login-logo a{ 
+    color:#3c8dbc;
+}
+
+/****************************/
+/*      entete tableau
+/**************************/
+
+ .sorting_asc, .sorting, .odd{
+    background-color: #262E3C;
+    color: white;
+}
+
+.dataTables_filter{
+    float:right;
+    margin-right:2%;
+}
+
+.dataTables_empty{
+    color:black;
+}
+
+.col-sm-6 .dataTables_length{
+    float:right;
+   width:130%;
+}
+
+.col-sm-6 .dataTables_filter{
+    width:30%;
+}
+
 
 
 

@@ -1,9 +1,9 @@
 {% extends "layout.html.twig" %}
 
 {% block title %}
-    Listes des professeurs &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Listes des sociétés &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <span style="font-size:14px;">
-      <a href="{{ path('teacher') }}"><i class="fa fa-plus"></i>&nbsp; Ajouter un professeur</a>
+      <a href="{{ path('teacher') }}"><i class="fa fa-plus"></i>&nbsp; Ajouter une société</a>
   </span>
 {% endblock %}
 
@@ -40,13 +40,13 @@
                         </thead>
                         <tbody>
                             {% for user in users %}
-                                {% if user.role == 'ROLE_FORMATEUR' %}
-                                    <tr>
+                                {% if user.role == 'ROLE_SOCIETE' %}
+                                    <tr style="color:black;">
                                         <td style="text-align: center; border: 1px solid darkgrey;">{{ user.getName() }}</td>
                                         <td style="text-align: center; border: 1px solid darkgrey;">{{ user.getFirstname() }}</td>
                                         <td style="text-align: center; border: 1px solid darkgrey;">{{ user.getMail() }}</td>
                                         <td style="text-align: center; border: 1px solid darkgrey;">{{ user.getTel() }}</td>
-                                        <td style="text-align: center; border: 1px solid darkgrey;">{{ user.discipline.getNameDiscipline() }}</td>
+                                        <td style="text-align: center; border: 1px solid darkgrey;">{# user.discipline.getNameDiscipline() #}</td>
                                         <td style="text-align: center; border: 1px solid darkgrey;">
                                             <form action="{{ path('teacher_edit', {'id_user': user.getIdUsers() }) }}" method="post" >
                                                 <div class="btn-group">
@@ -60,7 +60,7 @@
                                         <td style="text-align: center; border: 1px solid darkgrey;">
                                             <form action="{{ path('teacher_delete', {'id_user': user.getIdUsers() }) }}" method="post" >
                                                 <div class="btn-group">
-                                                    <button type="submit" class="btn btn-danger btn-flat" onclick="return confirm('Etes-vous sûr(e) de vouloir supprimer le professeur {{ user.getUsername() }} ?')">
+                                                    <button type="submit" class="btn btn-danger btn-flat" onclick="return confirm('Etes-vous sûr(e) de vouloir supprimer la société {{ user.getUsername() }} ?')">
                                                         <i class="fa fa-trash"></i>
                                                         <input type='hidden' name="id" value="{{ user.getIdUsers() }}">
                                                     </button>
@@ -72,7 +72,7 @@
                             {% endfor %}
                         </tbody>
                         <tfoot>
-                            <tr>
+                            <tr class="odd">
                                 <th style="text-align: center; border: 1px solid darkgrey;">Nom</th>
                                 <th style="text-align: center; border: 1px solid darkgrey;">Prénom</th>
                                 {#<th style="text-align: center; border: 1px solid darkgrey;">Date de Naissance</th>#}

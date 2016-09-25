@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-    {% if is_granted('ROLE_FORMATEUR') %}
+    {% if is_granted('ROLE_FREELANCER') %}
         <form action="{{ path('addnote') }}" method="post"  >
             <input type="hidden" value="{{ taclasse.getIdClassName() }}" name="id_classname"  >
             <input type="hidden" name="id_examen" value="{{ examen.getIdExamen() }}" >
@@ -16,7 +16,7 @@
                         <thead>
                         <tr style="background-color: #3c8dbc">
                             <th style="text-align: center; border: 1px solid darkgrey;">Etudiant</th>
-                            {% if is_granted('ROLE_FORMATEUR') or is_granted('ROLE_USER') %}
+                            {% if is_granted('ROLE_FREELANCER') or is_granted('ROLE_SOCIETE') %}
                                 <th style="text-align: center; border: 1px solid darkgrey;width: 90px">Note</th>
                                 <th style="text-align: center; border: 1px solid darkgrey;width: 290px">Appréciations et Commentaires</th>
                             {% endif %}
@@ -29,7 +29,7 @@
                                 <td style="text-align: center; border: 1px solid darkgrey;">
                                     {{ note.getName()~' '~note.getFirstname() }}
                                 </td>
-                                {% if is_granted('ROLE_FORMATEUR') %}
+                                {% if is_granted('ROLE_FREELANCER') %}
                                         <td style="text-align: center; border: 1px solid darkgrey;">
                                             <input type="text" class="form-control" style="border-radius: 3px" placeholder="Ex : 10" name="note_student[]">
                                             <input type="hidden" name="id_student[]" value="{{ note.getIdStudent() }}" >

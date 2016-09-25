@@ -47,10 +47,9 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
             'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
             'users' => $app->share(function () use($app){
                 $user = new freelancerppe\DAO\UserDAO($app['db']);
-                $user->setDisciplineDAO(new freelancerppe\DAO\DisciplineDAO($app['db']));
 
                 return $user;
-            }),
+            }),  //    $user->setDisciplineDAO(new freelancerppe\DAO\DisciplineDAO($app['db']));
         ),
     ),
 ));
@@ -74,7 +73,7 @@ $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
  */
 $app['dao.discipline'] = $app->share(function($app){
     return new DisciplineDAO($app['db']);
-});
+}); 
 /**
  * Controller pour la route des classes
  *
@@ -89,7 +88,7 @@ $app['dao.className'] = $app->share(function($app){
 $app['dao.student'] = $app->share(function($app){
     $studentDAO = new freelancerppe\DAO\StudentDAO($app['db']);
     $studentDAO->setClassDAO($app['dao.className']);
-    $studentDAO->setStatutStudentDAO($app['dao.statutStudent']);
+   // $studentDAO->setStatutStudentDAO($app['dao.statutStudent']);
     return $studentDAO;
 });
 /**
@@ -98,7 +97,7 @@ $app['dao.student'] = $app->share(function($app){
 $app['dao.examen'] = $app->share(function($app){
     $examenDAO = new freelancerppe\DAO\ExamenDAO($app['db']);
     $examenDAO->setClassDAO($app['dao.className']);
-    $examenDAO->setDisciplineDAO($app['dao.discipline']);
+ //   $examenDAO->setDisciplineDAO($app['dao.discipline']);
     return $examenDAO;
 });
 
@@ -121,7 +120,7 @@ $app['dao.evaluation'] = $app->share(function($app){
  */
 $app['dao.user'] = $app->share(function($app){
     $userDAO = new freelancerppe\DAO\UserDAO($app['db']);
-    $userDAO->setDisciplineDAO(new freelancerppe\DAO\DisciplineDAO($app['db']));
+   // $userDAO->setDisciplineDAO(new freelancerppe\DAO\DisciplineDAO($app['db']));
 
     return $userDAO;
 });
@@ -131,18 +130,18 @@ $app['dao.user'] = $app->share(function($app){
  */
 $app['dao.teacher'] = $app->share(function($app){
     $teacherDAO = new freelancerppe\DAO\TeacherDAO($app['db']);
-    $teacherDAO->setDisciplineDAO($app['dao.discipline']);
+  //  $teacherDAO->setDisciplineDAO($app['dao.discipline']);
 
     return $teacherDAO;
 });
 
 /**
  * Controller pour la route des statuts étudiants
- */
+ 
 $app['dao.statutStudent'] = $app->share(function($app){
     return new freelancerppe\DAO\StatutStudentDAO($app['db']);
 });
-
+*/
 $app['dao.event'] = $app->share(function($app){
     return new freelancerppe\DAO\EventDAO($app['db']);
 });
@@ -154,8 +153,8 @@ $app['dao.event'] = $app->share(function($app){
  * Ici, admin à les mêmes droits que les formateurs et les utilisateurs
  */
 $app['security.role_hierarchy'] = array(
-    'ROLE_FORMATEUR'=> array('ROLE_USER'),
-    'ROLE_ADMIN'    => array('ROLE_FORMATEUR'),
+    'ROLE_FREELANCER'=> array('ROLE_SOCIETE'),
+    'ROLE_ADMIN'    => array('ROLE_FREELANCER'),
 );
 
 /**
@@ -163,8 +162,8 @@ $app['security.role_hierarchy'] = array(
 */
 $app['security.access_rules'] = array(
     array('^/admin/.*$', 'ROLE_ADMIN'),
-    array('^/teacher/.*$\'', 'ROLE_FORMATEUR'),
-    array('^.*$','ROLE_USER'),
+    array('^/teacher/.*$\'', 'ROLE_FREELANCER'),
+    array('^.*$','ROLE_SOCIETE'),
 );
 
 return $app;

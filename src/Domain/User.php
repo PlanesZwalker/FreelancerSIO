@@ -17,7 +17,7 @@ class User implements UserInterface
     private $mail;
     private $tel;
 
-    private $discipline;
+  //  private $discipline;
 
     private $dt_create;
     private $dt_update;
@@ -168,7 +168,7 @@ class User implements UserInterface
     //endregion
 
     //region Getter et Setter des matières
-    public function getDiscipline()
+  /*  public function getDiscipline()
     {
         return $this->discipline;
     }
@@ -176,7 +176,7 @@ class User implements UserInterface
     public function setDiscipline(Discipline $discipline)
     {
         $this->discipline = $discipline;
-    }
+    }*/
     //endregion
 
 

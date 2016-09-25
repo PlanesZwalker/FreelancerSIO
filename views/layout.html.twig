@@ -55,11 +55,11 @@
             $("#example1").DataTable();
             $('#example2').DataTable({
                 "paging": true,
-                "lengthChange": false,
-                "searching": false,
+                "lengthChange": true,
+                "searching": true,
                 "ordering": true,
                 "info": true,
-                "autoWidth": false
+                "autoWidth": true
             });
         });
     </script>
@@ -78,7 +78,7 @@
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><img src="{{ app.request.basepath }}/img/iconsite.png" width="27px" height="27px"></span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg" style="font-size: 17.5px"><img src="{{ app.request.basepath }}/img/iconsite.png" width="15px" height="15px">&nbsp;<b>Free</b>Lancer</span>
+                <span class="logo-lg" style="font-size: 17.5px"><img src="{{ app.request.basepath }}/img/iconsite.png" width="30px" height="30px">&nbsp;<b>Free</b>Lancer</span>
             </a>
 
             <!-- Header Navbar-->
@@ -89,11 +89,11 @@
 
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav"  id="hautedepage">
                         <!-- User Account Menu -->
                         <li class="dropdown">
                             <a class="dropdown-toggle">
-                                <span class="hidden-xs"><b>Bienvenue, {{ app.user.username }}</b></span>
+                                <span class="hidden-xs"><b>Compte {{ app.user.username }} </b></span>
                             </a>
                         </li>
                    {% if is_granted('ROLE_ADMIN') %}
@@ -122,38 +122,36 @@
           <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
                 <li class="header"></li>
-                <li class="#"><a href="{{ path('accueil') }}"><i class="fa fa-home"></i> <span>Accueil</span></a></li>
-                <li><a href="{{ path('calendar') }}"><i class="fa fa-calendar"></i><span>Mon Profil</span></a></li>
+                <li class="treeview"><a href="{{ path('accueil') }}"><i class="fa fa-home"></i> <span>Accueil</span></a></li>
+                <li class="treeview"><a href="{{ path('calendar') }}"><i class="fa fa-calendar"></i><span>Mon Profil</span></a></li>
                 <li class="treeview">
-                    <a href=""><i class="fa fa-university"></i><span>Tests</span><i class="fa fa-angle-left pull-right"></i></a>
+                    <a href=""><i class="fa fa-university"></i><span>Projets</span><i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
                         {% if is_granted('ROLE_ADMIN') %}
-                            <li><a href="{{ path('addclass') }}"><i class="fa fa-plus"></i>Ajouter un Test</a></li>
+                            <li><a href="{{ path('addclass') }}"><i class="fa fa-plus"></i>Ajouter un projet</a></li>
                         {% endif %}
-                        {% if is_granted('ROLE_FORMATEUR') or is_granted('ROLE_USER') %}
-                            <li><a href="{{ path('classeslist') }}"><i class="glyphicon glyphicon-th-list"></i>Liste des tests</a></li>
+                        {% if is_granted('ROLE_FREELANCER') or is_granted('ROLE_SOCIETE') %}
+                            <li><a href="{{ path('classeslist') }}"><i class="glyphicon glyphicon-th-list"></i>Liste des projets</a></li>
                         {% endif %}
                     </ul>
                 </li>
                 <li class="treeview">
-                    <a href=""><i class="fa fa-pencil"></i><span>Projets</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <a href=""><i class="fa fa-pencil"></i><span>Tests</span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
                         {% if is_granted('ROLE_ADMIN') %}
-                            <li><a href="{{ path('addexam') }}"><i class="fa fa-plus"></i>Modifier/ Supprimer un projet</a></li>
+                            <li><a href="{{ path('addexam') }}"><i class="fa fa-plus"></i>Ajouter un test</a></li>
                         {% endif %}
-                        {% if is_granted('ROLE_FORMATEUR') or is_granted('ROLE_USER') %}
-                            <li><a href="{{ path('examlist') }}"><i class="glyphicon glyphicon-th-list"></i>Liste des projets</a></li>
+                        {% if is_granted('ROLE_FREELANCER') or is_granted('ROLE_SOCIETE') %}
+                            <li><a href="{{ path('examlist') }}"><i class="glyphicon glyphicon-th-list"></i>Modifier / Supprimer un test</a></li>
                         {% endif %}
-                        {% if is_granted('ROLE_FORMATEUR') or is_granted('ROLE_USER') %}
-                            <li><a href="{{ path('examlist') }}"><i class="glyphicon glyphicon-th-list"></i>Projets réalisés</a></li>
+                        {% if is_granted('ROLE_FREELANCER') or is_granted('ROLE_SOCIETE') %}
+                            <li><a href="{{ path('examlist') }}"><i class="glyphicon glyphicon-th-list"></i>Tests réalisés</a></li>
                         {% endif %}
-                        {% if is_granted('ROLE_FORMATEUR') or is_granted('ROLE_USER') %}
-                            <li><a href="{{ path('examlist') }}"><i class="glyphicon glyphicon-th-list"></i>Projet</a></li>
-                        {% endif %}
+                       
                     </ul>
                 </li>
                 <li class="treeview">
-                    <a href=""><i class="fa fa-wrench"></i>Contrats</span><i class="fa fa-angle-left pull-right"></i></a>
+                    <a href=""><i class="fa fa-wrench"></i><span>Contrats</span><i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
                         <li><a href="{{ path('admintab') }}"><i class="glyphicon glyphicon-dashboard"></i>Facturation</a></li>
                         <li><a href="{{ path('addPerson') }}"><i class="glyphicon glyphicon-th-list"></i>Transaction Paypal</a></li>
@@ -165,7 +163,7 @@
                         {% if is_granted('ROLE_ADMIN') %}
                             <li><a href="{{ path('addstudent') }}"><i class="fa fa-user-plus"></i>Ajouter une competence</a></li>
                         {% endif %}
-                        {% if is_granted('ROLE_FORMATEUR') or is_granted('ROLE_USER') %}
+                        {% if is_granted('ROLE_FREELANCER') or is_granted('ROLE_SOCIETE') %}
                             <li><a href="{{ path('studentslist') }}"><i class="glyphicon glyphicon-th-list"></i>Liste des competences</a></li>
                             <li><a href="{{ path('studentstats') }}"><i class="glyphicon glyphicon-stats"></i>Statistiques</a></li>
                         {% endif %}
@@ -183,9 +181,9 @@
                         <a href=""><i class="fa fa-wrench"></i><span>Administration</span><i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu">
                             <li><a href="{{ path('admintab') }}"><i class="glyphicon glyphicon-dashboard"></i>Tableau de Bord</a></li>
-                            <li><a href="{{ path('addPerson') }}"><i class="glyphicon glyphicon-th-list"></i>FreeLancer</a></li>
-                            <li><a href="{{ path('addPerson') }}"><i class="glyphicon glyphicon-th-list"></i>Societe</a></li>
-                            <li><a href="{{ path('listGroup') }}"><i class="glyphicon glyphicon-th-list"></i>Moderateur</a></li>
+                            <li><a href="{{ path('studentslist') }}"><i class="glyphicon glyphicon-th-list"></i>FreeLancer</a></li>
+                            <li><a href="{{ path('teacherlist') }}"><i class="glyphicon glyphicon-th-list"></i>Societe</a></li>
+                            <li><a href="{{ path('userslist') }}"><i class="glyphicon glyphicon-th-list"></i>Moderateur</a></li>
                         </ul>
                     </li>
                 {% endif %}
@@ -197,8 +195,8 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>
+        <section class="content-header" style="max-height:50px;" >
+            <h1 style="margin-left:5%; font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif"  >
                 {% block title %}Titre de la page{% endblock %}
                 <small>{% block titledescription %}{# Description de la page #}{% endblock %}</small>
             </h1>
@@ -213,10 +211,11 @@
 </div>
 
 <!-- Main Footer -->
-<footer class="main-footer" >
+<footer class="main-footer" style="height:1%; line-height:45px; padding:10px;margin:0;  background-color:#001A35; color:white;">
     <!-- To the right -->
     <!-- Default to the left -->
-    <strong style="height:25px;">Mentions légales &copy; 2016-2017 <a href="#">FreelancerPPE</a>.</strong> Tous droits réservés.
+    <p style="margin-left:2%;"> <strong>Mentions légales &copy; 2016-2017 <a href="#">FreelancerPPE</a>.</strong> Tous droits réservés 
+        <a href="#hautedepage"><img src="../img/iconsite.png" alt="Haut-de-Page" style="margin-right:5%; padding:2px; height:60px; width:60px; float:right;"/></a></p>
 </footer>
 
 

@@ -23,7 +23,7 @@
     {% if student is defined %}
         Formulaire de modification de {{ student.getName()~' '~student.getFirstname() }}
     {% else %}
-        Formulaire d'ajout d'étudiant
+        Formulaire d'ajout d'un freelancer
     {% endif %}
 {% endblock %}
 
@@ -93,21 +93,7 @@
                     {#Ajoute l'adresse d'un étudiant#}
                     <input id="address" name="address" style=" width: 25% ;border-radius: 3px" class="form-control" value="{{ student.getAddress() }}">
                 </div>
-                <div class="form-group">
-                    <label for="#">Statut</label>
-                    <input type="text" id="option" name="option" class="form-control" style=" width: 25% ;border-radius: 3px" class="form-control" value="{{ student.statut.getStatutStudent() }}" readonly>
-                    <label for="#">Nouveau statut <span style="color: red;">*</span></label>
-                    {#Crée une liste déroulante des statuts des étudiants#}
-                    <select class="form-control" name="statut" style="border-radius: 3px; width: 25%;">
-                        <option style="border-radius: 3px"   value="{{ student.statut.getId() }}"> {{ student.statut.getStatutStudent() }}   </option>
-                        {% for statut in statuts %}
-                            <option style="border-radius: 3px"   value="{{ statut.getId() }}" >
-                                {{ statut.getStatutStudent() }}
-                            </option>
-                        {% endfor %}
-                    </select>
-
-                </div>
+               
                 <small><span style="color: red;">* Champs obligatoires</span></small>
             {% else %}
                 <div class="form-group">
@@ -164,17 +150,7 @@
                     {#Ajoute l'adresse d'un étudiant#}
                     <textarea rows="3" class="form-control" name="address" placeholder="Ex : 234, route des pins / Nice / 06200, France" style=" width: 25% ;border-radius: 3px" id="#"></textarea>
                 </div>
-                <div class="form-group">
-                    <label for="#">Statut <span style="color: red;">*</span></label>
-                    {#Crée une liste déroulante des statuts des étudiants#}
-                    <select class="form-control" name="statut" style="border-radius: 3px; width: 25%;">
-                        {% for statut in statuts %}
-                            <option style="border-radius: 3px" value="{{ statut.getId() }}">
-                                {{ statut.getStatutStudent() }}
-                            </option>
-                        {% endfor %}
-                    </select>
-                </div>
+
                 <small><span style="color: red;">* Champs obligatoires</span></small>
             {% endif %}
         </div>

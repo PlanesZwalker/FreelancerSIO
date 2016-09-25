@@ -78,12 +78,12 @@ class ClassNameController {
         $app['dao.className']->saveClassName($newClass);
 
         if (null !== $request->request->get('id_class')) {
-            $app['session']->getFlashBag()->add('success', 'La classe a été modifiée avec succès !');
+            $app['session']->getFlashBag()->add('success', 'Le projet a été modifié avec succès !');
 
             return $app->redirect($app['url_generator']->generate('classeslist'));
         }
         else {
-            $app['session']->getFlashBag()->add('success', 'La classe a été ajoutée avec succès !');
+            $app['session']->getFlashBag()->add('success', 'Le projet a été ajouté avec succès !');
 
             return $app->redirect($app['url_generator']->generate('classeslist'));
         }
@@ -100,7 +100,7 @@ class ClassNameController {
 
         $app['dao.className']->deleteclassName($newClass->getIdClassName());
 
-        $app['session']->getFlashBag()->add('danger', 'La classe a été supprimée !');
+        $app['session']->getFlashBag()->add('danger', 'Le projet a été supprimé !');
 
         $classes = $app['dao.className']->findAll();
 
@@ -121,7 +121,7 @@ class ClassNameController {
 
         $app['dao.className']->deleteclassName($newClass->getIdClassName());
 
-        $app['session']->getFlashBag()->add('danger', 'La classe a été supprimée !');
+        $app['session']->getFlashBag()->add('danger', 'Le projet a été supprimé !');
 
         // Redirecton vers le tableau des classes
 

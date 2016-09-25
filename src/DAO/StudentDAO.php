@@ -18,16 +18,16 @@ class StudentDAO extends DAO
     private $classDAO;
     private $evaluationDAO;
     private $examenDAO;
-    private $statutDAO;
+//    private $statutDAO;
      /**
      * @param mixed $_statutDAO
       **/
 
-    public function setStatutStudentDAO(StatutStudentDAO $_statutDAO)
+ /*   public function setStatutStudentDAO(StatutStudentDAO $_statutDAO)
     {
         $this->statutDAO = $_statutDAO;
     }
-
+*/
 
 
     /**
@@ -156,7 +156,7 @@ class StudentDAO extends DAO
             'dt_update'         => $student->getDtUpdate(),
 
             'id_class'          => $student->getClass()->getIdClassName(),
-            'id_statut'         => $student->getStatut()->getId(),
+     //       'id_statut'         => $student->getStatut()->getId(),
         );
 
         //on modifie
@@ -204,7 +204,7 @@ class StudentDAO extends DAO
             'dt_update'         => $student->getDtUpdate(),
 
             'id_class'          => $student->getClass()->getIdClassName(),
-            'id_statut'         => $student->getStatut()->getId(),
+    //        'id_statut'         => $student->getStatut()->getId(),
         );
 
         $this->getDb()->update('student', $studentInfo, array(
@@ -241,13 +241,14 @@ class StudentDAO extends DAO
             $classname = $this->classDAO->findClassname($classNameID);
             $student->setClass($classname);   
         }
-
+/*
         if(array_key_exists('id_statut', $row))
         {
             $statutID = $row['id_statut'];
             $statut = $this->statutDAO->findStatut($statutID);
             $student->setStatut($statut);
-        }
+        }*/
+        
         return $student;
     }
 }
