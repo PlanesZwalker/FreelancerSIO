@@ -10,8 +10,8 @@ namespace freelancerppe\DAO;
 
 use freelancerppe\Domain\Student;
 use freelancerppe\Domain\ClassName;
-use Symfony\Component\Validator\Constraints\Null;
-
+// use Symfony\Component\Validator\Constraints\Null; deprecated in PHP7 
+use Symfony\Component\Validator\Constraints;
 
 class StudentDAO extends DAO
 {
