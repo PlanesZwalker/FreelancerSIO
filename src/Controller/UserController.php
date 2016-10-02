@@ -168,7 +168,7 @@ class UserController {
         return $app['twig']->render('ListTemplate/userslist.html.twig', array(
             
             'classes'           =>$classes,
-            'disciplines'       =>$disciplines,
+       //     'disciplines'       =>$disciplines,
             'role'              =>$role,
             'users'             =>$users,
             'id_class'          => $id_class,
