@@ -58,7 +58,7 @@
                   <!-- ./col -->
     <div class="col-lg-4 col-xs-8">
         <!-- small box -->
-        <div class="small-box" style="box-shadow: 3px 3px 3px #888888; background-color: blueviolet; color: white;">
+        <div class="small-box bg-aqua-active" style="box-shadow: 3px 3px 3px #888888; color: white;">
             <div class="inner">
                 <h3>{{ disciplines_number }}</h3>
                 <p>Compétences</p>
@@ -84,6 +84,21 @@
             </div>
             <a href="{{ path('userslist') }}" class="small-box-footer" >Liste des utilisateurs &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
             <a href="{{ path('adduser') }}" class="small-box-footer">Ajouter un utilisateur &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+        
+    <div class="col-lg-4 col-xs-8">
+        <!-- small box -->
+        <div class="small-box" style="box-shadow: 3px 3px 3px #888888; background-color:blueviolet; color: white;">
+            <div class="inner">
+                <h3>{{ societes_number }}</h3>
+                <p>Société  </p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-person-add"></i>
+            </div>
+            <a href="{{ path('teacherlist') }}" class="small-box-footer" >Liste des sociétés &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('teacher') }}" class="small-box-footer">Ajouter une société &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
 

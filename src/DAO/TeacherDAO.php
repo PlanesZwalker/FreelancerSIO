@@ -52,7 +52,7 @@ class TeacherDAO extends DAO
      */
     public function findAll()
     {
-        $sql = "SELECT * FROM users WHERE role='SOCIETE' ORDER BY id_users";
+        $sql = "SELECT * FROM users WHERE role='ROLE_SOCIETE' ";
 
         $res = $this->getDb()->fetchAll($sql);
 
@@ -72,7 +72,7 @@ class TeacherDAO extends DAO
      */
     public function countAll()
     {
-        $sql = "SELECT * FROM users WHERE role='ROLE_SOCIETE' ORDER BY id";
+        $sql = "SELECT * FROM users WHERE role='ROLE_SOCIETE' ";
 
         $res = $this->getDb()->fetchAll($sql);
 

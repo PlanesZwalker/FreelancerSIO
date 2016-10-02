@@ -132,7 +132,7 @@
                                 </td>
                                 <td style="text-align: center; border: 1px solid darkgrey; ">
                               
-                                    <form action="{{ app.request.basepath }}/exam_delete/id" method="post" >
+                                    <form action="{{ path('exam_deleted') }}" method="post" >
                                         <div class="btn-group">
                                             <div class="bs-example">
                                                 <button type="submit"  class="btn btn-danger btn-flat" onclick="return confirm('Etes-vous sûr(e) de vouloir supprimer le test de {{ examen.getExamenName() }} ?')">

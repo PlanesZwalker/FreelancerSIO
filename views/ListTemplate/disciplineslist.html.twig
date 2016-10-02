@@ -2,10 +2,10 @@
 
 {% block title %}
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    Liste des matières &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Liste des compétences &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <span style="font-size:14px;">
         {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('adddiscipline') }}"><i class="fa fa-plus"></i>&nbsp; Ajouter une matière</a>
+            <a href="{{ path('adddiscipline') }}"><i class="fa fa-plus"></i>&nbsp; Ajouter une compétence</a>
         {% endif %}
   </span>
 {% endblock %}
@@ -33,21 +33,21 @@
                     <table id="example1" class="table table-hover table-striped">
                         <thead>
                             <tr style="background-color: #3c8dbc">
-                                <th style="text-align: center; border: 1px solid darkgrey;">Nom de la matière</th>
-                                <th style="text-align: center; border: 1px solid darkgrey;">Professeur référent</th>
+                                <th style="text-align: center; border: 1px solid darkgrey;">Nom de la compétence</th>
+                                <th style="text-align: center; border: 1px solid darkgrey;">Description</th>
                                 <th style="text-align: center; border: 1px solid darkgrey;">Modifier</th>
                                 <th style="text-align: center; border: 1px solid darkgrey;">Supprimer</th>
                             </tr>
                         </thead>
-                        {% for utilisateur in users %}
-                            {% for discipline in disciplines %}
-                                {% if utilisateur.discipline.getIdDiscipline() == discipline.getIdDiscipline() %}
-                            <tr>
+                      {#  {% for utilisateur in users %} #}
+                           {% for discipline in disciplines %} 
+                            {#    {% if utilisateur.discipline.getIdDiscipline() == discipline.getIdDiscipline() %} #}
+                            <tr style="color:black;">
 
                                 <td style="text-align: center; border: 1px solid darkgrey;" >{{ discipline.getNameDiscipline() }}</td>
-                                <td style="text-align: center; border: 1px solid darkgrey;">{{ utilisateur.getName()~' '~utilisateur.getFirstname() }}</td>
+                                <td style="text-align: center; border: 1px solid darkgrey;">{{ discipline.getDescription() }}</td>
                                 <td style="text-align: center; border: 1px solid darkgrey;">
-                                    <form action="{{ path('discipline_edit', {'id_discipline': discipline.getIdDiscipline() }) }}" method="post" >
+                                    <form action="{{ path('discipline_edit') }}" method="post" >
                                         <div class="btn-group">
                                             <button type="submit" class="btn btn-warning btn-flat">
                                                 <i class="fa fa-pencil"></i>
@@ -57,9 +57,9 @@
                                     </form>
                                 </td>
                                 <td style="text-align: center; border: 1px solid darkgrey;">
-                                    <form action="{{ path('discipline_deleted', {'id_discipline': discipline.getIdDiscipline() }) }}" method="post">
+                                    <form action="{{ path('discipline_deleted') }}" method="post">
                                         <div class="btn-group">
-                                            <button type="submit" class="btn btn-danger btn-flat" onclick="return confirm('Etes-vous sûr(e) de vouloir supprimer la matière {{ discipline.getNameDiscipline() }} ?')">
+                                            <button type="submit" class="btn btn-danger btn-flat" onclick="return confirm('Etes-vous sûr(e) de vouloir supprimer la compétence {{ discipline.getNameDiscipline() }} ?')">
                                                 <i class="fa fa-trash"></i>
                                                 <input type="hidden" name="id_discipline" value="{{ discipline.getIdDiscipline() }}">
                                             </button>
@@ -68,13 +68,13 @@
                                 </td>
 
                             </tr>
-                                {% endif %}
-                            {% endfor %}
-                        {% endfor %}
+                          {#      {% endif %} #}
+                            {% endfor %} 
+                       {# {% endfor %} #}
                         <tfoot>
-                            <tr>
-                                <th style="text-align: center; border: 1px solid darkgrey;">Nom de la matière</th>
-                                <th style="text-align: center; border: 1px solid darkgrey;">Professeur référent</th>
+                            <tr class="odd">
+                                <th style="text-align: center; border: 1px solid darkgrey;">Nom de la compétence</th>
+                                <th style="text-align: center; border: 1px solid darkgrey;">Description</th>
                                 <th style="text-align: center; border: 1px solid darkgrey;">Modifier</th>
                                 <th style="text-align: center; border: 1px solid darkgrey;">Supprimer</th>
                             </tr>

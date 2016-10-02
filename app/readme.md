@@ -1,3 +1,6 @@
+##app 
+    Dossier contenant la configuration de l'application Silex
+
 ####config
-   Ajouter la config vers la base de donnée prod.php
+   Configuration de Controller pour se faire appeler par leur route
 

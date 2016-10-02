@@ -2,9 +2,9 @@
 
 {% block title %}
     {% if discipline is defined %}
-        Formulaire de modification de {{ discipline.getNameDiscipline() }}
+        Formulaire de modification de la compétence{{ discipline.getNameDiscipline() }}
     {% else %}
-        Formulaire d'ajout de matière
+        Formulaire d'ajout de compétences
     {% endif %}
 {% endblock %}
 
@@ -16,7 +16,7 @@
                 {% if discipline is defined %}
                     <input type="hidden" id="id_discipline" name="id_discipline" class="form-control" value="{{ discipline.getIdDiscipline() }}">
                     <div class="form-group">
-                        <label>Intitulé de la matière<span style="color: red;">*</span></label>
+                        <label>Intitulé de la compétence<span style="color: red;">*</span></label>
                         {#Modifie le nom de la matière de la matière défini#}
                         <input type="text" name="matiere" style=" width: 25% ;border-radius: 3px" class="form-control" value="{{ discipline.getNameDiscipline() }}">
                         <br/>
@@ -29,7 +29,7 @@
                     </div>
                 {% else %}
                     <div class="form-group">
-                        <label>Intitulé de la matière<span style="color: red;">*</span></label>
+                        <label>Intitulé de la compétence<span style="color: red;">*</span></label>
                         {#Ajoute le nom de la matière#}
                         <input type="text" name="matiere" style=" width: 25% ;border-radius: 3px" class="form-control" placeholder="Libellé de la matière...">
                         <br/>

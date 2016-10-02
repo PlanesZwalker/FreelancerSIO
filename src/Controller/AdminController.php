@@ -48,6 +48,9 @@ class AdminController {
      $disciplines = $app['dao.discipline']->findAll();
      $disciplines_total = $app['dao.discipline']->countAll();
      
+     $societes = $app['dao.teacher']->findAll();
+     $societes_total = $app['dao.teacher']->countAll();
+     
      $date = date("d/m/Y");
     
     return $app['twig']->render('TabTemplate/admintab.html.twig', array(
@@ -63,6 +66,8 @@ class AdminController {
         'students_number'       =>$students_total,
         'classes_number'        =>$classes_total,
         'date'                  =>$date,
+        'societes'              =>$societes,
+        'societes_number'       =>$societes_total,
     ));
     
 
@@ -86,6 +91,9 @@ class AdminController {
      $disciplines = $app['dao.discipline']->findAll();
      $disciplines_total = $app['dao.discipline']->countAll();
      
+     $societes = $app['dao.teacher']->findAll();
+     $societes_total = $app['dao.teacher']->countAll();
+     
      $date = date("d/m/Y");
     
     return $app['twig']->render('TabTemplate/admintab.html.twig', array(
@@ -101,11 +109,14 @@ class AdminController {
         'students_number'       =>$students_total,
         'classes_number'        =>$classes_total,
         'date'                  =>$date,
+        'societes'              =>$societes,
+        'societes_number'       =>$societes_total,
     ));
     
 
     }
-
-
+    
+    
+    
 }
 

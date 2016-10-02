@@ -9,15 +9,15 @@
 $app->get('/admin/admintab', "freelancerppe\Controller\AdminController::indexAction")->bind('admintab');
 
 /*
-
-
  *
  *
  *                 ACCUEIL
  *
  *                                                           AFFICHAGE ACCUEIL
  */
+
 $app->get('/', "freelancerppe\Controller\HomeController::indexAction");
+
 $app->get('/accueil', "freelancerppe\Controller\HomeController::indexAction")->bind('accueil');
 /**
  *
@@ -33,6 +33,7 @@ $app->get('/calendar',"freelancerppe\Controller\CalendarController::indexAction"
  *                                                      route pour afficher le login
  */
 $app->get('/login', "freelancerppe\Controller\HomeController::loginAction")->bind('login');
+/*$app->get('/login_check', "freelancerppe\Controller\HomeController::login_checkAction")->bind('login_check');*/
 /**
  *
  *
@@ -180,7 +181,7 @@ $app->match('stats/statByStudent', "freelancerppe\Controller\StudentController::
 /**
  *
  *
- *           DISCIPLINES
+ *           COMPETENCES
  *
  *                                                              TABLEAU DE BORD
  */
@@ -290,3 +291,13 @@ $app->post('/teacher_delete/id', "freelancerppe\Controller\TeacherController::de
 
 /* mot de passe */
 $app->match('/mdp', "freelancerppe\Controller\AdminController::mdpIndexAction")->bind('mdp');
+
+
+/**************************************/
+/*          Login - create count
+/**************************************/
+/*
+$app->match('/add1freelancer',"freelancerppe\Controller\AdminController::add1FreelancerAction")->bind('add_1_freelancer');
+$app->match('/add1societe',"freelancerppe\Controller\AdminController::add1SocieteAction")->bind('add_1_societe');
+ * */
+ 

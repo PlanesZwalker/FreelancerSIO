@@ -199,8 +199,7 @@
 /****************************************/
 
 .login-page{
-    background-color: #001F3F;
-        
+    background-color: #001F3F;       
 }
 
 
@@ -213,18 +212,39 @@
     color:#3c8dbc;
 }
 
+.btnlogin{
+    width:90%;
+    height:50px;
+    box-shadow: 3px 2px #111;
+    text-shadow:1px 1px #333; 
+    margin:1%;
+    margin-left:5%;
+    border-radius:0px 20px;
+    font-size:16px;
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+    background-color:#001F3F;
+    color:#fff;
+}
+
+
+.btnlogin:hover{
+    background-color:#111;
+    color:#fff;
+}
+
+
 /****************************/
 /*      entete tableau
 /**************************/
 
  .sorting_asc, .sorting, .odd{
     background-color: #262E3C;
-    color: white;
+    color: #3c8dbc;
 }
 
 .dataTables_filter{
     float:right;
-    margin-right:2%;
+    margin:1%;
 }
 
 .dataTables_empty{
@@ -233,7 +253,7 @@
 
 .col-sm-6 .dataTables_length{
     float:right;
-   width:130%;
+   width:100%;
 }
 
 .col-sm-6 .dataTables_filter{

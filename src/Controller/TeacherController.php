@@ -87,7 +87,7 @@ class TeacherController
         $newTeacher->setPassword($request->request->get('password'));
         $newTeacher->setTel($request->request->get('tel'));
         $newTeacher->setMail($request->request->get('mail'));
-        $newTeacher->setRole('ROLE_FREELANCER');
+        $newTeacher->setRole('ROLE_SOCIETE');
         $newTeacher->setDtCreate(date('Y-m-d H:i:s'));
         $newTeacher->setDtUpdate(date('Y-m-d H:i:s'));
     //    $newTeacher->setDiscipline($discipline);

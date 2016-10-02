@@ -32,23 +32,23 @@ public function tabDisciplineAction(Application $app) {
  */
 public function listDisciplineIndexAction(Application $app) {
     
-    $classes = $app['dao.className']->findAll();
+  //  $classes = $app['dao.className']->findAll();
     $disciplines = $app['dao.discipline']->findAll();
 
-    $users = $app['dao.user']->findAll();
+  //  $users = $app['dao.user']->findAll();
      
     return $app['twig']->render('ListTemplate/disciplineslist.html.twig', array(
-        'classes'=>$classes,
+  //      'classes'=>$classes,
         'disciplines'=>$disciplines,
-        'users'=>$users,
+  //      'users'=>$users,
     ));
 }
 
 public function listDisciplineAction(Application $app) {
     
-    $classes = $app['dao.className']->findAll();
+   // $classes = $app['dao.className']->findAll();
     $disciplines = $app['dao.discipline']->findAll();
-    $users = $app['dao.user']->findAll();
+   // $users = $app['dao.user']->findAll();
 
     return $app['twig']->render('ListTemplate/disciplineslist.html.twig', array(
         'classes'=>$classes,
@@ -84,12 +84,12 @@ public function listDisciplineAction(Application $app) {
 
 
         if(null !== $request->request->get('id_discipline')) {
-            $app['session']->getFlashBag()->add('success', 'La matière a été modifée avec succès !');
+            $app['session']->getFlashBag()->add('success', 'La compétence a été modifée avec succès !');
 
             return $app->redirect($app['url_generator']->generate('disciplineslist'));
         }
         else {
-            $app['session']->getFlashBag()->add('success', 'La matière a été ajoutée avec succès !');
+            $app['session']->getFlashBag()->add('success', 'La compétence a été ajoutée avec succès !');
 
             return $app->redirect($app['url_generator']->generate('disciplineslist'));
         }
@@ -100,7 +100,7 @@ public function listDisciplineAction(Application $app) {
 
         $matieres = $app['dao.discipline']->findAll();
 
-        $app['session']->getFlashBag()->add('danger', 'La matière a été supprimée !');
+        $app['session']->getFlashBag()->add('danger', 'La compétence a été supprimée !');
 
         return $app['twig']->render('ListTemplate/disciplineslist.html.twig', array(
             'disciplines' => $matieres,
@@ -116,7 +116,7 @@ public function listDisciplineAction(Application $app) {
 
         $app['dao.discipline']->deleteDiscipline($newDiscipline->getIdDiscipline());
 
-        $app['session']->getFlashBag()->add('danger', 'Matière supprimée !');
+        $app['session']->getFlashBag()->add('danger', 'Compétence supprimée !');
 
         return $app->redirect($app['url_generator']->generate('disciplineslist'));
     }

@@ -63,6 +63,13 @@
             });
         });
     </script>
+    
+    <script type='application/javascript'>
+        window.addEventListener('load', function() {
+            new FastClick(document.body);
+         }, false);
+    </script>
+
     {% block javascript %}
     
     {% endblock %}
@@ -93,7 +100,7 @@
                         <!-- User Account Menu -->
                         <li class="dropdown">
                             <a class="dropdown-toggle">
-                                <span class="hidden-xs"><b>Compte {{ app.user.username }} </b></span>
+                                <span class="hidden-xs"><b>Compte  {{ app.user.username }} </b></span>
                             </a>
                         </li>
                    {% if is_granted('ROLE_ADMIN') %}
@@ -161,11 +168,10 @@
                     <a href=""><i class="fa fa-mortar-board"></i><span>Competences</span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
                         {% if is_granted('ROLE_ADMIN') %}
-                            <li><a href="{{ path('addstudent') }}"><i class="fa fa-user-plus"></i>Ajouter une competence</a></li>
+                            <li><a href="{{ path('adddiscipline') }}"><i class="fa fa-user-plus"></i>Ajouter une competence</a></li>
                         {% endif %}
                         {% if is_granted('ROLE_FREELANCER') or is_granted('ROLE_SOCIETE') %}
-                            <li><a href="{{ path('studentslist') }}"><i class="glyphicon glyphicon-th-list"></i>Liste des competences</a></li>
-                            <li><a href="{{ path('studentstats') }}"><i class="glyphicon glyphicon-stats"></i>Statistiques</a></li>
+                            <li><a href="{{ path('disciplineslist') }}"><i class="glyphicon glyphicon-th-list"></i>Liste des competences</a></li>
                         {% endif %}
                     </ul>
                 </li>
@@ -215,7 +221,7 @@
     <!-- To the right -->
     <!-- Default to the left -->
     <p style="margin-left:2%;"> <strong>Mentions légales &copy; 2016-2017 <a href="#">FreelancerPPE</a>.</strong> Tous droits réservés 
-        <a href="#hautedepage"><img src="../img/iconsite.png" alt="Haut-de-Page" style="margin-right:5%; padding:2px; height:60px; width:60px; float:right;"/></a></p>
+        <a href="#hautedepage"><img src="{{ app.request.basepath }}/img/iconsite.png" alt="Haut-de-Page" style="margin-right:5%; padding:2px; height:60px; width:60px; float:right;"/></a></p>
 </footer>
 
 

@@ -32,6 +32,7 @@
     <![endif]-->
 </head>
 <body class="hold-transition login-page">
+
 <div class="login-box">
     <div class="login-logo">
         <img src="{{ app.request.basepath }}/img/iconsite.png" width="60px" height="60px">
@@ -42,7 +43,7 @@
     <div class="login-box-body" style="height:240px; width:340px;">
         <p class="login-box-msg">Connectez-vous pour accéder aux services</p>
 
-        <form method="post" id="log" action="{{ path('login_check') }}">
+        <form method="post"  id="log" action="{{ path('login_check') }}">
             <div class="form-group has-feedback">
                 <input type="text" class="form-control" name="_username" value="{{ last_username }}" placeholder="Nom d'utilisateur" required autofocus>
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -53,7 +54,7 @@
             </div>
             {% if error %}
                 <div class="alert alert-danger">
-                    <strong>Échec d'authentification !</strong> {{ error }}
+                    {{ error }}<strong>Échec d'authentification !</strong> 
                 </div>
             {% endif %}
             <div class="form-group">
@@ -71,8 +72,22 @@
     </div>
     <!-- /.login-box-body -->
 </div>
-<!-- /.login-box -->
+ 
+    <!-- /.login-box -->
+    <div> 
+        <input type="submit" class="btnlogin" value="Créer un compte en tant que Freelancer" >
+        <input type="hidden"  class="form-control" name="_password" value="ROLE_NOT_CONNECTED">  
+        <input type="hidden"   class="form-control" name="_username" value="ROLE_NOT_CONNECTED">
+    </div>
 
+    <div> 
+        <input type="submit" class="btnlogin"  value="Créer un compte en tant que Societe" >
+        <input type="hidden"  class="form-control" name="_password" value="ROLE_NOT_CONNECTED">  
+        <input type="hidden"   class="form-control" name="_username" value="ROLE_NOT_CONNECTED">
+    </div>
+
+
+    
 <!-- jQuery 2.1.4 -->
 <script src="{{ app.request.basepath }}/themes/AdminLTE/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.5 -->

@@ -130,7 +130,7 @@ $app['dao.user'] = $app->share(function($app){
  */
 $app['dao.teacher'] = $app->share(function($app){
     $teacherDAO = new freelancerppe\DAO\TeacherDAO($app['db']);
-  //  $teacherDAO->setDisciplineDAO($app['dao.discipline']);
+ /*   $teacherDAO->setDisciplineDAO($app['dao.discipline']); */
 
     return $teacherDAO;
 });
@@ -150,11 +150,12 @@ $app['dao.event'] = $app->share(function($app){
 /**
  * Hiérarchie des utilisateurs
  *
- * Ici, admin à les mêmes droits que les formateurs et les utilisateurs
+ * 
  */
 $app['security.role_hierarchy'] = array(
     'ROLE_FREELANCER'=> array('ROLE_SOCIETE'),
     'ROLE_ADMIN'    => array('ROLE_FREELANCER'),
+   
 );
 
 /**
@@ -164,7 +165,9 @@ $app['security.access_rules'] = array(
     array('^/admin/.*$', 'ROLE_ADMIN'),
     array('^/teacher/.*$\'', 'ROLE_FREELANCER'),
     array('^.*$','ROLE_SOCIETE'),
+  
 );
+
 
 return $app;
 
