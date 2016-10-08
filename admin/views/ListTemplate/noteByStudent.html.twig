@@ -1,0 +1,50 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+    Liste des notes de l'étudiant {{ student.getName()~' '~student.getFirstname() }}
+{% endblock %}
+
+{% block content %}
+
+    <!-- Div pour afficher le nombre d'étudiants total -->
+    <div class="body">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <div class="box">
+                        <div class="box-body">
+                            <table id="example1" class="table table-hover table-striped">
+                                <thead>
+                                <tr style="background-color: #3c8dbc">
+                                    <th style="text-align: center; border: 1px solid darkgrey;">Matière</th>
+                                    <th style="text-align: center; border: 1px solid darkgrey;">Examen</th>
+                                    <th style="text-align: center; border: 1px solid darkgrey;">Note</th>
+                                    <th style="text-align: center; border: 1px solid darkgrey;">Coefficient</th>
+                                    <th style="text-align: center; border: 1px solid darkgrey;">Appréciation</th>
+                                </tr>
+                                </thead>
+                                {% for noteEtu in evaluationStudent %}
+                                    <tr>
+                                        <td style="text-align: center; border: 1px solid darkgrey;">{{ noteEtu.getIdExamen.discipline.getNameDiscipline() }}</td>
+                                        <td style="text-align: center; border: 1px solid darkgrey;">{{ noteEtu.getIdExamen.getExamenName() }}</td>
+                                        <td style="text-align: center; border: 1px solid darkgrey;">{{ noteEtu.getGradeStudent() }}</td>
+                                        <td style="text-align: center; border: 1px solid darkgrey;">{{ noteEtu.getIdExamen.getCoeffExamen() }}</td>
+                                        <td style="text-align: center; border: 1px solid darkgrey;">{{ noteEtu.getJudgement() }}</td>
+                                    </tr>
+                                {% endfor %}
+                                <tfoot>
+                                <th style="text-align: center; border: 1px solid darkgrey;">Matière</th>
+                                <th style="text-align: center; border: 1px solid darkgrey;">Examen</th>
+                                <th style="text-align: center; border: 1px solid darkgrey;">Note</th>
+                                <th style="text-align: center; border: 1px solid darkgrey;">Coefficient</th>
+                                <th style="text-align: center; border: 1px solid darkgrey;">Appréciation</th>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

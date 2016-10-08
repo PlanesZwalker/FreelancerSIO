@@ -1,0 +1,157 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+    <div style="height:30px;"> 
+        <span class="mynewtitle">Accueil Free Lancer</span>
+    </div>
+{% endblock %}
+
+{% block content %}   <!-- Small boxes (Stat box) -->
+
+
+    <div class="col-lg-4 col-xs-8">
+        <!-- small box -->
+        <div class="small-box" style="box-shadow: 3px 3px 3px #888888; background-color: #e94b35; color: white;">
+            <div class="inner">
+                <h3></h3>
+                <p>Utilisateurs  </p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-person-add"></i>
+            </div>
+            <a href="{{ path('userslist') }}" class="small-box-footer" >Modifier / Supprimer un utilisateur &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('adduser') }}" class="small-box-footer">Ajouter un utilisateur &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-xs-8">
+        <!-- small box -->
+        <div class="small-box" style="box-shadow: 3px 3px 3px #888888; background-color: #0099ff; color: white;">
+            <div class="inner">
+                <h3></h3>
+                <p>Projets</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-university"></i>
+            </div>
+            <a href="{{ path('classeslist') }}" class="small-box-footer" >Modifier / Supprimer un projet &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('addclass') }}" class="small-box-footer" >Créer un Projet &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-xs-8" >
+        <!-- small box -->
+        <div class="small-box" style="box-shadow: 3px 3px 3px #888888; background-color:#e68a00; color: white;">
+            <div class="inner">
+                <h3></h3>
+                <p>Freelancers</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-mortar-board"></i>
+            </div>
+            <a href="{{ path('studentslist') }}" class="small-box-footer">Modifier / Supprimer des Freelancers &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('addstudent') }}" class="small-box-footer">Ajouter un Freelancer &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>    
+
+    <div class="col-lg-4 col-xs-8">
+         <!-- small box -->
+         <div class="small-box" style="box-shadow: 3px 3px 3px #888888; background-color: blueviolet; color: white;">
+             <div class="inner">
+                 <h3></h3>
+                 <p>Sociétés</p>
+             </div>
+             <div class="icon">
+                 <i class="fa fa-newspaper-o"></i>
+             </div>
+             <a href="{{ path('teacherlist') }}" class="small-box-footer">Modifier / Supprimer des sociétés &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+             <a href="{{ path('teacher') }}" class="small-box-footer">Ajouter une société &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+         </div>
+     </div>
+
+    <div class="col-lg-4 col-xs-8">
+        <!-- small box -->
+        <div class="small-box" style="box-shadow: 3px 3px 3px #888888;background-color: #00cc00; color: white;">
+            <div class="inner">
+                <h3></h3>
+                <p>Tests</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-pencil"></i>
+            </div>
+            <a href="{{ path('examlist') }}" class="small-box-footer" >Modifier / Supprimer un test &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('addexam') }}" class="small-box-footer" >Ajouter un test &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-xs-8">
+        <!-- small box -->
+        <div class="small-box bg-aqua-active" style="box-shadow: 3px 3px 3px #888888;">
+            <div class="inner">
+                <h3></h3>
+                <p>Compétences</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-university"></i>
+            </div>
+            <a href="{{ path('classeslist') }}" class="small-box-footer" >Liste des compétences &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('classeslist') }}" class="small-box-footer" >Ajouter une compétence &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-xs-8">
+        <!-- small box -->
+        <div class="small-box bg-light-blue-active" style="box-shadow: 3px 3px 3px #888888;">
+            <div class="inner">
+                <h3></h3>
+                <p>Forum</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-calendar"></i>
+            </div>
+            <a href="{{ path('calendar') }}" class="small-box-footer">Visiter le Forum &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('calendar') }}" class="small-box-footer">Ajouter un message sur le Forum &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('calendar') }}" class="small-box-footer">Modérer un message sur le Forum &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+
+
+    <div class="col-lg-4 col-xs-8">
+        <!-- small box -->
+        <div class="small-box bg-orange-active" style="box-shadow: 3px 3px 3px #888888;">
+            <div class="inner">
+                <h3></h3>
+                <p>Messages / Commentaires</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-calendar"></i>
+            </div>
+            <a href="{{ path('calendar') }}" class="small-box-footer">Accéder à ma messagerie &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('calendar') }}" class="small-box-footer">Envoyer un message à une société &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('calendar') }}" class="small-box-footer">Envoyer un message à un freelancer &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('calendar') }}" class="small-box-footer">Envoyer un message à un Modérateur &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+
+
+
+
+     <div class="col-lg-4 col-xs-8">
+        <!-- small box -->
+        <div class="small-box bg-green-active" style="box-shadow: 3px 3px 3px #888888;">
+            <div class="inner">
+                <h3></h3>
+                <p>Contrats</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-mortar-board"></i>
+            </div>
+            <a href="{{ path('studentslist') }}" class="small-box-footer">Voir la liste des contrats &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('adduser') }}" class="small-box-footer">Ajouter un contrat &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('adduser') }}" class="small-box-footer">Modifier  un contrat &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('adduser') }}" class="small-box-footer">Supprimer un contrat &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ path('adduser') }}" class="small-box-footer">Valider un contrat &nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+
+{% endblock %}
