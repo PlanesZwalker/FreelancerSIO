@@ -12,3 +12,6 @@ $app['db.options'] = array(
     'password' => ' ',
 
 );
+
+##Pour installer les composants du framework (Silex) 
+=> Ouvrez votre dossier local et dans le dossier admin vous lancez la commande    php composer.phar update
