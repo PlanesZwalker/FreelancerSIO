@@ -1,7 +1,20 @@
-Symfony Standard Edition
-========================
+##Pour deployer le projet n'oubliez pas d'installer Composer sur votre ordinateur
+et afin d'installer les composants de symfony :
 
-[Installation][1] Documentation
+Sous cmd.exe allez dans le chemin du dossier :
+cd chemin_vers_le_dossier\FreelancerSIO-master
+
+puis executer la commande :
+>php composer.phar update
+
+##Voir le readme du dossier admin pour parametrer la projet
+
+
+=========================================
+Symfony Standard Edition Documentation
+=========================================
+
+[Installation][1]
 
 The Symfony Standard Edition is configured with the following defaults:
 
