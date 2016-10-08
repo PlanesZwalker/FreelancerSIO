@@ -7,8 +7,8 @@ cd chemin_vers_le_dossier\FreelancerSIO-master
 puis executer la commande :
 >php composer.phar update
 
-##Voir le readme du dossier admin pour parametrer la projet
 
+##Voir le readme du dossier admin pour parametrer le projet
 
 =========================================
 Symfony Standard Edition Documentation
