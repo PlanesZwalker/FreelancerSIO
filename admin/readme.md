@@ -13,3 +13,5 @@ $app['db.options'] = array(
 
 ##Pour installer les composants du framework (Silex) 
 => Ouvrez votre dossier local et dans le dossier admin vous lancez la commande    php composer.phar update
+
+##Mettre dans le dossier admin/web un dossier themes et y déplacer/copier AdminLTE 
