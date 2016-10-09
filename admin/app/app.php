@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Val
- * Date: 05/02/2016
- * Time: 09:09
- */
+
 use Symfony\Component\Debug\ErrorHandler;
 use Symfony\Component\Debug\ExceptionHandler;
 use Silex\Application;

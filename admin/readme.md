@@ -1,3 +1,5 @@
+##Créer un fichier index à la racine afin de créer la redirection vers  " Le_nom_du_dossier_sur_le_serveur"/web/index.php
+
 ##Créer un fichier prod.php dans le dossier app/config avec la configuration vers votre base de  (dbname, user et password)
 
 $app['db.options'] = array(
@@ -10,8 +12,3 @@ $app['db.options'] = array(
     'password' => ' ',
 
 );
-
-##Pour installer les composants du framework (Silex) 
-=> Ouvrez votre dossier local et dans le dossier admin vous lancez la commande    php composer.phar update
-
-##Mettre dans le dossier admin/web un dossier themes et y déplacer/copier AdminLTE 

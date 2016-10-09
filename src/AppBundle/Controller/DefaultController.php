@@ -16,5 +16,17 @@ class DefaultController extends Controller
         // replace this example code with whatever you need
         return $this->render('freelance/index.html');
     }
+    
+     /**
+     * @Route("/test", name="test")
+     */
+    public function testAction(Request $request, Application $app)
+    {
+     $app->get('/hello/{name}', function ($name) use ($app) {
+        return $app['twig']->render('default/index.html.twig', array(
+            'name' => $name,
+        )); 
+    });
+    }
 
 }

@@ -1,20 +1,14 @@
-##Pour deployer le projet n'oubliez pas d'installer Composer sur votre ordinateur
-et afin d'installer les composants de symfony :
+Symfony Standard Edition
+========================
 
-Sous cmd.exe allez dans le chemin du dossier :
-cd chemin_vers_le_dossier\FreelancerSIO-master
+Welcome to the Symfony Standard Edition - a fully-functional Symfony
+application that you can use as the skeleton for your new applications.
 
-puis executer la commande :
->php composer.phar update
+For details on how to download and get started with Symfony, see the
+[Installation][1] chapter of the Symfony Documentation.
 
-
-##Voir le readme du dossier admin pour parametrer le projet
-
-=========================================
-Symfony Standard Edition Documentation
-=========================================
-
-[Installation][1]
+What's inside?
+--------------
 
 The Symfony Standard Edition is configured with the following defaults:
 
@@ -58,6 +52,11 @@ It comes pre-configured with the following bundles:
 
   * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
     integration
+
+All libraries and bundles included in the Symfony Standard Edition are
+released under the MIT or BSD license.
+
+Enjoy!
 
 [1]:  https://symfony.com/doc/3.0/book/installation.html
 [6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html

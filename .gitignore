@@ -14,7 +14,3 @@
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
-.idea/
-/vendor
-/.idea
-/nbproject
