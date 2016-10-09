@@ -15,6 +15,6 @@
 /vendor/
 /web/bundles/
 .idea/
-vendor
-.idea
-nbproject
+/vendor
+/.idea
+/nbproject
