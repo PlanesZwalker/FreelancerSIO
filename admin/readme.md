@@ -12,3 +12,5 @@ $app['db.options'] = array(
     'password' => ' ',
 
 );
+
+## Lancer la commande composer update à la racine du projet et du dossier admin
