@@ -14,7 +14,7 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         // replace this example code with whatever you need
-        return $this->render('freelance/index.html');
+        return $this->render('freelance/index.html.twig');
     }
     
      /**

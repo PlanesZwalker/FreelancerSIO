@@ -1,0 +1,135 @@
+{% extends "layout.html.twig" %}
+
+{% block css %}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+{% endblock %}
+
+{#Calendrier pour Séléctionner la date de l'message#}
+{% block javascript %}
+    <script>
+        $(function() {
+            $( "#datepicker" ).datepicker({
+                dateFormat : 'yy/mm/dd',
+                yearRange: '-100y:c+nn',
+                changeMonth: true,
+                changeYear: true,
+                dayNamesMin: ['Lun', 'Ma', 'Me', 'Jeu', 'Ven', 'Sam', 'Dim']
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block title %}
+    {% if message is defined %}
+        <meta name="viewport" content="initial-scale=1">
+        Formulaire de modification de messages: {{ message.getId_message() }}
+    {% else %}
+        <meta name="viewport" content="initial-scale=1">
+        Formulaire d'ajout / d'envoi de messages
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="box box-primary">
+        <!-- Main content -->
+        <div class="box-body">
+
+
+        {#        FORMULAIRE DE MODIFICATION       D'EXAMEN               #}
+        {% if message is defined %}
+        <form class="form-horizontal" method="post" action="{{ path('message_edited') }}" style="margin-left:20px">
+
+                <div class="form-group">
+                    <label for="#">Nom du message<span style="color: red;">*</span></label>
+                    {# nom de l'message#}
+                    <input style="border-radius: 3px; width: 25%" type="text" class="form-control" name="name" placeholder="" value="{{ message.getId_message() }}" >
+                    <input type="hidden" value="{{ message.getId_message() }}" name="id_message" >
+                </div>
+                <div class="form-group">
+                    <label for="#">Catégorie<span style="color: red;">*</span></label>
+                    {#Crée une liste déroulante des nom de classe#}
+                    <select class="form-control" name="classname" style="border-radius: 3px; width: 25%">
+                        {% for classe in classes %}
+                        <option value="{{ classe.getIdClassName() }}">
+                            {{ classe.getClassName() }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="#">Compétences<span style="color: red;">*</span></label>
+                    {#Crée une liste déroulante des nom de classe#}
+                    <select class="form-control" name="classname" style="border-radius: 3px; width: 25%">
+                   {#     {% for classe in classes %}
+                            <option value="{{ classe.getIdClassName() }}">
+                                {{ classe.getClassName() }}
+                            </option>
+                        {% endfor %} #}
+                    </select>
+                </div>
+       
+                <div class="form-group">
+                    <label for="#">Description</label>
+                    {#  description de l'message#}
+                    <input class="form-control" style="width:50%; height:100px; border-radius: 3px" name="description" placeholder="" type="text" value="{{ message.getDescriptionExamen() }}" >
+                </div>
+                <div class="form_group">
+                    <button type="submit" class="btn btn-info pull-right">Enregistrer</button>
+                </div>
+            </form>
+
+
+                {% else %}
+
+                    {#        FORMULAIRE D'AJOUT         D'EXAMEN               #}
+
+
+
+             <form class="form-horizontal" method="post" action="{{ path('added_message') }}" style="margin-left:20px">
+            <div class="form-group">
+                    <label for="#">Nom du message<span style="color: red;">*</span></label>  
+                    {#Ajoute le nom d'un message#}
+                    <input style="border-radius: 3px; width: 25%" type="text" class="form-control" name="name" placeholder=""/>
+                </div>
+                  
+                <div class="form-group">
+                    <label for="#">Catégorie<span style="color: red;">*</span></label>
+                    {#Crée une liste déroulante des nom de classe#}
+                    <select class="form-control" name="classname" style="border-radius: 3px; width: 25%">
+                     
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="#">Compétences<span style="color: red;">*</span></label>
+                    {#Crée une liste déroulante des nom de classe#}
+                    <select class="form-control" name="classname" style="border-radius: 3px; width: 25%">
+                   {#     {% for classe in classes %}
+                            <option value="{{ classe.getIdClassName() }}">
+                                {{ classe.getClassName() }}
+                            </option>
+                        {% endfor %} #}
+                    </select>
+                </div>
+        
+                <div class="form-group">
+                    <label for="#">Description</label>
+                    {#Ajoute une description à l'message#}
+                    <textarea  class="form-control" rows="3" style="width: 25%; border-radius: 3px" name="description" placeholder=""></textarea>
+                </div>
+                <div class="form_group">
+                    <button type="submit" class="btn btn-info pull-right">Ajouter</button>
+                </div>
+             </form>
+                {% endif %}
+
+            </div>
+            {#Affiche un message d'ajout réussi#}
+            {% for success in app.session.getFlashBag.get('success') %}
+                <div class="alert alert-success fade">
+                    {{ success }}
+                </div>
+            {% endfor %}
+        </form>
+    </div>
+{% endblock %}
+

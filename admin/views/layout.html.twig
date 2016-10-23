@@ -66,7 +66,7 @@
     {% block javascript %}
     
     {% endblock %}
-    
+
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -74,7 +74,7 @@
         <!-- Main Header -->
         <header class="main-header">
             <!-- Logo -->
-            <a href="{{ path('accueil') }}" class="logo">
+              <a href="{{path('front') }}" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><img src="{{ app.request.basepath }}/img/iconsite.png" width="27px" height="27px"></span>
                 <!-- logo for regular state and mobile devices -->
@@ -90,31 +90,17 @@
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav"  id="hautedepage">
-                        <!-- User Account Menu -->
-                        <li class="dropdown">
-                            <a class="dropdown-toggle">
-                                <span class="hidden-xs"><b>Compte {{ app.user.username }} </b></span>
-                            </a>
-                        </li>
-                   {% if is_granted('ROLE_ADMIN') %}
                         <li>
                             <a href="{{ path('admintab') }}" data-toggle=""><i class="fa fa-gears"></i></a>
+                            <i> <span class="hidden-xs"><b>{{ app.user.username }} </b></span></i>
                         </li>
-                   {% endif %}
-                   <li>
-                       {% if app.user %}
-                            <a href="{{ path('logout') }}" class="dropdown">
-                                <i class="glyphicon glyphicon-off"></i>
-                       {% else %}
-                               <a href="{{ path('login') }}" class="dropdown">
-                       {% endif %}
-                               </a>
-                            </a>
-                   </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+                        <li>
+                            <a href="{{ path('logout') }}" class="dropdown"><i class="glyphicon glyphicon-off"></i></a>
+                        </li>
+                     </ul>
+                 </div>
+             </nav>
+        </header>
     <!-- Left side column. contains the logo and sidebar -->
     <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
@@ -123,70 +109,50 @@
             <ul class="sidebar-menu">
                 <li class="header"></li>
                 <li class="treeview"><a href="{{ path('accueil') }}"><i class="fa fa-home"></i> <span>Accueil</span></a></li>
-                <li class="treeview"><a href="{{ path('calendar') }}"><i class="fa fa-calendar"></i><span>Mon Profil</span></a></li>
                 <li class="treeview">
                     <a href=""><i class="fa fa-university"></i><span>Projets</span><i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <li><a href="{{ path('addclass') }}"><i class="fa fa-plus"></i>Ajouter un projet</a></li>
-                        {% endif %}
-                        {% if is_granted('ROLE_FREELANCER') or is_granted('ROLE_SOCIETE') %}
-                            <li><a href="{{ path('classeslist') }}"><i class="glyphicon glyphicon-th-list"></i>Liste des projets</a></li>
-                        {% endif %}
+                        <li><a href="{{ path('addprojet') }}"><i class="fa fa-plus"></i>Ajouter un projet</a></li>
+                        <li><a href="{{ path('projetslist') }}"><i class="glyphicon glyphicon-th-list"></i>Liste des projets</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
-                    <a href=""><i class="fa fa-pencil"></i><span>Tests</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <a href=""><i class="fa fa-pencil"></i><span>Contrats</span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <li><a href="{{ path('addexam') }}"><i class="fa fa-plus"></i>Ajouter un test</a></li>
-                        {% endif %}
-                        {% if is_granted('ROLE_FREELANCER') or is_granted('ROLE_SOCIETE') %}
-                            <li><a href="{{ path('examlist') }}"><i class="glyphicon glyphicon-th-list"></i>Modifier / Supprimer un test</a></li>
-                        {% endif %}
-                        {% if is_granted('ROLE_FREELANCER') or is_granted('ROLE_SOCIETE') %}
-                            <li><a href="{{ path('examlist') }}"><i class="glyphicon glyphicon-th-list"></i>Tests réalisés</a></li>
-                        {% endif %}
-                       
+                            <li><a href="{{ path('addcontrat') }}"><i class="fa fa-plus"></i>Finaliser un projet</a></li>
+                            <li><a href="{{ path('contratslist') }}"><i class="glyphicon glyphicon-th-list"></i>Liste des contrat</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
-                    <a href=""><i class="fa fa-wrench"></i><span>Contrats</span><i class="fa fa-angle-left pull-right"></i></a>
+                    <a href=""><i class="fa fa-pencil"></i><span>Offres</span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
-                        <li><a href="{{ path('admintab') }}"><i class="glyphicon glyphicon-dashboard"></i>Facturation</a></li>
-                        <li><a href="{{ path('addPerson') }}"><i class="glyphicon glyphicon-th-list"></i>Transaction Paypal</a></li>
+                            <li><a href="{{ path('addoffre') }}"><i class="fa fa-plus"></i>Ajouter une offre</a></li>
+                            <li><a href="{{ path('offreslist') }}"><i class="glyphicon glyphicon-th-list"></i>Liste des offres</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
                     <a href=""><i class="fa fa-mortar-board"></i><span>Competences</span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <li><a href="{{ path('addstudent') }}"><i class="fa fa-user-plus"></i>Ajouter une competence</a></li>
-                        {% endif %}
-                        {% if is_granted('ROLE_FREELANCER') or is_granted('ROLE_SOCIETE') %}
-                            <li><a href="{{ path('studentslist') }}"><i class="glyphicon glyphicon-th-list"></i>Liste des competences</a></li>
-                            <li><a href="{{ path('studentstats') }}"><i class="glyphicon glyphicon-stats"></i>Statistiques</a></li>
-                        {% endif %}
+                        <li><a href="{{ path('addcompetence') }}"><i class="fa fa-user-plus"></i>Ajouter une competence</a></li>
+                        <li><a href="{{ path('competenceslist') }}"><i class="glyphicon glyphicon-th-list"></i>Liste des competences</a></li>
                     </ul>
                 </li>
-                {% if is_granted('ROLE_ADMIN') and is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <li class="treeview">
-                        <a href=""><i class="fa fa-wrench"></i><span>Messages / Commentaires</span><i class="fa fa-angle-left pull-right"></i></a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{ path('admintab') }}"><i class="glyphicon glyphicon-dashboard"></i>Forum</a></li>
-                            <li><a href="{{ path('addPerson') }}"><i class="glyphicon glyphicon-th-list"></i>Categories</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href=""><i class="fa fa-wrench"></i><span>Administration</span><i class="fa fa-angle-left pull-right"></i></a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{ path('admintab') }}"><i class="glyphicon glyphicon-dashboard"></i>Tableau de Bord</a></li>
-                            <li><a href="{{ path('studentslist') }}"><i class="glyphicon glyphicon-th-list"></i>FreeLancer</a></li>
-                            <li><a href="{{ path('teacherlist') }}"><i class="glyphicon glyphicon-th-list"></i>Societe</a></li>
-                            <li><a href="{{ path('userslist') }}"><i class="glyphicon glyphicon-th-list"></i>Moderateur</a></li>
-                        </ul>
-                    </li>
-                {% endif %}
+                <li class="treeview">
+                    <a href=""><i class="fa fa-pencil"></i><span>Tests</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                            <li><a href="{{ path('addtest') }}"><i class="fa fa-plus"></i>Ajouter un test</a></li>
+                            <li><a href="{{ path('testslist') }}"><i class="glyphicon glyphicon-th-list"></i>Liste des tests</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href=""><i class="fa fa-wrench"></i><span>Administration</span><i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ path('admintab') }}"><i class="glyphicon glyphicon-dashboard"></i>Tableau de Bord</a></li>
+                        <li><a href="{{ path('freelancerslist') }}"><i class="glyphicon glyphicon-th-list"></i>FreeLancer</a></li>
+                        <li><a href="{{ path('societelist') }}"><i class="glyphicon glyphicon-th-list"></i>Societe</a></li>
+                        <li><a href="{{ path('userslist') }}"><i class="glyphicon glyphicon-th-list"></i>Tous les utilisateurs</a></li>
+                    </ul>
+                </li>
             </ul>
             <!-- /.sidebar-menu -->
         </section>
@@ -209,13 +175,15 @@
     </div>
     <!-- /.content-wrapper -->
 </div>
-
+  
+   
 <!-- Main Footer -->
-<footer class="main-footer" style="height:1%; line-height:45px; padding:10px;margin:0;  background-color:#001A35; color:white;">
-    <!-- To the right -->
-    <!-- Default to the left -->
-    <p style="margin-left:2%;"> <strong>Mentions légales &copy; 2016-2017 <a href="#">FreelancerPPE</a>.</strong> Tous droits réservés 
-        <a href="#hautedepage"><img src="../img/iconsite.png" alt="Haut-de-Page" style="margin-right:5%; padding:2px; height:60px; width:60px; float:right;"/></a></p>
+
+<footer class="main-footer" style="height:55px; line-height:15px; width:100%;background-color:#001A35; color:white; float:right">
+        <span style="margin-left:2%; width:50%; float:left; display:inline-block;"><strong>Tableau de bord d'administration<a href="#">&nbsp;FreelancerPPE</a>.&nbsp;  Mise à jour  octobre 2016 &nbsp;</strong>&copy;&nbsp; Tous droits réservés</span>  
+        <a href="#hautedepage" >
+           <img src="{{ app.request.basepath }}/img/iconsite.png" alt="Haut-de-Page" style="margin-right:5% ; margin-top:-0.6%;display:inline-block; height:45px; width:45px; float:right;"/>
+        </a>   
 </footer>
 
 

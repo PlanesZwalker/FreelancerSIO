@@ -6,236 +6,149 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class User implements UserInterface
 {
-    private $id_users;
-    private $username;
-    private $name;
-    private $firstname;
-    private $description;
-    private $password;
-    private $salt;
+    private $id_user;
+    private $pseudo;
     private $role;
-    private $mail;
-    private $tel;
-
-  //  private $discipline;
-
-    private $dt_create;
-    private $dt_update;
-
-
-    //region Getter et Setter de l'ID de l'utilisateur
-    public function getIdUsers()
-    {
-        return $this->id_users;
-    }
-
-    public function setIdUsers($_id_users)
-    {
-        $this->id_users = $_id_users;
-    }
-    //endregion
-
-    //region Getter et Setter du pseudo de l'utilisateur
-    public function getUsername()
-    {
-        return $this->username;
-    }
+    private $email;
+    private $nomuser;
+    private $prenomuser;
+    private $adresse;
+    private $telephone;
+    private $motdepasse;
+    private $salt;
+    private $date_insc;
+    private $date_modif;
+    private $statut_connect;
     
-    public function setUsername($_username)
-    {
-        $this->username = $_username;
-    }
-    //endregion
-
-    //region Getter et Setter du nom de l'utilisateur
-    public function getName()
-    {
-        return $this->name;
+   
+    /* GETTER */
+    function getId_user() {
+        return $this->id_user;
     }
 
-    public function setName($_name)
-    {
-        $this->name = $_name;
-    }
-    //endregion
-
-    //region Getter et Setter du prénom de l'utilisateur
-    public function getFirstName()
-    {
-        return $this->firstname;
+    function getPseudo() {
+        return $this->pseudo;
     }
 
-    public function setFirstName($_firstname)
-    {
-        $this->firstname = $_firstname;
-    }
-    //endregion
-
-    //region Getter et Setter du mot de passe de l'utilisateur
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    public function setPassword($_password)
-    {
-        $this->password = $_password;
-    }
-    //endregion
-
-    //region Getter et Setter de Hachage du mot de passe
-    public function getSalt()
-    {
-        return $this->salt;
-    }
-
-    public function setSalt($_salt)
-    {
-        $this->salt = $_salt;
-    }
-    //endregion
-
-    //region Getter et Setter du role de l'utilisateur
-    public function getRole()
-    {
+    function getRole() {
         return $this->role;
     }
 
-    public function setRole($_role)
-    {
-        $this->role = $_role;
-    }
-    //endregion
-
-
-    //region Getter et Setter de l'Email de l'utilisateur
-    public function getMail()
-    {
-        return $this->mail;
+    function getEmail() {
+        return $this->email;
     }
 
-    public function setMail($_mail)
-    {
-        $this->mail = $_mail;
-    }
-    //endregion
-
-    //region Getter et Setter du tel de l'utilisateur
-    public function getTel()
-    {
-        return $this->tel;
+    function getNomuser() {
+        return $this->nomuser;
     }
 
-    public function setTel($_tel)
-    {
-        $this->tel = $_tel;
+    function getPrenomuser() {
+        return $this->prenomuser;
     }
 
-    //region Getter et Setter de la description de l'utilisateur
-    public function getDescription()
-    {
-        return $this->description;
+    function getAdresse() {
+        return $this->adresse;
     }
 
-    public function setDescription($_description)
-    {
-        $this->description = $_description;
-    }
-    //endregion
-
-    //region Getter et Setter de la date de création de l'utilisateur
-    public function getDtCreate()
-    {
-        return $this->dt_create;
+    function getTelephone() {
+        return $this->telephone;
     }
 
-    public function setDtCreate($_dt_create)
-    {
-        $this->dt_create = $_dt_create;
-    }
-    //endregion
-
-    //region Getter et Setter de la date de modification de l'utilisateur
-    public function getDtUpdate()
-    {
-        return $this->dt_update;
+    function getMotdepasse() {
+        return $this->motdepasse;
     }
 
-    public function setDtUpdate($_dt_update)
-    {
-        $this->dt_update = $_dt_update;
-    }
-    //endregion
-
-    //region Getter et Setter des matières
-  /*  public function getDiscipline()
-    {
-        return $this->discipline;
+    function getSalt() {
+        return $this->salt;
     }
 
-    public function setDiscipline(Discipline $discipline)
-    {
-        $this->discipline = $discipline;
-    }*/
-    //endregion
-
-
-    public function hydrate(array $datas)  // Permet d'initialiser les attributs
-    {
-        if(isset($datas['uti_id_users']))
-        {
-            $this->setIdUsers($datas['uti_id_users']);
-        }
-        if(isset($datas['uti_username']))
-        {
-            $this->setUsername($datas['uti_username']);
-        }
-        if(isset($datas['uti_name']))
-        {
-            $this->setName($datas['uti_name']);
-        }
-        if(isset($datas['uti_firstname']))
-        {
-            $this->setFirstName($datas['uti_firstname']);
-        }
-        if(isset($datas['uti_mail']))
-        {
-            $this->setMail($datas['uti_mail']);
-        }
-        if(isset($datas['uti_password']))
-        {
-            $this->setPassword($datas['uti_password']);
-        }
-        if(isset($datas['uti_salt']))
-        {
-            $this->setSalt($datas['uti_salt']);
-        }
-        if(isset($datas['uti_role']))
-        {
-            $this->setRole($datas['uti_role']);
-        }
-    }
-    public function __toString()
-    {
-        $res = "ID 	 -> ". $this->getIdUsers() ."\r";
-        $res .= "Nom     -> ". $this->getName() ."\r";
-        $res .= "Prenom  -> ". $this->getFirstName() ."\r";
-        $res .= "E-mail  -> ". $this->getMail() ."\r";
-        $res .= "Password    -> ". $this->getPassword() ."\r";
-        $res .= "Role    -> ". $this->getRole();
-        return $res;
+    function getDate_insc() {
+        return $this->date_insc;
     }
 
-    //Getter des roles des utilisateur
-    public function getRoles()
-    {
+    function getDate_modif() {
+        return $this->date_modif;
+    }
+
+    function getStatut_connect() {
+        return $this->statut_connect;
+    }
+
+    
+    /* SETTER */
+    function setId_user($id_user) {
+        $this->id_user = $id_user;
+    }
+
+    function setPseudo($pseudo) {
+        $this->pseudo = $pseudo;
+    }
+
+    function setRole($role) {
+        $this->role = $role;
+    }
+
+    function setEmail($email) {
+        $this->email = $email;
+    }
+
+    function setNomuser($nomuser) {
+        $this->nomuser = $nomuser;
+    }
+
+    function setPrenomuser($prenomuser) {
+        $this->prenomuser = $prenomuser;
+    }
+
+    function setAdresse($adresse) {
+        $this->adresse = $adresse;
+    }
+
+    function setTelephone($telephone) {
+        $this->telephone = $telephone;
+    }
+
+    function setMotdepasse($motdepasse) {
+        $this->motdepasse = $motdepasse;
+    }
+
+    function setSalt($salt) {
+        $this->salt = $salt;
+    }
+
+    function setDate_insc($date_insc) {
+        $this->date_insc = $date_insc;
+    }
+
+    function setDate_modif($date_modif) {
+        $this->date_modif = $date_modif;
+    }
+
+    function setStatut_connect($statut_connect) {
+        $this->statut_connect = $statut_connect;
+    }
+
+
+    /* ABSTRACT IMPLEMENTS METHODS */
+    public function eraseCredentials() {
+        
+    }
+
+
+    public function getRoles() {
         return array($this->getRole());
     }
 
-    public function eraseCredentials()
-    {
-        // Nothing to do here;
+    public function getUsername() {
+         return $this->pseudo;
     }
     
+    public function getPassword() {
+        return $this->getMotdepasse();
+    }
+
+
+
 
 }
+

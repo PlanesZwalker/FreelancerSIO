@@ -34,8 +34,8 @@
 }
 
 .mytd{
-   text-align: center;
-   border: 1px solid darkgrey;
+    text-align: center;
+    border: 1px solid darkgrey;
     width: 80px;
     word-wrap: break-word;
     font-size:13px;
@@ -47,8 +47,8 @@
     hyphens: auto;
 }
 .mytdmin{
-   text-align: center;
-   border: 1px solid darkgrey;
+    text-align: center;
+    border: 1px solid darkgrey;
     width: 50px;
     word-wrap: break-word;
     font-size:13px;
@@ -60,8 +60,8 @@
     hyphens: auto;
 }
 .mytdminus{
-   text-align: center;
-      border: 1px solid darkgrey;
+    text-align: center;
+    border: 1px solid darkgrey;
     width: 25px;
     word-wrap: break-word;
     font-size:13px;
@@ -75,7 +75,7 @@
 
 .ui-datepicker {
 
-   margin:5px;
+    margin:5px;
 
 
 }
@@ -111,7 +111,7 @@
     -webkit-transition-timing-function: linear;
     -webkit-transition-property: opacity;
     -webkit-transition-duration: 1s, 1s;
-     background-color: red;
+    background-color: red;
 }
 
 /* *************************************
@@ -120,7 +120,7 @@
 
 .mynewtitle{
 
-  
+
 }
 
 
@@ -206,11 +206,11 @@
 .login-box-body{
 
     border-radius:20px ; 
-    
+
 }
 
 .login-logo a{ 
-    
+
     color:#001F3F;
 }
 
@@ -239,10 +239,11 @@
 /*      entete tableau
 /**************************/
 
- .sorting_asc, .sorting, .odd{
+.sorting_asc, .sorting, .odd{
     background-color: #262E3C;
-    color: #3c8dbc;
+    color:  #fff;  
 }
+
 
 .dataTables_filter{
     float:right;
@@ -255,7 +256,7 @@
 
 .col-sm-6 .dataTables_length{
     float:right;
-   width:100%;
+    width:100%;
 }
 
 .col-sm-6 .dataTables_filter{

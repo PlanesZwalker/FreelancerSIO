@@ -9,7 +9,6 @@ use freelancerppe\Domain;
 
 class HomeController
 {
-
     /**
      * Home page controller.
      *
@@ -17,24 +16,25 @@ class HomeController
      */
     public function indexAction(Application $app) {
         
-        $classes = $app['dao.className']->findAll();
-        $exams = $app['dao.examen']->findAll();
-  
-        $classes_total = $app['dao.className']->countAll();
+        $projets = $app['dao.projet']->findAll();
+        $tests = $app['dao.test']->findAll();
+       // $url = explode('/',$_SERVER['REQUEST_URI']);
+   
+        $projets_total = $app['dao.projet']->countAll();
 
-        $students = $app['dao.student']->findAll();
-        $students_total = $app['dao.student']->countAll();
+        $freelancers = $app['dao.freelancer']->findAll();
+        $freelancers_total = $app['dao.freelancer']->countAll();
         $date = date('d/m/Y');
 
-   
         return $app['twig']->render('index.html.twig', array(
          
-            'classes'               =>$classes,
-            'exams'                 =>$exams,
-            'classes_number'        =>$classes_total,
-            'students'              =>$students,
-            'students_number'       =>$students_total,
+            'projets'               =>$projets,
+            'tests'                 =>$tests,
+            'projets_number'        =>$projets_total,
+            'freelancers'              =>$freelancers,
+            'freelancers_number'       =>$freelancers_total,
             'date'                  =>$date,
+    //        'url'                   =>$url[1],
         ));
     }
 
@@ -53,33 +53,12 @@ class HomeController
             ));
     }
     
-        public function login_checkAction(Request $request, Application $app) {
-                    
-                   
+    public function login_checkAction(Request $request, Application $app) {
+              
         return $app['twig']->render('index.html.twig', array(
             'error'         => $app['security.last_error']($request),
             'last_username' => $app['session']->get('_security.last_username'),
             ));
     }
-    
-    /*
-    public function add1FreelancerAction(Request $request, Application $app){
-  
-        return $app['twig']->render('add1freelancer.html.twig',array(
-            'error'         => $app['security.last_error']($request),
-            'last_username' => $app['session']->get('_security.last_username'),
-            ));
-    }
-    
-    public function add1SocieteAction(Request $request, Application $app){
-        
       
-        return $app['twig']->render('add1societe.html.twig', array(
-            'error'         => $app['security.last_error']($request),
-            'last_username' => $app['session']->get('_security.last_username'),
-        ));
-    }
-
-    */
-    
 }

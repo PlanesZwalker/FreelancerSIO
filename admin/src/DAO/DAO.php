@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Singu_Admin
- * Date: 11/02/2016
- * Time: 21:19
- */
 
 namespace freelancerppe\DAO;
 

@@ -1,0 +1,95 @@
+{% extends "layout.html.twig" %}
+
+{% block css %}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"
+          xmlns="http://www.w3.org/1999/html">
+{% endblock %}
+
+{% block title %}
+    {% if projet is defined %}
+        Formulaire de modification d'un projet n°<strong>{{ projet.getId_projet() }}</strong>
+    {% else %}
+        Formulaire d'ajout de projet
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="box box-primary">
+        <form class="form-horizontal" method="post" action="{{ path('projet') }}" style="margin-left:20px">
+            <div class="box-body">
+                {% if projet is defined %}
+                    <input type="hidden" id="id_class" name="id_class" class="form-control" value="{{ projet.getId_projet() }}">
+                    <div class="form-group">
+                        <label for="#">Type projet<span style="color: red;">*</span></label>
+                        <input type="text" id="class_type" name="class_type" style="width: 25%; border-radius: 3px" class="form-control" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="#">Projet<span style="color: red;">*</span></label>
+                        <input type="text" id="class_name" name="class_name" style="width: 25%; border-radius: 3px" class="form-control" value="">
+                    </div>
+                    <div class="form-group" style="width:50%;">
+                        <label for="#">Date de debut<span style="color: red;">*</span></label>
+                        <div class="input-group" >
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="number" min="2014" max="2100" maxlength="4" id="year" name="year" style="width: 23%; border-radius: 3px" class="form-control" value="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="#">Option</label>
+                        <input type="text" id="option" name="option" style="width: 25%; border-radius: 3px" class="form-control" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="#">Description</label>
+                        <input type="text" id="description" name="description" style="width: 25%; border-radius: 3px" class="form-control" value="">
+                    </div>
+                    <form action="{{ path('projet') }}" method="post">
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-info pull-right">Enregistrer</button>
+                        </div>
+                    </form>
+                    <small style="color: red;">*Champs obligatoires</small>
+                {% else %}
+                    <div class="form-group">
+                        <label for="#">Type de projet<span style="color: red;">*</span></label>
+                        <input type="text" name="class_type" class="form-control" style="width: 25%; border-radius: 3px" id="#" placeholder="Ex : Site web, Application Mobile">
+                    </div>
+                    <div class="form-group">
+                        <label for="#">Projet<span style="color: red;">*</span></label>
+                        <input type="text" name="class_name" class="form-control" style="width: 25%; border-radius: 3px" id="#" placeholder="Ex : Plateforme pour freelancer">
+                    </div>
+                    <div class="form-group">
+                        <label for="#">Date de debut<span style="color: red;">*</span></label>
+                        <div class="input-group" >
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="number" min="2014" max="2100" maxlength="4" id="year" name="year" style="width: 23%; border-radius: 3px" class="form-control" placeholder="2016...">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="#">Option</label>
+                        <input type="text" name="option" class="form-control" style="width: 25%; border-radius: 3px" id="#" placeholder="Prix, Duree">
+                    </div>
+                    <div class="form-group">
+                        <label for="#">Description</label>
+                        <textarea class="form-control" name="description" rows="3" placeholder="Ex : Ce projet a pour finalité de proposer une plateforme pour les freelancers ..." style="width: 25%; border-radius: 3px" id="#"></textarea>
+                    </div>
+                    <small style="color: red;">*Champs obligatoires</small>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-info pull-right">Enregistrer</button>
+                    </div>
+                {% endif %}
+                <!-- /.box-body -->
+                {% for success in app.session.getFlashBag.get('success') %}
+                    <div class="alert alert-success fade">
+                        {{ success }}
+                    </div>
+                {% endfor %}
+            </div>
+        </form>
+    <!-- /.box-footer -->
+    </div>
+
+{% endblock %}

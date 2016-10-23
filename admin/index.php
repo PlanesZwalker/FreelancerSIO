@@ -1,4 +1,4 @@
 <?php
-  header('Location: http://freelancecorp.cohmbox.fr/admin/web/index.php');
+  header('Location: '. $_SERVER["REQUEST_URI"] .'web/index.php');
   exit();
 ?>

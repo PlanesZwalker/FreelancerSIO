@@ -3,13 +3,10 @@
 use Symfony\Component\Debug\ErrorHandler;
 use Symfony\Component\Debug\ExceptionHandler;
 use Silex\Application;
-
 use Silex\Application\UrlGeneratorServiceProvider;
-
 use Silex\Provider\FormServiceProvider;
 use freelancerppe\DAO;
-use freelancerppe\DAO\DisciplineDAO;
-use freelancerppe\Domain;
+
 
 
 // Register global error and exception handlers
@@ -44,7 +41,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
                 $user = new freelancerppe\DAO\UserDAO($app['db']);
 
                 return $user;
-            }),  //    $user->setDisciplineDAO(new freelancerppe\DAO\DisciplineDAO($app['db']));
+            }),  
         ),
     ),
 ));
@@ -58,88 +55,8 @@ $app->register(new Silex\Provider\ValidatorServiceProvider());
  * Provider pour la génération des urls
  *
  */
-
 $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 
-
-//                                                        CONTROLLERS
-/**
- * controller pour la route des matières
- */
-$app['dao.discipline'] = $app->share(function($app){
-    return new DisciplineDAO($app['db']);
-}); 
-/**
- * Controller pour la route des classes
- *
- */
-$app['dao.className'] = $app->share(function($app){
-    return new freelancerppe\DAO\ClassNameDAO($app['db']);
-});
-/**
- * Controller pour la route des étudiants
- *
- */
-$app['dao.student'] = $app->share(function($app){
-    $studentDAO = new freelancerppe\DAO\StudentDAO($app['db']);
-    $studentDAO->setClassDAO($app['dao.className']);
-   // $studentDAO->setStatutStudentDAO($app['dao.statutStudent']);
-    return $studentDAO;
-});
-/**
- * Controller pour la route des examens
- */
-$app['dao.examen'] = $app->share(function($app){
-    $examenDAO = new freelancerppe\DAO\ExamenDAO($app['db']);
-    $examenDAO->setClassDAO($app['dao.className']);
- //   $examenDAO->setDisciplineDAO($app['dao.discipline']);
-    return $examenDAO;
-});
-
-/**
- * Controller pour la route des notes
- */
-$app['dao.evaluation'] = $app->share(function($app){
-    $evaluationDAO = new freelancerppe\DAO\EvaluationDAO($app['db']);
-    $evaluationDAO->setStudentDAO($app['dao.student']);
-    $evaluationDAO->setExamenDAO($app['dao.examen']);
-
-
-    return $evaluationDAO;
-});
-
-
-/**
- * Controller pour la route des utilisateurs
- *
- */
-$app['dao.user'] = $app->share(function($app){
-    $userDAO = new freelancerppe\DAO\UserDAO($app['db']);
-   // $userDAO->setDisciplineDAO(new freelancerppe\DAO\DisciplineDAO($app['db']));
-
-    return $userDAO;
-});
-
-/**
- * Controller pour la route des professeurs
- */
-$app['dao.teacher'] = $app->share(function($app){
-    $teacherDAO = new freelancerppe\DAO\TeacherDAO($app['db']);
- /*   $teacherDAO->setDisciplineDAO($app['dao.discipline']); */
-
-    return $teacherDAO;
-});
-
-/**
- * Controller pour la route des statuts étudiants
- 
-$app['dao.statutStudent'] = $app->share(function($app){
-    return new freelancerppe\DAO\StatutStudentDAO($app['db']);
-});
-*/
-$app['dao.event'] = $app->share(function($app){
-    return new freelancerppe\DAO\EventDAO($app['db']);
-});
 
 
 /**
@@ -164,5 +81,90 @@ $app['security.access_rules'] = array(
 );
 
 
-return $app;
+/**
+ * Controlleurs gérer les utilisateurs
+ *
+ */
+$app['dao.user'] = $app->share(function($app){
+    $userDAO = new freelancerppe\DAO\UserDAO($app['db']);
+    return $userDAO;
+});
 
+
+/**
+ * Controlleurs pour gérer les sociétés
+ */
+$app['dao.societe'] = $app->share(function($app){
+    $societeDAO = new freelancerppe\DAO\SocieteDAO($app['db']);
+    return $societeDAO;
+});
+
+/**
+ * Controller pour la route des freelancers
+ */
+$app['dao.freelancer'] = $app->share(function($app){
+    $freelancerDAO = new freelancerppe\DAO\FreelancerDAO($app['db']);
+    return $freelancerDAO;
+});
+
+/**
+ * Controller pour la route des projets
+ */
+$app['dao.projet'] = $app->share(function($app){
+    $projetDAO =  new freelancerppe\DAO\ProjetDAO($app['db']);
+    return $projetDAO;
+});
+
+/**
+ * Controller pour la route des compteences
+ */
+$app['dao.competence'] = $app->share(function($app){
+    $competenceDAO = new freelancerppe\DAO\CompetenceDAO($app['db']);
+    return $competenceDAO;
+});
+
+/**
+ * Controller pour la route des tests
+ */
+$app['dao.test'] = $app->share(function($app){
+    $testDAO = new freelancerppe\DAO\TestDAO($app['db']);
+    return $testDAO;
+});
+
+/**
+ * Controller pour la route les messages
+ */
+$app['dao.message'] = $app->share(function($app){
+    $messageDAO = new freelancerppe\DAO\MessageDAO($app['db']);
+    return $messageDAO;
+});
+
+
+/**
+ * controller pour la route des competences
+*/
+$app['dao.competence'] = $app->share(function($app){
+    $competenceDAO = new freelancerppe\DAO\CompetenceDAO($app['db']);
+    return  $competenceDAO ;
+}); 
+
+/**
+ * controller pour la route des contrats
+*/
+$app['dao.contrat'] = $app->share(function($app){
+    $contratDAO = new freelancerppe\DAO\ContratDAO($app['db']);
+    return $contratDAO;
+}); 
+
+/**
+ * controller pour la route des offres
+*/
+$app['dao.offre'] = $app->share(function($app){
+    $offreDAO = new freelancerppe\DAO\OffreDAO($app['db']);
+    return $offreDAO;
+}); 
+
+
+
+
+return $app;

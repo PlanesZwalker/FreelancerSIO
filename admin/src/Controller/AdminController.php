@@ -7,92 +7,89 @@ use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 
 use freelancerppe\Domain\User;
-use freelancerppe\Domain\StudentToClass;
-use freelancerppe\Domain\Student;
-use freelancerppe\Domain\DisciplineToClass;
-use freelancerppe\Domain\Evaluation;
-use freelancerppe\Domain\Discipline;
-use freelancerppe\Domain\ClassName;
+use freelancerppe\Domain\Freelancer;
+use freelancerppe\Domain\Societe;
+use freelancerppe\Domain\Test;
+use freelancerppe\Domain\Competence;
+use freelancerppe\Domain\Projet;
 
-use freelancerppe\Form\Type\addNoteForm;
-
-
-
-class AdminController {
-
-
+class AdminController extends User{
     /**
-
      * Admin home page controller.
 
-     *
-
      * @param Application $app Silex application
-
      */
-
     public function indexAction(Application $app) {
 
-     $exams = $app['dao.examen']->findAll();
-     $exams_total = $app['dao.examen']->countAll();
+     $tests = $app['dao.test']->findAll();
+     $tests_total = $app['dao.test']->countAll();
          
      $users = $app['dao.user']->findAll();
      $users_total = $app['dao.user']->countAll(); 
 
-     $classes = $app['dao.className']->findAll();
-     $classes_total = $app['dao.className']->countAll();
+     $projets = $app['dao.projet']->findAll();
+     $projets_total = $app['dao.projet']->countAll();
       
-     $students = $app['dao.student']->findAll();
-     $students_total = $app['dao.student']->countAll();
+     $freelancers = $app['dao.freelancer']->findAll();
+     $freelancers_total = $app['dao.freelancer']->countAll();
           
-     $disciplines = $app['dao.discipline']->findAll();
-     $disciplines_total = $app['dao.discipline']->countAll();
+     $competences = $app['dao.competence']->findAll();
+     $competences_total = $app['dao.competence']->countAll();
      
-     $societes = $app['dao.teacher']->findAll();
-     $societes_total = $app['dao.teacher']->countAll();
+     $societes = $app['dao.societe']->findAll();
+     $societes_total = $app['dao.societe']->countAll();
      
+     $contrats = $app['dao.contrat']->findAll();
+     $contrats_total = $app['dao.contrat']->countAll();
+     
+     $offres = $app['dao.offre']->findAll();
+     $offres_total = $app['dao.offre']->countAll();
      $date = date("d/m/Y");
     
-    return $app['twig']->render('TabTemplate/admintab.html.twig', array(
+    return $app['twig']->render('admintab.html.twig', array(
         
         'users'                 =>$users,
         'users_number'          =>$users_total,
-        'disciplines'           =>$disciplines,
-        'disciplines_number'    =>$disciplines_total,
-        'exams'                 =>$exams,
-        'exam_number'           =>$exams_total,
-        'classes'               =>$classes,
-        'students'              =>$students,
-        'students_number'       =>$students_total,
-        'classes_number'        =>$classes_total,
+        'competences'           =>$competences,
+        'competences_number'    =>$competences_total,
+        'tests'                 =>$tests,
+        'test_number'           =>$tests_total,
+        'projets'               =>$projets,
+        'freelancers'           =>$freelancers,
+        'freelancers_number'    =>$freelancers_total,
+        'projets_number'        =>$projets_total,
         'date'                  =>$date,
         'societes'              =>$societes,
         'societes_number'       =>$societes_total,
+        'contrats'              =>$contrats,
+        'contrats_number'       =>$contrats_total,
+        'offres'                =>$offres,
+        'offres_number'         =>$offres_total,
     ));
-    
+        
 
     }
     
-    
+ /*   
  public function mdpindexAction(Application $app) {
 
-     $exams = $app['dao.examen']->findAll();
-     $exams_total = $app['dao.examen']->countAll();
+     $tests = $app['dao.test']->findAll();
+     $tests_total = $app['dao.test']->countAll();
          
      $users = $app['dao.user']->findAll();
      $users_total = $app['dao.user']->countAll(); 
 
-     $classes = $app['dao.className']->findAll();
-     $classes_total = $app['dao.className']->countAll();
+     $projets = $app['dao.projet']->findAll();
+     $projets_total = $app['dao.projet']->countAll();
       
-     $students = $app['dao.student']->findAll();
-     $students_total = $app['dao.student']->countAll();
+     $freelancers = $app['dao.freelancer']->findAll();
+     $freelancers_total = $app['dao.freelancer']->countAll();
           
-     $disciplines = $app['dao.discipline']->findAll();
-     $disciplines_total = $app['dao.discipline']->countAll();
+     $competences = $app['dao.competence']->findAll();
+     $competences_total = $app['dao.competence']->countAll();
      
-     $societes = $app['dao.teacher']->findAll();
-     $societes_total = $app['dao.teacher']->countAll();
+     $societes = $app['dao.societe']->findAll();
+     $societes_total = $app['dao.societe']->countAll();
      
      $date = date("d/m/Y");
     
@@ -100,14 +97,14 @@ class AdminController {
         
         'users'                 =>$users,
         'users_number'          =>$users_total,
-        'disciplines'           =>$disciplines,
-        'disciplines_number'    =>$disciplines_total,
-        'exams'                 =>$exams,
-        'exam_number'           =>$exams_total,
-        'classes'               =>$classes,
-        'students'              =>$students,
-        'students_number'       =>$students_total,
-        'classes_number'        =>$classes_total,
+        'competences'           =>$competences,
+        'competences_number'    =>$competences_total,
+        'tests'                 =>$tests,
+        'exam_number'           =>$tests_total,
+        'projets'               =>$projets,
+        'freelancers'              =>$freelancers,
+        'freelancers_number'       =>$freelancers_total,
+        'projets_number'        =>$projets_total,
         'date'                  =>$date,
         'societes'              =>$societes,
         'societes_number'       =>$societes_total,
@@ -115,7 +112,7 @@ class AdminController {
     
 
     }
-    
+    */
     
     
 }

@@ -1,15 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: nfilskov
- * Date: 12/02/2016
- * Time: 19:08
- */
-
 
 namespace freelancerppe\DAO;
 
-use freelancerppe\Domain\Discipline;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
@@ -19,29 +11,9 @@ use freelancerppe\Domain\User;
 
 class UserDAO extends DAO implements UserProviderInterface
 {
-  //  public $disciplineDAO;
-
-    /**
-     * @param mixed $_disciplineDAO
-     */
- /*   public function setDisciplineDAO(DisciplineDAO $_disciplineDAO)
-    {
-        $this->disciplineDAO = $_disciplineDAO;
-    }
-    */
-    
-    /**
-     * @param $id
-     * @return User
-     * @throws \Exception
-     *
-     * Retourne un utilisateur via son id
-     */
-    
-
     public function findUser($id)
     {
-        $sql = "SELECT * FROM users WHERE id_users=?";
+        $sql = "SELECT * FROM user WHERE id_user=?";
         $row = $this->getDb()->fetchAssoc($sql, array($id));
 
         if($row){
@@ -56,13 +28,13 @@ class UserDAO extends DAO implements UserProviderInterface
     //Ajout de la fonction findAll, pour rechercher tous les utilisateurs
     public function findAll()
     {
-        $sql = "SELECT * FROM users ORDER BY role, username";
+        $sql = "SELECT * FROM user ORDER BY role, nomuser";
         $res = $this->getDb()->fetchAll($sql);
 
         $users = array();
         foreach($res as $row)
         {
-            $id_user = $row['id_users'];
+            $id_user = $row['id_user'];
             $users[$id_user] = $this->buildDomainObject($row);
         }
 
@@ -74,31 +46,31 @@ class UserDAO extends DAO implements UserProviderInterface
      *
      * Filtre affichant les professeurs
      */
-    public function findAllTeacher()
+    public function findAllFreelancer()
     {
-        $sql = "SELECT * FROM users"
+        $sql = "SELECT * FROM user"
             . " WHERE uti_role = 'ROLE_FREELANCER'";
 
         $res = $this->getDb()->fetchAll($sql);
-        $teachers = array();
+        $freelancers = array();
         foreach ($res as $row) {
-            $teacherID = $row['id_users'];
-            $teachers[$teacherID] = $this->buildDomainObject($row);
+            $freelancerID = $row['id_user'];
+            $freelancers[$freelancerID] = $this->buildDomainObject($row);
         }
-        return $teachers;
+        return $freelancers;
     }
     
 
     // fonction count a utiliser directement dans les autres fonctions
     public function countAll()
     {
-        $sql = "SELECT * FROM users";
+        $sql = "SELECT * FROM user";
         $res = $this->getDb()->fetchAll($sql);
 
         $users_total = array();
         foreach($res as $row)
         {
-            $id_user = $row['id_users'];
+            $id_user = $row['id_user'];
             $users_total[$id_user] = $this->buildDomainObject($row);
         }
 
@@ -108,7 +80,7 @@ class UserDAO extends DAO implements UserProviderInterface
     //SELECTIONNE LES INFOS DU USER PRENDS EN PARAMETRE LE USERNAME
     public function loadUserByUsername($username)
     {
-        $sql = "SELECT * FROM users WHERE username=?";
+        $sql = "SELECT * FROM user WHERE nomuser=?";
         $row = $this->getDb()->fetchAssoc($sql, array($username));
 
         if($row){
@@ -139,37 +111,33 @@ class UserDAO extends DAO implements UserProviderInterface
     {
         return 'freelancerppe\Domain\User' === $class;
     }
-    
+   
     
     // ENREGISTRE LE USER 
    public function saveUser(User $user)
     {     
         $userInfo= array( 
-            'username'      => $user->getUsername(), 
-            'name'          => $user->getName(),
-            'firstname'     => $user->getFirstname(),
-            'password'      => $user->getPassword(),
+            'pseudo'      => $user->getPseudo(), 
+            'nomuser'          => $user->getNomuser(),
+            'prenomuser'     => $user->getPrenomuser(),
+            'motdepasse'      => $user->getMotdepasse(),
             'role'          => $user->getRole(),
-            'mail'          => $user->getMail(),
-            'description'   => $user->getDescription(),
+            'email'          => $user->getEmail(),
             'salt'          => $user->getSalt(),
-            'tel'           => $user->getTel(),
-
-            'dt_create'     => $user->getDtCreate(),
-            'dt_update'     => $user->getDtUpdate(),
-
-        
-        ); //   'id_discipline' => $user->getDiscipline()->getIdDiscipline(),
+            'telephone'     => $user->getTelephone(),
+            'date_insc'     => $user->getDate_insc(),
+            'date_modif'     => $user->getDate_modif(),        
+        );
         
         //on modifie
-        if($user->getIdUsers())
-            $this->getDb()->update('users',$userInfo, array('id_users' => $user->getIdUsers()));
+        if($user->getId_User())
+            $this->getDb()->update('user',$userInfo, array('id_user' => $user->getId_User()));
         //on sauvegarde
         else
         {
-            $this->getDb()->insert('users',$userInfo);   
+            $this->getDb()->insert('user',$userInfo);   
             $id = $this->getDb()->lastInsertId();
-            $user->setIdUsers($id);
+            $user->setId_User($id);
         }
       }
 
@@ -178,8 +146,8 @@ class UserDAO extends DAO implements UserProviderInterface
     
     public function deleteUser($id)
     {     
-        $this->getDb()->delete('users', array(
-            'id_users' => $id
+        $this->getDb()->delete('user', array(
+            'id_user' => $id
         ));
     }
     
@@ -187,19 +155,19 @@ class UserDAO extends DAO implements UserProviderInterface
     protected function buildDomainObject($row)
     {
         $user = new User();
-        $user->setIdUsers($row['id_users']);
-        $user->setUsername($row['username']);
-        $user->setName($row['name']);
-        $user->setFirstname($row['firstname']);
-        $user->setPassword($row['password']);
+        $user->setId_User($row['id_user']);
+        $user->setNomuser($row['nomuser']);
+        $user->setPseudo($row['pseudo']);
+        $user->setPrenomuser($row['prenomuser']);
+        $user->setAdresse($row['adresse']);
         $user->setSalt($row['salt']);
         $user->setRole($row['role']);
-        $user->setDescription($row['description']);
-        $user->setMail($row['mail']);
-        $user->setTel($row['tel']);
+        $user->setMotdepasse($row['motdepasse']);
+        $user->setEmail($row['email']);
+        $user->setTelephone($row['telephone']);
 
-        $user->setDtCreate($row['dt_create']);
-        $user->setDtUpdate($row['dt_update']);
+        $user->setDate_insc($row['date_insc']);
+        $user->setDate_modif($row['date_modif']);
 
      /*   if(array_key_exists('id_discipline', $row))
         {
@@ -212,7 +180,7 @@ class UserDAO extends DAO implements UserProviderInterface
                 $user->setDiscipline($discipline);
             }
         }
-           */  
+            */ 
         return $user;
     }
 }

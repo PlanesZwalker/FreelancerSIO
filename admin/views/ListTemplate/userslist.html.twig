@@ -28,11 +28,10 @@
                     <table id="example1" class="table table-hover table-striped">
                         <thead>
                             <tr style="background-color: #3c8dbc; font-size:16px;">
-                                <th class="mytd">Login</th>
+                                <th class="mytd">Pseudo</th>
                                 <th class="mytd">Nom</th>
                                 <th class="mytd">Prénom</th>
                                 <th class="mytdmin">Rôle</th>
-                                <th class="mytd">Description</th>
                                 <th class="mytd">Adresse mail</th>
                                 <th class="mytd">Modifier</th>
                                 <th class="mytd">Supprimer</th>
@@ -40,36 +39,34 @@
                         </thead>
                         {% for user in users %}
                             <tr style="color:black;">
-                                <td class="mytd" >{{ user.getUsername() }}</td>
-                                <input type="hidden" value="{{ user.getUsername() }}" name="username"  >
-                                <td class="mytd" >{{ user.getName() }}</td>
-                                <input type="hidden" value="{{ user.getName() }}" name="name"  >
-                                <td class="mytd">{{ user.getFirstname() }}</td>
-                                <input type="hidden" value="{{ user.getFirstname() }}" name="firstname"  >
+                                <td class="mytd" >{{ user.getPseudo() }}</td>
+                                <input type="hidden" value="{{ user.getPseudo() }}" name="pseudo"  >
+                                <td class="mytd" >{{ user.getNomuser() }}</td>
+                                <input type="hidden" value="{{ user.getNomuser() }}" name="name"  >
+                                <td class="mytd">{{ user.getPrenomuser() }}</td>
+                                <input type="hidden" value="{{ user.getPrenomuser() }}" name="firstname"  >
                                 <td class="mytdmin">{{ user.getRole() }}</td>
                                 <input type="hidden" value="{{ user.getRole() }}" name="role"  >
-                                <td class="mytd">{{ user.getDescription() }}</td>
-                                <input type="hidden" value="{# user.discipline.getNameDiscipline() #}" name="description"  >
-                                <td class="mytd">{{ user.getMail() }}</td>
-                                <input type="hidden" value="{{ user.getMail() }}" name="mail"  >
+                                <td class="mytd">{{ user.getEmail() }}</td>
+                                <input type="hidden" value="{{ user.getEmail() }}" name="mail"  >
                                 <td class="mytdminus">
                                     {# formulaire de modification de l'utilisateur via l'id_user  #}
                                     <form action="{{ path('user_edit') }}" method="post" >
                                         <div class="btn-group">
                                             <button type="submit" class="btn btn-warning btn-flat">
                                                 <i class="fa fa-pencil"></i>
-                                                <input type="hidden" id="id_user" name="id_user" value="{{ user.getIdUsers() }}">
+                                                <input type="hidden" id="id_user" name="id_user" value="{{ user.getId_User() }}">
                                             </button>
                                         </div>
                                     </form>
                                 </td>
                                 <td class="mytdminus">
                                     {# formulaire de suppression de l'utilisatateur via l'id_user #}
-                                    <form action="{{ path('user_delete', {'id_user': user.getIdUsers()}) }}" method="post" >
+                                    <form action="{{ path('user_delete', {'id_user': user.getId_User()}) }}" method="post" >
                                         <div class="btn-group">
-                                            <button type="submit" class="btn btn-danger btn-flat" onclick="return confirm('Etes-vous sûr(e) de vouloir supprimer l\'utilisateur {{ user.getUsername() }} ?')">
+                                            <button type="submit" class="btn btn-danger btn-flat" onclick="return confirm('Etes-vous sûr(e) de vouloir supprimer l\'utilisateur {{ user.getPseudo() }} ?')">
                                                 <i class="fa fa-trash"></i>
-                                                <input type='hidden' name="id_user" value="{{user.getIdUsers()}}">
+                                                <input type='hidden' name="id_user" value="{{user.getId_User()}}">
                                             </button>
                                         </div>
                                     </form>
@@ -82,8 +79,7 @@
                                 <th  style="text-align: center; border: 1px solid darkgrey;">Nom</th>
                                 <th  style="text-align: center; border: 1px solid darkgrey;">Prénom</th>
                                 <th  style="text-align: center; border: 1px solid darkgrey;">Rôle</th>
-                                <th  style="text-align: center; border: 1px solid darkgrey;">Description</th>
-                                <th  style="text-align: center; border: 1px solid darkgrey;">Adresse Mail</th>
+                                     <th  style="text-align: center; border: 1px solid darkgrey;">Adresse Mail</th>
                                 <th  style="text-align: center; border: 1px solid darkgrey;">Modifier</th>
                                 <th  style="text-align: center; border: 1px solid darkgrey;">Supprimer</th>
                             </tr>
