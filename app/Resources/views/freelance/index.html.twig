@@ -1,29 +1,22 @@
-{% extends '::base.html.twig' %}
-{% block body %}
+{% extends "layout.html.twig" %}
 
-		<div id="page-wrapper">
-			
-			<!-- Banner -->
-				<div id="banner-wrapper">
-					<div class="inner">
-						<section id="banner" class="container">
-							<p>Use this space for <strong>profound thoughts</strong>.<br />
-							Or an enormous ad. Whatever.</p>
-						</section>
-					</div>
-				</div>
-
-		</div>
-      
+{% block titre %}
+    {% if is_granted("ROLE_USER") %}
+        <h1 id="logo"><a href="/" style="color:#21D8DE;">Bienvenue {{ app.user.username }}</a></h1>  
+    {% else %}
+        <h1 id="logo"><a href="/" style="color:#21D8DE;">Utilisateur déconnecté</a></h1>  
+    {% endif %}
 {% endblock %}
 
-{% block javascripts %}
-	<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.dropotron.min.js"></script>
-		<script src="assets/js/skel.min.js"></script>
-		<script src="assets/js/skel-viewport.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-		<script src="assets/js/main.js"></script>
+
+{% block body %} 
+    {% if is_granted("ROLE_USER") %}
+          <h1 id="logo" class="container" style="text-align:center; font-size:32px; margin-top:5%;"><a  style="color:#21D8DE;">Espace Personnel / TABLEAU DE BORD Freelancer</a></h1>  
+    {% else %}
+          <h1 id="logo" class="container" style="text-align:center; font-size:32px; margin-top:5%;"><a  style="color:#21D8DE;">Espace réservé aux Freelancer</a></h1>  
+    {% endif %}
+        
 {% endblock %}
+
+
+

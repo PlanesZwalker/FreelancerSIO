@@ -1,4 +1,7 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
+{% block titre %}
+    <h1 id="logo"><a href="index.html" style="color:#21D8DE;">Mon Profil</a></h1>
+{% endblock %}
 
 {% block fos_user_content %}
 {% include "FOSUserBundle:Profile:show_content.html.twig" %}

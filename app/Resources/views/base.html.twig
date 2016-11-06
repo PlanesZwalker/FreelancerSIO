@@ -1,82 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html style="height: 100%;">
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}FreeLance Connexion{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('iconsite.png') }}" />
-			<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-    </head>
-    <body>
-	
-			<!-- Header -->
-				<div id="header-wrapper">
-					<div id="header" class="container">
 
-						<!-- Logo -->
-							<h1 id="logo"><a href="index.html" style="color:#21D8DE;">Connectez-vous !</a></h1>
-							<p></p>
+    {% block stylesheets %}{% endblock %}
 
-						<!-- Nav -->
-							<nav id="nav">
-								<ul>
-									<li><a class="icon fa-home" href="index.html"><span>Introduction</span></a></li>
-									<li>
-										<a href="../web" class="icon fa-bar-chart-o"><span>Se connecter</span></a>
-									</li>
-									<li><a class="icon fa-cog" href="left-sidebar.html"><span>Consulter les Projets</span></a>
-										<ul>
-											<li><a href="#">Par Catégorie</a></li>
-											<li><a href="#">Par Recommandation</a></li>
-											<li><a href="#">Par Test </a></li>
-										</ul>
-									</li>
-									<li><a class="icon fa-retweet" href="right-sidebar.html"><span>Voir les Freelancers</span></a></li>
-									<li><a class="icon fa-sitemap" href="no-sidebar.html"><span>S'inscrire</span></a></li>
-								</ul>
-							</nav>
-        {% block body %}  {% endblock %}
-			<!-- Footer -->
-				<div id="footer-wrapper">
-					<div id="footer" class="container">
-						<header>
-							<h2>Des questions ou des commentaires ? <strong>Posez les là:</strong></h2>
-						</header>
-						<div class="row">
-							<div class="container" style="padding:5%">
-								<section>
-									<form method="post" action="#">
-										<div class="row 50%">
-											<div class="6u 12u(mobile)">
-												<input name="name" placeholder="Name" type="text" />
-											</div>
-											<div class="6u 12u(mobile)">
-												<input name="email" placeholder="Email" type="text" />
-											</div>
-										</div>
-										<div class="row 50%">
-											<div class="12u">
-												<textarea name="message" placeholder="Message"></textarea>
-											</div>
-										</div>
-										<div class="row 50%">
-											<div class="12u">
-												<a href="#" class="form-button-submit button icon fa-envelope">Envoyer votre Message</a>
-											</div>
-										</div>
-									</form>
-								</section>
-							</div>
-						</div>
-					</div>
-					<div id="copyright" class="container">
-						<ul class="links">
-							<li>&copy; Tous droits réservés</li><li>Design: <a href="http://html5up.net">FreelancerCorp</a></li>
-						</ul>
-					</div>
-				</div>
-        {% block javascripts %}{% endblock %}
-    </body>
+    <link rel="icon" type="image/x-icon" href="{{ asset('iconsite.png') }}" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="{{ app.request.basepath }}/assets/css/main.css" />
+    <link rel="stylesheet" href="{{ app.request.basepath }}/assets/css/styles.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+{% block style %}{% endblock %}
+</head>
+
+<body style="position:relative; min-height:100%;  margin: 0;  padding: 0;">
+ 
+    <header id="header-wrapper" style="height:38vh; margin-top:-40px;">
+        <div id="header" class="container" style="margin-top:0px; width:100%; height:20vh">
+            <div style="margin-top:-100px">{% block titre %}{% endblock %}</div>
+            <img src="{{ app.request.basepath }}/iconsite.png" style="height:5vw; width:5vw;margin:2vw;">
+            <p style="margin-top:-30px">Plateforme de Projets de Développement Informatiques en Ligne</p>
+        </div>       
+        {% block header %} {% endblock %}   
+   </header>  
+  
+    
+        <div style="margin-top:-20px; width:100%; text-align:center;">     
+            <nav id="nav" style="margin-top:-12px; ">
+                <ul style='   background: rgba(33, 216, 222,1); /* For browsers that do not support gradients */
+                                background: -webkit-linear-gradient(rgba(33, 216, 222,1), rgba(33, 216, 222,0)); /* For Safari 5.1 to 6.0 */
+                                background: -o-linear-gradient(rgba(33, 216, 222,1), rgba(33, 216, 222,0)); /* For Opera 11.1 to 12.0 */
+                                background: -moz-linear-gradient(rgba(33, 216, 222,1), rgba(33, 216, 222,0)); /* For Firefox 3.6 to 15 */
+                                background: linear-gradient(rgba(33, 216, 222,1), rgba(33, 216, 222,0)); /* Standard syntax (must be last) */ padding:20px'>    
+                    <li><a href="{{  path('front') }}"  class="icon fa-cog"><span>Accueil</span></a></li>           
+                    {% if is_granted("ROLE_USER") %}
+                        <li><a href="{{ path('logout') }}" class="icon fa-bar-chart-o"><span>Se déconnecter</span></a></li>
+                    {% else %}
+                        {% if app.request.pathInfo != '/login' %}
+                            <li><a href="{{ path('fos_user_security_login') }}" class="icon fa-bar-chart-o"><span>Se connecter</span></a></li>
+                        {% endif %}
+                    {% endif %}
+                        {% if app.request.pathInfo != '/register' %} 
+                            {% if not is_granted("ROLE_USER") %}
+                            <li><a href="{{ path('fos_user_registration_register') }}" class="icon fa-bar-chart-o"><span>Créer un compte</span></a></li>
+                        {% endif %}
+                    {% endif %}
+                    <li><a href="{{  path('listprojet') }}"  class="icon fa-cog"><span>Consulter les Projets</span></a></li>           
+                    <li><a href="{{  path('listfreelancer') }}"  class="icon fa-retweet" ><span>Voir les Freelancers</span></a> </li> 
+                    {% if is_granted("ROLE_USER") %}
+                        <li><a href="{{  path('addprojet') }}"  class="icon fa-retweet" ><span>Créer un Projet</span></a> </li> 
+                        <li><a href="{{  path('editprofil') }}"  class="icon fa-retweet" ><span>Modifier mon Profil</span></a> </li> 
+                    {% endif %}
+                    {% block nav %}{% endblock %}
+                </ul>
+            </nav>
+        </div>  
+    <div style="margin-top:-100px; margin:100px">        
+        {% block body %}
+            {% block soustitre %}{% endblock %}
+        {% endblock %}
+    </div>
+
+{% block footer %} 
+    <footer style="background-color: rgba(1,1,1,0.3); position:fixed; height:40px; bottom:0; width:100%; text-align:left; color:white" >
+        <ul class="links">
+            <li>&copy; Plateforme Mise En Ligne Projet De Développement Informatique</li> 
+            <li style="float:right;margin-right:3%;">Mentions Légales 2016/2017</li>
+            <li style="float:right; ">Accueil 
+                <a href="{{ path('front') }}">Freelance Project</a>
+            </li>
+          
+        </ul>           
+    </footer>
+{% endblock %}
+
+{% block javascripts %}{% endblock %}
+</body>
 </html>

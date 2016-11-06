@@ -1,8 +1,12 @@
 {% trans_default_domain 'FOSUserBundle' %}
-
-{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {{ form_widget(form) }}
-    <div>
+    
+<div style="text-align:center; ">
+    {% block soustitre %} <h2 style="color:gray; margin-top:5%; background-color:rgba(1,1,1,0.2); border-radius:8px 8px 0px 0px;">Formulaire d'inscription</h2> {% endblock %}
+    
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register', 'style':'margin-top:-3%; background-color:#E0E0E1; margin-bottom:20%; padding:2%; border-radius:0px 0px 8px 8px ;'} }) }}
+<div style="margin-left:30%; text-align:center; width:22vw">{{ form_widget(form) }}</div>
+    <div style="margin-top:3%;">
         <input type="submit" value="{{ 'registration.submit'|trans }}" />
     </div>
 {{ form_end(form) }}
+</div>

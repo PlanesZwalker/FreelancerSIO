@@ -1,5 +1,15 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
+{% block titre %}
+    <h1 id="logo"><a href="index.html" style="color:#21D8DE;">Bienvenue vous voilà connecté</a></h1>
+{% endblock %}
+{% block body %}
+    <div style="text-align:center; margin-top:3%">
+        {% block soustitre %} 
+            <h2 style="color:gray; margin-top:5%; background-color:rgba(1,1,1,0.2); border-radius:8px 8px 0px 0px;">Inscription de l'utilisateur <span id="logo"><a href="/" style="color:white ">{{ app.user.username }}</a></span>   Enregistrée</h2> 
+        {% endblock %}
+    </div>
+{% endblock %}
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
