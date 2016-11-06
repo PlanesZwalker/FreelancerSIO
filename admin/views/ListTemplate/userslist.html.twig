@@ -73,6 +73,42 @@
                                 </td>
                             </tr>
                         {% endfor %}
+                         {% for user in fos_users %}
+                            <tr style="color:black;">
+                                <td class="mytd" >{{ user.getNom() }}</td>
+                                <input type="hidden" value="{{ user.getNom() }}" name="pseudo"  >
+                                <td class="mytd" >{{ user.getUsername() }}</td>
+                                <input type="hidden" value="{{ user.getUsername() }}" name="name"  >
+                                <td class="mytd">{{ user.getUsernameCanonical() }}</td>
+                                <input type="hidden" value="{{ user.getUsernameCanonical() }}" name="firstname"  >
+                                <td class="mytdmin">{# user.getRoles() #}</td>
+                                <input type="hidden" value="{# user.getRoles() #}" name="role"  >
+                                <td class="mytd">{{ user.getEmail() }}</td>
+                                <input type="hidden" value="{{ user.getEmail() }}" name="mail"  >
+                                <td class="mytdminus">
+                                    {# formulaire de modification de l'utilisateur via l'id_user  #}
+                                    <form action="{{ path('user_edit') }}" method="post" >
+                                        <div class="btn-group">
+                                            <button type="submit" class="btn btn-warning btn-flat">
+                                                <i class="fa fa-pencil"></i>
+                                                <input type="hidden" id="id" name="id" value="{{ user.getUsername() }}">
+                                            </button>
+                                        </div>
+                                    </form>
+                                </td>
+                                <td class="mytdminus">
+                                    {# formulaire de suppression de l'utilisatateur via l'id #}
+                                    <form action="{{ path('user_delete', {'id_user': user.getUSername() }) }}" method="post" >
+                                        <div class="btn-group">
+                                            <button type="submit" class="btn btn-danger btn-flat" onclick="return confirm('Etes-vous sûr(e) de vouloir supprimer l\'utilisateur {{ user.getNom() }} ?')">
+                                                <i class="fa fa-trash"></i>
+                                                <input type='hidden' name="id" value="{{ user.getUsername() }}">
+                                            </button>
+                                        </div>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
                         <tfoot>
                             <tr class="odd" >
                                 <th  style="text-align: center; border: 1px solid darkgrey;">Login</th>

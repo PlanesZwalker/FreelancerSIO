@@ -50,12 +50,13 @@ class UserController {
   //      $classes = $app['dao.Projet']->findAll();
         $roles = $app['dao.user']->findAll();
         $users = $app['dao.user']->findAll();
+        $fos_users = $app['dao.fos_user']->findAll();
 
-
-       return $app['twig']->render('ListTemplate/userslist.html.twig', array(
+        return $app['twig']->render('ListTemplate/userslist.html.twig', array(
     //       'classe'        =>$classes,
            'role'          =>$roles,
            'users'         =>$users,
+           'fos_users'     =>$fos_users,
        ));
 
     }
@@ -150,14 +151,24 @@ class UserController {
     public function editUserAction(Request $request, Application $app)
     {
         $id_user = $request->request->get('id_user');
-
-        $user = $app['dao.user']->findUser($id_user);
+        $id = $request->request->get('id');
         
-
-        return $app['twig']->render('FormTemplate/adduser.html.twig', array(
+        if(isset($id_user)){
+            $user = $app['dao.user']->findUser($id_user);
+            return $app['twig']->render('FormTemplate/adduser.html.twig', array(
             'user' => $user,
+        ));
+        }
+        
+        if(isset($id)){
+            $fos_user = $app['dao.fos_user']->findUser($id);
+            return $app['twig']->render('FormTemplate/adduser.html.twig', array(
+            'fos_user' => $fos_user,
 
         ));
+        }
+
+        
     }
 
     /**  *           Delete user controller.  */

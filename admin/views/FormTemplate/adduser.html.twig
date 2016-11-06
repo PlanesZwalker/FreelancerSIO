@@ -3,9 +3,12 @@
 {% block title %}
     {% if user is defined %}
         Formulaire de modification de l'utilisateur {{ user.username }}
+    {% elseif fos_user is defined %}
+        Formulaire de modification de l'utilisateur {{ fos_user.getUsername() }}
     {% else %}
         Formulaire d'ajout d'utilisateur
     {% endif %}
+       
 {% endblock %}
 
 {% block content %}

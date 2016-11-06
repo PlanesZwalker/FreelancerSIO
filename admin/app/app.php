@@ -89,6 +89,11 @@ $app['dao.user'] = $app->share(function($app){
     $userDAO = new freelancerppe\DAO\UserDAO($app['db']);
     return $userDAO;
 });
+$app['dao.fos_user'] = $app->share(function($app){
+    $userDAO = new freelancerppe\DAO\FosUserDAO($app['db']);
+    return $userDAO;
+});
+
 
 
 /**

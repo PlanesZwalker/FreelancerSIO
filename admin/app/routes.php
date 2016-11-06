@@ -41,7 +41,7 @@ $app->match('/mdp', "freelancerppe\Controller\AdminController::mdpIndexAction")-
 
 
 /* Redirection vers le site freelancer */
-$app->match('../../../front')->bind('front');
+$app->match('../../../web/front')->bind('front');
 
 
 
