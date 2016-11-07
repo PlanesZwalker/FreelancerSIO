@@ -4,13 +4,15 @@
     <h1 id="logo"><a href="front" style="color:#21D8DE;">Freelance Project</a></h1>
 {% endblock %}
 
-
 {% block body %}
-
+               
+                        
     <div id="page-wrapper">
+        
+
+        
         <!-- Features -->
- 
-                <div class="row" style="background:white; padding-right:25px">
+                <div class="row" style="background:white; padding-right:25px;width:94vw; padding-bottom:3vw">
                    
                     <div class="4u 12u(mobile)">
                         <center>
@@ -18,7 +20,7 @@
                         </center> 
                         <!-- Feature -->
                         <section>
-                            <a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+                            <a href="#" class="image featured"><img src="bureau.jpg" alt="" /></a>
                             <header>
                                 <h3>Okay, so what is this?</h3>
                                 <p>Je m’en rappellerais si j’avais créé un programme capable de parler. 
@@ -29,32 +31,44 @@
                         </section>
 
                     </div>
+
                     <div class="4u 12u(mobile)">
                         <center>
                             <h2>Formulaires simples et <strong>intuitifs</strong></h2>
                         </center> 
                         <!-- Feature -->
                         <section>
-                            <a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+                            <a href="#" class="image featured"><img src="people.png" alt="" style="height:17vh; width:17vh; padding:2vh;;margin-left:30%" /></a>
                             <header>
                                 <h3>Nice! What is HTML5 UP?</h3>
                             </header>
                             <p>La journée commence. Il s’habille comme il peut tout en prenant son café. 
                                 Chemise blanche repassée la veille par lui-même. 
                                 Une cravate comme tous les jours. Et son costume noir de chez Sam Montiel, très chic et très branché. 
-                                Chaussures cuir noir. Comme il aime faire remarquer : "Vous êtes soit dans vos chaussures, soit dans votre lit. Alors il faut de bonnes chaussures et une bonne literie !".
+                                Chaussures cuir noir. Comme il aime faire remarquer : "Vous êtes soit dans vos chaussures, soit dans votre lit. 
+                                Alors il faut de bonnes chaussures et une bonne literie !".
                                 La météo a annoncé un ciel bleu et des températures au-dessus de la normale saisonnière.
                                 C’est un très beau mois de mai qui s’annonce.</p>
                         </section>
 
                     </div>
+                    
+                    <!-- Sidebar -->
+                    <div id="sidebar" class="4u 12u(mobile)">
+                        <!-- Formulaire de recherche -->
+                        {{ form_start(formRecherche) }}
+                           {{ form_widget(formRecherche) }}
+                           <input type="submit" style="margin:15px;margin-left:32%"/>
+                        {{ form_end(formRecherche) }}
+                    </div>
+        
                     <div class="4u 12u(mobile)">
                         <center>
                             <h2>Echanges <strong>&nbsp;Securisés </strong><br>Espace Privé</h2>
                         </center> 
                         <!-- Feature -->
                         <section>
-                            <a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+                            <a href="#" class="image featured"><img src="world.jpg" alt="" style="height:15vh; width:15vh; padding:2vh;margin-left:35%"/></a>
                             <header>
                                 <h3>What's that?</h3>
                             </header>
@@ -68,17 +82,25 @@
                     </div>
                 </div>
                 <ul class="actions">
-                    <li><a href="#" class="button icon fa-file">Tell Me More</a></li>
+                    <li><a href="#" class="button icon fa-file">En savoir plus</a></li>
                 </ul>
             </section>
         </div>
-
+                      
         <!-- Banner -->
         <div id="banner-wrapper">
             <div class="inner">
                 <section id="banner" class="container">
                     <p>Projet en ligne / <strong>&nbsp;Développeurs Connectés</strong>.<br />
-                        Or an enormous ad. Whatever.</p>
+                        Consulter les projets</p>
+                   <!-- Ajout d'un projet -->
+                        {{ form_start(form) }}
+                           {{ form_widget(form) }}
+                           <input type="submit" style="margin:5px;"/>
+                        {{ form_end(form) }}
+                        
+                        
+                        
                 </section>
             </div>
         </div>
@@ -95,7 +117,9 @@
                         <article class="box post">
                             <header>
                                 <h2><a href="#">I don’t want to say <strong>it’s the aliens</strong> ...<br />
-                                        but it’s the aliens.</a></h2>
+                                        but it’s the aliens.
+                                    </a></h2>
+                
                             </header>
                             <a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
                             <h3>I mean isn't it possible?</h3>
@@ -162,7 +186,7 @@
 
                     <!-- Sidebar -->
                     <div id="sidebar" class="4u 12u(mobile)">
-
+        
                         <!-- Excerpts -->
                         <section>
                             <ul class="divided">

@@ -22,8 +22,7 @@
                 <div style="position:absolute; top:160px; text-align:center; width:100vw">
                       {% block titre %}{% endblock %}
                 </div>
-            
-            
+
             <img src="{{ app.request.basepath }}/iconsite.png" style="height:5vw; width:5vw;margin:2vw;">
             <p style="margin-top:-30px">Plateforme de Projets de Développement Informatiques en Ligne</p>
         </div>       
@@ -37,24 +36,28 @@
                             background: -moz-linear-gradient(rgba(33, 216, 222,0.8), rgba(33, 216, 222,0.3), rgba(33, 216, 222,0)); /* For Firefox 3.6 to 15 */
                             background: linear-gradient(rgba(33, 216, 222,0.8), rgba(33, 216, 222,0.3), rgba(33, 216, 222,0)); /* Standard syntax (must be last) */ 
                             padding:20px;'>    
-                <li><a href="{{  path('front') }}"  class="icon fa-cog"><span>Accueil</span></a></li>           
+                <li><a href="{{  path('front') }}"  class="icon fa-home"><span>Accueil</span></a></li>           
                 {% if is_granted("ROLE_USER") %}
-                    <li><a href="{{ path('logout') }}" class="icon fa-bar-chart-o"><span>Se déconnecter</span></a></li>
+                    <li><a href="{{ path('logout') }}" class="icon fa-power-off"><span>Se déconnecter</span></a></li>
                 {% else %}
                     {% if app.request.pathInfo != '/login' %}
-                        <li><a href="{{ path('fos_user_security_login') }}" class="icon fa-bar-chart-o"><span>Se connecter</span></a></li>
+                        <li><a href="{{ path('fos_user_security_login') }}" class="icon fa-share-square-o"><span>Se connecter</span></a></li>
                     {% endif %}
                 {% endif %}
                     {% if app.request.pathInfo != '/register' %} 
                         {% if not is_granted("ROLE_USER") %}
-                        <li><a href="{{ path('fos_user_registration_register') }}" class="icon fa-bar-chart-o"><span>Créer un compte</span></a></li>
+                        <li><a href="{{ path('fos_user_registration_register') }}" class="icon fa-user-plus"><span>Créer un compte</span></a></li>
                     {% endif %}
                 {% endif %}
-                <li><a href="{{  path('listprojet') }}"  class="icon fa-cog"><span>Consulter les Projets</span></a></li>           
-                <li><a href="{{  path('listfreelancer') }}"  class="icon fa-retweet" ><span>Voir les Freelancers</span></a> </li> 
+                <li><a href="{{  path('listprojet') }}"  class="icon Example of newspaper-o fa-newspaper-o "><span>Consulter les Projets</span></a></li>           
+                <li><a href="{{  path('listfreelancer') }}"  class="icon fa-users" ><span>Voir les Freelancers</span></a> 
+                    <li>
+                        <ul><a href="{{  path('listfreelancer') }}"  class="icon fa-users" ><span>Par Compétences</span></a></ul>
+                    </li>
+                </li> 
                 {% if is_granted("ROLE_USER") %}
-                    <li><a href="{{  path('addprojet') }}"  class="icon fa-retweet" ><span>Créer un Projet</span></a> </li> 
-                    <li><a href="{{  path('editprofil') }}"  class="icon fa-retweet" ><span>Modifier mon Profil</span></a> </li> 
+                    <li><a href="{{  path('addprojet') }}"  class="icon fa-plus-square" ><span>Créer un Projet</span></a> </li> 
+                    <li><a href="{{  path('editprofil') }}"  class="icon fa-edit" ><span>Modifier mon Profil</span></a> </li> 
                 {% endif %}
                 {% block nav %}{% endblock %}
             </ul>
@@ -69,7 +72,7 @@
 {% block footer %} 
     <footer style="background-color: rgba(1,1,1,0.3); position:fixed; height:40px; bottom:0; width:100%; text-align:left; color:white" >
         <ul class="links">
-            <li>&copy; Plateforme Mise En Ligne Projet De Développement Informatique</li> 
+            <li>&nbsp; &copy; Plateforme Mise En Ligne Projet De Développement Informatique</li> 
             <li style="float:right;margin-right:3%;">Mentions Légales 2016/2017</li>
             <li style="float:right; ">Accueil 
                 <a href="{{ path('front') }}">Freelance Project</a>

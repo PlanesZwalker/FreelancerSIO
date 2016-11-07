@@ -31,7 +31,8 @@
         "symfony/twig-bridge": "^3.1",
         "twig/twig": "^1.26",
         "symfony/console": "^3.1",
-        "symfony/asset": "^3.1" 
+        "symfony/asset": "^3.1",
+        "egeloen/ckeditor-bundle": "^4.0" 
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

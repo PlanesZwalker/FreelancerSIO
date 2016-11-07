@@ -82,3 +82,19 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
+# Bundle pour ckeditor  Configuration
+ivory_ck_editor:
+  
+    configs:
+        my_config:
+            toolbar: full
+            uiColor:                "#000000"
+            filebrowserUploadRoute: "front"
+            extraPlugins:           "wordcount"
+            language: fr
+            jquery: true
+        filebrowsers:
+            - VideoBrowse
+            - VideoUpload
+             
+   

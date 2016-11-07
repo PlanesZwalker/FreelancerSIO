@@ -17,6 +17,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
            // new AppBundle\Entity\User(),
         ];
 
