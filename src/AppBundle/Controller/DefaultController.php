@@ -5,8 +5,6 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-/* pour ajouter un editeur de texte aux formulaires */
-
 use Symfony\Component\Form\Forms;
 use Symfony\Component\Form\Extension\HttpFoundation\HttpFoundationExtension;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -65,6 +63,7 @@ class DefaultController extends Controller
         ));
         
          $formRecherche = $this->createFormBuilder() 
+                 
                  ->add('Recherche', ChoiceType::class, array(
                     'choices' => array(
                         'Projets en ligne' => 'Projetenligne',
@@ -77,16 +76,15 @@ class DefaultController extends Controller
                     'placeholder' => 'Sélectionner votre recherche',
                     'empty_data'  => null
                 ))
-                ->add('Mot-Cles', TextType::class, array(
+                 
+                ->add('MotsCles', TextType::class, array(
                     'constraints' => new NotBlank(),
+                    'label' => 'Recherche par mots-cles',
                 ))
-                ->add('Date', DateType::class, array(
-                    'constraints' => array(
-                        new NotBlank(),
-                        new Type('\DateTime'),
-                    )))
-               
+                 
+              
                 ->getForm();
+
          
          $form =  $this->createFormBuilder() 
                  ->add('Editeur', CKEditorType::class, array(
@@ -95,48 +93,14 @@ class DefaultController extends Controller
                     )   ))           
                  ->getForm();
 
-      // $form->handleRequest($request);
+       $formRecherche->handleRequest($request);
         
-    /*    $builder->add('field', 'ckeditor', array(
-            
-            'config_name' => 'my_config',
-            'config' => array(
-                'toolbar' => 'full',
-                'uiColor' => '#ffffff'
-            ),
-            'filebrowsers' => array(
-               'VideoUpload',
-               'VideoBrowse',
-           ),
-            
-        ));*/
-        
-                /*     
-            $form = $this->createFormBuilder()
-                ->add('task', TextType::class, array(
-                    'constraints' => new NotBlank(),
-                ))
-                ->add('dueDate', DateType::class, array(
-                    'constraints' => array(
-                        new NotBlank(),
-                        new Type('\DateTime'),
-                    )
-                ))
-                ->getForm();
-
-             $request = Request::createFromGlobals();
-
-             $form->handleRequest($request);
-
-            if ($form->isValid()) {
-                $data = $form->getData();
-
-                // ... perform some action, such as saving the data to the database
-
-                return $this->redirectToRoute('task_success');
-    
-    */
-         return $this->render('/front/index.html.twig', array(
+  
+            if ($formRecherche->isValid()) {
+                $data = $formRecherche->getData();            
+            }
+   
+        return $this->render('/front/index.html.twig', array(
             'formRecherche' => $formRecherche->createView(),
             'form' => $form->createView(),
         ));

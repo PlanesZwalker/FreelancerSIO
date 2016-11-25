@@ -1,0 +1,81 @@
+﻿1/ Contexte et definition de la demande
+
+Concevoir et réaliser une plateforme de services à destination d'entreprises
+à la recherche de développeurs indépendants.
+
+
+
+2/ Objectifs du projet
+
+L'objectif est de mettre en oeuvre un projet informatique apportant un service de mise en relation professionnelle
+aux internautes. dans un langage interprété côté serveur et côté client.  
+
+
+
+3/ Description fonctionnelle : Gestion et visualisation du projet
+
+
+
+
+4/ Technologies
+
+	* Le langage côté serveur utilisé est PHP
+	* Les langages côté navigateur utilisé sont HTML, Javascript, CSS
+	* Le moteur de template qui intéragie avec les données du serveur sur les vues est Twig
+	* Le gestionnaire de packages permettant de déployer l'environnement du projet est Composer
+	* Le thème de l'interface administrateur est AdminLTE
+	* AdminLTE utilise les librairies bootstrap(CSS) et Jquery(JS)
+	* Le micro-framework PHP utilisé est Silex, il reprend l'architecture des projets du framework Symfony
+	* Le gestionnaire de dépendance est Pimple qui utilise lui même PHPUnit pour la réalisation de test
+	* Le système de débugage de sympfony appel les classes ErrorHandler et ExceptionHandler
+	* Les composants sympfony appelés par notre projet sont:
+		- Security Service Provider
+		- Doctrine Service Provider
+		- Twig Service Provider
+		- Session Service Provider
+		- Validator Service Provider
+		- Url Generator Service Provider
+		(- Form Service Provider )
+		(- User Provider )
+
+
+5/ Les limites : contraintes et dépendances (+coût - besoin non fonctionnel)
+
+	
+
+
+
+6/ Delais
+
+	* La livraison de la plateforme devra être effective dès Janvier 2017
+
+
+
+7/ Améliorations à envisager / Perspectives
+
+	* Ajouter un module de chat à la plateforme web	
+	* Utiliser un mode paiement réel
+	* Référencer et diffuser la plateforme pour rassembler plus d'utilisateurs
+
+8/ Glossaire
+
+
+
+
+9/ Mention Legales
+
+
+
+
+10/ Annexes : 
+
+	- Diagrammes de cas d'utilisation:
+		* BO_Admin
+		* Freelancer
+		* Societe
+
+	- Diagrammes de classes
+
+	- Schéma conceptuel de base de données 
+
+	- Diagramme de séquence : action entre la base de données et les fonctionnalités des utilisateurs

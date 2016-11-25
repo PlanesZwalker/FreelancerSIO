@@ -1,206 +1,77 @@
 {% extends "layout.html.twig" %}
 
-{% block titre %}
-    <h1 id="logo"><a href="front" style="color:#21D8DE;">Freelance Project</a></h1>
-    <h3 style="width:8vw; float:left; margin-left:5vw" >Rapide <strong>et accessible gratuitement</strong>!</h3>
-    <img src="bureau.jpg" style="width:6vw; float:left; margin-left:4vw;margin-top:7vw" alt="" />
-    <img src="loupe.svg" style="width:8vw; float:right; margin-right:15vw;margin-top:5vw" alt="" />
-{% endblock %}
+{% block style %}
+    
+    <style>
+        
+        #ui-datepicker-div{
+            background-color: lightskyblue;
+        }
+        
+      
 
-{% block body %}
-
-
-    <div id="page-wrapper">
-        <!-- Features -->
-        <div class="row" style="background:white; padding-right:25px;width:94vw; padding-bottom:3vw; margin-bottom:4vw">
-
-            <div class="4u 12u(mobile)">
-
-                <!-- Feature -->
-                <section>
-
-                    <header>
-
-                        <!-- Formulaire de recherche -->
-                        {{ form_start(formRecherche) }}
-                        {{ form_widget(formRecherche) }}
-                        <input type="submit" style="margin:15px;margin-left:32%"/>
-                        {{ form_end(formRecherche) }}
-                    </header>
-                </section>
-
-            </div>
-
-            <div class="4u 12u(mobile)">
-                <center>
-                    <h2>Formulaires simples et <strong>intuitifs</strong></h2>
-                </center> 
-                <!-- Feature -->
-                <section>
-                    <a href="#" class="image featured"><img src="people.png" alt="" style="height:17vh; width:17vh; padding:2vh;;margin-left:30%" /></a>
-                    <header>
-                        <h3>Ajouter des compétences à son profil</h3>
-                    </header>
-                    <p>La journée commence. Il s’habille comme il peut tout en prenant son café. 
-                        Chemise blanche repassée la veille par lui-même. 
-                        Une cravate comme tous les jours. Et son costume noir de chez Sam Montiel, très chic et très branché. 
-                        Chaussures cuir noir. Comme il aime faire remarquer : "Vous êtes soit dans vos chaussures, soit dans votre lit. 
-                        Alors il faut de bonnes chaussures et une bonne literie !".
-                        La météo a annoncé un ciel bleu et des températures au-dessus de la normale saisonnière.
-                        C’est un très beau mois de mai qui s’annonce.</p>
-                </section>
-
-            </div>
-            <div class="4u 12u(mobile)">
-                <center>
-                    <h2>Echanges <strong>&nbsp;Securisés </strong><br>Espace Privé</h2>
-                </center> 
-                <!-- Feature -->
-                <section>
-                    <a href="#" class="image featured"><img src="world.jpg" alt="" style="height:15vh; width:15vh; padding:2vh;margin-left:35%"/></a>
-                    <header>
-                        <h3>Quoi de nouveau ?</h3>
-                    </header>
-                    <p>C’est lui aussi qui était à la base du dernier processeur, le sphéro.
-                        Un processeur ayant une architecture en forme de sphère et capable de traiter les informations à une vitesse jamais atteinte. 
-                        Tous les ordinateurs en étaient équipés. Le créateur officiel, le Dr. Stewart Davis, 
-                        n’était bien sûr pas au courant de la présence de Prélude dans son projet. 
-                        Prélude avait simplement suggéré légèrement au Dr. En modifiant légèrement ses documents.</p>
-                </section>
-
-            </div>
-        </div>
        
-    </section>
-</div>
-
-
-<!-- Main -->
-<div id="main-wrapper">
-    <div id="main" class="container" style="width:75vw">
-        <div class="row">
-
-            <!-- Content -->
-            <div id="content" class="8u 12u(mobile)">
-
-                <!-- Post -->
-                <article class="box post">
-                    <header>
-                        <h2>
-                            <a href="#">I don’t want to say <strong>it’s the aliens</strong> ...<br />
-                                but it’s the aliens.
-                            </a>
-                        </h2>
-
-                    </header>
-                    <a href="#" class="image featured"><img src="clavier.jpg" alt="" style="width:30vw;margin-left:5vw"/></a>
-                    <h3>Publiez vos projets</h3>
-                    <p> Un jour pourtant, une petite ligne de Bolo Bolo du nom de Lorem Ipsum décida de s'aventurer dans la vaste Grammaire. 
-                        Le grand Oxymore voulut l'en dissuader, le prevenant que là-bas cela fourmillait de vils Virgulos, de sauvages
-                        Pointdexclamators et de sournois Semicolons qui l'attendraient pour sûr au prochain paragraphe, mais ces mots ne firent 
-                        écho dans l'oreille du petit Bolo qui ne se laissa point déconcerter. Il pacqua ses 12 lettrines, glissa son initiale dans 
-                        sa panse et se mit en route. Alors qu'il avait gravi les premiers flancs de la chaîne des monts Italiques,
-                        il jeta un dernier regard sur la skyline de</p>
-                    <ul class="actions">
-                        <li><a href="#" class="button icon fa-file">Continue Reading</a></li>
-                    </ul>
-                </article>
-            </div>
-        </div>
-    </div>           
+    </style>
+    
+{% endblock %}
+    
+{% block titre %}
+    <h1 id="logo"><a href="front" style="color:#333;">Free Demat'IT Lancer's</a></h1>
+    <h3 style="width:8vw; float:left; margin-left:5vw" >Rapide <strong>et accessible gratuitement</strong>!</h3>
+{% endblock %}
+{% block body %}
+    <!-- Main -->
+    <div >       
         <!-- Banner -->
-        <div id="banner-wrapper">
+        <div id="banner-wrapper" style="margin:3vw 10vw;">
+             <div style="width:50vw ; margin-left:20%; margin-bottom:5vw; color:black;">
+                 <h2>Parcourez les projets</h2>
+                <!-- Formulaire de recherche -->
+                {{ form_start(formRecherche) }}
+                 
+                  {{ form_errors(formRecherche) }}
+                  {{ form_widget(formRecherche.Recherche) }}
+                  
+                     <div data-role="content" style="display:inline-block;width:10vw;">De
+                        <input type="text" id="date-input" data-inline="false" data-role="date" >
+                    </div> 
+                    
+                     <div data-role="content" style="display:inline-block; width:10vw;">A
+                        <input type="text" id="date-input2" data-inline="false" data-role="date" >
+                    </div> 
+                  
+                    {{ form_widget(formRecherche.MotsCles) }}
+                     <input type="submit" value="Lancer la recherche"/>
+                {{ form_end(formRecherche) }}  
+                
+            </div>
+            
             <div class="inner">
                 <section id="banner" class="container">
                     <p>Projet en ligne / <strong>&nbsp;Développeurs Connectés</strong>.<br />
                         Consulter les projets</p>
 
-
+                <img src="loupe.png" style="width:8vw;" />
                 </section>
             </div>
+     
+            <!-- Post -->
+            <article class="box post" style="margin-top:2vw;">
+                <header>
+                    <h2><a href="#">Mettez en ligne vos<strong>Travaux</strong>
+                            en trois étapes</a></h2>
+                </header>
+                <a href="#" class="image featured"><img src="clavier.jpg" alt=""  style="width:30vw;margin-left:25vw" /></a>
+           
+            </article>
         </div> 
-          <div id="main" class="container">
-                <div class="row" >
-                   <div id="content" class="8u 12u(mobile)">
-                <!-- Post -->
-                <article class="box post">
-                    <header>
-                        <h2><a href="#">Mettez en ligne vos<strong>Travaux</strong>
-                                en trois étapes</a></h2>
-                    </header>
-                    <a href="#" class="image featured"><img src="touches.jpg" alt=""  style="width:30vw;margin-left:5vw" /></a>
-                    <h3>Tableau de Bord personnel - Gestion des travaux</h3>
-                    <p>
-                        Florence avait fini de préparer le matériel demandé par Prélude. Elle était fin prête. Elle vérifia le bon fonctionnement de la 
-                        liaison entre son ordinateur portable et Internet. Prélude était bien là. A peine connecté à Internet que la voix de Prélude se fit entendre.
-                    </p>
-                    <ul class="actions">
-                        <li><a href="#" class="button icon fa-file">Continuer à lire</a></li>
-                    </ul>
-                </article>
-
-            </div>
-
-            <!-- Sidebar -->
-            <div id="sidebar" class="4u 12u(mobile)">
-
-                <!-- Excerpts -->
-                <section>
-                    <ul class="divided">
-                        <li>
-
-                            <!-- Excerpt -->
-                            <article class="box excerpt">
-                                <header>
-                                    <span class="date">July 30</span>
-                                    <h3><a href="#">Just another post</a></h3>
-                                </header>
-                                <p>
-
-                                    Mesdames, messieurs, l'effort prioritaire en faveur du statut précaire des exclus soustrait toute vision globale d'une valorisation sans concession de nos caractères spécifiques.
-
-                                    Par ailleurs, c'est en toute connaissance de cause que je peux affirmer aujourd'hui que la crise actuelle doit prendre en compte les préoccupations de la population de base dans l'élaboration d'une restructuration dans laquelle chacun pourra enfin retrouver sa dignité.
-
-                                    Et c'est en toute conscience que je déclare avec conviction que l'aspiration plus que légitime de chacun au progrès social conforte mon désir incontestable d'aller dans le sens de solutions rapides correspondant aux grands axes sociaux prioritaires.
-                                </p>
-                            </article>
-
-                        </li>
-                        </section>
-                        <section>
-                        <li>
-
-                            <!-- Excerpt -->
-                            <article class="box excerpt">
-                                <header>
-                                    <span class="date">Juillet 2028</span>
-                                    <h3><a href="#">Derniers Extraits du livre d'or</a></h3>
-                                </header>
-                                <p>
-
-                                    Mesdames, messieurs, la crise que connait notre pays doit nous faire réagir tous ensemble pour aller dans la mise en place d'un programme plus humain, plus fraternel et plus juste.
-
-                                    Très chers compatriotes, vous le savez et je vous le redit que l'acuité des problèmes de la vie quotidienne a pour conséquence obligatoire l'urgente nécessité d'un projet porteur de véritables espoirs, notamment pour les plus démunis.
-
-                                    Jamais, vous m'entendez ? Jamais ! Et c'est pourquoi, aujourd'hui, je vous dis que l'effort prioritaire en faveur du statut précaire des exclus conforte mon désir incontestable d'aller dans le sens d'un projet porteur de véritables espoirs, notamment pour les plus démunis.
-                                </p>
-                            </article>
-
-                        </li>
-
-                    </ul>
-                </section>
-
-
-
-            </div>
-
-        </div>
     </div>
-</div>
+
+
+       
 
 <!-- Banner -->
-<div id="banner-wrapper">
+<div id="banner-wrapper" >
     <div class="inner">
         <section id="banner" class="container">
             <p>Elaboration de cahier des charges <strong>Contrat</strong>.<br />
@@ -211,18 +82,20 @@
             {{ form_widget(form) }}
             <input type="submit" style="margin:5px;"/>
             {{ form_end(form) }}
- <ul class="actions">
-            <li><a href="#" class="button icon fa-file">En savoir plus</a></li>
-        </ul>
+            <ul class="actions">
+                <li><a href="#" class="button icon fa-file">En savoir plus</a></li>
+            </ul>
 
         </section>
     </div>
 </div>
+            
+            
 <!-- Footer -->
-<div id="footer-wrapper">
+<div id="footer-wrapper" style="width:75%;border-radius:8px; margin:10px 15% ">
     <div id="footer" class="container">
         <header>
-            <h2>QuestionS ou Commentaires ? <strong>C'est ici:</strong></h2>
+            <h2>Questions ou Commentaires ? <strong>C'est ici:</strong></h2>
         </header>
         <div class="row">
             <div class="6u 12u(mobile)">
@@ -291,20 +164,19 @@
             </div>
         </div>
     </div>
-
-
-
+    
 </div>
 
 {% endblock %}
+
 {% block javascript %}
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.dropotron.min.js"></script>
-    <script src="assets/js/skel.min.js"></script>
-    <script src="assets/js/skel-viewport.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-    <script src="assets/js/main.js"></script>
+        
+    <script>
+
+        $( "#datepicker" ).datepicker();
+   
+    </script>
+
 {% endblock %}
 
 

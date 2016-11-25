@@ -92,7 +92,6 @@ ivory_ck_editor:
             filebrowserUploadRoute: "front"
             extraPlugins:           "wordcount"
             language: fr
-            jquery: true
         filebrowsers:
             - VideoBrowse
             - VideoUpload

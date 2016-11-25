@@ -1,0 +1,26 @@
+Bibliographie PPE Symfony
+
+
+/********************************************************************/
+POUR LA GESTION DES UTILISATEURS
+http://symfony.com/doc/current/security/entity_provider.html
+https://openclassrooms.com/courses/developpez-votre-site-web-avec-le-framework-symfony2/securite-et-gestion-des-utilisateurs
+http://symfony.com/doc/current/bundles/FOSUserBundle/index.html
+
+FOSUserBundle avec Symfony 3 - Gestion des membres de votre site 
+https://www.youtube.com/watch?v=EKRZbYU_VLE&t=720s
+
+/*********************************************************************/
+TWIG
+http://alexandre.clain.info/twig-les-variables-globales/
+
+
+/********************************************************************/
+INTEGRATION D'UN EDITEUR DE TEXTE
+https://symfony.com/doc/current/bundles/IvoryCKEditorBundle/installation.html
+
+
+/*******************************************************************/
+UTILISATION DU COMPOSANT FORMULAIRE DE SYMFONY
+https://symfony.com/doc/current/components/form.html
+http://api.symfony.com/2.7/Symfony/Component/Form/FormFactory.html

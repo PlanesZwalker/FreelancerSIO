@@ -24,6 +24,37 @@ class User extends BaseUser
      */
     protected $nom;
     
+     /**
+     * @ORM\Column(type="string")
+     */
+    protected $pseudo;
+    
+    
+ 
+    function getId() {
+        return $this->id;
+    }
+
+    function getPseudo() {
+        return $this->pseudo;
+    }
+
+    
+    
+    
+    
+    function setId($id) {
+        $this->id = $id;
+    }
+
+    function setPseudo($pseudo) {
+        $this->pseudo = $pseudo;
+    }
+
+        
+    
+    
+    
     public function __construct()
     {
         parent::__construct();

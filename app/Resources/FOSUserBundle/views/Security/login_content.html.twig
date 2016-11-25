@@ -1,23 +1,23 @@
 {% trans_default_domain 'FOSUserBundle' %}
-<div style="text-align:center; margin-top:3%">
-       {% block soustitre %} <h2 style="color:gray; margin-top:5%; background-color:rgba(1,1,1,0.2); border-radius:8px 8px 0px 0px;">Formulaire de connexion</h2> {% endblock %}
+<div style="text-align:center; margin-top:3%;">
+       {% block soustitre %} <h2 style="margin-top:5%; color:black; background-color:rgba(1,1,1,0.2); border-radius:8px 8px 0px 0px;">Formulaire de connexion</h2> {% endblock %}
 {% if error %}
    <h2>{{ error.messageKey|trans(error.messageData, 'security') }}</h2>
 {% endif %}
 
-    <form action="{{ path("fos_user_security_check") }}" method="post" style="margin-top:-3%; background-color:#E0E0E1; margin-bottom:20%; padding:2%; border-radius:0px 0px 8px 8px">
+    <form action="{{ path("fos_user_security_check") }}" method="post" style="margin-top:-3%; background-color:#E0E0E1;  margin-bottom:20%; padding:2%; border-radius:0px 0px 8px 8px">
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
         <label for="username">{{ 'security.login.username'|trans }}</label>
-        <input style="margin-left:25%; " type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+        <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
 
-        <label  style="margin-top:1%; "  for="password">{{ 'security.login.password'|trans }}</label>
-        <input style="margin-left:25%; "  type="password"  id="password" name="_password" required="required" />
-        <div style="margin-top:1%; " >
-            <input    type="checkbox" id="remember_me" name="_remember_me" value="on" />
-            <label style="display:inline-table" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
-        </div>
-        <input  style="margin-top:1%; "  type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+        <label  for="password">{{ 'security.login.password'|trans }}</label>
+        <input  type="password"  id="password" name="_password" required="required" />
+
+        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+        <label style="display:inline-table" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+     
+        <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
     </form>
 
 </div>

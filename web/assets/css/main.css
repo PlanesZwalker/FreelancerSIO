@@ -1196,7 +1196,7 @@
 		-ms-transition: opacity 0.25s ease-in-out;
 		transition: opacity 0.25s ease-in-out;
 		display: inline-block;
-		border: solid 6px #ebebeb !important;
+		
 	}
 
 		.image:hover {
@@ -1955,49 +1955,49 @@
 		/* Banner */
 
 			#banner {
-				padding: 10em 0 10em 0;
+                             padding: 1em 0 1em 0;
 			}
 
-				#banner p {
-					font-size: 2em;
-					line-height: 1.5em;
-					letter-spacing: 4px;
-				}
+                        #banner p {
+                                font-size: 2em;
+                                line-height: 1.5em;
+                                letter-spacing: 4px;
+                        }
 
-				#banner:before, #banner:after {
-					content: '';
-					display: block;
-					position: absolute;
-					top: 50%;
-					width: 35px;
-					height: 141px;
-					margin-top: -70px;
-					background: url("images/bracket.svg");
-					opacity: 0.15;
-				}
+                        #banner:before, #banner:after {
+                                content: '';
+                                display: block;
+                                position: absolute;
+                                top: 50%;
+                                width: 35px;
+                                height: 141px;
+                                margin-top: -70px;
+                                background: url("images/bracket.svg");
+                                opacity: 0.15;
+                        }
 
-				#banner:before {
-					left: 0;
-				}
+                        #banner:before {
+                                left: 0;
+                        }
 
-				#banner:after {
-					-moz-transform: scaleX(-1);
-					-webkit-transform: scaleX(-1);
-					-ms-transform: scaleX(-1);
-					transform: scaleX(-1);
-					right: 0;
-				}
+                        #banner:after {
+                                -moz-transform: scaleX(-1);
+                                -webkit-transform: scaleX(-1);
+                                -ms-transform: scaleX(-1);
+                                transform: scaleX(-1);
+                                right: 0;
+                        }
 
 		/* Content */
 
-			#content > > section,
-			#content > > article {
+			#content section,
+			#content article {
 				margin: 5em 0 0 0;
 				padding: 5em 0 0 0;
 			}
 
-				#content > > section:first-child,
-				#content > > article:first-child {
+				#content section:first-child,
+				#content article:first-child {
 					margin: 0;
 					padding: 0;
 				}
