@@ -1,6 +1,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 <div style="text-align:center; margin-top:3%;">
-       {% block soustitre %} <h2 style="margin-top:5%; color:black; background-color:rgba(1,1,1,0.2); border-radius:8px 8px 0px 0px;">Formulaire de connexion</h2> {% endblock %}
+       {% block soustitre %} <h2 class="mysubtitle">Formulaire de connexion</h2> {% endblock %}
 {% if error %}
    <h2>{{ error.messageKey|trans(error.messageData, 'security') }}</h2>
 {% endif %}
@@ -14,9 +14,10 @@
         <label  for="password">{{ 'security.login.password'|trans }}</label>
         <input  type="password"  id="password" name="_password" required="required" />
 
-        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+      
         <label style="display:inline-table" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
-     
+       <input style="display:none" type="checkbox" id="remember_me" name="_remember_me" value="on" />
+       
         <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
     </form>
 

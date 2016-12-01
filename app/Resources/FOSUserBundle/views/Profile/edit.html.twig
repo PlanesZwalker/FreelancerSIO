@@ -1,5 +1,9 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends "layout.html.twig" %}
 
+{% block titre %}
+    <h1 id="logo"><a href="{{ path('front') }}" class="bigtitle">Editer votre profil</a></h1>
+{% endblock %}
+ 
 {% block fos_user_content %}
 {% include "FOSUserBundle:Profile:edit_content.html.twig" %}
 {% endblock fos_user_content %}

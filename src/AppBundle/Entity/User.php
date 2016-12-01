@@ -18,11 +18,6 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
- 
-     /**
-     * @ORM\Column(type="string")
-     */
-    protected $nom;
     
      /**
      * @ORM\Column(type="string")
@@ -30,7 +25,6 @@ class User extends BaseUser
     protected $pseudo;
     
     
- 
     function getId() {
         return $this->id;
     }
@@ -40,9 +34,6 @@ class User extends BaseUser
     }
 
     
-    
-    
-    
     function setId($id) {
         $this->id = $id;
     }
@@ -50,10 +41,7 @@ class User extends BaseUser
     function setPseudo($pseudo) {
         $this->pseudo = $pseudo;
     }
-
-        
-    
-    
+ 
     
     public function __construct()
     {
@@ -62,27 +50,4 @@ class User extends BaseUser
     }
     
 
-    /**
-     * Set nom
-     *
-     * @param string $nom
-     *
-     * @return User
-     */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
-
-    /**
-     * Get nom
-     *
-     * @return string
-     */
-    public function getNom()
-    {
-        return $this->nom;
-    }
 }

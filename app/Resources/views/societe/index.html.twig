@@ -2,9 +2,9 @@
 
 {% block titre %}
     {% if is_granted("ROLE_USER") %}
-        <h1 id="logo"><a href="/" style="color:#21D8DE;">Bienvenue {{ app.user.username }}</a></h1>  
+        <h1 id="logo"><a href="/" class="bigtitle">Bienvenue {{ app.user.username }}</a></h1>  
     {% else %}
-        <h1 id="logo"><a href="/" style="color:#21D8DE;">Utilisateur déconnecté</a></h1>  
+        <h1 id="logo"><a href="/" class="bigtitle">Utilisateur déconnecté</a></h1>  
     {% endif %}
 {% endblock %}
 
