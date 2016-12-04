@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 23 Octobre 2016 à 17:58
--- Version du serveur :  10.1.16-MariaDB
--- Version de PHP :  5.5.38
+-- Généré le :  Dim 04 Décembre 2016 à 13:41
+-- Version du serveur :  10.1.19-MariaDB
+-- Version de PHP :  5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -98,6 +98,50 @@ CREATE TABLE `contrat` (
 
 INSERT INTO `contrat` (`id_contrat`, `tarif`, `delai`, `date_sign`, `id_paiement`) VALUES
 (1, 1234.2, '3 semaines à partir du 12/10/2016', '10/10/2016', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `fos_user`
+--
+
+CREATE TABLE `fos_user` (
+  `id` int(11) NOT NULL,
+  `username` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username_canonical` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_canonical` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `enabled` tinyint(1) NOT NULL,
+  `salt` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_login` datetime DEFAULT NULL,
+  `locked` tinyint(1) NOT NULL,
+  `expired` tinyint(1) NOT NULL,
+  `expires_at` datetime DEFAULT NULL,
+  `confirmation_token` varchar(180) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password_requested_at` datetime DEFAULT NULL,
+  `roles` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
+  `credentials_expired` tinyint(1) NOT NULL,
+  `credentials_expire_at` datetime DEFAULT NULL,
+  `pseudo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `typecompte` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Contenu de la table `fos_user`
+--
+
+INSERT INTO `fos_user` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `pseudo`, `typecompte`) VALUES
+(1, 'admin', 'admin', 'anne@cohmbox.fr', 'anne@cohmbox.fr', 1, '4spgg4cjea6844cwggs84gw404ww4wg', '$2y$13$Oyxn4njJGCB3OOTHP.jbvuHWKcPCiE/iqaL7hLrMLpeOfH9tLKp9G', '2016-12-04 09:19:29', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}', 0, NULL, '', ''),
+(2, 'adminuser', 'adminuser', 'contact@cohmbox.fr', 'contact@cohmbox.fr', 1, 'f3iufqjit1k4owgcwws8wgwg88go0wo', '$2y$13$wGH/BbZUPioMoZil8tt3VeKUQA3zZlStwaTAq0HNKOHx.3Vby43MG', NULL, 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}', 0, NULL, '', ''),
+(3, 'anne', 'anne', 'fruityannej@gmail.com', 'fruityannej@gmail.com', 1, 'neiuwcgtsbkgck0sc8ssww4g0ckkw4o', '$2y$13$fiD9JJmP3rAeq8UJUStg1uOC8DjSDfobG0aKhhJGgCzdw/m79Zv3S', '2016-11-07 18:36:19', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}', 0, NULL, '', ''),
+(4, 'truc', 'truc', 'lksjfd@sdf.fr', 'lksjfd@sdf.fr', 1, 'akt8v2kf0q8ssskwkc8ok0sk80g8c0c', '$2y$13$5C/7S6vV9yRzFTEcE/9ape4UteROxj7EV57TIpLLUhPOr1Q4zJVUG', NULL, 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '', ''),
+(5, 'ajj', 'ajj', 'ajj@ajj.fr', 'ajj@ajj.fr', 1, '92y5lkjijoso4k8ss4s0wos8go8o44s', '$2y$13$q9GgQ2ZP7VXioMTNr2/t9.CcHlz/yPH03MejH8CgRmqSdL9.8P52i', '2016-11-06 18:50:40', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, 'ajj', ''),
+(6, 'test', 'test', 'test@test.fr', 'test@test.fr', 1, 'dh9loeuck7c4w8ko04ckwgcswg0owc0', '$2y$13$Yc.eHHPF6cuwd84r9BznOOXlkywpD2WQN/HQXUg8DXDjkAHagHwvu', '2016-12-04 09:37:01', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, 'test', ''),
+(7, '123', '123', '123@123.fr', '123@123.fr', 1, 'b6xmg63hpu04koog408408skkg04ogc', '$2y$13$xkjKceMyLfsx82P4DOk5nuQRpUnMqqAJlkrExqvkI/lU1Vlqx/qfe', '2016-11-06 20:27:09', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '123', ''),
+(12, 'rere', 'rere', 're@re.fr', 're@re.fr', 1, 'aheaqjv23m88koocoso844wc0ww4sck', '$2y$13$ImGUaCwFjVuPFfkDat0IWeThhCTb9zcs7NSZqnuaaNql4IpZ7RIAy', '2016-11-06 23:22:07', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, 'rere', ''),
+(13, 'test2', 'test2', 'test2@test.fr', 'test2@test.fr', 1, 'hqpixguwrs0gwc40k40wckgs4kw84ok', '$2y$13$jxpmNGKUP5G6JDzAPBei1exD2g2xFXTBUSkYLkQn4uAvNC8xdBIsm', '2016-12-04 09:31:21', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, 'test', 'test'),
+(14, '1234', '1234', '1243@123.fr', '1243@123.fr', 1, 'tu7stzwjar4oowo8gss4kgsks84gk0o', '$2y$13$VOqZpbuEbmdFrR6Py9SjOeVdQw6HkfGrqL0g13GqAMWYqh1SkJ7Ym', '2016-12-04 13:40:15', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '1234', '1234');
 
 -- --------------------------------------------------------
 
@@ -316,6 +360,15 @@ ALTER TABLE `contrat`
   ADD KEY `id_paiement` (`id_paiement`);
 
 --
+-- Index pour la table `fos_user`
+--
+ALTER TABLE `fos_user`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `UNIQ_957A647992FC23A8` (`username_canonical`),
+  ADD UNIQUE KEY `UNIQ_957A6479A0D96FBF` (`email_canonical`),
+  ADD UNIQUE KEY `UNIQ_957A6479C05FB297` (`confirmation_token`);
+
+--
 -- Index pour la table `freelancer`
 --
 ALTER TABLE `freelancer`
@@ -387,6 +440,11 @@ ALTER TABLE `competence`
 --
 ALTER TABLE `contrat`
   MODIFY `id_contrat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `fos_user`
+--
+ALTER TABLE `fos_user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT pour la table `freelancer`
 --
