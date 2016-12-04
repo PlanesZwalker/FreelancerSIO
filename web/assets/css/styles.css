@@ -20,7 +20,8 @@ and open the template in the editor.
 
 .ui-grid-a > .ui-block-a, .ui-grid-a > .ui-block-b {
     width: 15vw !important;
-    display:block !important;
+    display:inline-block !important;
+    float:none;
 }
 
 
@@ -47,13 +48,19 @@ and open the template in the editor.
    
 }
 
-.mysubtitle{
-    color:white; 
-    margin-top:5%;
-    background-color:rgba(1,1,1,0.4); 
-    border-radius:8px 8px 0px 0px;
-    
-}
+    .mysubtitle{
+        color:white; 
+        margin-top:5%;
+        background-color:rgba(1,1,1,0.6); 
+        border-radius:8px 8px 0px 0px;
+        height:70px; 
+        font-size:17px;
+        padding:15px;
+       text-align:center;
+    }
+
+
+
 #footer-wrapper{
     width:63%; 
     padding-left:2vw !important;
@@ -66,4 +73,77 @@ and open the template in the editor.
 #header-wrapper{
   
     
+}
+
+#password, 
+#fos_user_registration_form_email,
+#fos_user_registration_form_plainPassword_first, 
+#fos_user_registration_form_plainPassword_second,
+#fos_user_profile_form_email,
+#fos_user_profile_form_current_password{
+    
+     background: #e8e8e8 none repeat scroll 0 0;
+    border: 0 none;
+    border-radius: 4px;
+    box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.1) inset;
+    display: block;
+    line-height: 1.25em;
+    padding: 0.75em 1em;
+    transition: background-color 0.25s ease-in-out 0s;
+    width: 100%;
+}
+
+#password:hover,
+#fos_user_registration_form_email:hover,
+#fos_user_registration_form_plainPassword_first:hover,
+#fos_user_registration_form_plainPassword_second:hover,
+#fos_user_profile_form_email:hover,
+#fos_user_profile_form_current_password:hover,
+#fos_user_profile_form_username:hover,
+#fos_user_registration_form_typecompte:hover{
+        background: #fff;
+}
+
+#password:active,
+#fos_user_registration_form_email:active,
+#fos_user_registration_form_plainPassword_first:active,
+#fos_user_registration_form_plainPassword_second:active,
+#fos_user_registration_form_username:hover,
+#fos_user_registration_form_pseudo:hover,
+#username:hover,
+#fos_user_profile_form_email:active,
+#fos_user_profile_form_current_password:active{
+        background: #fff;
+}
+
+
+.formulairetop{
+    text-align:center;top:155px; position:absolute; width:60%; left:20vw;
+}
+
+.inputformtop{
+    
+    width:50% ; margin-left:25%; text-align:center;
+}
+
+#logo{
+    background-color:rgba(255,255,255,0.3);   
+}
+
+
+.monform{
+    
+    margin-top: -3%;
+    background-color: #E0E0E1;
+    margin-bottom: 20%;
+    padding: 2%;
+    border-radius: 0px 0px 8px 8px;
+}
+
+.flash-success{
+    text-align:center;
+    font-size:20px;
+    color:black;
+    text-shadow:1px 1px 1px gray;
+    padding:0;
 }
