@@ -24,3 +24,7 @@ https://symfony.com/doc/current/bundles/IvoryCKEditorBundle/installation.html
 UTILISATION DU COMPOSANT FORMULAIRE DE SYMFONY
 https://symfony.com/doc/current/components/form.html
 http://api.symfony.com/2.7/Symfony/Component/Form/FormFactory.html
+
+/*******************************************************************/
+UTILISATION DE DOCTRINE AVEC SYMFONY
+http://software-talk.org/blog/2012/10/symfony2-tutorial-doctrine-entities-sql/
