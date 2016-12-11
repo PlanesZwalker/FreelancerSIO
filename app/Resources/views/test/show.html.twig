@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+{% block titre %}
+
+        <h1 id="logo"><a class="bigtitle">Tests</a></h1>  
+
+{% endblock %}
+
+{% block body %}    
+    <div class="formulairetop">
+        <h1 class="mysubtitle">Afficher un Test</h1>
+        <div class="mycontentform">
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Idtest</th>
+                        <td>{{ test.idTest }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ test.description }}</td>
+                    </tr>
+                    <tr>
+                        <th>Urltest</th>
+                        <td>{{ test.urlTest }}</td>
+                    </tr>
+                    <tr>
+                        <th>Resultat</th>
+                        <td>{{ test.resultat }}</td>
+                    </tr>
+                    <tr>
+                        <th>Datepassage</th>
+                        <td>{% if test.datePassage %}{{ test.datePassage|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Idfreelancer</th>
+                        <td>{{ test.idFreelancer }}</td>
+                    </tr>
+                    <tr>
+                        <th>Idcompetence</th>
+                        <td>{{ test.idCompetence }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <ul>
+                <li>
+                    <a href="{{ path('test_index') }}">Retourner à la liste</a>
+                </li>
+                <li>
+                    <a href="{{ path('test_edit', { 'id': test.idTest }) }}">Modifier</a>
+                </li>
+                <li>
+                    {{ form_start(delete_form) }}
+                        <input type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

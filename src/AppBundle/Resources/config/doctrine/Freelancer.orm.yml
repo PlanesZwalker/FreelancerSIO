@@ -1,0 +1,25 @@
+AppBundle\Entity\Freelancer:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\FreelancerRepository
+    id:
+        idFreelancer:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        urlCv:
+            type: string
+            length: 255
+            column: url_cv
+        urlPhoto:
+            type: string
+            length: 255
+            column: url_photo
+        age:
+            type: integer
+        idUser:
+            type: integer
+            column: id_user
+    lifecycleCallbacks: {  }

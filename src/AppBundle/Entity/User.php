@@ -1,77 +1,80 @@
-<?php 
-// src/AppBundle/Entity/User.php
+<?php
 
 namespace AppBundle\Entity;
- 
 use FOS\UserBundle\Model\User as BaseUser;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
- * @ORM\Table(name="fos_user")
- * @ORM\AttributeOverrides({
- *   
- * })
- *
+ * User
  */
-
-
-//   @ORM\AttributeOverride(name="id", column=@ORM\Column(type="string", name="email_address", length=255))
-
-//  @OneToOne(targetEntity="Freelancer")   
-
 class User extends BaseUser
-{
-       
+{   
     /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-    
-    /**
-     * @ORM\Column(type="string")
+     * @var string
      */
     protected $pseudo;
-    
+
     /**
-     * 
-     * @ORM\Column(type="string")
+     * @var string
      */
     protected $typecompte;
+
     
-        
-    function getId() {
-        return $this->id;
+    /**
+     * Set pseudo
+     *
+     * @param string $pseudo
+     *
+     * @return User
+     */
+    public function setPseudo($pseudo)
+    {
+        $this->pseudo = $pseudo;
+
+        return $this;
     }
 
-    function setId($id) {
-        $this->id = $id;
-    }
     
-    function getTypecompte() {
-        return $this->typecompte;
-    }
-
-    function setTypecompte($typecompte) {
-        $this->typecompte = $typecompte;
-    }
-
-    function getPseudo() {
+    /**
+     * Get pseudo
+     *
+     * @return string
+     */
+    public function getPseudo()
+    {
         return $this->pseudo;
     }
 
-    function setPseudo($pseudo) {
-        $this->pseudo = $pseudo;
+    /**
+     * Set typecompte
+     *
+     * @param string $typecompte
+     *
+     * @return User
+     */
+    public function setTypecompte($typecompte)
+    {
+        $this->typecompte = $typecompte;
+
+        return $this;
     }
- 
+
+    /**
+     * Get typecompte
+     *
+     * @return string
+     */
+    public function getTypecompte()
+    {
+        return $this->typecompte;
+    }
     
+      
     public function __construct()
     {
         parent::__construct();
         // your own logic
     }
     
-
+    
 }
+

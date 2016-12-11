@@ -1,0 +1,21 @@
+AppBundle\Entity\User:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+                fields:
+    pseudo:
+        type: string
+        length: 255
+    typecompte:
+        type: string
+        length: 255
+
+    lifecycleCallbacks: {  }
+
+

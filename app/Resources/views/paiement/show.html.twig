@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% block titre %}
+
+        <h1 id="logo"><a class="bigtitle">Paiements</a></h1>  
+
+{% endblock %}
+
+{% block body %}    
+    <div class="formulairetop">
+        <h1 class="mysubtitle">Afficher un Paiement</h1>
+        <div class="mycontentform">
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Idpaiement</th>
+                        <td>{{ paiement.idPaiement }}</td>
+                    </tr>
+                    <tr>
+                        <th>Etat</th>
+                        <td>{{ paiement.etat }}</td>
+                    </tr>
+                    <tr>
+                        <th>Dpsociete</th>
+                        <td>{{ paiement.dpSociete }}</td>
+                    </tr>
+                    <tr>
+                        <th>Dpfreelancer</th>
+                        <td>{{ paiement.dpFreelancer }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <ul>
+                <li>
+                    <a href="{{ path('paiement_index') }}">Retourner à la liste</a>
+                </li>
+                <li>
+                    <a href="{{ path('paiement_edit', { 'id': paiement.idPaiement }) }}">Modifier</a>
+                </li>
+                <li>
+                    {{ form_start(delete_form) }}
+                        <input type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

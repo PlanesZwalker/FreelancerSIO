@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block titre %}
+
+        <h1 id="logo"><a class="bigtitle">Utilisateurs</a></h1>  
+
+{% endblock %}
+
+{% block body %}    
+    <div class="formulairetop">
+        <h1 class="mysubtitle">Lsite des Utilisateurs </h1>
+                <div class="mycontentform">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('user_show', { 'id': user.id }) }}">Afficher</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('user_edit', { 'id': user.id }) }}">Modifier</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <ul>
+                <li>
+                    <a href="{{ path('user_new') }}">Créer un nouveau  user</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

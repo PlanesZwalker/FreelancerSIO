@@ -8,26 +8,26 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Forms;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+//use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 
-use Symfony\Component\Form\Extension\HttpFoundation\HttpFoundationExtension;
-use Symfony\Component\Validator\Constraints\Type;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
-use FOS\UserBundle\Form\Factory\FactoryInterface;
+//use Symfony\Component\Form\Extension\HttpFoundation\HttpFoundationExtension;
+//use Symfony\Component\Validator\Constraints\Type;
+//use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+//use Symfony\Component\Form\Extension\Core\Type\DateType;
+//use Symfony\Component\Form\Extension\Core\Type\FormType;
+//use FOS\UserBundle\Form\Factory\FactoryInterface;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Model\UserInterface;
-use FOS\UserBundle\Model\UserManagerInterface;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+//use FOS\UserBundle\Model\UserManagerInterface;
+//use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Response;
+//use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  
 $formFactory = Forms::createFormFactory();
@@ -50,7 +50,7 @@ class DefaultController extends Controller
             'name'=>$name
         ));
     }
-    
+
     
     /**
      * @Route("/logout", name="logout")
@@ -118,18 +118,7 @@ class DefaultController extends Controller
         ));
     }
     
-     /**
-     * @Route("/test", name="test")
-     */
-    public function testAction(Request $request)
-    {
-            $name='test';
-        
-         return $this->render('/listfreelancer.html.twig', array(
-            'name' => $name,
-        )); 
-   
-    }
+  
      /**
      * @Route("/listfreelancer", name="listfreelancer")
      */
@@ -152,15 +141,6 @@ class DefaultController extends Controller
          return $this->render('/listprojet.html.twig', array(
             'name' => $name,
         )); 
-   
-    }
-    
-    /**
-     * @Route("/addprojet", name="addprojet")
-     */
-    public function addProjetAction(Request $request)
-    {
-        return $this->render('/societe/addprojet.html.twig');
    
     }
     
@@ -216,7 +196,7 @@ class DefaultController extends Controller
         ));
    
     }
-
+    
 
 
 }

@@ -1,0 +1,23 @@
+AppBundle\Entity\Category:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\CategoryRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        blogPost:
+            type: string
+            length: 255
+        category:
+            type: string
+            length: 255
+        draft:
+            type: boolean
+    lifecycleCallbacks: {  }

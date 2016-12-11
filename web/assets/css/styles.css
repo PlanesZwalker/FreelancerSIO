@@ -8,8 +8,6 @@ and open the template in the editor.
     Author     : passpass
 */
 
-
-
 /* Page and overlay */
 
 .ui-page-theme-a
@@ -24,23 +22,31 @@ and open the template in the editor.
     float:none;
 }
 
+#manavnavbar{
+     position:absolute;
+     top:10px; 
+     width:95vw; 
+     margin-left:2vw ;
+}
 
 
 .manav{
   margin:5px !important;
   border-radius:8px;
-  font-size:17px !important;
-  background-color: rgba(1,1,1,0.5) !important;
+  font-size:0.75vw !important;
+  background-color: rgba(1,1,1,0.7) !important;
   text-shadow: 1px 3px 3px black !important;
   color:white !important;
   font-weight: 100 !important;
+  border:2px solid black !important;
 }
 
 .manav:hover{
 
-  background-color: rgba(1,1,1,0.6) !important;
+  background-color: rgba(1,1,1,1) !important;
   color:lightskyblue !important;
   font-weight: 200 !important;
+  color:white !important;
 }
 
 .bigtitle{
@@ -48,16 +54,16 @@ and open the template in the editor.
    
 }
 
-    .mysubtitle{
-        color:white; 
-        margin-top:5%;
-        background-color:rgba(1,1,1,0.6); 
-        border-radius:8px 8px 0px 0px;
-        height:70px; 
-        font-size:17px;
-        padding:15px;
-       text-align:center;
-    }
+.mysubtitle{
+    color:white; 
+    margin-top:5%;
+    background-color:rgba(1,1,1,0.6); 
+    border-radius:8px 8px 0px 0px;
+    height:70px; 
+    font-size:17px;
+    padding:15px;
+   text-align:center;
+}
 
 
 
@@ -130,14 +136,31 @@ and open the template in the editor.
     background-color:rgba(255,255,255,0.3);   
 }
 
+#monico:hover{
+    height:8vw !important;
+    width:8vw !important;
+    top:7vw !important;
+}
+
 
 .monform{
     
-    margin-top: -3%;
+    margin-top: -2%;
     background-color: #E0E0E1;
     margin-bottom: 20%;
     padding: 2%;
     border-radius: 0px 0px 8px 8px;
+}
+
+
+.mycontentform{
+    
+    margin-top: -2%;
+    background-color: #E0E0E1;
+    margin-bottom: 20%;
+    padding: 2% !important;
+    border-radius: 0px 0px 8px 8px;
+    text-align:left;
 }
 
 .flash-success{
@@ -146,4 +169,27 @@ and open the template in the editor.
     color:black;
     text-shadow:1px 1px 1px gray;
     padding:0;
+}
+
+#admintistrationbtn{
+
+}
+
+
+#administration{
+    position:absolute !important;
+    z-index:999!important;
+    background-color:rgba(179,221,236,0.8) !important;  
+    right:0vw;
+    width:90vw;
+    top:7vw;
+    border-radius:18px;
+}
+
+#closeadministration{
+    background-color:rgba(205,51,51,1) !important;       
+}
+
+#showadministration{
+    background-color:rgba(0,100,0,1) !important;       
 }

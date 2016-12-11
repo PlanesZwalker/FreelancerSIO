@@ -1,0 +1,32 @@
+AppBundle\Entity\Test:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\TestRepository
+    id:
+        idTest:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        description:
+            type: string
+            length: 255
+        urlTest:
+            type: string
+            length: 255
+            column: url_test
+        resultat:
+            type: string
+            length: 255
+        datePassage:
+            type: datetime
+            length: 255
+            column: date_passage
+        idFreelancer:
+            type: integer
+            column: id_freelancer
+        idCompetence:
+            type: integer
+            column: id_competence
+    lifecycleCallbacks: {  }

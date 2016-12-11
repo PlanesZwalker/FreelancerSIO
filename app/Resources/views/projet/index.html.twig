@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block titre %}
+
+        <h1 id="logo"><a class="bigtitle">Projets</a></h1>  
+
+{% endblock %}
+
+{% block body %}    
+    <div class="formulairetop">
+        <h1 class="mysubtitle">Liste des Projets</h1>
+        <div class="mycontentform">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Idprojet</th>
+                        <th>Prix</th>
+                        <th>Etape</th>
+                        <th>Description</th>
+                        <th>Idsociete</th>
+                        <th>Idcdc</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for projet in projets %}
+                    <tr>
+                        <td><a href="{{ path('projet_show', { 'id': projet.idProjet }) }}">{{ projet.idProjet }}</a></td>
+                        <td>{{ projet.prix }}</td>
+                        <td>{{ projet.etape }}</td>
+                        <td>{{ projet.description }}</td>
+                        <td>{{ projet.idSociete }}</td>
+                        <td>{{ projet.idCdc }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('projet_show', { 'id': projet.idProjet }) }}">Afficher</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('projet_edit', { 'id': projet.idProjet }) }}">Modifier</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <ul>
+                <li>
+                    <a href="{{ path('projet_new') }}">Créer un nouveau  projet</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

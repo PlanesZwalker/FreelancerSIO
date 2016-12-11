@@ -1,7 +1,26 @@
+{% block javascript %}   
+    <script>
+        $(document).ready(function(){
+
+            $("#administrationbtn").click(function(){
+
+                $("#administration").show("fast").trigger( 'updatelayout' );
+            });
+
+            $("#closeadministration").click(function(){
+
+                $("#administration").hide("slow").trigger( 'updatelayout' );
+            });
+        });
+        
+          </script>
+{% endblock %}
 
 {% block nav %}
-    <nav data-role="navbar" style=" position:absolute; top:10px; width:95vw; margin-left:2vw ">
-        <ul >    
+ 
+    <nav id="manavnavbar" data-role="navbar" >
+
+        <ul>    
             <li>
                 <a href="{{  path('front') }}" class="manav icon fa-home ">
                     &nbsp;&nbsp;&nbsp;<span>Accueil</span>
@@ -31,45 +50,111 @@
                     </li>
                 {% endif %}
             {% endif %}               
-            <li  onmouseover="sousmenuon2()" onmouseout="sousmenuoff2()" id="sousmenu1">
-                <a href="{{ path('listprojet') }}"  class="manav icon Example of newspaper-o fa-newspaper-o ">
+            <li onmouseover="sousmenuon2()" onmouseout="sousmenuoff2()" id="sousmenu1">
+                <a href="{{ path('projet_index') }}"  class="manav icon Example of newspaper-o fa-newspaper-o ">
                     &nbsp;&nbsp;&nbsp;<span>Consulter les Projets</span>
                 </a>
-                <ul style="display:none; " id="test2">    
-                    <li  style="width:19vw"><a href="{{  path('front') }}" class="manav icon fa-eye " style="display:block;">
-                   &nbsp;&nbsp;&nbsp;Sociétés</a></li>    
-                    <li style="width:19vw; "><a href="{{  path('front') }}" class="manav icon fa-calendar"  style="display:block;">
-                   &nbsp;&nbsp;&nbsp;Catégories</a></li>    
-                    <li style="width:19vw; box-sizing: border-box;"><a href="{{  path('front') }}" class="manav icon fa-dashboard" style="display:block;">
-                   &nbsp;&nbsp;&nbsp;Date de publication</a></li>    
-               </ul>
+               
             </li>           
             <li onmouseover="sousmenuon()" onmouseout="sousmenuoff()">
-                <a href="{{ path('listfreelancer') }}"  class="manav icon fa-users" >
-                    &nbsp;&nbsp;&nbsp;<span>Voir les Freelancers</span>
+                <a href="{{ path('freelancer_index') }}"  class="manav icon fa-users" >
+                    &nbsp;&nbsp;&nbsp;<span>Voir les Profils des Freelancers</span>
                 </a>  
-                    <ul style="display:none; " id="test">    
-                         <li  style="width:19vw"><a href="{{  path('front') }}" class="manav icon fa-eye " style="display:block;">
-                        &nbsp;&nbsp;&nbsp;Compétences</a></li>    
-                         <li style="width:19vw; "><a href="{{  path('front') }}" class="manav icon fa-calendar"  style="display:block;">
-                        &nbsp;&nbsp;&nbsp;Date d'inscription</a></li>    
-                         <li style="width:19vw; box-sizing: border-box;"><a href="{{  path('front') }}" class="manav icon fa-dashboard" style="display:block;">
-                        &nbsp;&nbsp;&nbsp;Activités Réalisées</a></li>    
-                    </ul>
+                
             </li>
             {% if is_granted("ROLE_USER") %}
-                <li>
-                    <a href="{{ path('addprojet') }}"  class="manav icon fa-plus-square" >
-                        &nbsp;&nbsp;&nbsp;<span>Créer un Projet</span>
-                    </a>
-                </li> 
                 <li>
                     <a href="{{ path('editprofil') }}"  class="manav icon fa-edit" >
                         &nbsp;&nbsp;&nbsp;<span>Modifier mon Profil</span>
                     </a>
                 </li> 
             {% endif %}
-           
+            
+            
+            {% if is_granted("ROLE_ADMIN") %}
+                <li>
+                    <a id="administrationbtn" class="manav icon newspaper-o fa-newspaper-o " >
+                    &nbsp;&nbsp;&nbsp;<span>Administrer le site</span>
+                    </a>
+                    <ul id="administration" style="display:none;">    
+                        <li >
+                            <a href="{{ path('myadmin_index') }}"  class="manav icon fa-plus-square" >
+                                &nbsp;&nbsp;&nbsp;<span>Gestion des Administrateurs</span>
+                            </a>
+                        </li> 
+                        <li>
+                            <a href="{{ path('cahierdescharges_index') }}"  class="manav icon fa-edit" >
+                                &nbsp;&nbsp;&nbsp;<span>Gestion des Cahiers des charges</span>
+                            </a>
+                        </li> 
+                        <li>
+                            <a href="{{ path('category_index') }}"  class="manav icon fa-plus-square" >
+                                &nbsp;&nbsp;&nbsp;<span>Gestion des Catégories</span>
+                            </a>
+                        </li> 
+                        <li>
+                            <a href="{{ path('competence_index') }}"  class="manav icon fa-edit" >
+                                &nbsp;&nbsp;&nbsp;<span>Gestion des Compétences</span>
+                            </a>
+                        </li> 
+                        <li>
+                            <a href="{{ path('contrat_index') }}"  class="manav icon fa-plus-square" >
+                                &nbsp;&nbsp;&nbsp;<span>Gestion des Contrats</span>
+                            </a>
+                        </li> 
+                        <li>
+                            <a href="{{ path('freelancer_index') }}"  class="manav icon fa-edit" >
+                                &nbsp;&nbsp;&nbsp;<span>Gestion des Freelancers</span>
+                            </a>
+                        </li> 
+                        <li>
+                            <a href="{{ path('message_index') }}"  class="manav icon fa-plus-square" >
+                                &nbsp;&nbsp;&nbsp;<span>Gestion des Messages</span>
+                            </a>
+                        </li> 
+                        <li>
+                            <a href="{{ path('offre_index') }}"  class="manav icon fa-edit" >
+                                &nbsp;&nbsp;&nbsp;<span>Gestion des Offres</span>
+                            </a>
+                        </li> 
+                        <li>
+                            <a href="{{ path('paiement_index') }}"  class="manav icon fa-plus-square" >
+                                &nbsp;&nbsp;&nbsp;<span>Gestion des Paiements</span>
+                            </a>
+                        </li> 
+                        <li>
+                            <a href="{{ path('projet_index') }}"  class="manav icon fa-edit" >
+                                &nbsp;&nbsp;&nbsp;<span>Gestion des Projets</span>
+                            </a>
+                        </li> 
+                        <li>
+                            <a href="{{ path('societe_index') }}"  class="manav icon fa-plus-square" >
+                                &nbsp;&nbsp;&nbsp;<span>Gestion des Sociétés</span>
+                            </a>
+                        </li> 
+                        <li>
+                            <a href="{{ path('test_index') }}"  class="manav icon fa-edit" >
+                                &nbsp;&nbsp;&nbsp;<span>Gestion des Tests</span>
+                            </a>
+                        </li> 
+                        <li>
+                            <a href="{{ path('user_index') }}"  class="manav icon fa-edit" >
+                                &nbsp;&nbsp;&nbsp;<span>Gestion des Utilisateurs</span>
+                            </a>
+                        </li> 
+                        <li>
+                            <a  href="{{ path('sonata_admin_dashboard') }}" class="manav icon fa-edit" id="showadministration" >
+                                &nbsp;&nbsp;&nbsp;<span>Accéder au Back-Office</span>
+                            </a>
+                        </li> 
+                         <li>
+                            <a class="manav icon fa-edit" id="closeadministration" >
+                                &nbsp;&nbsp;&nbsp;<span>Fermer le menu</span>
+                            </a>
+                        </li> 
+                    </ul>
+                </li>    
+            {% endif %}
         </ul>
     </nav>
   {% endblock %} 

@@ -1,0 +1,23 @@
+AppBundle\Entity\Paiement:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\PaiementRepository
+    id:
+        idPaiement:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        etat:
+            type: string
+            length: 255
+        dpSociete:
+            type: string
+            length: 255
+            column: dp_societe
+        dpFreelancer:
+            type: string
+            length: 255
+            column: dp_freelancer
+    lifecycleCallbacks: {  }

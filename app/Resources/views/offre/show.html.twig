@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block titre %}
+
+        <h1 id="logo"><a class="bigtitle">Offres</a></h1>  
+
+{% endblock %}
+
+{% block body %}    
+    <div class="formulairetop">
+        <h1 class="mysubtitle">Afficher une Offre</h1>
+        <div class="mycontentform">
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Idoffre</th>
+                        <td>{{ offre.idOffre }}</td>
+                    </tr>
+                    <tr>
+                        <th>Tarif</th>
+                        <td>{{ offre.tarif }}</td>
+                    </tr>
+                    <tr>
+                        <th>Delai</th>
+                        <td>{{ offre.delai }}</td>
+                    </tr>
+                    <tr>
+                        <th>Propcommerciale</th>
+                        <td>{{ offre.propCommerciale }}</td>
+                    </tr>
+                    <tr>
+                        <th>Particularite</th>
+                        <td>{{ offre.particularite }}</td>
+                    </tr>
+                    <tr>
+                        <th>Idfreelancer</th>
+                        <td>{{ offre.idFreelancer }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <ul>
+                <li>
+                    <a href="{{ path('offre_index') }}">Retourner à la liste</a>
+                </li>
+                <li>
+                    <a href="{{ path('offre_edit', { 'id': offre.idOffre }) }}">Modifier</a>
+                </li>
+                <li>
+                    {{ form_start(delete_form) }}
+                        <input type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

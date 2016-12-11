@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% block titre %}
+
+        <h1 id="logo"><a class="bigtitle">Compétences</a></h1>  
+
+{% endblock %}
+
+{% block body %}    
+    <div class="formulairetop">
+        <h1 class="mysubtitle">Voir les Compétences</h1>
+        <div class="mycontentform">
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Idcompetence</th>
+                        <td>{{ competence.idCompetence }}</td>
+                    </tr>
+                    <tr>
+                        <th>Categorie</th>
+                        <td>{{ competence.categorie }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ competence.description }}</td>
+                    </tr>
+                    <tr>
+                        <th>Idfreelancer</th>
+                        <td>{{ competence.idFreelancer }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <ul>
+                <li>
+                    <a href="{{ path('competence_index') }}">Retourner à la liste</a>
+                </li>
+                <li>
+                    <a href="{{ path('competence_edit', { 'id': competence.idCompetence }) }}">Modifier</a>
+                </li>
+                <li>
+                    {{ form_start(delete_form) }}
+                        <input type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

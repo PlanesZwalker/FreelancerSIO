@@ -1,0 +1,25 @@
+AppBundle\Entity\Projet:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\ProjetRepository
+    id:
+        idProjet:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        prix:
+            type: float
+        etape:
+            type: integer
+        description:
+            type: string
+            length: 255
+        idSociete:
+            type: integer
+            column: id_societe
+        idCdc:
+            type: integer
+            column: id_cdc
+    lifecycleCallbacks: {  }

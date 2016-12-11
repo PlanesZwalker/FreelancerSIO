@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block titre %}
+
+        <h1 id="logo"><a class="bigtitle">Compétences</a></h1>  
+
+{% endblock %}
+
+{% block body %}    
+    <div class="formulairetop">
+        <h1 class="mysubtitle">Liste des Compétences</h1>
+        <div class="mycontentform">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Idcompetence</th>
+                        <th>Categorie</th>
+                        <th>Description</th>
+                        <th>Idfreelancer</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for competence in competences %}
+                    <tr>
+                        <td><a href="{{ path('competence_show', { 'id': competence.idCompetence }) }}">{{ competence.idCompetence }}</a></td>
+                        <td>{{ competence.categorie }}</td>
+                        <td>{{ competence.description }}</td>
+                        <td>{{ competence.idFreelancer }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('competence_show', { 'id': competence.idCompetence }) }}">Afficher</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('competence_edit', { 'id': competence.idCompetence }) }}">Modifier</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <ul>
+                <li>
+                    <a href="{{ path('competence_new') }}">Créer un nouveau  competence</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

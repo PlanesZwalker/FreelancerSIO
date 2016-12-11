@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+{% block titre %}
+
+        <h1 id="logo"><a class="bigtitle">Contrats</a></h1>  
+
+{% endblock %}
+
+{% block body %}    
+    <div class="formulairetop">
+        <h1 class="mysubtitle">Afficher le contrat</h1>
+        <div class="mycontentform">
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Idcontrat</th>
+                        <td>{{ contrat.idContrat }}</td>
+                    </tr>
+                    <tr>
+                        <th>Tarif</th>
+                        <td>{{ contrat.tarif }}</td>
+                    </tr>
+                    <tr>
+                        <th>Delai</th>
+                        <td>{{ contrat.delai }}</td>
+                    </tr>
+                    <tr>
+                        <th>Datesign</th>
+                        <td>{% if contrat.dateSign %}{{ contrat.dateSign|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Idpaiement</th>
+                        <td>{{ contrat.idPaiement }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <ul>
+                <li>
+                    <a href="{{ path('contrat_index') }}"></a>
+                </li>
+                <li>
+                    <a href="{{ path('contrat_edit', { 'id': contrat.idContrat }) }}">Modifier</a>
+                </li>
+                <li>
+                    {{ form_start(delete_form) }}
+                        <input type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

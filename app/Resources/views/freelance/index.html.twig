@@ -12,9 +12,13 @@
 {% block body %} 
     <div class="formulairetop">
     {% if is_granted("ROLE_USER") %}
-          <h2 id="logo" class=" mysubtitle inputformtop">Espace Personnel / TABLEAU DE BORD Freelancer</h2>  
+          <h2  class=" mysubtitle inputformtop">Espace Personnel / TABLEAU DE BORD Freelancer</h2>  
+            {% if is_granted("ROLE_ADMIN") %}
+                <a href="{{ path ('sonata_admin_dashboard') }}"><h2 class="monform inputformtop">Accéder au Back-Office</h2></a> 
+          {% endif %}
     {% else %}
-          <h2 id="logo" class="mysubtitle inputformtop">Espace réservé aux Freelancer</h2>  
+          <h2 class="mysubtitle inputformtop">Espace réservé aux Freelancer</h2>  
+        
     {% endif %}
     </div>
         

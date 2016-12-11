@@ -1,0 +1,4 @@
+app_cahierdescharges:
+    resource: "@AppBundle/Resources/config/routing/cahierdescharges.yml"
+    prefix:   /cahierdescharges
+

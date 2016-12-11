@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block titre %}
+
+        <h1 id="logo"><a class="bigtitle">Cahier des Charges</a></h1>  
+
+{% endblock %}
+
+{% block body %}    
+    <div class="formulairetop">
+        <h1 class="mysubtitle">Ajouter un Cahier des Charges</h1>
+        <div class="mycontentform">
+            {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <input type="submit" value="Create" />
+            {{ form_end(form) }}
+
+            <ul>
+                <li>
+                    <a href="{{ path('cahierdescharges_index') }}">Retourner à la liste</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

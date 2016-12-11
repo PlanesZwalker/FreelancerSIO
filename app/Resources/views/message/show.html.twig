@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+{% block titre %}
+
+        <h1 id="logo"><a class="bigtitle">Messages</a></h1>  
+
+{% endblock %}
+
+{% block body %}    
+    <div class="formulairetop">
+        <h1 class="mysubtitle">Afficher un Message</h1>
+        <div class="mycontentform">
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Idmessage</th>
+                        <td>{{ message.idMessage }}</td>
+                    </tr>
+                    <tr>
+                        <th>Idfreelancer</th>
+                        <td>{{ message.idFreelancer }}</td>
+                    </tr>
+                    <tr>
+                        <th>Idsociete</th>
+                        <td>{{ message.idSociete }}</td>
+                    </tr>
+                    <tr>
+                        <th>Type</th>
+                        <td>{{ message.type }}</td>
+                    </tr>
+                    <tr>
+                        <th>Sujet</th>
+                        <td>{{ message.sujet }}</td>
+                    </tr>
+                    <tr>
+                        <th>Contenu</th>
+                        <td>{{ message.contenu }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <td>{% if message.date %}{{ message.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Idadmin</th>
+                        <td>{{ message.idAdmin }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <ul>
+                <li>
+                    <a href="{{ path('message_index') }}">Retourner à la liste</a>
+                </li>
+                <li>
+                    <a href="{{ path('message_edit', { 'id': message.idMessage }) }}">Modifier</a>
+                </li>
+                <li>
+                    {{ form_start(delete_form) }}
+                        <input type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

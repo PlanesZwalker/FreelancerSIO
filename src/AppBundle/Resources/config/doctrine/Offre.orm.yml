@@ -1,0 +1,27 @@
+AppBundle\Entity\Offre:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\OffreRepository
+    id:
+        idOffre:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        tarif:
+            type: float
+        delai:
+            type: string
+            length: 255
+        propCommerciale:
+            type: string
+            length: 255
+            column: prop_commerciale
+        particularite:
+            type: string
+            length: 255
+        idFreelancer:
+            type: integer
+            column: id_freelancer
+    lifecycleCallbacks: {  }

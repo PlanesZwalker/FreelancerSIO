@@ -1,0 +1,24 @@
+AppBundle\Entity\Contrat:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\ContratRepository
+    id:
+        idContrat:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+            column: id_contrat    
+    fields:
+        tarif:
+            type: float
+        delai:
+            type: string
+            length: 255
+        dateSign:
+            type: datetime
+            column: date_sign
+        idPaiement:
+            type: integer
+            column: id_paiement
+    lifecycleCallbacks: {  }

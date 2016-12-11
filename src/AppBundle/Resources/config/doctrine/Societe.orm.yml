@@ -1,0 +1,20 @@
+AppBundle\Entity\Societe:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\SocieteRepository
+    id:
+        idSociete:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        siret:
+            type: bigint
+        denomination:
+            type: string
+            length: 255
+        idUser:
+            type: integer
+            column: id_user
+    lifecycleCallbacks: {  }

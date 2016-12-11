@@ -61,10 +61,11 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+    
       
 # FOSUserBundle Configuration       
 fos_user:
-    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    db_driver: orm 
     firewall_name: main
     user_class: AppBundle\Entity\User
     registration:
@@ -83,8 +84,7 @@ swiftmailer:
     spool:     { type: memory }
 
 # Bundle pour ckeditor  Configuration
-ivory_ck_editor:
-  
+ivory_ck_editor: 
     configs:
         my_config:
             toolbar: full
@@ -95,5 +95,31 @@ ivory_ck_editor:
         filebrowsers:
             - VideoBrowse
             - VideoUpload
-             
-   
+              
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+        sonata.admin.block.search_result:
+            contexts: [admin]
+
+sonata_admin:
+    title:                "Free Demat' Lancer's"
+    title_logo:           /iconFD2.png
+    templates:
+        # other configuration options
+        search:              SonataAdminBundle:Core:search.html.twig
+        search_result_block: SonataAdminBundle:Block:block_search_result.html.twig          
+
+knp_menu:
+    # use "twig: false" to disable the Twig extension and the TwigRenderer
+    twig:
+        template: KnpMenuBundle::menu.html.twig
+    #  if true, enables the helper for PHP templates
+    templating: false
+    # the renderer to use, list is also available by default
+    default_renderer: twig
+    
+    

@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+{% block titre %}
+
+        <h1 id="logo"><a class="bigtitle">Messages</a></h1>  
+
+{% endblock %}
+
+{% block body %}    
+    <div class="formulairetop">
+        <h1 class="mysubtitle">Liste des Messages</h1>
+        <div class="mycontentform">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Idmessage</th>
+                        <th>Idfreelancer</th>
+                        <th>Idsociete</th>
+                        <th>Type</th>
+                        <th>Sujet</th>
+                        <th>Contenu</th>
+                        <th>Date</th>
+                        <th>Idadmin</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for message in messages %}
+                    <tr>
+                        <td><a href="{{ path('message_show', { 'id': message.idMessage }) }}">{{ message.idMessage }}</a></td>
+                        <td>{{ message.idFreelancer }}</td>
+                        <td>{{ message.idSociete }}</td>
+                        <td>{{ message.type }}</td>
+                        <td>{{ message.sujet }}</td>
+                        <td>{{ message.contenu }}</td>
+                        <td>{% if message.date %}{{ message.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{{ message.idAdmin }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('message_show', { 'id': message.idMessage }) }}">Afficher</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('message_edit', { 'id': message.idMessage }) }}">Modifier</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <ul>
+                <li>
+                    <a href="{{ path('message_new') }}">Créer un nouveau  message</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

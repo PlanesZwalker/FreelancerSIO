@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% block titre %}
+
+        <h1 id="logo"><a class="bigtitle">Sociétés</a></h1>  
+
+{% endblock %}
+
+{% block body %}    
+    <div class="formulairetop">
+        <h1 class="mysubtitle">Afficher la Société</h1>
+        <div class="mycontentform">
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Idsociete</th>
+                        <td>{{ societe.idSociete }}</td>
+                    </tr>
+                    <tr>
+                        <th>Siret</th>
+                        <td>{{ societe.siret }}</td>
+                    </tr>
+                    <tr>
+                        <th>Denomination</th>
+                        <td>{{ societe.denomination }}</td>
+                    </tr>
+                    <tr>
+                        <th>Iduser</th>
+                        <td>{{ societe.idUser }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <ul>
+                <li>
+                    <a href="{{ path('societe_index') }}">Retourner à la liste</a>
+                </li>
+                <li>
+                    <a href="{{ path('societe_edit', { 'id': societe.idSociete }) }}">Modifier</a>
+                </li>
+                <li>
+                    {{ form_start(delete_form) }}
+                        <input type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

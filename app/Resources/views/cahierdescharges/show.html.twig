@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cahierdescharge</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idcdc</th>
+                <td>{{ cahierdescharge.idCdc }}</td>
+            </tr>
+            <tr>
+                <th>Tarif</th>
+                <td>{{ cahierdescharge.tarif }}</td>
+            </tr>
+            <tr>
+                <th>Delai</th>
+                <td>{{ cahierdescharge.delai }}</td>
+            </tr>
+            <tr>
+                <th>Idcontrat</th>
+                <td>{{ cahierdescharge.idContrat }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('cahierdescharges_index') }}">Retourner à la liste</a>
+        </li>
+        <li>
+            <a href="{{ path('cahierdescharges_edit', { 'id': cahierdescharge.idCdc }) }}">Modifier</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

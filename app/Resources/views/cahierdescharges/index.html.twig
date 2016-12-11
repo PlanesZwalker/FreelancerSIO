@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+{% block titre %}
+
+        <h1 id="logo"><a class="bigtitle">Compétences</a></h1>  
+
+{% endblock %}
+
+{% block body %}    
+    <div class="formulairetop">
+        <h1 class="mysubtitle">Liste des compétences</h1>
+        <div class="mycontentform">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Idcdc</th>
+                        <th>Tarif</th>
+                        <th>Delai</th>
+                        <th>Idcontrat</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for cahierdescharge in cahierdescharges %}
+                    <tr>
+                        <td><a href="{{ path('cahierdescharges_show', { 'id': cahierdescharge.idCdc }) }}">{{ cahierdescharge.idCdc }}</a></td>
+                        <td>{{ cahierdescharge.tarif }}</td>
+                        <td>{{ cahierdescharge.delai }}</td>
+                        <td>{{ cahierdescharge.idContrat }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('cahierdescharges_show', { 'id': cahierdescharge.idCdc }) }}">Afficher</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('cahierdescharges_edit', { 'id': cahierdescharge.idCdc }) }}">Modifier</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <ul>
+                <li>
+                    <a href="{{ path('cahierdescharges_new') }}">Créer un nouveau  cahierdescharge</a>
+                </li>
+            </ul>
+            
+        </div>        
+    </div>
+{% endblock %}

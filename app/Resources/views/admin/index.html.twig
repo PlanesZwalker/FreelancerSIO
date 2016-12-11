@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block titre %}
+
+        <h1 id="logo"><a class="bigtitle">Administrateurs</a></h1>  
+
+{% endblock %}
+
+{% block body %}    
+    <div class="formulairetop">
+        <h1 class="mysubtitle">Liste des Administrateurs</h1>
+        <div class="mycontentform">
+            <table >
+                <thead>
+                    <tr>
+                        <th>Idadmin</th>
+                        <th>Iduser</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for admin in admins %}
+                    <tr>
+                        <td><a href="{{ path('myadmin_show', { 'id': admin.idAdmin }) }}">{{ admin.idAdmin }}</a></td>
+                        <td>{{ admin.idUser }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('myadmin_show', { 'id': admin.idAdmin }) }}">Afficher</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('myadmin_edit', { 'id': admin.idAdmin }) }}">Modifier</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <ul>
+                <li>
+                    <a href="{{ path('myadmin_new') }}">Créer un nouveau  admin</a>
+                </li>
+            </ul>
+        </div>        
+    </div>
+{% endblock %}

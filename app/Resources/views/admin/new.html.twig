@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block titre %}
+
+        <h1 id="logo"><a class="bigtitle">Administrateurs</a></h1>  
+
+{% endblock %}
+
+{% block body %}    
+    <div class="formulairetop">
+        <h1 class="mysubtitle">Création d'un Administrateur</h1>
+        <div class="mycontentform">
+            {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <input type="submit" value="Create" />
+            {{ form_end(form) }}
+            <ul>
+                <li>
+                    <a href="{{ path('myadmin_index') }}">Retourner à la liste</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

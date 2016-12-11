@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block titre %}
+
+    <h1 id="logo"><a class="bigtitle">Administrateur</a></h1>  
+
+{% endblock %}
+
+{% block body %}    
+    <div class="formulairetop">
+        <h1 class="mysubtitle">Profil de l'Administrateur</h1>
+        <div class="mycontentform">
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Idadmin</th>
+                        <td>{{ admin.idAdmin }}</td>
+                    </tr>
+                    <tr>
+                        <th>Iduser</th>
+                        <td>{{ admin.idUser }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <ul>
+                <li>
+                    <a href="{{ path('myadmin_index') }}">Retourner à la liste</a>
+                </li>
+                <li>
+                    <a href="{{ path('myadmin_edit', { 'id': admin.idAdmin }) }}">Modifier</a>
+                </li>
+                <li>
+                    {{ form_start(delete_form) }}
+                    <input type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

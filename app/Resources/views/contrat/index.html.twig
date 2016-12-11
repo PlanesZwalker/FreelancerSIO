@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+{% block titre %}
+
+        <h1 id="logo"><a class="bigtitle">Contrats</a></h1>  
+
+{% endblock %}
+
+{% block body %}    
+    <div class="formulairetop">
+        <h1 class="mysubtitle">Listes des contrats</h1>
+        <div class="mycontentform">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Idcontrat</th>
+                        <th>Tarif</th>
+                        <th>Delai</th>
+                        <th>Datesign</th>
+                        <th>Idpaiement</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for contrat in contrats %}
+                    <tr>
+                        <td><a href="{{ path('contrat_show', { 'id': contrat.idContrat }) }}">{{ contrat.idContrat }}</a></td>
+                        <td>{{ contrat.tarif }}</td>
+                        <td>{{ contrat.delai }}</td>
+                        <td>{% if contrat.dateSign %}{{ contrat.dateSign|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{{ contrat.idPaiement }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('contrat_show', { 'id': contrat.idContrat }) }}">Afficher</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('contrat_edit', { 'id': contrat.idContrat }) }}">Modifier</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <ul>
+                <li>
+                    <a href="{{ path('contrat_new') }}">Créer un nouveau  contrat</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
