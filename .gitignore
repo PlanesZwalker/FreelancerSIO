@@ -15,4 +15,4 @@
 /vendor/
 /web/bundles/
 /app/config/parameters
-/nbproject/private/
+!/nbproject
