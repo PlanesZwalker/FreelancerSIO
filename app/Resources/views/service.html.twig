@@ -1,0 +1,36 @@
+{% extends "base.html.twig" %}
+
+{% block titre %}
+        <h1 id="logo"><a class="bigtitle">Téléchargement de fichier</a></h1>  
+{% endblock %}
+
+{% block body %}
+   <div class="formulairetop">
+        <h1 class="mysubtitle">Téléchargement de Fichiers</h1>
+        <div class="mycontentform" style="height:40vh;">
+           
+            <h1 style='margin-left:2vw;'>Documentation du Projet Free Demat' Lancer's</h1>
+            
+            
+            <div style='width:25vw; float:left; margin-left:10vw;'>
+               
+                <a data-ajax="false" href="{{ path('re_download', {'file': "DocumentationTechniquePPE.pdf" }) }}">
+                    <h1><i class="fa fa-download fa-3x"></i></h1>
+                </a>
+                <p style="font-size:17px; margin-left:-2vw;">Documentation Technique</p>  
+            </div>
+                    
+                    
+            <div style='width:20vw; float:right; margin-right:0vw;'>
+          
+                <a data-ajax="false" href="{{ path('re_download', {'file': "CahierDesCharges.pdf" }) }}">         
+                    <h1><i class="fa fa-download fa-3x"></i></h1>
+                </a> 
+                <p style="font-size:17px; margin-left:-1vw;">Cahier des Charges</p>    
+            </div>
+                   
+                    
+        </div>
+   </div>
+{% endblock %}
+

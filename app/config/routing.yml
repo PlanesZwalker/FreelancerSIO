@@ -14,3 +14,11 @@ _sonata_admin:
     type: sonata_admin
     prefix: /admin
 
+re_download:
+    path : /dl/{file}
+    defaults: {_controller:AppBundle:Default:sendFile }
+    
+re_service:
+    path: /service
+    defaults: {_controller:AppBundle:Default:service }
+       

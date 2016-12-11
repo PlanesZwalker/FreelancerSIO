@@ -30,6 +30,13 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 //use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+
+
+
+
+
 $formFactory = Forms::createFormFactory();
 
 class DefaultController extends Controller
@@ -116,6 +123,19 @@ class DefaultController extends Controller
             'formRecherche' => $formRecherche->createView(),
             'form' => $form->createView(),
         ));
+    }
+    
+    public function sendFileAction($file){
+        
+        $file_to_send = "Ressources/public/file/Symfony_book_3_0.pdf";
+        $response = new BinaryFileResponse($file_to_send);
+        $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT,".$file");
+        return $response;
+    }
+    
+    
+    public function serviceAction(){
+        return $this->render('/service.html.twig');
     }
     
   
