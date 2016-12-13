@@ -7,12 +7,12 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h1 class="mysubtitle">Liste des Paiements</h1>
+        <h2 class="mysubtitle">Liste des Paiements</h2>
         <div class="mycontentform">
             <table>
                 <thead>
                     <tr>
-                        <th>Idpaiement</th>
+                        <th>id_paiement</th>
                         <th>Etat</th>
                         <th>Dpsociete</th>
                         <th>Dpfreelancer</th>
@@ -22,17 +22,17 @@
                 <tbody>
                 {% for paiement in paiements %}
                     <tr>
-                        <td><a href="{{ path('paiement_show', { 'id': paiement.idPaiement }) }}">{{ paiement.idPaiement }}</a></td>
+                        <td><a href="{{ path('paiement_show', { 'id': paiement.id_paiement }) }}">{{ paiement.id_paiement }}</a></td>
                         <td>{{ paiement.etat }}</td>
                         <td>{{ paiement.dpSociete }}</td>
                         <td>{{ paiement.dpFreelancer }}</td>
                         <td>
                             <ul>
                                 <li>
-                                    <a href="{{ path('paiement_show', { 'id': paiement.idPaiement }) }}">Afficher</a>
+                                    <a href="{{ path('paiement_show', { 'id': paiement.id_paiement }) }}">Afficher</a>
                                 </li>
                                 <li>
-                                    <a href="{{ path('paiement_edit', { 'id': paiement.idPaiement }) }}">Modifier</a>
+                                    <a href="{{ path('paiement_edit', { 'id': paiement.id_paiement }) }}">Modifier</a>
                                 </li>
                             </ul>
                         </td>

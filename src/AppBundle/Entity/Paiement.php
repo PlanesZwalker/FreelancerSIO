@@ -10,7 +10,7 @@ class Paiement
     /**
      * @var int
      */
-    private $idPaiement;
+    private $id_paiement;
 
     /**
      * @var string
@@ -33,9 +33,9 @@ class Paiement
      *
      * @return int
      */
-    public function getIdPaiement()
+    public function getid_paiement()
     {
-        return $this->idPaiement;
+        return $this->id_paiement;
     }
 
     /**

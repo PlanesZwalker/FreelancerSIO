@@ -10,7 +10,7 @@ class Test
     /**
      * @var int
      */
-    private $idTest;
+    private $id_test;
 
     /**
      * @var string
@@ -35,12 +35,12 @@ class Test
     /**
      * @var int
      */
-    private $idFreelancer;
+    private $id_freelancer;
 
     /**
      * @var int
      */
-    private $idCompetence;
+    private $id_competence;
 
 
     /**
@@ -48,9 +48,9 @@ class Test
      *
      * @return int
      */
-    public function getIdTest()
+    public function getid_test()
     {
-        return $this->idTest;
+        return $this->id_test;
     }
 
     /**
@@ -150,51 +150,51 @@ class Test
     }
 
     /**
-     * Set idFreelancer
+     * Set id_freelancer
      *
-     * @param integer $idFreelancer
+     * @param integer $id_freelancer
      *
      * @return Test
      */
-    public function setIdFreelancer($idFreelancer)
+    public function setid_freelancer($id_freelancer)
     {
-        $this->idFreelancer = $idFreelancer;
+        $this->id_freelancer = $id_freelancer;
 
         return $this;
     }
 
     /**
-     * Get idFreelancer
+     * Get id_freelancer
      *
      * @return int
      */
-    public function getIdFreelancer()
+    public function getid_freelancer()
     {
-        return $this->idFreelancer;
+        return $this->id_freelancer;
     }
 
     /**
-     * Set idCompetence
+     * Set id_competence
      *
-     * @param integer $idCompetence
+     * @param integer $id_competence
      *
      * @return Test
      */
-    public function setIdCompetence($idCompetence)
+    public function setid_competence($id_competence)
     {
-        $this->idCompetence = $idCompetence;
+        $this->id_competence = $id_competence;
 
         return $this;
     }
 
     /**
-     * Get idCompetence
+     * Get id_competence
      *
      * @return int
      */
-    public function getIdCompetence()
+    public function getid_competence()
     {
-        return $this->idCompetence;
+        return $this->id_competence;
     }
 }
 

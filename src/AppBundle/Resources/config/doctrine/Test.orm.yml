@@ -3,7 +3,7 @@ AppBundle\Entity\Test:
     table: null
     repositoryClass: AppBundle\Repository\TestRepository
     id:
-        idTest:
+        id_test:
             type: integer
             id: true
             generator:
@@ -23,10 +23,10 @@ AppBundle\Entity\Test:
             type: datetime
             length: 255
             column: date_passage
-        idFreelancer:
+        id_freelancer:
             type: integer
             column: id_freelancer
-        idCompetence:
+        id_competence:
             type: integer
             column: id_competence
     lifecycleCallbacks: {  }

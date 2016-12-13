@@ -60,7 +60,7 @@ class FreelancerController
         $newFreelancer = new Freelancer();
 
         if (null !== $request->request->get('id_freelancer')) {
-            $newFreelancer->setIdFreelancer($request->request->get('id_freelancer'));
+            $newFreelancer->setid_freelancer($request->request->get('id_freelancer'));
         }
 
         $newFreelancer->setPseudo($request->request->get('pseudo'));
@@ -119,9 +119,9 @@ class FreelancerController
     {
         $id_freelancer = $request->request->get('id_freelancer');
         $newFreelancer = new Freelancer();
-        $newFreelancer->setIdFreelancer($id_freelancer);
+        $newFreelancer->setid_freelancer($id_freelancer);
 
-        $app['dao.freelancer']->deleteFreelancer($newFreelancer->getIdFreelancer());
+        $app['dao.freelancer']->deleteFreelancer($newFreelancer->getid_freelancer());
 
         return $this::deleteFreelancerIndexAction($request, $app);
 

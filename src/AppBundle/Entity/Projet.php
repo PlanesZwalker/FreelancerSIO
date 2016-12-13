@@ -10,7 +10,7 @@ class Projet
     /**
      * @var int
      */
-    private $idProjet;
+    private $id_projet;
 
     /**
      * @var float
@@ -30,7 +30,7 @@ class Projet
     /**
      * @var int
      */
-    private $idSociete;
+    private $id_societe;
 
     /**
      * @var int
@@ -43,9 +43,9 @@ class Projet
      *
      * @return int
      */
-    public function getIdProjet()
+    public function getid_projet()
     {
-        return $this->idProjet;
+        return $this->id_projet;
     }
 
     /**
@@ -121,27 +121,27 @@ class Projet
     }
 
     /**
-     * Set idSociete
+     * Set id_societe
      *
-     * @param integer $idSociete
+     * @param integer $id_societe
      *
      * @return Projet
      */
-    public function setIdSociete($idSociete)
+    public function setid_societe($id_societe)
     {
-        $this->idSociete = $idSociete;
+        $this->id_societe = $id_societe;
 
         return $this;
     }
 
     /**
-     * Get idSociete
+     * Get id_societe
      *
      * @return int
      */
-    public function getIdSociete()
+    public function getid_societe()
     {
-        return $this->idSociete;
+        return $this->id_societe;
     }
 
     /**

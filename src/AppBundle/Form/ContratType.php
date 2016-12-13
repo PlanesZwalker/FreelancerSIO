@@ -13,7 +13,7 @@ class ContratType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('tarif')->add('delai')->add('dateSign')->add('idPaiement')        ;
+        $builder->add('tarif')->add('delai')->add('dateSign')->add('id_paiement')        ;
     }
     
     /**

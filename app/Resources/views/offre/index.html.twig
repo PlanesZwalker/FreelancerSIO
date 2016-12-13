@@ -7,36 +7,36 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h1 class="mysubtitle">Liste des Offres</h1>
+        <h2 class="mysubtitle">Liste des Offres</h2>
         <div class="mycontentform">
             <table>
                 <thead>
                     <tr>
-                        <th>Idoffre</th>
+                        <th>id_offre</th>
                         <th>Tarif</th>
                         <th>Delai</th>
                         <th>Propcommerciale</th>
                         <th>Particularite</th>
-                        <th>Idfreelancer</th>
+                        <th>id_freelancer</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                 {% for offre in offres %}
                     <tr>
-                        <td><a href="{{ path('offre_show', { 'id': offre.idOffre }) }}">{{ offre.idOffre }}</a></td>
+                        <td><a href="{{ path('offre_show', { 'id': offre.id_offre }) }}">{{ offre.id_offre }}</a></td>
                         <td>{{ offre.tarif }}</td>
                         <td>{{ offre.delai }}</td>
                         <td>{{ offre.propCommerciale }}</td>
                         <td>{{ offre.particularite }}</td>
-                        <td>{{ offre.idFreelancer }}</td>
+                        <td>{{ offre.id_freelancer }}</td>
                         <td>
                             <ul>
                                 <li>
-                                    <a href="{{ path('offre_show', { 'id': offre.idOffre }) }}">Afficher</a>
+                                    <a href="{{ path('offre_show', { 'id': offre.id_offre }) }}">Afficher</a>
                                 </li>
                                 <li>
-                                    <a href="{{ path('offre_edit', { 'id': offre.idOffre }) }}">Modifier</a>
+                                    <a href="{{ path('offre_edit', { 'id': offre.id_offre }) }}">Modifier</a>
                                 </li>
                             </ul>
                         </td>

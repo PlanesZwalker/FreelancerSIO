@@ -7,7 +7,7 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h1 class="mysubtitle">Listes des contrats</h1>
+        <h2 class="mysubtitle">Listes des contrats</h2>
         <div class="mycontentform">
             <table>
                 <thead>
@@ -16,7 +16,7 @@
                         <th>Tarif</th>
                         <th>Delai</th>
                         <th>Datesign</th>
-                        <th>Idpaiement</th>
+                        <th>id_paiement</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -27,7 +27,7 @@
                         <td>{{ contrat.tarif }}</td>
                         <td>{{ contrat.delai }}</td>
                         <td>{% if contrat.dateSign %}{{ contrat.dateSign|date('Y-m-d H:i:s') }}{% endif %}</td>
-                        <td>{{ contrat.idPaiement }}</td>
+                        <td>{{ contrat.id_paiement }}</td>
                         <td>
                             <ul>
                                 <li>

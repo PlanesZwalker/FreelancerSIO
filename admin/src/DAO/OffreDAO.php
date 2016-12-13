@@ -78,14 +78,14 @@ class OffreDAO extends DAO
             'dt_update'        => $_offre->getDtUpdate(),
         );
 
-        if($_offre->getIdOffre()){
+        if($_offre->getid_offre()){
             $this->getDb()->update('offre', $offreData, array(
-                'id_offre' => $_offre->getIdOffre()));
+                'id_offre' => $_offre->getid_offre()));
         }
         else{
             $this->getDb()->insert('offre', $offreData);
             $id = $this->getDb()->lastInsertId();
-            $_offre->setIdOffre($id);
+            $_offre->setid_offre($id);
         }
     }
 

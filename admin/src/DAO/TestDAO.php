@@ -126,23 +126,23 @@ class TestDAO extends DAO
             'description'           => $_test->getDescriptionTest(),
             'semestre'              => $_test->getSemestre(),
             'id_class'              => $_test->getClass()->getIdClassName(),
-       //     'id_competence'         => $_test->getCompetence()->getIdCompetence(),
+       //     'id_competence'         => $_test->getCompetence()->getid_competence(),
             'dt_create'             => $_test->getDtCreate(),
             'dt_update'             => $_test->getDtUpdate(),
         );
 
         //on modifie
-        if($_test->getIdTest())
+        if($_test->getid_test())
         {
             $this->getDb()->update('test', $test, array(
-                'id_test'=> $_test->getIdTest()));
+                'id_test'=> $_test->getid_test()));
         }
         //on sauvegarde
         else
         {
             $this->getDb()->insert('test', $test);
          //   $_id_test = $this->getDb()->lastInsertId();
-         //   $_test->setIdTest($_id_test);
+         //   $_test->setid_test($_id_test);
 
         }
     }

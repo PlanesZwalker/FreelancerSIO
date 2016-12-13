@@ -3,7 +3,7 @@ AppBundle\Entity\Projet:
     table: null
     repositoryClass: AppBundle\Repository\ProjetRepository
     id:
-        idProjet:
+        id_projet:
             type: integer
             id: true
             generator:
@@ -16,7 +16,7 @@ AppBundle\Entity\Projet:
         description:
             type: string
             length: 255
-        idSociete:
+        id_societe:
             type: integer
             column: id_societe
         idCdc:

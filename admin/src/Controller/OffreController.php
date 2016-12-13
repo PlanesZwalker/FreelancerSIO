@@ -158,7 +158,7 @@ Class OffreController {
 
 
         $newOffre = new Offre();
-        $newOffre->setIdOffre($id_offre);
+        $newOffre->setid_offre($id_offre);
         $newOffre->setOffreName($name);
         $newOffre->setCoeffOffre($coeff_offre);
  
@@ -200,9 +200,9 @@ Class OffreController {
         $id_offre = $request->request->get('id_offre');
         $newOffre = new Offre();
 
-        $newOffre->setIdOffre($id_offre);
+        $newOffre->setid_offre($id_offre);
 
-        $app['dao.offre']->deleteOffre($newOffre->getIdOffre());
+        $app['dao.offre']->deleteOffre($newOffre->getid_offre());
 
         return $this::deleteOffreIndexAction($request, $app);
 

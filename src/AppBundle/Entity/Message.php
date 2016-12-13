@@ -15,12 +15,12 @@ class Message
     /**
      * @var int
      */
-    private $idFreelancer;
+    private $id_freelancer;
 
     /**
      * @var int
      */
-    private $idSociete;
+    private $id_societe;
 
     /**
      * @var string
@@ -59,51 +59,51 @@ class Message
     }
 
     /**
-     * Set idFreelancer
+     * Set id_freelancer
      *
-     * @param integer $idFreelancer
+     * @param integer $id_freelancer
      *
      * @return Message
      */
-    public function setIdFreelancer($idFreelancer)
+    public function setid_freelancer($id_freelancer)
     {
-        $this->idFreelancer = $idFreelancer;
+        $this->id_freelancer = $id_freelancer;
 
         return $this;
     }
 
     /**
-     * Get idFreelancer
+     * Get id_freelancer
      *
      * @return int
      */
-    public function getIdFreelancer()
+    public function getid_freelancer()
     {
-        return $this->idFreelancer;
+        return $this->id_freelancer;
     }
 
     /**
-     * Set idSociete
+     * Set id_societe
      *
-     * @param integer $idSociete
+     * @param integer $id_societe
      *
      * @return Message
      */
-    public function setIdSociete($idSociete)
+    public function setid_societe($id_societe)
     {
-        $this->idSociete = $idSociete;
+        $this->id_societe = $id_societe;
 
         return $this;
     }
 
     /**
-     * Get idSociete
+     * Get id_societe
      *
      * @return int
      */
-    public function getIdSociete()
+    public function getid_societe()
     {
-        return $this->idSociete;
+        return $this->id_societe;
     }
 
     /**

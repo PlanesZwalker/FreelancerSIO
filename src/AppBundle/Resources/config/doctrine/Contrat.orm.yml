@@ -18,7 +18,7 @@ AppBundle\Entity\Contrat:
         dateSign:
             type: datetime
             column: date_sign
-        idPaiement:
+        id_paiement:
             type: integer
             column: id_paiement
     lifecycleCallbacks: {  }

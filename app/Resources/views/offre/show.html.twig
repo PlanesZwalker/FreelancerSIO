@@ -7,13 +7,13 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h1 class="mysubtitle">Afficher une Offre</h1>
+        <h2 class="mysubtitle">Afficher une Offre</h2>
         <div class="mycontentform">
             <table>
                 <tbody>
                     <tr>
-                        <th>Idoffre</th>
-                        <td>{{ offre.idOffre }}</td>
+                        <th>id_offre</th>
+                        <td>{{ offre.id_offre }}</td>
                     </tr>
                     <tr>
                         <th>Tarif</th>
@@ -32,8 +32,8 @@
                         <td>{{ offre.particularite }}</td>
                     </tr>
                     <tr>
-                        <th>Idfreelancer</th>
-                        <td>{{ offre.idFreelancer }}</td>
+                        <th>id_freelancer</th>
+                        <td>{{ offre.id_freelancer }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -43,7 +43,7 @@
                     <a href="{{ path('offre_index') }}">Retourner à la liste</a>
                 </li>
                 <li>
-                    <a href="{{ path('offre_edit', { 'id': offre.idOffre }) }}">Modifier</a>
+                    <a href="{{ path('offre_edit', { 'id': offre.id_offre }) }}">Modifier</a>
                 </li>
                 <li>
                     {{ form_start(delete_form) }}

@@ -3,7 +3,7 @@ AppBundle\Entity\Freelancer:
     table: null
     repositoryClass: AppBundle\Repository\FreelancerRepository
     id:
-        idFreelancer:
+        id_freelancer:
             type: integer
             id: true
             generator:

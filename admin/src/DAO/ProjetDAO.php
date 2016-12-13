@@ -124,16 +124,16 @@ class ProjetDAO extends DAO
         );
 
         //on modifie
-        if($_Projet->getIdProjet())
+        if($_Projet->getid_projet())
         {
             $this->getDb()->update('Projet', $class, array(
-                'id_projet' => $_Projet->getIdProjet()));
+                'id_projet' => $_Projet->getid_projet()));
         }
         //on sauvegarde
         else{
             $this->getDb()->insert('Projet', $class);
             $_id_Projet = $this->getDb()->lastInsertId();
-            $_Projet->setIdProjet($_id_Projet);
+            $_Projet->setid_projet($_id_Projet);
         }
     }
 

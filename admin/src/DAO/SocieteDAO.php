@@ -73,7 +73,7 @@ class SocieteDAO extends DAO
      *
      * On sauvegarde ou modifie une société
      */
-    public function saveSociete($_societe, $IdSocietes)
+    public function saveSociete($_societe, $id_societes)
     {
         $societe = array(
 
@@ -92,7 +92,7 @@ class SocieteDAO extends DAO
         );
 
         //on modifie  
-        if($IdSocietes)
+        if($id_societes)
         {
             $this->getDb()->update('societe', $societe, array(
                 'id_societe'=> $_societe->getId_societe()));

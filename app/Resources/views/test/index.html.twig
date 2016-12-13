@@ -7,38 +7,38 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h1 class="mysubtitle">Liste des Tests</h1>
+        <h2 class="mysubtitle">Liste des Tests</h2>
         <div class="mycontentform">
             <table>
                 <thead>
                     <tr>
-                        <th>Idtest</th>
+                        <th>id_test</th>
                         <th>Description</th>
                         <th>Urltest</th>
                         <th>Resultat</th>
                         <th>Datepassage</th>
-                        <th>Idfreelancer</th>
-                        <th>Idcompetence</th>
+                        <th>id_freelancer</th>
+                        <th>id_competence</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                 {% for test in tests %}
                     <tr>
-                        <td><a href="{{ path('test_show', { 'id': test.idTest }) }}">{{ test.idTest }}</a></td>
+                        <td><a href="{{ path('test_show', { 'id': test.id_test }) }}">{{ test.id_test }}</a></td>
                         <td>{{ test.description }}</td>
                         <td>{{ test.urlTest }}</td>
                         <td>{{ test.resultat }}</td>
                         <td>{% if test.datePassage %}{{ test.datePassage|date('Y-m-d H:i:s') }}{% endif %}</td>
-                        <td>{{ test.idFreelancer }}</td>
-                        <td>{{ test.idCompetence }}</td>
+                        <td>{{ test.id_freelancer }}</td>
+                        <td>{{ test.id_competence }}</td>
                         <td>
                             <ul>
                                 <li>
-                                    <a href="{{ path('test_show', { 'id': test.idTest }) }}">Afficher</a>
+                                    <a href="{{ path('test_show', { 'id': test.id_test }) }}">Afficher</a>
                                 </li>
                                 <li>
-                                    <a href="{{ path('test_edit', { 'id': test.idTest }) }}">Modifier</a>
+                                    <a href="{{ path('test_edit', { 'id': test.id_test }) }}">Modifier</a>
                                 </li>
                             </ul>
                         </td>

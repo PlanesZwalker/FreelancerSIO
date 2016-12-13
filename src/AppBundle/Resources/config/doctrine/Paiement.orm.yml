@@ -3,7 +3,7 @@ AppBundle\Entity\Paiement:
     table: null
     repositoryClass: AppBundle\Repository\PaiementRepository
     id:
-        idPaiement:
+        id_paiement:
             type: integer
             id: true
             generator:

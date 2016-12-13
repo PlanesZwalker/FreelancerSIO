@@ -7,12 +7,12 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h1 class="mysubtitle">Liste des Freelancers</h1>
+        <h2 class="mysubtitle">Liste des Freelancers</h2>
         <div class="mycontentform">
             <table>
                 <thead>
                     <tr>
-                        <th>Idfreelancer</th>
+                        <th>id_freelancer</th>
                         <th>Urlcv</th>
                         <th>Urlphoto</th>
                         <th>Age</th>
@@ -23,7 +23,7 @@
                 <tbody>
                 {% for freelancer in freelancers %}
                     <tr>
-                        <td><a href="{{ path('freelancer_show', { 'id': freelancer.idFreelancer }) }}">{{ freelancer.idFreelancer }}</a></td>
+                        <td><a href="{{ path('freelancer_show', { 'id': freelancer.id_freelancer }) }}">{{ freelancer.id_freelancer }}</a></td>
                         <td>{{ freelancer.urlCv }}</td>
                         <td>{{ freelancer.urlPhoto }}</td>
                         <td>{{ freelancer.age }}</td>
@@ -31,23 +31,26 @@
                         <td>
                             <ul>
                                 <li>
-                                    <a href="{{ path('freelancer_show', { 'id': freelancer.idFreelancer }) }}">Afficher</a>
+                                    <a href="{{ path('freelancer_show', { 'id': freelancer.id_freelancer }) }}">Afficher</a>
                                 </li>
+                                {% if is_granted('ROLE_ADMIN') %}
                                 <li>
-                                    <a href="{{ path('freelancer_edit', { 'id': freelancer.idFreelancer }) }}">Modifier</a>
+                                    <a href="{{ path('freelancer_edit', { 'id': freelancer.id_freelancer }) }}">Modifier</a>
                                 </li>
+                                 {% endif %}
                             </ul>
                         </td>
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
-
+            {% if is_granted('ROLE_ADMIN') %}
             <ul>
                 <li>
                     <a href="{{ path('freelancer_new') }}">Créer un nouveau  freelancer</a>
                 </li>
             </ul>
+            {% endif %} 
         </div>
     </div>
 {% endblock %}

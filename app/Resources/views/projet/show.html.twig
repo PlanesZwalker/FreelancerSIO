@@ -7,13 +7,13 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h1 class="mysubtitle">Afficher le Projet</h1>
+        <h2 class="mysubtitle">Afficher le Projet</h2>
         <div class="mycontentform">
             <table>
                 <tbody>
                     <tr>
-                        <th>Idprojet</th>
-                        <td>{{ projet.idProjet }}</td>
+                        <th>id_projet</th>
+                        <td>{{ projet.id_projet }}</td>
                     </tr>
                     <tr>
                         <th>Prix</th>
@@ -28,8 +28,8 @@
                         <td>{{ projet.description }}</td>
                     </tr>
                     <tr>
-                        <th>Idsociete</th>
-                        <td>{{ projet.idSociete }}</td>
+                        <th>id_societe</th>
+                        <td>{{ projet.id_societe }}</td>
                     </tr>
                     <tr>
                         <th>Idcdc</th>
@@ -43,7 +43,7 @@
                     <a href="{{ path('projet_index') }}">Retourner à la liste</a>
                 </li>
                 <li>
-                    <a href="{{ path('projet_edit', { 'id': projet.idProjet }) }}">Modifier</a>
+                    <a href="{{ path('projet_edit', { 'id': projet.id_projet }) }}">Modifier</a>
                 </li>
                 <li>
                     {{ form_start(delete_form) }}
@@ -52,5 +52,6 @@
                 </li>
             </ul>
         </div>
+                
     </div>
 {% endblock %}

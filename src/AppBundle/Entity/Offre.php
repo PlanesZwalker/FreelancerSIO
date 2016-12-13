@@ -10,7 +10,7 @@ class Offre
     /**
      * @var int
      */
-    private $idOffre;
+    private $id_offre;
 
     /**
      * @var float
@@ -35,7 +35,7 @@ class Offre
     /**
      * @var int
      */
-    private $idFreelancer;
+    private $id_freelancer;
 
 
     /**
@@ -43,9 +43,9 @@ class Offre
      *
      * @return int
      */
-    public function getIdOffre()
+    public function getid_offre()
     {
-        return $this->idOffre;
+        return $this->id_offre;
     }
 
     /**
@@ -145,27 +145,27 @@ class Offre
     }
 
     /**
-     * Set idFreelancer
+     * Set id_freelancer
      *
-     * @param integer $idFreelancer
+     * @param integer $id_freelancer
      *
      * @return Offre
      */
-    public function setIdFreelancer($idFreelancer)
+    public function setid_freelancer($id_freelancer)
     {
-        $this->idFreelancer = $idFreelancer;
+        $this->id_freelancer = $id_freelancer;
 
         return $this;
     }
 
     /**
-     * Get idFreelancer
+     * Get id_freelancer
      *
      * @return int
      */
-    public function getIdFreelancer()
+    public function getid_freelancer()
     {
-        return $this->idFreelancer;
+        return $this->id_freelancer;
     }
 }
 

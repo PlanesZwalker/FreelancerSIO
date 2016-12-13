@@ -7,13 +7,13 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h1 class="mysubtitle">Afficher un Paiement</h1>
+        <h2 class="mysubtitle">Afficher un Paiement</h2>
         <div class="mycontentform">
             <table>
                 <tbody>
                     <tr>
-                        <th>Idpaiement</th>
-                        <td>{{ paiement.idPaiement }}</td>
+                        <th>id_paiement</th>
+                        <td>{{ paiement.id_paiement }}</td>
                     </tr>
                     <tr>
                         <th>Etat</th>
@@ -35,7 +35,7 @@
                     <a href="{{ path('paiement_index') }}">Retourner à la liste</a>
                 </li>
                 <li>
-                    <a href="{{ path('paiement_edit', { 'id': paiement.idPaiement }) }}">Modifier</a>
+                    <a href="{{ path('paiement_edit', { 'id': paiement.id_paiement }) }}">Modifier</a>
                 </li>
                 <li>
                     {{ form_start(delete_form) }}

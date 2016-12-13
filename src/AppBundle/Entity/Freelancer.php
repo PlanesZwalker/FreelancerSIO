@@ -10,7 +10,7 @@ class Freelancer
     /**
      * @var int
      */
-    private $idFreelancer;
+    private $id_freelancer;
 
     /**
      * @var string
@@ -38,9 +38,9 @@ class Freelancer
      *
      * @return int
      */
-    public function getIdFreelancer()
+    public function getid_freelancer()
     {
-        return $this->idFreelancer;
+        return $this->id_freelancer;
     }
 
     /**

@@ -3,7 +3,7 @@ AppBundle\Entity\Competence:
     table: null
     repositoryClass: AppBundle\Repository\CompetenceRepository
     id:
-        idCompetence:
+        id_competence:
             type: integer
             id: true
             generator:
@@ -15,7 +15,7 @@ AppBundle\Entity\Competence:
         description:
             type: string
             length: 255
-        idFreelancer:
+        id_freelancer:
             type: integer
             column: id_freelancer
     lifecycleCallbacks: {  }

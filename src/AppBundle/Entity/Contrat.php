@@ -30,7 +30,7 @@ class Contrat
     /**
      * @var int
      */
-    private $idPaiement;
+    private $id_paiement;
 
 
 
@@ -117,27 +117,27 @@ class Contrat
     }
 
     /**
-     * Set idPaiement
+     * Set id_paiement
      *
-     * @param integer $idPaiement
+     * @param integer $id_paiement
      *
      * @return Contrat
      */
-    public function setIdPaiement($idPaiement)
+    public function setid_paiement($id_paiement)
     {
-        $this->idPaiement = $idPaiement;
+        $this->id_paiement = $id_paiement;
 
         return $this;
     }
 
     /**
-     * Get idPaiement
+     * Get id_paiement
      *
      * @return int
      */
-    public function getIdPaiement()
+    public function getid_paiement()
     {
-        return $this->idPaiement;
+        return $this->id_paiement;
     }
 }
 

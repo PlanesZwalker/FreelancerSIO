@@ -13,7 +13,7 @@ class OffreType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('tarif')->add('delai')->add('propCommerciale')->add('particularite')->add('idFreelancer')        ;
+        $builder->add('tarif')->add('delai')->add('propCommerciale')->add('particularite')->add('id_freelancer')        ;
     }
     
     /**

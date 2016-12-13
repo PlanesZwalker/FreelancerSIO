@@ -1,14 +1,15 @@
 {% trans_default_domain 'FOSUserBundle' %}
 <div class="formulairetop">
        {% block soustitre %} <h2 class="mysubtitle">Formulaire de connexion</h2> {% endblock %}
-{% if error %}
-   <h2>{{ error.messageKey|trans(error.messageData, 'security') }}</h2>
-{% endif %}
 
     <form action="{{ path("fos_user_security_check") }}" method="post" style="margin-top:-3%;background-color:#E0E0E1;  margin-bottom:20%; padding:2%; border-radius:0px 0px 8px 8px">
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
         <div style=" width:60%;margin-left:20%; ">
+            
+            {% if error %}
+                <h3 class="myerror">{{ error.messageKey|trans(error.messageData, 'security') }}</h3>
+             {% endif %}
                 <label for="username">{{ 'security.login.username'|trans }}</label>
                 <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
 
@@ -20,7 +21,7 @@
                <input style="display:none" type="checkbox" id="remember_me" name="_remember_me" value="on" />
         </div>
        
-        <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+        <input type="submit" data-ajax="false" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
     </form>
 
 </div>

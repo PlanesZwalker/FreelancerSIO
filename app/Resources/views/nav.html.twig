@@ -18,29 +18,29 @@
 {% block nav %}
  
     <nav id="manavnavbar" data-role="navbar" >
-        <div style="width:15vw; position:absolute; top:3.7vw; left:2vw; ">
-            {% if (app.request.attributes.get('_route')=='re_service') %}
-                <li style='list-style-type: none; width:15vw;'><a class="manav icon fa-book " href="{{ path("re_service") }}" >  &nbsp;&nbsp;&nbsp;<span>Documentation</span></a></li>
-            {% else %}
-                <li style='list-style-type: none;width:15vw;'><a  class="manav icon fa-book" href="{{ path("re_service") }}" >  &nbsp;&nbsp;&nbsp;<span>Documentation</span></a></li>
+        <div style="width:15vw; position:absolute; top:3.7vw; left:4.5vw; ">
+            {% if not (app.request.attributes.get('_route')=='re_service') %}
+                <li style='list-style-type: none;width:15vw;'><a  data-ajax="false" class="manav icon fa-book" href="{{ path("re_service") }}" >  &nbsp;&nbsp;&nbsp;<span>Documentation</span></a></li>
             {% endif %} 
         </div>
         <ul>    
+            {% if not (app.request.attributes.get('_route')=='front') %}
             <li>
-                <a href="{{  path('front') }}" class="manav icon fa-home ">
+                <a data-ajax="false" href="{{  path('front') }}" class="manav icon fa-home ">
                     &nbsp;&nbsp;&nbsp;<span>Accueil</span>
                 </a>
             </li>    
+            {% endif %} 
             {% if is_granted("ROLE_USER") %}
                 <li>
-                    <a href="{{ path('logout') }}" class="manav icon fa-power-off">
+                    <a data-ajax="false" href="{{ path('logout') }}" class="manav icon fa-power-off">
                         &nbsp;&nbsp;&nbsp;<span>Se déconnecter</span>
                     </a>
                 </li>
             {% else %}
                 {% if app.request.pathInfo != '/login' %}
                     <li>
-                        <a href="{{ path('fos_user_security_login') }}" class="manav icon fa-share-square-o">
+                        <a data-ajax="false" href="{{ path('fos_user_security_login') }}" class="manav icon fa-share-square-o">
                             &nbsp;&nbsp;&nbsp;<span>Se connecter</span>
                         </a>
                     </li>
@@ -49,111 +49,135 @@
             {% if app.request.pathInfo != '/register' %} 
                 {% if not is_granted("ROLE_USER") %}
                     <li>
-                        <a href="{{ path('fos_user_registration_register') }}" class="manav icon fa-user-plus">
+                        <a data-ajax="false" href="{{ path('fos_user_registration_register') }}" class="manav icon fa-user-plus">
                             &nbsp;&nbsp;&nbsp;<span>Créer un compte</span>
                         </a>
                     </li>
                 {% endif %}
             {% endif %}               
             <li onmouseover="sousmenuon2()" onmouseout="sousmenuoff2()" id="sousmenu1">
-                <a href="{{ path('projet_index') }}"  class="manav icon Example of newspaper-o fa-newspaper-o ">
-                    &nbsp;&nbsp;&nbsp;<span>Consulter les Projets</span>
+                <a href="{{ path('projet_index') }}"  class="manav icon fa-newspaper-o ">
+                    &nbsp;&nbsp;&nbsp;<span>Tous les Projets</span>
                 </a>
                
             </li>           
             <li onmouseover="sousmenuon()" onmouseout="sousmenuoff()">
-                <a href="{{ path('freelancer_index') }}"  class="manav icon fa-users" >
-                    &nbsp;&nbsp;&nbsp;<span>Voir les Profils des Freelancers</span>
+                <a data-ajax="false" href="{{ path('freelancer_index') }}"  class="manav icon fa-users" >
+                    &nbsp;&nbsp;&nbsp;<span>Tous les Profils: Freelancers</span>
                 </a>  
                 
             </li>
-            {% if is_granted("ROLE_USER") %}
+            <li onmouseover="sousmenuon()" onmouseout="sousmenuoff()">
+                <a data-ajax="false" href="{{ path('freelancer_index') }}"  class="manav icon fa-users" >
+                    &nbsp;&nbsp;&nbsp;<span>Tous les Profils: Entreprises</span>
+                </a>  
+                
+            </li>
+            {% if is_granted("ROLE_SOCIETE") %}
                 <li>
-                    <a href="{{ path('editprofil') }}"  class="manav icon fa-edit" >
-                        &nbsp;&nbsp;&nbsp;<span>Modifier mon Profil</span>
+                    <a data-ajax="false" href="{{ path('editprofil') }}"  class="manav icon fa-edit" >
+                        &nbsp;&nbsp;&nbsp;<span>Mon Profil</span>
                     </a>
                 </li> 
+                <li class="tabdebord">
+                    <a data-ajax="false" href="{{ path('editprofil') }}"  class="manav icon fa-edit" >
+                        &nbsp;&nbsp;&nbsp;<span>Tableau de Bord </span>
+                    </a>
+                </li> 
+             {% elseif is_granted("ROLE_FREELANCER") %}  
+               <li>
+                    <a data-ajax="false" href="{{ path('editprofil') }}"  class="manav icon fa-edit" >
+                        &nbsp;&nbsp;&nbsp;<span>Mon Profil</span>
+                    </a>
+                </li> 
+                 <li class="tabdebord">
+                    <a data-ajax="false" href="{{ path('editprofil') }}"  class="manav icon fa-edit" >
+                        &nbsp;&nbsp;&nbsp;<span>Tableau de Bord</span>
+                    </a>
+                </li> 
+            {% else %}  
+                 
             {% endif %}
             
             
             {% if is_granted("ROLE_ADMIN") %}
                 <li>
-                    <a id="administrationbtn" class="manav icon newspaper-o fa-newspaper-o " >
-                    &nbsp;&nbsp;&nbsp;<span>Administrer le site</span>
+                    <a id="administrationbtn" class="manav icon fa-newspaper-o " >
+                    &nbsp;&nbsp;&nbsp;<span>Administration</span>
                     </a>
                     <ul id="administration" style="display:none;">    
                         <li >
-                            <a href="{{ path('myadmin_index') }}"  class="manav icon fa-plus-square" >
+                            <a data-ajax="false" href="{{ path('myadmin_index') }}"  class="manav icon fa-plus-square" >
                                 &nbsp;&nbsp;&nbsp;<span>Gestion des Administrateurs</span>
                             </a>
                         </li> 
                         <li>
-                            <a href="{{ path('cahierdescharges_index') }}"  class="manav icon fa-edit" >
+                            <a data-ajax="false" href="{{ path('cahierdescharges_index') }}"  class="manav icon fa-edit" >
                                 &nbsp;&nbsp;&nbsp;<span>Gestion des Cahiers des charges</span>
                             </a>
                         </li> 
                         <li>
-                            <a href="{{ path('category_index') }}"  class="manav icon fa-plus-square" >
+                            <a data-ajax="false"  href="{{ path('category_index') }}"  class="manav icon fa-plus-square" >
                                 &nbsp;&nbsp;&nbsp;<span>Gestion des Catégories</span>
                             </a>
                         </li> 
                         <li>
-                            <a href="{{ path('competence_index') }}"  class="manav icon fa-edit" >
+                            <a data-ajax="false"  href="{{ path('competence_index') }}"  class="manav icon fa-edit" >
                                 &nbsp;&nbsp;&nbsp;<span>Gestion des Compétences</span>
                             </a>
                         </li> 
                         <li>
-                            <a href="{{ path('contrat_index') }}"  class="manav icon fa-plus-square" >
+                            <a data-ajax="false"  href="{{ path('contrat_index') }}"  class="manav icon fa-plus-square" >
                                 &nbsp;&nbsp;&nbsp;<span>Gestion des Contrats</span>
                             </a>
                         </li> 
                         <li>
-                            <a href="{{ path('freelancer_index') }}"  class="manav icon fa-edit" >
+                            <a data-ajax="false"  href="{{ path('freelancer_index') }}"  class="manav icon fa-edit" >
                                 &nbsp;&nbsp;&nbsp;<span>Gestion des Freelancers</span>
                             </a>
                         </li> 
                         <li>
-                            <a href="{{ path('message_index') }}"  class="manav icon fa-plus-square" >
+                            <a data-ajax="false"  href="{{ path('message_index') }}"  class="manav icon fa-plus-square" >
                                 &nbsp;&nbsp;&nbsp;<span>Gestion des Messages</span>
                             </a>
                         </li> 
                         <li>
-                            <a href="{{ path('offre_index') }}"  class="manav icon fa-edit" >
+                            <a data-ajax="false"  href="{{ path('offre_index') }}"  class="manav icon fa-edit" >
                                 &nbsp;&nbsp;&nbsp;<span>Gestion des Offres</span>
                             </a>
                         </li> 
                         <li>
-                            <a href="{{ path('paiement_index') }}"  class="manav icon fa-plus-square" >
+                            <a data-ajax="false"  href="{{ path('paiement_index') }}"  class="manav icon fa-plus-square" >
                                 &nbsp;&nbsp;&nbsp;<span>Gestion des Paiements</span>
                             </a>
                         </li> 
                         <li>
-                            <a href="{{ path('projet_index') }}"  class="manav icon fa-edit" >
+                            <a data-ajax="false"  href="{{ path('projet_index') }}"  class="manav icon fa-edit" >
                                 &nbsp;&nbsp;&nbsp;<span>Gestion des Projets</span>
                             </a>
                         </li> 
                         <li>
-                            <a href="{{ path('societe_index') }}"  class="manav icon fa-plus-square" >
+                            <a data-ajax="false"  href="{{ path('societe_index') }}"  class="manav icon fa-plus-square" >
                                 &nbsp;&nbsp;&nbsp;<span>Gestion des Sociétés</span>
                             </a>
                         </li> 
                         <li>
-                            <a href="{{ path('test_index') }}"  class="manav icon fa-edit" >
+                            <a data-ajax="false"  href="{{ path('test_index') }}"  class="manav icon fa-edit" >
                                 &nbsp;&nbsp;&nbsp;<span>Gestion des Tests</span>
                             </a>
                         </li> 
                         <li>
-                            <a href="{{ path('user_index') }}"  class="manav icon fa-edit" >
+                            <a data-ajax="false"  href="{{ path('user_index') }}"  class="manav icon fa-edit" >
                                 &nbsp;&nbsp;&nbsp;<span>Gestion des Utilisateurs</span>
                             </a>
                         </li> 
                         <li>
-                            <a  href="{{ path('sonata_admin_dashboard') }}" class="manav icon fa-edit" id="showadministration" >
+                            <a data-ajax="false"  data-ajax="false" href="{{ path('sonata_admin_dashboard') }}" class="manav icon fa-edit" id="showadministration" >
                                 &nbsp;&nbsp;&nbsp;<span>Accéder au Back-Office</span>
                             </a>
                         </li> 
                          <li>
-                            <a class="manav icon fa-edit" id="closeadministration" >
+                            <a data-ajax="false"  class="manav icon fa-edit" id="closeadministration" >
                                 &nbsp;&nbsp;&nbsp;<span>Fermer le menu</span>
                             </a>
                         </li> 

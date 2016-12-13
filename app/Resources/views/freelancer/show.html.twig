@@ -7,13 +7,13 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h1 class="mysubtitle">Afficher le Profil d'un Freelancer</h1>
+        <h2 class="mysubtitle">Afficher le Profil d'un Freelancer</h2>
         <div class="mycontentform">
             <table>
                 <tbody>
                     <tr>
-                        <th>Idfreelancer</th>
-                        <td>{{ freelancer.idFreelancer }}</td>
+                        <th>id_freelancer</th>
+                        <td>{{ freelancer.id_freelancer }}</td>
                     </tr>
                     <tr>
                         <th>Urlcv</th>
@@ -39,7 +39,7 @@
                     <a href="{{ path('freelancer_index') }}">Retourner à la liste</a>
                 </li>
                 <li>
-                    <a href="{{ path('freelancer_edit', { 'id': freelancer.idFreelancer }) }}">Modifier</a>
+                    <a href="{{ path('freelancer_edit', { 'id': freelancer.id_freelancer }) }}">Modifier</a>
                 </li>
                 <li>
                     {{ form_start(delete_form) }}

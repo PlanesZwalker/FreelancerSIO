@@ -7,13 +7,13 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h1 class="mysubtitle">Afficher la Société</h1>
+        <h2 class="mysubtitle">Afficher la Société</h2>
         <div class="mycontentform">
             <table>
                 <tbody>
                     <tr>
-                        <th>Idsociete</th>
-                        <td>{{ societe.idSociete }}</td>
+                        <th>id_societe</th>
+                        <td>{{ societe.id_societe }}</td>
                     </tr>
                     <tr>
                         <th>Siret</th>
@@ -35,7 +35,7 @@
                     <a href="{{ path('societe_index') }}">Retourner à la liste</a>
                 </li>
                 <li>
-                    <a href="{{ path('societe_edit', { 'id': societe.idSociete }) }}">Modifier</a>
+                    <a href="{{ path('societe_edit', { 'id': societe.id_societe }) }}">Modifier</a>
                 </li>
                 <li>
                     {{ form_start(delete_form) }}

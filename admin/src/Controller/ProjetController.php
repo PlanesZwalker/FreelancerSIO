@@ -55,7 +55,7 @@ class ProjetController {
         $newClass = new Projet();
 
         if (null !== $request->request->get('id_class')) {
-            $newClass->setIdProjet($request->request->get('id_class'));
+            $newClass->setid_projet($request->request->get('id_class'));
             $newClass->setDtCreate($newClass->getDtCreate());
         }
 
@@ -88,9 +88,9 @@ class ProjetController {
 
         $newClass = new Projet();
 
-        $newClass->setIdProjet($id_projet);
+        $newClass->setid_projet($id_projet);
 
-        $app['dao.projet']->deleteclassName($newClass->getIdProjet());
+        $app['dao.projet']->deleteclassName($newClass->getid_projet());
 
         $app['session']->getFlashBag()->add('danger', 'Le projet a été supprimé !');
 
@@ -109,9 +109,9 @@ class ProjetController {
 
         $newClass = new Projet();
 
-        $newClass->setIdProjet($id_projets);
+        $newClass->setid_projet($id_projets);
 
-        $app['dao.projet']->deleteclassName($newClass->getIdProjet());
+        $app['dao.projet']->deleteclassName($newClass->getid_projet());
 
         $app['session']->getFlashBag()->add('danger', 'Le projet a été supprimé !');
 

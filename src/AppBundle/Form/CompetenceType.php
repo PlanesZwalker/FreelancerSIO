@@ -13,7 +13,7 @@ class CompetenceType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('categorie')->add('description')->add('idFreelancer')        ;
+        $builder->add('categorie')->add('description')->add('id_freelancer')        ;
     }
     
     /**

@@ -72,7 +72,7 @@ public function listCompetenceAction(Application $app) {
 
         if(null !== $request->request->get('id_competence'))
         {
-            $newCompetence->setIdCompetence($request->request->get('id_competence'));
+            $newCompetence->setid_competence($request->request->get('id_competence'));
         }
 
         $newCompetence->setNameCompetence($request->request->get('matiere'));
@@ -112,9 +112,9 @@ public function listCompetenceAction(Application $app) {
         $id_competence = $request->request->get('id_competence');
         $newCompetence = new Competence();
 
-        $newCompetence->setIdCompetence($id_competence);
+        $newCompetence->setid_competence($id_competence);
 
-        $app['dao.competence']->deleteCompetence($newCompetence->getIdCompetence());
+        $app['dao.competence']->deleteCompetence($newCompetence->getid_competence());
 
         $app['session']->getFlashBag()->add('danger', 'Compétence supprimée !');
 

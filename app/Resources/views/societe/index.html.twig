@@ -7,12 +7,12 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h1 class="mysubtitle">Liste des Sociétés</h1>
+        <h2 class="mysubtitle">Liste des Sociétés</h2>
         <div class="mycontentform">
             <table>
                 <thead>
                     <tr>
-                        <th>Idsociete</th>
+                        <th>id_societe</th>
                         <th>Siret</th>
                         <th>Denomination</th>
                         <th>Iduser</th>
@@ -22,17 +22,17 @@
                 <tbody>
                 {% for societe in societes %}
                     <tr>
-                        <td><a href="{{ path('societe_show', { 'id': societe.idSociete }) }}">{{ societe.idSociete }}</a></td>
+                        <td><a href="{{ path('societe_show', { 'id': societe.id_societe }) }}">{{ societe.id_societe }}</a></td>
                         <td>{{ societe.siret }}</td>
                         <td>{{ societe.denomination }}</td>
                         <td>{{ societe.idUser }}</td>
                         <td>
                             <ul>
                                 <li>
-                                    <a href="{{ path('societe_show', { 'id': societe.idSociete }) }}">Afficher</a>
+                                    <a href="{{ path('societe_show', { 'id': societe.id_societe }) }}">Afficher</a>
                                 </li>
                                 <li>
-                                    <a href="{{ path('societe_edit', { 'id': societe.idSociete }) }}">Modifier</a>
+                                    <a href="{{ path('societe_edit', { 'id': societe.id_societe }) }}">Modifier</a>
                                 </li>
                             </ul>
                         </td>

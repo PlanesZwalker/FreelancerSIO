@@ -7,13 +7,13 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h1 class="mysubtitle">Afficher un Test</h1>
+        <h2 class="mysubtitle">Afficher un Test</h2>
         <div class="mycontentform">
             <table>
                 <tbody>
                     <tr>
-                        <th>Idtest</th>
-                        <td>{{ test.idTest }}</td>
+                        <th>id_test</th>
+                        <td>{{ test.id_test }}</td>
                     </tr>
                     <tr>
                         <th>Description</th>
@@ -32,12 +32,12 @@
                         <td>{% if test.datePassage %}{{ test.datePassage|date('Y-m-d H:i:s') }}{% endif %}</td>
                     </tr>
                     <tr>
-                        <th>Idfreelancer</th>
-                        <td>{{ test.idFreelancer }}</td>
+                        <th>id_freelancer</th>
+                        <td>{{ test.id_freelancer }}</td>
                     </tr>
                     <tr>
-                        <th>Idcompetence</th>
-                        <td>{{ test.idCompetence }}</td>
+                        <th>id_competence</th>
+                        <td>{{ test.id_competence }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -47,7 +47,7 @@
                     <a href="{{ path('test_index') }}">Retourner à la liste</a>
                 </li>
                 <li>
-                    <a href="{{ path('test_edit', { 'id': test.idTest }) }}">Modifier</a>
+                    <a href="{{ path('test_edit', { 'id': test.id_test }) }}">Modifier</a>
                 </li>
                 <li>
                     {{ form_start(delete_form) }}

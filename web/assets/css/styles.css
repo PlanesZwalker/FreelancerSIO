@@ -9,6 +9,18 @@ and open the template in the editor.
 */
 
 /* Page and overlay */
+.myerror{
+
+    color:#111;
+    background-color:rgba(255, 0, 0, 0.6);
+    border-radius:18px;
+    font-size:18px;
+    text-shadow:none;
+    padding:8px;
+    font-weight:500;
+    
+    
+}
 
 .ui-page-theme-a
 {
@@ -25,8 +37,7 @@ and open the template in the editor.
 #manavnavbar{
      position:absolute;
      top:10px; 
-     width:95vw; 
-     margin-left:2vw ;
+     width:100vw; 
 }
 
 
@@ -39,6 +50,7 @@ and open the template in the editor.
   color:white !important;
   font-weight: 100 !important;
   border:2px solid black !important;
+
 }
 
 .manav:hover{
@@ -56,7 +68,7 @@ and open the template in the editor.
 
 .mysubtitle{
     color:white; 
-    margin-top:5%;
+    margin-top:7.5%;
     background-color:rgba(1,1,1,0.6); 
     border-radius:8px 8px 0px 0px;
     height:70px; 
@@ -155,7 +167,7 @@ and open the template in the editor.
 
 .mycontentform{
     
-    margin-top: -2%;
+    margin-top: -3%;
     background-color: #E0E0E1;
     margin-bottom: 20%;
     padding: 2% !important;
@@ -179,10 +191,17 @@ and open the template in the editor.
 #administration{
     position:absolute !important;
     z-index:999!important;
-    background-color:rgba(179,221,236,0.8) !important;  
-    right:0vw;
+    right:4.5vw;
     width:90vw;
-    top:7vw;
+    top:3vw;
+    border-radius:18px;
+}
+.tabdebord{
+    position:absolute !important;
+    z-index:999!important;
+    right:4.5vw;
+    width:90vw;
+    top:3vw;
     border-radius:18px;
 }
 

@@ -10,7 +10,7 @@ class Competence
     /**
      * @var int
      */
-    private $idCompetence;
+    private $id_competence;
 
     /**
      * @var string
@@ -25,7 +25,7 @@ class Competence
     /**
      * @var int
      */
-    private $idFreelancer;
+    private $id_freelancer;
 
 
     /**
@@ -33,9 +33,9 @@ class Competence
      *
      * @return int
      */
-    public function getIdCompetence()
+    public function getid_competence()
     {
-        return $this->idCompetence;
+        return $this->id_competence;
     }
 
     /**
@@ -87,27 +87,27 @@ class Competence
     }
 
     /**
-     * Set idFreelancer
+     * Set id_freelancer
      *
-     * @param integer $idFreelancer
+     * @param integer $id_freelancer
      *
      * @return Competence
      */
-    public function setIdFreelancer($idFreelancer)
+    public function setid_freelancer($id_freelancer)
     {
-        $this->idFreelancer = $idFreelancer;
+        $this->id_freelancer = $id_freelancer;
 
         return $this;
     }
 
     /**
-     * Get idFreelancer
+     * Get id_freelancer
      *
      * @return int
      */
-    public function getIdFreelancer()
+    public function getid_freelancer()
     {
-        return $this->idFreelancer;
+        return $this->id_freelancer;
     }
 }
 

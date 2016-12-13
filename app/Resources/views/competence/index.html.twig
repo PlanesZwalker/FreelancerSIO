@@ -7,32 +7,32 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h1 class="mysubtitle">Liste des Compétences</h1>
+        <h2 class="mysubtitle">Liste des Compétences</h2>
         <div class="mycontentform">
             <table>
                 <thead>
                     <tr>
-                        <th>Idcompetence</th>
+                        <th>id_competence</th>
                         <th>Categorie</th>
                         <th>Description</th>
-                        <th>Idfreelancer</th>
+                        <th>id_freelancer</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                 {% for competence in competences %}
                     <tr>
-                        <td><a href="{{ path('competence_show', { 'id': competence.idCompetence }) }}">{{ competence.idCompetence }}</a></td>
+                        <td><a href="{{ path('competence_show', { 'id': competence.id_competence }) }}">{{ competence.id_competence }}</a></td>
                         <td>{{ competence.categorie }}</td>
                         <td>{{ competence.description }}</td>
-                        <td>{{ competence.idFreelancer }}</td>
+                        <td>{{ competence.id_freelancer }}</td>
                         <td>
                             <ul>
                                 <li>
-                                    <a href="{{ path('competence_show', { 'id': competence.idCompetence }) }}">Afficher</a>
+                                    <a href="{{ path('competence_show', { 'id': competence.id_competence }) }}">Afficher</a>
                                 </li>
                                 <li>
-                                    <a href="{{ path('competence_edit', { 'id': competence.idCompetence }) }}">Modifier</a>
+                                    <a href="{{ path('competence_edit', { 'id': competence.id_competence }) }}">Modifier</a>
                                 </li>
                             </ul>
                         </td>

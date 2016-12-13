@@ -7,13 +7,13 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h1 class="mysubtitle">Voir les Compétences</h1>
+        <h2 class="mysubtitle">Voir les Compétences</h2>
         <div class="mycontentform">
             <table>
                 <tbody>
                     <tr>
-                        <th>Idcompetence</th>
-                        <td>{{ competence.idCompetence }}</td>
+                        <th>id_competence</th>
+                        <td>{{ competence.id_competence }}</td>
                     </tr>
                     <tr>
                         <th>Categorie</th>
@@ -24,8 +24,8 @@
                         <td>{{ competence.description }}</td>
                     </tr>
                     <tr>
-                        <th>Idfreelancer</th>
-                        <td>{{ competence.idFreelancer }}</td>
+                        <th>id_freelancer</th>
+                        <td>{{ competence.id_freelancer }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -35,7 +35,7 @@
                     <a href="{{ path('competence_index') }}">Retourner à la liste</a>
                 </li>
                 <li>
-                    <a href="{{ path('competence_edit', { 'id': competence.idCompetence }) }}">Modifier</a>
+                    <a href="{{ path('competence_edit', { 'id': competence.id_competence }) }}">Modifier</a>
                 </li>
                 <li>
                     {{ form_start(delete_form) }}

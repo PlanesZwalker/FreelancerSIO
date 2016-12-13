@@ -3,7 +3,7 @@ AppBundle\Entity\Offre:
     table: null
     repositoryClass: AppBundle\Repository\OffreRepository
     id:
-        idOffre:
+        id_offre:
             type: integer
             id: true
             generator:
@@ -21,7 +21,7 @@ AppBundle\Entity\Offre:
         particularite:
             type: string
             length: 255
-        idFreelancer:
+        id_freelancer:
             type: integer
             column: id_freelancer
     lifecycleCallbacks: {  }

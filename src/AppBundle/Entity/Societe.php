@@ -10,7 +10,7 @@ class Societe
     /**
      * @var int
      */
-    private $idSociete;
+    private $id_societe;
 
     /**
      * @var int
@@ -33,9 +33,9 @@ class Societe
      *
      * @return int
      */
-    public function getIdSociete()
+    public function getid_societe()
     {
-        return $this->idSociete;
+        return $this->id_societe;
     }
 
     /**

@@ -112,15 +112,15 @@ class FreelancerDAO extends DAO
         );
 
         //on modifie
-        if($freelancer->getIdFreelancer()){
+        if($freelancer->getid_freelancer()){
             $this->getDb()->update('freelancer', $freelancerInfo, array(
-                'id_freelancer' => $freelancer->getIdFreelancer()));
+                'id_freelancer' => $freelancer->getid_freelancer()));
         }
         //on sauvegarde
         else{
             $this->getDb()->insert('freelancer', $freelancerInfo);
             $id = $this->getDb()->lastInsertId();
-            $freelancer->setIdFreelancer($id);
+            $freelancer->setid_freelancer($id);
         }
     }
 */

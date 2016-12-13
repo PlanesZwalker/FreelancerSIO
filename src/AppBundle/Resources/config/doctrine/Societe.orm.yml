@@ -3,7 +3,7 @@ AppBundle\Entity\Societe:
     table: null
     repositoryClass: AppBundle\Repository\SocieteRepository
     id:
-        idSociete:
+        id_societe:
             type: integer
             id: true
             generator:

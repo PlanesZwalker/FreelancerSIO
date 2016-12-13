@@ -158,7 +158,7 @@ class TestController {
 
 
         $newTest = new Test();
-        $newTest->setIdTest($id_test);
+        $newTest->setid_test($id_test);
         $newTest->setTestName($name);
         $newTest->setCoeffTest($coeff_test);
  
@@ -200,9 +200,9 @@ class TestController {
         $id_test = $request->request->get('id_test');
         $newTest = new Test();
 
-        $newTest->setIdTest($id_test);
+        $newTest->setid_test($id_test);
 
-        $app['dao.test']->deleteTest($newTest->getIdTest());
+        $app['dao.test']->deleteTest($newTest->getid_test());
 
         return $this::deleteTestIndexAction($request, $app);
 
