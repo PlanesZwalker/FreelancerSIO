@@ -105,10 +105,10 @@
                     <a id="administrationbtn" class="manav icon fa-newspaper-o " >
                     &nbsp;&nbsp;&nbsp;<span>Administration</span>
                     </a>
-                    <ul id="administration" style="display:none;">    
-                        <li >
-                            <a data-ajax="false" href="{{ path('myadmin_index') }}"  class="manav icon fa-plus-square" >
-                                &nbsp;&nbsp;&nbsp;<span>Gestion des Administrateurs</span>
+                    <ul id="administration" style="display:none;background-color:rgba(200,200,200,1); padding:5px;">    
+                        <li>
+                            <a data-ajax="false"  href="{{ path('user_index') }}"  class="manav icon fa-edit" >
+                                &nbsp;&nbsp;&nbsp;<span>Gestion des Utilisateurs</span>
                             </a>
                         </li> 
                         <li>
@@ -164,11 +164,6 @@
                         <li>
                             <a data-ajax="false"  href="{{ path('test_index') }}"  class="manav icon fa-edit" >
                                 &nbsp;&nbsp;&nbsp;<span>Gestion des Tests</span>
-                            </a>
-                        </li> 
-                        <li>
-                            <a data-ajax="false"  href="{{ path('user_index') }}"  class="manav icon fa-edit" >
-                                &nbsp;&nbsp;&nbsp;<span>Gestion des Utilisateurs</span>
                             </a>
                         </li> 
                         <li>

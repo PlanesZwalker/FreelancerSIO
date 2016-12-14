@@ -48,7 +48,7 @@ class FreelancerController extends Controller
             $em->persist($freelancer);
             $em->flush($freelancer);
 
-            return $this->redirectToRoute('freelancer_show', array('id' => $freelancer->getId()));
+            return $this->redirectToRoute('freelancer_show', array('id' => $freelancer->getIdUser()));
         }
 
         return $this->render('freelancer/new.html.twig', array(
@@ -88,7 +88,7 @@ class FreelancerController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('freelancer_edit', array('id' => $freelancer->getId()));
+            return $this->redirectToRoute('freelancer_edit', array('id' => $freelancer->getIdUser()));
         }
 
         return $this->render('freelancer/edit.html.twig', array(
@@ -128,7 +128,7 @@ class FreelancerController extends Controller
     private function createDeleteForm(Freelancer $freelancer)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('freelancer_delete', array('id' => $freelancer->getId())))
+            ->setAction($this->generateUrl('freelancer_delete', array('id' => $freelancer->getIdUser())))
             ->setMethod('DELETE')
             ->getForm()
         ;
