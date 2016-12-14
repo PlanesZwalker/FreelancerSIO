@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 11 Décembre 2016 à 09:34
+-- Généré le :  Mer 14 Décembre 2016 à 22:40
 -- Version du serveur :  10.1.19-MariaDB
 -- Version de PHP :  5.6.28
 
@@ -23,22 +23,16 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `admin`
+-- Structure de la table `blogpost`
 --
 
-CREATE TABLE `admin` (
-  `id_admin` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL
+CREATE TABLE `blogpost` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `body` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `draft` tinyint(1) NOT NULL,
+  `createdAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Contenu de la table `admin`
---
-
-INSERT INTO `admin` (`id_admin`, `id_user`) VALUES
-(1, 2),
-(2, 3),
-(3, 4);
 
 -- --------------------------------------------------------
 
@@ -71,7 +65,7 @@ CREATE TABLE `cahierdescharges` (
   `id_cdc` int(11) NOT NULL,
   `tarif` double NOT NULL,
   `delai` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_contrat` int(11) DEFAULT NULL
+  `id_contrat` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -79,7 +73,7 @@ CREATE TABLE `cahierdescharges` (
 --
 
 INSERT INTO `cahierdescharges` (`id_cdc`, `tarif`, `delai`, `id_contrat`) VALUES
-(1, 12, '12', NULL);
+(1, 12, '12', 0);
 
 -- --------------------------------------------------------
 
@@ -90,17 +84,17 @@ INSERT INTO `cahierdescharges` (`id_cdc`, `tarif`, `delai`, `id_contrat`) VALUES
 CREATE TABLE `category` (
   `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `blog_post` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `category` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `draft` tinyint(1) DEFAULT NULL
+  `blogPost` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `draft` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Contenu de la table `category`
 --
 
-INSERT INTO `category` (`id`, `name`, `blog_post`, `category`, `draft`) VALUES
-(1, 'test', 'test', NULL, NULL);
+INSERT INTO `category` (`id`, `name`, `blogPost`, `category`, `draft`) VALUES
+(1, 'test', 'test', '', 0);
 
 -- --------------------------------------------------------
 
@@ -112,7 +106,7 @@ CREATE TABLE `competence` (
   `id_competence` int(11) NOT NULL,
   `categorie` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_freelancer` int(11) DEFAULT NULL
+  `id_freelancer` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -120,7 +114,7 @@ CREATE TABLE `competence` (
 --
 
 INSERT INTO `competence` (`id_competence`, `categorie`, `description`, `id_freelancer`) VALUES
-(1, 'test', 'test', NULL);
+(1, 'test', 'test', 0);
 
 -- --------------------------------------------------------
 
@@ -133,7 +127,7 @@ CREATE TABLE `contrat` (
   `tarif` double NOT NULL,
   `delai` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date_sign` datetime NOT NULL,
-  `id_paiement` int(11) DEFAULT NULL
+  `id_paiement` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -141,9 +135,9 @@ CREATE TABLE `contrat` (
 --
 
 INSERT INTO `contrat` (`id_contrat`, `tarif`, `delai`, `date_sign`, `id_paiement`) VALUES
-(1, 15.25, '15 jours', '2014-05-05 05:03:00', NULL),
-(2, 12, '12', '2011-01-01 10:10:10', NULL),
-(3, 123.2, '8 ans', '2011-01-01 00:00:00', NULL);
+(1, 15.25, '15 jours', '2014-05-05 05:03:00', 0),
+(2, 12, '12', '2011-01-01 10:10:10', 0),
+(3, 123.2, '8 ans', '2011-01-01 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -156,7 +150,7 @@ CREATE TABLE `freelancer` (
   `url_cv` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `url_photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `age` int(11) NOT NULL,
-  `id_user` int(11) DEFAULT NULL
+  `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -164,7 +158,70 @@ CREATE TABLE `freelancer` (
 --
 
 INSERT INTO `freelancer` (`id_freelancer`, `url_cv`, `url_photo`, `age`, `id_user`) VALUES
-(1, 'ici', 'la', 12, NULL);
+(1, 'ici', 'latopho', 12, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `media__gallery`
+--
+
+CREATE TABLE `media__gallery` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `context` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `default_format` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `enabled` tinyint(1) NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `media__gallery_media`
+--
+
+CREATE TABLE `media__gallery_media` (
+  `id` int(11) NOT NULL,
+  `gallery_id` int(11) DEFAULT NULL,
+  `media_id` int(11) DEFAULT NULL,
+  `position` int(11) NOT NULL,
+  `enabled` tinyint(1) NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `media__media`
+--
+
+CREATE TABLE `media__media` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `enabled` tinyint(1) NOT NULL,
+  `provider_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `provider_status` int(11) NOT NULL,
+  `provider_reference` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `provider_metadata` longtext COLLATE utf8mb4_unicode_ci COMMENT '(DC2Type:json)',
+  `width` int(11) DEFAULT NULL,
+  `height` int(11) DEFAULT NULL,
+  `length` decimal(10,0) DEFAULT NULL,
+  `content_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content_size` int(11) DEFAULT NULL,
+  `copyright` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `author_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `context` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cdn_is_flushable` tinyint(1) DEFAULT NULL,
+  `cdn_flush_identifier` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cdn_flush_at` datetime DEFAULT NULL,
+  `cdn_status` int(11) DEFAULT NULL,
+  `updated_at` datetime NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -174,13 +231,13 @@ INSERT INTO `freelancer` (`id_freelancer`, `url_cv`, `url_photo`, `age`, `id_use
 
 CREATE TABLE `message` (
   `id_message` int(11) NOT NULL,
-  `id_freelancer` int(11) DEFAULT NULL,
-  `id_societe` int(11) DEFAULT NULL,
+  `id_freelancer` int(11) NOT NULL,
+  `id_societe` int(11) NOT NULL,
   `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `sujet` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `contenu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date_sign` datetime DEFAULT NULL,
-  `id_admin` int(11) DEFAULT NULL
+  `date_sign` datetime NOT NULL,
+  `id_admin` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -188,7 +245,7 @@ CREATE TABLE `message` (
 --
 
 INSERT INTO `message` (`id_message`, `id_freelancer`, `id_societe`, `type`, `sujet`, `contenu`, `date_sign`, `id_admin`) VALUES
-(1, NULL, NULL, 'test', 'test', 'test', NULL, NULL);
+(1, 0, 0, 'test', 'test', 'test', '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -202,7 +259,7 @@ CREATE TABLE `offre` (
   `delai` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `prop_commerciale` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `particularite` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_freelancer` int(11) DEFAULT NULL
+  `id_freelancer` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -210,7 +267,7 @@ CREATE TABLE `offre` (
 --
 
 INSERT INTO `offre` (`id_offre`, `tarif`, `delai`, `prop_commerciale`, `particularite`, `id_freelancer`) VALUES
-(1, 12, 'test', 'test', 'test', NULL);
+(1, 12, 'test', 'test', 'test', 0);
 
 -- --------------------------------------------------------
 
@@ -221,8 +278,8 @@ INSERT INTO `offre` (`id_offre`, `tarif`, `delai`, `prop_commerciale`, `particul
 CREATE TABLE `paiement` (
   `id_paiement` int(11) NOT NULL,
   `etat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `dp_societe` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `dp_freelancer` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `dp_societe` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dp_freelancer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -230,7 +287,7 @@ CREATE TABLE `paiement` (
 --
 
 INSERT INTO `paiement` (`id_paiement`, `etat`, `dp_societe`, `dp_freelancer`) VALUES
-(1, '2', NULL, NULL);
+(1, '2', '', '');
 
 -- --------------------------------------------------------
 
@@ -243,8 +300,8 @@ CREATE TABLE `projet` (
   `prix` double NOT NULL,
   `etape` int(11) NOT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_societe` int(11) DEFAULT NULL,
-  `id_cdc` int(11) DEFAULT NULL
+  `id_societe` int(11) NOT NULL,
+  `id_cdc` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -252,7 +309,7 @@ CREATE TABLE `projet` (
 --
 
 INSERT INTO `projet` (`id_projet`, `prix`, `etape`, `description`, `id_societe`, `id_cdc`) VALUES
-(1, 12, 2, 'test', NULL, NULL);
+(1, 12, 2, 'test', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -264,7 +321,7 @@ CREATE TABLE `societe` (
   `id_societe` int(11) NOT NULL,
   `siret` bigint(20) NOT NULL,
   `denomination` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_user` int(11) DEFAULT NULL
+  `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -272,7 +329,7 @@ CREATE TABLE `societe` (
 --
 
 INSERT INTO `societe` (`id_societe`, `siret`, `denomination`, `id_user`) VALUES
-(1, 321654987654, 'societeTest', NULL);
+(1, 321654987654, 'societeTest', 0);
 
 -- --------------------------------------------------------
 
@@ -286,8 +343,8 @@ CREATE TABLE `test` (
   `url_test` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `resultat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date_passage` datetime NOT NULL,
-  `id_freelancer` int(11) DEFAULT NULL,
-  `id_competence` int(11) DEFAULT NULL
+  `id_freelancer` int(11) NOT NULL,
+  `id_competence` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -295,7 +352,7 @@ CREATE TABLE `test` (
 --
 
 INSERT INTO `test` (`id_test`, `description`, `url_test`, `resultat`, `date_passage`, `id_freelancer`, `id_competence`) VALUES
-(1, 'test', 'test', 'test', '2011-01-01 00:00:00', NULL, NULL);
+(1, 'test', 'test', 'test', '2011-01-01 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -323,18 +380,20 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `confirmation_token`, `password_requested_at`, `roles`) VALUES
-(1, 'admin', 'admin', 'admin@admin.fr', 'admin@admin.fr', 1, NULL, '$2y$13$I5lFmZYM5tpf3XghpLHChO/a4Om2c7c5npvJbe.NSoodkIEMAzxJC', '2016-12-11 09:14:33', NULL, NULL, 'a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}'),
-(2, 'test', 'test', 'test@test.fr', 'test@test.fr', 0, NULL, 'test', NULL, NULL, NULL, 'a:0:{}');
+(1, 'admin', 'admin', 'admin@admin.fr', 'admin@admin.fr', 1, NULL, '$2y$13$I5lFmZYM5tpf3XghpLHChO/a4Om2c7c5npvJbe.NSoodkIEMAzxJC', '2016-12-14 22:31:22', NULL, NULL, 'a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}'),
+(3, 'societe1', 'societe1', 'test@test.fr', 'test@test.fr', 1, NULL, '$2y$13$VbAgXVIPEYhEHr/Kg3AcTORFhpfczH9xgPU.uhxuDvbP.UwdIAMcy', '2016-12-13 19:11:22', NULL, NULL, 'a:1:{i:0;s:12:"ROLE_SOCIETE";}'),
+(4, 'freelancer1', 'freelancer1', 'ROLE_FREELANCER', 'role_freelancer', 1, NULL, '$2y$13$fl4ohh/MHvXE1KbrMSgDAuFAFj.NcBInppjjkisslJEcb/x7j3WNq', '2016-12-13 19:02:24', NULL, NULL, 'a:1:{i:0;s:15:"ROLE_FREELANCER";}'),
+(5, 'test', 'test', 'tel@tel.fr', 'tel@tel.fr', 1, NULL, '$2y$13$sjgtnsJQFU8STCwkK8tnSuIepl5YCXp2dvn5Nb/5or67gf1ZCwL3W', '2016-12-12 22:19:13', NULL, NULL, 'a:0:{}');
 
 --
 -- Index pour les tables exportées
 --
 
 --
--- Index pour la table `admin`
+-- Index pour la table `blogpost`
 --
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id_admin`);
+ALTER TABLE `blogpost`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `blog_post`
@@ -371,6 +430,26 @@ ALTER TABLE `contrat`
 --
 ALTER TABLE `freelancer`
   ADD PRIMARY KEY (`id_freelancer`);
+
+--
+-- Index pour la table `media__gallery`
+--
+ALTER TABLE `media__gallery`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `media__gallery_media`
+--
+ALTER TABLE `media__gallery_media`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_80D4C5414E7AF8F` (`gallery_id`),
+  ADD KEY `IDX_80D4C541EA9FDD75` (`media_id`);
+
+--
+-- Index pour la table `media__media`
+--
+ALTER TABLE `media__media`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `message`
@@ -413,19 +492,19 @@ ALTER TABLE `test`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UNIQ_8D93D64992FC23A8` (`username_canonical`),
-  ADD UNIQUE KEY `UNIQ_8D93D649A0D96FBF` (`email_canonical`),
-  ADD UNIQUE KEY `UNIQ_8D93D649C05FB297` (`confirmation_token`);
+  ADD UNIQUE KEY `UNIQ_2DA1797792FC23A8` (`username_canonical`),
+  ADD UNIQUE KEY `UNIQ_2DA17977A0D96FBF` (`email_canonical`),
+  ADD UNIQUE KEY `UNIQ_2DA17977C05FB297` (`confirmation_token`);
 
 --
 -- AUTO_INCREMENT pour les tables exportées
 --
 
 --
--- AUTO_INCREMENT pour la table `admin`
+-- AUTO_INCREMENT pour la table `blogpost`
 --
-ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `blogpost`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `blog_post`
 --
@@ -456,6 +535,21 @@ ALTER TABLE `contrat`
 --
 ALTER TABLE `freelancer`
   MODIFY `id_freelancer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `media__gallery`
+--
+ALTER TABLE `media__gallery`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `media__gallery_media`
+--
+ALTER TABLE `media__gallery_media`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `media__media`
+--
+ALTER TABLE `media__media`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `message`
 --
@@ -490,7 +584,18 @@ ALTER TABLE `test`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `media__gallery_media`
+--
+ALTER TABLE `media__gallery_media`
+  ADD CONSTRAINT `FK_80D4C5414E7AF8F` FOREIGN KEY (`gallery_id`) REFERENCES `media__gallery` (`id`),
+  ADD CONSTRAINT `FK_80D4C541EA9FDD75` FOREIGN KEY (`media_id`) REFERENCES `media__media` (`id`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
