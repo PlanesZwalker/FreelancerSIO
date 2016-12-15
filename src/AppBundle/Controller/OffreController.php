@@ -48,7 +48,7 @@ class OffreController extends Controller
             $em->persist($offre);
             $em->flush($offre);
 
-            return $this->redirectToRoute('offre_show', array('id' => $offre->getId()));
+            return $this->redirectToRoute('offre_show', array('id' => $offre->getid_offre()));
         }
 
         return $this->render('offre/new.html.twig', array(
@@ -88,7 +88,7 @@ class OffreController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('offre_edit', array('id' => $offre->getId()));
+            return $this->redirectToRoute('offre_edit', array('id' => $offre->getid_offre()));
         }
 
         return $this->render('offre/edit.html.twig', array(
@@ -128,7 +128,7 @@ class OffreController extends Controller
     private function createDeleteForm(Offre $offre)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('offre_delete', array('id' => $offre->getId())))
+            ->setAction($this->generateUrl('offre_delete', array('id' => $offre->getid_offre())))
             ->setMethod('DELETE')
             ->getForm()
         ;

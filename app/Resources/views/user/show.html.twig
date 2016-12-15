@@ -8,24 +8,33 @@
 {% block body %}    
     <div class="formulairetop">
         <h2 class="mysubtitle">Afficher un Utilisateur </h2>
-        <div class="mycontentform">
-            <table>
+        <div class="mycontentformshow">
+            <ul>
+                <li class="returnlist">
+                    <a class="btn btn-default" href="{{ path('user_index') }}">Retourner à la liste</a>
+                </li>
+            </ul>
+            <table class="tableautitle">
                 <tbody>
                     <tr>
-                        <th>Id</th>
-                        <td>{{ user.id }}</td>
+                        <th class="mytdtabshow">Utilisateur</th>
+                        <td class="mytdtabshow">{{ user.username }}</td>
+                    </tr>
+                    <tr>
+                        <th class="mytdtabshow2">Role</th>
+                        <td class="mytdtabshow2">{% for role in user.roles  %}{{ role }}<br/>{% endfor %} </td>
+                    </tr>
+                    <tr>
+                        <th class="mytdtabshow">Dernière Connexion</th>
+                        <td class="mytdtabshow">{% if user.lastLogin %}{{ user.lastLogin|date('d/m/Y H:i:s') }}{% endif %}</td>
                     </tr>
                 </tbody>
             </table>
-
             <ul>
-                <li>
-                    <a href="{{ path('user_index') }}">Retourner à la liste</a>
+                <li class="myeditli">
+                    <a class="btn btn-info" style="color:white;"  href="{{ path('user_edit', { 'id': user.id }) }}">Modifier</a>
                 </li>
-                <li>
-                    <a href="{{ path('user_edit', { 'id': user.id }) }}">Modifier</a>
-                </li>
-                <li>
+                <li class="mydeleteli">
                     {{ form_start(delete_form) }}
                         <input type="submit" value="Delete">
                     {{ form_end(delete_form) }}

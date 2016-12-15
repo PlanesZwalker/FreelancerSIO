@@ -175,6 +175,15 @@ and open the template in the editor.
     border-radius: 0px 0px 8px 8px;
     text-align:left;
 }
+.mycontentformshow{
+    
+    margin-top: -3%;
+    background-color:#777;
+    margin-bottom: 20%;
+    padding: 2% !important;
+    border-radius: 0px 0px 8px 8px;
+    text-align:left;
+}
 
 .flash-success{
     text-align:center;
@@ -212,4 +221,96 @@ and open the template in the editor.
 
 #showadministration{
     background-color:rgba(0,100,0,1) !important;       
+}
+
+
+.tableautitle{
+    margin:10px;
+    color:white;
+    font-size:16px;
+    text-align:center;
+  
+}
+    
+.tableautitlecontent {
+    background-color:rgba(1,1,1,0.7); 
+    height:50px;
+    border-bottom:2px solid white;
+    padding-top:15px !important;   
+}
+
+.mytbody{
+    background-color:rgba(1,1,1,0.3);
+}
+
+.center{
+    text-align:center;
+}
+
+.mytdtab{
+    background-color:rgba(1,1,1,0.2);
+    border-bottom:2px solid white;
+}
+
+.mytdtab2{
+    background-color:rgba(255,255,255,0.2);
+   border-bottom:2px solid white; 
+}
+
+.mydisplaynone{
+    display:none;
+}
+
+.addtab{
+    font-size:17px;
+    float:right !important;
+    padding-bottom:10px;
+    margin-top:-15px; 
+    margin-right:25px;
+}
+
+.myimg{
+    height:120px;
+    width:120px;
+}
+
+
+.mytdtabshow{
+    background-color:rgba(1,1,1,0.2);
+    border-bottom:2px solid white;
+     text-align:center;
+     padding:1%
+}
+
+.mytdtabshow2{
+    background-color:rgba(255,255,255,0.2);
+    border-bottom:2px solid white;
+    text-align:center;
+    padding:1%
+}
+
+.returnlist{
+    float:right; 
+    margin:2%;
+    margin-top:-4%;
+    
+}
+
+.myeditli{
+    display:inline-block;
+    margin:2%; 
+    float:right;
+}
+
+.myeditinput{
+    display:inline-block;
+    margin:2%; 
+    float:right;
+    color:white; 
+    background-color:#5BC0DE !important;
+}
+
+.mydeleteli{
+    display:inline-block;
+    margin:2%;
 }

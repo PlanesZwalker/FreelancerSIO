@@ -7,49 +7,50 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h2 class="mysubtitle">Afficher un Test</h2>
-        <div class="mycontentform">
-            <table>
+        <h2 class="mysubtitle">Test</h2>
+        <div class="mycontentformshow">
+            <ul>
+                <li class="returnlist">
+                    <a class="btn btn-default" href="{{ path('test_index') }}">Retourner à la liste</a>
+                </li>
+            </ul>
+            <table class="tableautitle">
                 <tbody>
                     <tr>
-                        <th>id_test</th>
-                        <td>{{ test.id_test }}</td>
+                        <th class="mytdtabshow">Test</th>
+                        <td class="mytdtabshow">{{ test.id_test }}</td>
                     </tr>
                     <tr>
-                        <th>Description</th>
-                        <td>{{ test.description }}</td>
+                        <th class="mytdtabshow2">Description</th>
+                        <td class="mytdtabshow2">{{ test.description }}</td>
                     </tr>
                     <tr>
-                        <th>Urltest</th>
-                        <td>{{ test.urlTest }}</td>
+                        <th class="mytdtabshow">Contenu du Test</th>
+                        <td class="mytdtabshow">{{ test.urlTest }}</td>
                     </tr>
                     <tr>
-                        <th>Resultat</th>
-                        <td>{{ test.resultat }}</td>
+                        <th class="mytdtabshow2">Résultat</th>
+                        <td class="mytdtabshow2">{{ test.resultat }}</td>
                     </tr>
                     <tr>
-                        <th>Datepassage</th>
-                        <td>{% if test.datePassage %}{{ test.datePassage|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <th class="mytdtabshow">Date de Passage</th>
+                        <td class="mytdtabshow">{% if test.datePassage %}{{ test.datePassage|date('Y-m-d H:i:s') }}{% endif %}</td>
                     </tr>
                     <tr>
-                        <th>id_freelancer</th>
-                        <td>{{ test.id_freelancer }}</td>
+                        <th class="mytdtabshow2">Freelancer</th>
+                        <td class="mytdtabshow2">{{ test.id_freelancer }}</td>
                     </tr>
                     <tr>
-                        <th>id_competence</th>
-                        <td>{{ test.id_competence }}</td>
+                        <th class="mytdtabshow">Competence</th>
+                        <td class="mytdtabshow">{{ test.id_competence }}</td>
                     </tr>
                 </tbody>
             </table>
-
             <ul>
-                <li>
-                    <a href="{{ path('test_index') }}">Retourner à la liste</a>
+                <li class="myeditli">
+                    <a class="btn btn-info" style="color:white;"  href="{{ path('test_edit', { 'id': test.id_test }) }}">Modifier</a>
                 </li>
-                <li>
-                    <a href="{{ path('test_edit', { 'id': test.id_test }) }}">Modifier</a>
-                </li>
-                <li>
+                <li class="mydeleteli">
                     {{ form_start(delete_form) }}
                         <input type="submit" value="Delete">
                     {{ form_end(delete_form) }}

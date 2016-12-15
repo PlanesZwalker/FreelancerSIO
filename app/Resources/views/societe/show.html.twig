@@ -7,37 +7,42 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h2 class="mysubtitle">Afficher la Société</h2>
-        <div class="mycontentform">
-            <table>
+        <h2 class="mysubtitle">Société</h2>
+        <div class="mycontentformshow">
+            <ul>
+                <li class="returnlist">
+                    <a class="btn btn-default" href="{{ path('societe_index') }}">Retourner à la liste</a>
+                </li>
+            </ul>
+            <table class="tableautitle">
                 <tbody>
                     <tr>
-                        <th>id_societe</th>
-                        <td>{{ societe.id_societe }}</td>
+                        <th class="mytdtabshow">Societe</th>
+                        <td class="mytdtabshow">{{ societe.id_societe }}</td>
                     </tr>
                     <tr>
-                        <th>Siret</th>
-                        <td>{{ societe.siret }}</td>
+                        <th class="mytdtabshow2">Siret</th>
+                        <td class="mytdtabshow2">{{ societe.siret }}</td>
                     </tr>
                     <tr>
-                        <th>Denomination</th>
-                        <td>{{ societe.denomination }}</td>
+                        <th class="mytdtabshow">Denomination</th>
+                        <td class="mytdtabshow">{{ societe.denomination }}</td>
                     </tr>
                     <tr>
-                        <th>Iduser</th>
-                        <td>{{ societe.idUser }}</td>
+                        <th class="mytdtabshow2">Présentation</th>
+                        <td class="mytdtabshow2">{{ societe.idUser }}</td>
+                    </tr>
+                    <tr>
+                        <th class="mytdtabshow">Logo</th>
+                        <td class="mytdtabshow">{{ societe.idUser }}</td>
                     </tr>
                 </tbody>
             </table>
-
             <ul>
-                <li>
-                    <a href="{{ path('societe_index') }}">Retourner à la liste</a>
+                <li class="myeditli">
+                    <a class="btn btn-info" style="color:white;" href="{{ path('societe_edit', { 'id': societe.id_societe }) }}">Modifier</a>
                 </li>
-                <li>
-                    <a href="{{ path('societe_edit', { 'id': societe.id_societe }) }}">Modifier</a>
-                </li>
-                <li>
+                <li  class="mydeleteli">
                     {{ form_start(delete_form) }}
                         <input type="submit" value="Delete">
                     {{ form_end(delete_form) }}

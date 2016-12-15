@@ -9,33 +9,44 @@
     <div class="formulairetop">
         <h2 class="mysubtitle">Liste des Freelancers</h2>
         <div class="mycontentform">
-            <table>
+            {% if is_granted('ROLE_ADMIN') %}
+            <ul>
+                <li>
+                    <a class="addtab" href="{{ path('freelancer_new') }}">
+                        <span class="fa fa-plus" >&nbsp;&nbsp;Créer un nouveau Freelancer</span>
+                    </a>
+                </li>
+            </ul>
+            {% endif %} 
+            <table class="tableautitle">
                 <thead>
-                    <tr>
-                        <th>id_freelancer</th>
-                        <th>Urlcv</th>
-                        <th>Urlphoto</th>
-                        <th>Age</th>
-                        <th>Iduser</th>
-                        <th>Actions</th>
+                    <tr class="tableautitlecontent">
+                        <th class="center">Nom du Freelancer</th>
+                        <th class="center">Curriculum Vitae</th>
+                        <th class="center">Photo</th>
+                        <th class="center">Age</th>
+                        <th class="center">Compétences</th>
+                        <th class="center">Actions</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="mytbody">
                 {% for freelancer in freelancers %}
                     <tr>
-                        <td><a href="{{ path('freelancer_show', { 'id': freelancer.id_freelancer }) }}">{{ freelancer.id_freelancer }}</a></td>
-                        <td>{{ freelancer.urlCv }}</td>
-                        <td>{{ freelancer.urlPhoto }}</td>
-                        <td>{{ freelancer.age }}</td>
-                        <td>{{ freelancer.idUser }}</td>
-                        <td>
+                        <a class="mydisplaynone" href="{{ path('freelancer_show', { 'id': freelancer.id_freelancer }) }}">{{ freelancer.id_freelancer }}</a>
+                        <td class="mytdtab">{{ dump(freelancer) }}</td>
+                        <td class="mytdtab2"><a href="path('{{ freelancer.urlCv }}')" ><i class="fa fa-download fa-3x"></i></a></td>
+                        <td class="mytdtab"><img class="myimg" src="/FreelancerSIO/web/{{ freelancer.urlPhoto }}" /></td>
+                        <td class="mytdtab2">{{ freelancer.age }}</td>
+                        <td class="mytdtab">{{ freelancer.idUser }}</td>
+                        <input type="hidden" value="{{ freelancer.idUser }}" />
+                        <td class="mytdtab2">
                             <ul>
-                                <li>
-                                    <a href="{{ path('freelancer_show', { 'id': freelancer.id_freelancer }) }}">Afficher</a>
+                                <li style="display:inline-block;margin-top:8px;">
+                                    <a class="btn btn-default" href="{{ path('freelancer_show', { 'id': freelancer.id_freelancer }) }}">Afficher</a>
                                 </li>
                                 {% if is_granted('ROLE_ADMIN') %}
-                                <li>
-                                    <a href="{{ path('freelancer_edit', { 'id': freelancer.id_freelancer }) }}">Modifier</a>
+                                <li style="display:inline-block;">
+                                    <a class="btn btn-info" style="color:white;" href="{{ path('freelancer_edit', { 'id': freelancer.id_freelancer }) }}">Modifier</a>
                                 </li>
                                  {% endif %}
                             </ul>
@@ -44,13 +55,7 @@
                 {% endfor %}
                 </tbody>
             </table>
-            {% if is_granted('ROLE_ADMIN') %}
-            <ul>
-                <li>
-                    <a href="{{ path('freelancer_new') }}">Créer un nouveau  freelancer</a>
-                </li>
-            </ul>
-            {% endif %} 
+          
         </div>
     </div>
 {% endblock %}

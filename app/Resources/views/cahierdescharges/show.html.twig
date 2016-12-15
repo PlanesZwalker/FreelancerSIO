@@ -1,40 +1,49 @@
 {% extends 'base.html.twig' %}
+{% block titre %}
 
+        <h1 id="logo"><a class="bigtitle">Cahiers des Charges</a></h1>  
+
+{% endblock %}
 {% block body %}
-    <h1>Cahierdescharge</h1>
+    <div class="formulairetop">
+       <h2 class="mysubtitle">Cahier des charges</h2>
+        <div class="mycontentformshow">
+            <ul>
+                <li class="returnlist">
+                    <a data-ajax="false" class="btn btn-default" href="{{ path('cahierdescharges_index') }}">Retourner à la liste</a>
+                </li>
+               
+            </ul>
+        <table  class="tableautitle">
+            <tbody>
+                <tr>
+                    <th class="mytdtabshow">Projet</th>
+                    <td class="mytdtabshow">{{ cahierdescharge.idCdc }}</td>
+                </tr>
+                <tr>
+                    <th class="mytdtabshow2">Tarif</th>
+                    <td class="mytdtabshow2">{{ cahierdescharge.tarif }}</td>
+                </tr>
+                <tr>
+                    <th class="mytdtabshow">Delai</th>
+                    <td class="mytdtabshow">{{ cahierdescharge.delai }}</td>
+                </tr>
+                <tr>
+                    <th class="mytdtabshow2">Contrat</th>
+                    <td class="mytdtabshow2">{{ cahierdescharge.idContrat }}</td>
+                </tr>
+            </tbody>
+        </table>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Idcdc</th>
-                <td>{{ cahierdescharge.idCdc }}</td>
-            </tr>
-            <tr>
-                <th>Tarif</th>
-                <td>{{ cahierdescharge.tarif }}</td>
-            </tr>
-            <tr>
-                <th>Delai</th>
-                <td>{{ cahierdescharge.delai }}</td>
-            </tr>
-            <tr>
-                <th>Idcontrat</th>
-                <td>{{ cahierdescharge.idContrat }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('cahierdescharges_index') }}">Retourner à la liste</a>
-        </li>
-        <li>
-            <a href="{{ path('cahierdescharges_edit', { 'id': cahierdescharge.idCdc }) }}">Modifier</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        <ul>
+            <li  class="myeditli">
+                <a data-ajax="false" class="btn btn-info" style="color:white;"  href="{{ path('cahierdescharges_edit', { 'id': cahierdescharge.idCdc }) }}">Modifier</a>
+            </li>
+            <li class="mydeleteli">
+                {{ form_start(delete_form) }}
+                    <input data-ajax="false" type="submit" value="Delete">
+                {{ form_end(delete_form) }}
+            </li>
+        </ul>
+    </div>
 {% endblock %}

@@ -1,38 +1,45 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
 
-        <h1 id="logo"><a class="bigtitle">Compétences</a></h1>  
+        <h1 id="logo"><a class="bigtitle">Cahier des charges</a></h1>  
 
 {% endblock %}
 
 {% block body %}    
     <div class="formulairetop">
-        <h2 class="mysubtitle">Liste des compétences</h2>
+        <h2 class="mysubtitle">Liste des cahiers des Charges</h2>
         <div class="mycontentform">
-            <table>
+            <ul>
+                <li>
+                    <a data-ajax="false" class="addtab" href="{{ path('cahierdescharges_new') }}">
+                        <span class="fa fa-plus" >&nbsp;&nbsp;Créer un nouveau Cahier des Charges</span>
+                    </a>
+                </li>
+            </ul>
+            <table class="tableautitle">
                 <thead>
-                    <tr>
-                        <th>Idcdc</th>
-                        <th>Tarif</th>
-                        <th>Delai</th>
-                        <th>Idcontrat</th>
-                        <th>Actions</th>
+                    <tr class="tableautitlecontent">
+                        <th class="center">Intitulé du projet</th>
+                        <th class="center">Tarif</th>
+                        <th class="center">Delai</th>
+                        <th class="center">Actions</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="mytbody">
                 {% for cahierdescharge in cahierdescharges %}
                     <tr>
-                        <td><a href="{{ path('cahierdescharges_show', { 'id': cahierdescharge.idCdc }) }}">{{ cahierdescharge.idCdc }}</a></td>
-                        <td>{{ cahierdescharge.tarif }}</td>
-                        <td>{{ cahierdescharge.delai }}</td>
-                        <td>{{ cahierdescharge.idContrat }}</td>
-                        <td>
+                        <a class="mydisplaynone" href="{{ path('cahierdescharges_show', { 'id': cahierdescharge.idCdc }) }}">{{ cahierdescharge.idCdc }}</a>
+                        <td class="mytdtab2">{{ dump(cahierdescharge) }}</td>
+                        <td class="mytdtab">{{ cahierdescharge.tarif }}</td>
+                        <td class="mytdtab2">{{ cahierdescharge.delai }}</td>
+                        <input type="hidden" value="{{ cahierdescharge.idContrat }}"/>
+                        <td class="mytdtab">
                             <ul>
-                                <li>
-                                    <a href="{{ path('cahierdescharges_show', { 'id': cahierdescharge.idCdc }) }}">Afficher</a>
+                                <li style="display:inline-block;margin-top:8px;">
+                                    <a data-ajax="false" class="btn btn-default"  href="{{ path('cahierdescharges_show', { 'id': cahierdescharge.idCdc }) }}">Afficher</a>
                                 </li>
-                                <li>
-                                    <a href="{{ path('cahierdescharges_edit', { 'id': cahierdescharge.idCdc }) }}">Modifier</a>
+                                <li style="display:inline-block;">
+                                    <a data-ajax="false" class="btn btn-info" style="color:white;" href="{{ path('cahierdescharges_edit', { 'id': cahierdescharge.idCdc }) }}">Modifier</a>
                                 </li>
                             </ul>
                         </td>
@@ -40,13 +47,6 @@
                 {% endfor %}
                 </tbody>
             </table>
-
-            <ul>
-                <li>
-                    <a href="{{ path('cahierdescharges_new') }}">Créer un nouveau  cahierdescharge</a>
-                </li>
-            </ul>
-            
         </div>        
     </div>
 {% endblock %}

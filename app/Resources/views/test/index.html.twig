@@ -9,36 +9,44 @@
     <div class="formulairetop">
         <h2 class="mysubtitle">Liste des Tests</h2>
         <div class="mycontentform">
-            <table>
+            <ul>
+                <li>
+                    <a class="addtab"href="{{ path('test_new') }}">
+                        <span class="fa fa-plus" >&nbsp;&nbsp;Créer un nouveau Test</span>
+                    </a>
+                </li>
+            </ul>
+            <table class="tableautitle">
                 <thead>
-                    <tr>
-                        <th>id_test</th>
-                        <th>Description</th>
-                        <th>Urltest</th>
-                        <th>Resultat</th>
-                        <th>Datepassage</th>
-                        <th>id_freelancer</th>
-                        <th>id_competence</th>
-                        <th>Actions</th>
+                    <tr  class="tableautitlecontent">
+                        <th class="center">Intitulé du Test</th>
+                        <th class="center">Description</th>
+                        <th class="center">Questionnaire</th>
+                        <th class="center">Résultat</th>
+                        <th class="center">Date de passage</th>
+                        <th class="center">Freelancer</th>
+                        <th class="center">Competence</th>
+                        <th class="center">Actions</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="mytbody">
                 {% for test in tests %}
                     <tr>
-                        <td><a href="{{ path('test_show', { 'id': test.id_test }) }}">{{ test.id_test }}</a></td>
-                        <td>{{ test.description }}</td>
-                        <td>{{ test.urlTest }}</td>
-                        <td>{{ test.resultat }}</td>
-                        <td>{% if test.datePassage %}{{ test.datePassage|date('Y-m-d H:i:s') }}{% endif %}</td>
-                        <td>{{ test.id_freelancer }}</td>
-                        <td>{{ test.id_competence }}</td>
-                        <td>
+                        <a class="mydisplaynone"  href="{{ path('test_show', { 'id': test.id_test }) }}">{{ test.id_test }}</a>
+                        <td class="mytdtab2">{{ dump(test) }}</td>
+                        <td class="mytdtab">{{ test.description }}</td>
+                        <td class="mytdtab2">{{ test.urlTest }}</td>
+                        <td class="mytdtab">{{ test.resultat }}</td>
+                        <td class="mytdtab2">{% if test.datePassage %}{{ test.datePassage|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td class="mytdtab">{{ test.id_freelancer }}</td>
+                        <td class="mytdtab2">{{ test.id_competence }}</td>
+                        <td class="mytdtab">
                             <ul>
-                                <li>
-                                    <a href="{{ path('test_show', { 'id': test.id_test }) }}">Afficher</a>
+                                <li style="display:inline-block;margin-top:8px;">
+                                    <a class="btn btn-default" href="{{ path('test_show', { 'id': test.id_test }) }}">Afficher</a>
                                 </li>
-                                <li>
-                                    <a href="{{ path('test_edit', { 'id': test.id_test }) }}">Modifier</a>
+                                <li style="display:inline-block;">
+                                    <a class="btn btn-info" style="color:white;"  href="{{ path('test_edit', { 'id': test.id_test }) }}">Modifier</a>
                                 </li>
                             </ul>
                         </td>
@@ -47,11 +55,7 @@
                 </tbody>
             </table>
 
-            <ul>
-                <li>
-                    <a href="{{ path('test_new') }}">Créer un nouveau  test</a>
-                </li>
-            </ul>
+            
         </div>
     </div>
 {% endblock %}

@@ -9,30 +9,38 @@
     <div class="formulairetop">
         <h2 class="mysubtitle">Liste des Sociétés</h2>
         <div class="mycontentform">
-            <table>
+            <ul>
+                <li>
+                    <a class="addtab" href="{{ path('societe_new') }}">
+                        <span class="fa fa-plus" >&nbsp;&nbsp;Créer une nouvelle Société</span>
+                    </a>
+                </li>
+            </ul>
+            <table class="tableautitle">
                 <thead>
-                    <tr>
-                        <th>id_societe</th>
-                        <th>Siret</th>
-                        <th>Denomination</th>
-                        <th>Iduser</th>
-                        <th>Actions</th>
+                    <tr class="tableautitlecontent">
+                        <th class="center">Societe</th>
+                        <th class="center">Siret</th>
+                        <th class="center">Denomination</th>
+
+                        <th class="center">Actions</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="mytbody">
                 {% for societe in societes %}
                     <tr>
-                        <td><a href="{{ path('societe_show', { 'id': societe.id_societe }) }}">{{ societe.id_societe }}</a></td>
-                        <td>{{ societe.siret }}</td>
-                        <td>{{ societe.denomination }}</td>
-                        <td>{{ societe.idUser }}</td>
-                        <td>
+                        <a class="mydisplaynone" href="{{ path('societe_show', { 'id': societe.id_societe }) }}">{{ societe.id_societe }}</a>
+                        <td class="mytdtab">{{ dump(societe) }}</td>
+                        <td class="mytdtab2">{{ societe.siret }}</td>
+                        <td class="mytdtab">{{ societe.denomination }}</td>
+                        <input type="hidden" value="{{ societe.idUser }}" />
+                        <td class="mytdtab2">
                             <ul>
-                                <li>
-                                    <a href="{{ path('societe_show', { 'id': societe.id_societe }) }}">Afficher</a>
+                                <li style="display:inline-block;margin-top:8px;">
+                                    <a class="btn btn-default"  href="{{ path('societe_show', { 'id': societe.id_societe }) }}">Afficher</a>
                                 </li>
-                                <li>
-                                    <a href="{{ path('societe_edit', { 'id': societe.id_societe }) }}">Modifier</a>
+                                <li style="display:inline-block;">
+                                    <a class="btn btn-info" style="color:white;"  href="{{ path('societe_edit', { 'id': societe.id_societe }) }}">Modifier</a>
                                 </li>
                             </ul>
                         </td>
@@ -41,11 +49,7 @@
                 </tbody>
             </table>
 
-            <ul>
-                <li>
-                    <a href="{{ path('societe_new') }}">Créer un nouveau  societe</a>
-                </li>
-            </ul>
+            
         </div>
     </div>
 {% endblock %}

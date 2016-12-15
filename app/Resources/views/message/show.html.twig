@@ -8,52 +8,54 @@
 {% block body %}    
     <div class="formulairetop">
         <h2 class="mysubtitle">Afficher un Message</h2>
-        <div class="mycontentform">
-            <table>
+        <div class="mycontentformshow">           
+            <ul>
+                <li class="returnlist">
+                    <a class="btn btn-default"  href="{{ path('message_index') }}">Retourner à la liste</a>
+                </li>
+            </ul>
+            <table class="tableautitle">
                 <tbody>
                     <tr>
-                        <th>Idmessage</th>
-                        <td>{{ message.idMessage }}</td>
+                        <th class="mytdtabshow">De</th>
+                        <td class="mytdtabshow">{{ message.idMessage }}</td>
                     </tr>
                     <tr>
-                        <th>id_freelancer</th>
-                        <td>{{ message.id_freelancer }}</td>
+                        <th class="mytdtabshow2">Pour</th>
+                        <td class="mytdtabshow2">{{ message.id_freelancer }}</td>
                     </tr>
                     <tr>
-                        <th>id_societe</th>
-                        <td>{{ message.id_societe }}</td>
+                        <th class="mytdtabshow">Pour</th>
+                        <td class="mytdtabshow">{{ message.id_societe }}</td>
                     </tr>
                     <tr>
-                        <th>Type</th>
-                        <td>{{ message.type }}</td>
+                        <th class="mytdtabshow2">Type</th>
+                        <td class="mytdtabshow2">{{ message.type }}</td>
                     </tr>
                     <tr>
-                        <th>Sujet</th>
-                        <td>{{ message.sujet }}</td>
+                        <th class="mytdtabshow">Sujet</th>
+                        <td class="mytdtabshow">{{ message.sujet }}</td>
                     </tr>
                     <tr>
-                        <th>Contenu</th>
-                        <td>{{ message.contenu }}</td>
+                        <th class="mytdtabshow2">Contenu</th>
+                        <td class="mytdtabshow2">{{ message.contenu }}</td>
                     </tr>
                     <tr>
-                        <th>Date</th>
-                        <td>{% if message.date %}{{ message.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <th class="mytdtabshow">Date</th>
+                        <td class="mytdtabshow">{% if message.date %}{{ message.date|date('d/m/Y H:i:s') }}{% endif %}</td>
                     </tr>
                     <tr>
-                        <th>Idadmin</th>
-                        <td>{{ message.idAdmin }}</td>
+                        <th class="mytdtabshow2">Pour</th>
+                        <td class="mytdtabshow2">{{ message.idAdmin }}</td>
                     </tr>
                 </tbody>
             </table>
 
-            <ul>
-                <li>
-                    <a href="{{ path('message_index') }}">Retourner à la liste</a>
+            <ul> 
+                <li class="myeditli">
+                    <a class="btn btn-info" style="color:white;"  href="{{ path('message_edit', { 'id': message.idMessage }) }}">Modifier</a>
                 </li>
-                <li>
-                    <a href="{{ path('message_edit', { 'id': message.idMessage }) }}">Modifier</a>
-                </li>
-                <li>
+                <li  class="mydeleteli">
                     {{ form_start(delete_form) }}
                         <input type="submit" value="Delete">
                     {{ form_end(delete_form) }}

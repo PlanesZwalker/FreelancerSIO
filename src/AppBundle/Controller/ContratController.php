@@ -48,7 +48,7 @@ class ContratController extends Controller
             $em->persist($contrat);
             $em->flush($contrat);
 
-            return $this->redirectToRoute('contrat_show', array('id' => $contrat->getId()));
+            return $this->redirectToRoute('contrat_show', array('id' => $contrat->getIdContrat()));
         }
 
         return $this->render('contrat/new.html.twig', array(
@@ -88,7 +88,7 @@ class ContratController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('contrat_edit', array('id' => $contrat->getId()));
+            return $this->redirectToRoute('contrat_edit', array('id' => $contrat->getIdContrat()));
         }
 
         return $this->render('contrat/edit.html.twig', array(
@@ -128,7 +128,7 @@ class ContratController extends Controller
     private function createDeleteForm(Contrat $contrat)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('contrat_delete', array('id' => $contrat->getId())))
+            ->setAction($this->generateUrl('contrat_delete', array('id' => $contrat->getIdContrat())))
             ->setMethod('DELETE')
             ->getForm()
         ;

@@ -8,40 +8,41 @@
 {% block body %}    
     <div class="formulairetop">
         <h2 class="mysubtitle">Afficher le Profil d'un Freelancer</h2>
-        <div class="mycontentform">
-            <table>
+        <div class="mycontentformshow">
+            <ul>
+                <li class="returnlist">
+                    <a class="btn btn-default" href="{{ path('freelancer_index') }}">Retourner à la liste</a>
+                </li>
+            </ul>
+            <table class="tableautitle">
                 <tbody>
                     <tr>
-                        <th>id_freelancer</th>
-                        <td>{{ freelancer.id_freelancer }}</td>
+                        <th class="mytdtabshow">Nom Freelancer</th>
+                        <td class="mytdtabshow">{{ freelancer.id_freelancer }}</td>
                     </tr>
                     <tr>
-                        <th>Urlcv</th>
-                        <td>{{ freelancer.urlCv }}</td>
+                        <th class="mytdtabshow2">CV</th>
+                        <td class="mytdtabshow2" ><a href="path('{{ freelancer.urlCv }}')" ><i class="fa fa-download fa-3x"></i></a></td>
                     </tr>
                     <tr>
-                        <th>Urlphoto</th>
-                        <td>{{ freelancer.urlPhoto }}</td>
+                        <th class="mytdtabshow">Photo</th>
+                        <td class="mytdtabshow"><img class="myimg" src="/FreelancerSIO/web/{{ freelancer.urlPhoto }}" /></td>
                     </tr>
                     <tr>
-                        <th>Age</th>
-                        <td>{{ freelancer.age }}</td>
+                        <th class="mytdtabshow2">Age</th>
+                        <td class="mytdtabshow2">{{ freelancer.age }}</td>
                     </tr>
                     <tr>
-                        <th>Iduser</th>
-                        <td>{{ freelancer.idUser }}</td>
+                        <th class="mytdtabshow">Iduser</th>
+                        <td class="mytdtabshow">{{ freelancer.idUser }}</td>
                     </tr>
                 </tbody>
             </table>
-
             <ul>
-                <li>
-                    <a href="{{ path('freelancer_index') }}">Retourner à la liste</a>
+                <li class="myeditli">
+                    <a class="btn btn-info" style="color:white;" href="{{ path('freelancer_edit', { 'id': freelancer.id_freelancer }) }}">Modifier</a>
                 </li>
-                <li>
-                    <a href="{{ path('freelancer_edit', { 'id': freelancer.id_freelancer }) }}">Modifier</a>
-                </li>
-                <li>
+                <li class="mydeleteli">
                     {{ form_start(delete_form) }}
                         <input type="submit" value="Delete">
                     {{ form_end(delete_form) }}

@@ -9,30 +9,38 @@
     <div class="formulairetop">
         <h2 class="mysubtitle">Liste des Paiements</h2>
         <div class="mycontentform">
-            <table>
+            <ul>
+                <li>
+                    <a  class="addtab" href="{{ path('paiement_new') }}">
+                        <span class="fa fa-plus" >&nbsp;&nbsp;Créer un nouveau Paiement</span>
+                    </a>
+                </li>
+            </ul>
+            <table class="tableautitle">
                 <thead>
-                    <tr>
-                        <th>id_paiement</th>
-                        <th>Etat</th>
-                        <th>Dpsociete</th>
-                        <th>Dpfreelancer</th>
-                        <th>Actions</th>
+                    <tr class="tableautitlecontent">
+                        <th class="center">Référence du Paiement</th>
+                        <th class="center">Etat</th>
+                        <th class="center">Societe</th>
+                        <th class="center">Freelancer</th>
+                        <th class="center">Actions</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="mytbody">
                 {% for paiement in paiements %}
                     <tr>
-                        <td><a href="{{ path('paiement_show', { 'id': paiement.id_paiement }) }}">{{ paiement.id_paiement }}</a></td>
-                        <td>{{ paiement.etat }}</td>
-                        <td>{{ paiement.dpSociete }}</td>
-                        <td>{{ paiement.dpFreelancer }}</td>
-                        <td>
+                        <a class="mydisplaynone" href="{{ path('paiement_show', { 'id': paiement.id_paiement }) }}">{{ paiement.id_paiement }}</a>
+                        <td class="mytdtab">{{ dump(paiement) }}</td>
+                        <td class="mytdtab">{{ paiement.etat }}</td>
+                        <td class="mytdtab2">{{ paiement.dpSociete }}</td>
+                        <td class="mytdtab">{{ paiement.dpFreelancer }}</td>
+                        <td class="mytdtab2">
                             <ul>
-                                <li>
-                                    <a href="{{ path('paiement_show', { 'id': paiement.id_paiement }) }}">Afficher</a>
+                                <li style="display:inline-block;margin-top:8px;">
+                                    <a class="btn btn-default" href="{{ path('paiement_show', { 'id': paiement.id_paiement }) }}">Afficher</a>
                                 </li>
-                                <li>
-                                    <a href="{{ path('paiement_edit', { 'id': paiement.id_paiement }) }}">Modifier</a>
+                                <li style="display:inline-block;">
+                                    <a class="btn btn-info" style="color:white;" href="{{ path('paiement_edit', { 'id': paiement.id_paiement }) }}">Modifier</a>
                                 </li>
                             </ul>
                         </td>
@@ -40,12 +48,6 @@
                 {% endfor %}
                 </tbody>
             </table>
-
-            <ul>
-                <li>
-                    <a href="{{ path('paiement_new') }}">Créer un nouveau  paiement</a>
-                </li>
-            </ul>
         </div>
     </div>
 {% endblock %}

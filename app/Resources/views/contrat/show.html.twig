@@ -8,40 +8,41 @@
 {% block body %}    
     <div class="formulairetop">
         <h2 class="mysubtitle">Afficher le contrat</h2>
-        <div class="mycontentform">
-            <table>
+            <div class="mycontentformshow">
+            <ul>
+                <li class="returnlist">
+                    <a class="btn btn-default" href="{{  path('contrat_index')  }}">Retourner à la liste</a>
+                </li>
+            </ul>
+            <table class="tableautitle">
                 <tbody>
                     <tr>
-                        <th>Idcontrat</th>
-                        <td>{{ contrat.idContrat }}</td>
+                        <th  class="mytdtabshow">Contrat</th>
+                        <td  class="mytdtabshow">{{ contrat.idContrat }}</td>
                     </tr>
                     <tr>
-                        <th>Tarif</th>
-                        <td>{{ contrat.tarif }}</td>
+                        <th  class="mytdtabshow2">Tarif</th>
+                        <td  class="mytdtabshow2">{{ contrat.tarif }}</td>
                     </tr>
                     <tr>
-                        <th>Delai</th>
-                        <td>{{ contrat.delai }}</td>
+                        <th  class="mytdtabshow">Delai</th>
+                        <td  class="mytdtabshow">{{ contrat.delai }}</td>
                     </tr>
                     <tr>
-                        <th>Datesign</th>
-                        <td>{% if contrat.dateSign %}{{ contrat.dateSign|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <th  class="mytdtabshow2">Date de signature</th>
+                        <td  class="mytdtabshow2">{% if contrat.dateSign %}{{ contrat.dateSign|date('Y-m-d H:i:s') }}{% endif %}</td>
                     </tr>
                     <tr>
-                        <th>id_paiement</th>
-                        <td>{{ contrat.id_paiement }}</td>
+                        <th  class="mytdtabshow">Paiement</th>
+                        <td  class="mytdtabshow">{{ contrat.id_paiement }}</td>
                     </tr>
                 </tbody>
             </table>
-
             <ul>
-                <li>
-                    <a href="{{ path('contrat_index') }}"></a>
+                <li class="myeditli">
+                    <a class="btn btn-info" style="color:white;" href="{{ path('contrat_edit', { 'id': contrat.idContrat }) }}">Modifier</a>
                 </li>
-                <li>
-                    <a href="{{ path('contrat_edit', { 'id': contrat.idContrat }) }}">Modifier</a>
-                </li>
-                <li>
+                <li class="mydeleteli">
                     {{ form_start(delete_form) }}
                         <input type="submit" value="Delete">
                     {{ form_end(delete_form) }}

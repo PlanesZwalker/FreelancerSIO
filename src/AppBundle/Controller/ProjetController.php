@@ -48,7 +48,7 @@ class ProjetController extends Controller
             $em->persist($projet);
             $em->flush($projet);
 
-            return $this->redirectToRoute('projet_show', array('id' => $projet->getId()));
+            return $this->redirectToRoute('projet_show', array('id' => $projet->getid_projet()));
         }
 
         return $this->render('projet/new.html.twig', array(
@@ -88,7 +88,7 @@ class ProjetController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('projet_edit', array('id' => $projet->getId()));
+            return $this->redirectToRoute('projet_edit', array('id' => $projet->getid_projet()));
         }
 
         return $this->render('projet/edit.html.twig', array(
@@ -128,7 +128,7 @@ class ProjetController extends Controller
     private function createDeleteForm(Projet $projet)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('projet_delete', array('id' => $projet->getId())))
+            ->setAction($this->generateUrl('projet_delete', array('id' => $projet->getid_projet())))
             ->setMethod('DELETE')
             ->getForm()
         ;

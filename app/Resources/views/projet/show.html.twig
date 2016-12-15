@@ -8,44 +8,46 @@
 {% block body %}    
     <div class="formulairetop">
         <h2 class="mysubtitle">Afficher le Projet</h2>
-        <div class="mycontentform">
-            <table>
+        <div class="mycontentformshow">
+            <ul>
+                <li class="returnlist">
+                    <a class="btn btn-default" href="{{ path('projet_index') }}">Retourner à la liste</a>
+                </li>
+            </ul>
+            <table class="tableautitle">
                 <tbody>
                     <tr>
-                        <th>id_projet</th>
-                        <td>{{ projet.id_projet }}</td>
+                        <th class="mytdtabshow">id_projet</th>
+                        <td class="mytdtabshow">{{ projet.id_projet }}</td>
                     </tr>
                     <tr>
-                        <th>Prix</th>
-                        <td>{{ projet.prix }}</td>
+                        <th class="mytdtabshow2">Prix</th>
+                        <td class="mytdtabshow2">{{ projet.prix }}</td>
                     </tr>
                     <tr>
-                        <th>Etape</th>
-                        <td>{{ projet.etape }}</td>
+                        <th class="mytdtabshow">Etape</th>
+                        <td class="mytdtabshow">{{ projet.etape }}</td>
                     </tr>
                     <tr>
-                        <th>Description</th>
-                        <td>{{ projet.description }}</td>
+                        <th class="mytdtabshow2">Description</th>
+                        <td class="mytdtabshow2">{{ projet.description }}</td>
                     </tr>
                     <tr>
-                        <th>id_societe</th>
-                        <td>{{ projet.id_societe }}</td>
+                        <th class="mytdtabshow">id_societe</th>
+                        <td class="mytdtabshow">{{ projet.id_societe }}</td>
                     </tr>
                     <tr>
-                        <th>Idcdc</th>
-                        <td>{{ projet.idCdc }}</td>
+                        <th class="mytdtabshow2">Idcdc</th>
+                        <td class="mytdtabshow2">{{ projet.idCdc }}</td>
                     </tr>
                 </tbody>
             </table>
 
             <ul>
-                <li>
-                    <a href="{{ path('projet_index') }}">Retourner à la liste</a>
+                <li class="myeditli">
+                    <a class="btn btn-info" style="color:white;" href="{{ path('projet_edit', { 'id': projet.id_projet }) }}">Modifier</a>
                 </li>
-                <li>
-                    <a href="{{ path('projet_edit', { 'id': projet.id_projet }) }}">Modifier</a>
-                </li>
-                <li>
+                <li class="mydeleteli">
                     {{ form_start(delete_form) }}
                         <input type="submit" value="Delete">
                     {{ form_end(delete_form) }}

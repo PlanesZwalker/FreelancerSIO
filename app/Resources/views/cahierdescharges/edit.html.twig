@@ -8,20 +8,33 @@
 {% block body %}    
     <div class="formulairetop">
         <h2 class="mysubtitle">Edition du Cahier des Charges</h2>
-        <div class="mycontentform">
-
-            {{ form_start(edit_form) }}
-                {{ form_widget(edit_form) }}
-                <input type="submit" value="Edit" />
-            {{ form_end(edit_form) }}
-
+        <div class="mycontentformshow">
             <ul>
-                <li>
-                    <a href="{{ path('cahierdescharges_index') }}">Retourner à la liste</a>
+                <li class="returnlist">
+                    <a data-ajax="false" class="btn btn-default" href="{{ path('cahierdescharges_index') }}">Retourner à la liste</a>
                 </li>
-                <li>
+            </ul>
+            <table  class="tableautitle">
+                <tbody>
+                    {{ form_start(edit_form) }}
+                    <tr>
+                        <th class="mytdtabshow">{{ form_row(edit_form.tarif) }}</th>
+                    </tr>        
+                    <tr>
+                        <th class="mytdtabshow2">{{ form_row(edit_form.delai) }}</th>
+                    </tr>        
+                    <tr>
+                        <th class="mytdtabshow" style="display:none;">{{ form_row(edit_form.idContrat) }}</th>
+                    </tr>             
+                </tbody>
+            </table>   
+           <input data-ajax="false" class="myeditinput" type="submit" value="Enregistrer les modifications" />
+            {{ form_end(edit_form) }}
+            {{ dump(edit_form) }}
+            <ul>
+                <li class="mydeleteli ">
                     {{ form_start(delete_form) }}
-                        <input type="submit" value="Delete">
+                        <input data-ajax="false" type="submit" value="Delete">
                     {{ form_end(delete_form) }}
                 </li>
             </ul>

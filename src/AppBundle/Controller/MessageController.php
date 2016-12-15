@@ -48,7 +48,7 @@ class MessageController extends Controller
             $em->persist($message);
             $em->flush($message);
 
-            return $this->redirectToRoute('message_show', array('id' => $message->getId()));
+            return $this->redirectToRoute('message_show', array('id' => $message->getIdMessage()));
         }
 
         return $this->render('message/new.html.twig', array(
@@ -88,7 +88,7 @@ class MessageController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('message_edit', array('id' => $message->getId()));
+            return $this->redirectToRoute('message_edit', array('id' => $message->getIdMessage()));
         }
 
         return $this->render('message/edit.html.twig', array(
@@ -128,7 +128,7 @@ class MessageController extends Controller
     private function createDeleteForm(Message $message)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('message_delete', array('id' => $message->getId())))
+            ->setAction($this->generateUrl('message_delete', array('id' => $message->getIdMessage())))
             ->setMethod('DELETE')
             ->getForm()
         ;

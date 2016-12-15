@@ -7,34 +7,41 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h2 class="mysubtitle">Listes des contrats</h2>
+        <h2 class="mysubtitle">Liste des Contrats</h2>
         <div class="mycontentform">
-            <table>
+            <ul>
+                <li>
+                    <a class="addtab" href="{{ path('contrat_new') }}">
+                        <span class="fa fa-plus" >&nbsp;&nbsp;Créer un nouveau Contrat</span>
+                    </a>
+                </li>
+            </ul>
+            <table class="tableautitle">
                 <thead>
-                    <tr>
-                        <th>Idcontrat</th>
-                        <th>Tarif</th>
-                        <th>Delai</th>
-                        <th>Datesign</th>
-                        <th>id_paiement</th>
-                        <th>Actions</th>
+                    <tr class="tableautitlecontent">
+                        <th class="center">Société</th>
+                        <th class="center">Montant estimé</th>
+                        <th class="center">Delai de livraison</th>
+                        <th class="center">Date de signature</th>
+                        <th class="center">Actions</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="mytbody">
                 {% for contrat in contrats %}
                     <tr>
-                        <td><a href="{{ path('contrat_show', { 'id': contrat.idContrat }) }}">{{ contrat.idContrat }}</a></td>
-                        <td>{{ contrat.tarif }}</td>
-                        <td>{{ contrat.delai }}</td>
-                        <td>{% if contrat.dateSign %}{{ contrat.dateSign|date('Y-m-d H:i:s') }}{% endif %}</td>
-                        <td>{{ contrat.id_paiement }}</td>
-                        <td>
+                        <a class="mydisplaynone" href="{{ path('contrat_show', { 'id': contrat.idContrat }) }}">{{ contrat.idContrat }}</a>
+                        <td class="mytdtab2">{{ dump(contrat) }}</td>
+                        <td class="mytdtab">{{ contrat.tarif }}</td>
+                        <td class="mytdtab2">{{ contrat.delai }}</td>
+                        <td class="mytdtab">{% if contrat.dateSign %}{{ contrat.dateSign|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <input type="hidden" value="{{ contrat.id_paiement }}">
+                        <td class="mytdtab2" >
                             <ul>
-                                <li>
-                                    <a href="{{ path('contrat_show', { 'id': contrat.idContrat }) }}">Afficher</a>
+                                <li style="display:inline-block;margin-top:8px;">
+                                    <a class="btn btn-default" href="{{ path('contrat_show', { 'id': contrat.idContrat }) }}">Afficher</a>
                                 </li>
-                                <li>
-                                    <a href="{{ path('contrat_edit', { 'id': contrat.idContrat }) }}">Modifier</a>
+                                <li style="display:inline-block;">
+                                    <a class="btn btn-info" style="color:white;" href="{{ path('contrat_edit', { 'id': contrat.idContrat }) }}">Modifier</a>
                                 </li>
                             </ul>
                         </td>
@@ -42,12 +49,6 @@
                 {% endfor %}
                 </tbody>
             </table>
-
-            <ul>
-                <li>
-                    <a href="{{ path('contrat_new') }}">Créer un nouveau  contrat</a>
-                </li>
-            </ul>
         </div>
     </div>
 {% endblock %}

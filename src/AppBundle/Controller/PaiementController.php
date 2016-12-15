@@ -48,7 +48,7 @@ class PaiementController extends Controller
             $em->persist($paiement);
             $em->flush($paiement);
 
-            return $this->redirectToRoute('paiement_show', array('id' => $paiement->getId()));
+            return $this->redirectToRoute('paiement_show', array('id' => $paiement->getid_paiement()));
         }
 
         return $this->render('paiement/new.html.twig', array(
@@ -88,7 +88,7 @@ class PaiementController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('paiement_edit', array('id' => $paiement->getId()));
+            return $this->redirectToRoute('paiement_edit', array('id' => $paiement->getid_paiement()));
         }
 
         return $this->render('paiement/edit.html.twig', array(
@@ -128,7 +128,7 @@ class PaiementController extends Controller
     private function createDeleteForm(Paiement $paiement)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('paiement_delete', array('id' => $paiement->getId())))
+            ->setAction($this->generateUrl('paiement_delete', array('id' => $paiement->getid_paiement())))
             ->setMethod('DELETE')
             ->getForm()
         ;

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace FOS\UserBundle\Controller;
+namespace MyFOSUserBundle\Controller;
 
 use FOS\UserBundle\Form\Factory\FactoryInterface;
 use FOS\UserBundle\FOSUserEvents;
@@ -26,21 +26,35 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
- * Controller managing the password change
+ * Controller managing the user profile
  *
- * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
  */
-class ChangePasswordController extends Controller
+class ProfileController extends Controller
 {
     /**
-     * Change user password
+     * Show the user
+     */
+    public function showAction()
+    {
+        $user = $this->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+
+        return $this->render('FOSUserBundle:Profile:show.html.twig', array(
+            'user' => $user
+        ));
+    }
+
+    /**
+     * Edit the user
      *
      * @param Request $request
      *
      * @return Response
      */
-    public function changePasswordAction(Request $request)
+    public function editAction(Request $request)
     {
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
@@ -51,14 +65,14 @@ class ChangePasswordController extends Controller
         $dispatcher = $this->get('event_dispatcher');
 
         $event = new GetResponseUserEvent($user, $request);
-        $dispatcher->dispatch(FOSUserEvents::CHANGE_PASSWORD_INITIALIZE, $event);
+        $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_INITIALIZE, $event);
 
         if (null !== $event->getResponse()) {
             return $event->getResponse();
         }
 
         /** @var $formFactory FactoryInterface */
-        $formFactory = $this->get('fos_user.change_password.form.factory');
+        $formFactory = $this->get('fos_user.profile.form.factory');
 
         $form = $formFactory->createForm();
         $form->setData($user);
@@ -70,7 +84,7 @@ class ChangePasswordController extends Controller
             $userManager = $this->get('fos_user.user_manager');
 
             $event = new FormEvent($form, $request);
-            $dispatcher->dispatch(FOSUserEvents::CHANGE_PASSWORD_SUCCESS, $event);
+            $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_SUCCESS, $event);
 
             $userManager->updateUser($user);
 
@@ -79,12 +93,12 @@ class ChangePasswordController extends Controller
                 $response = new RedirectResponse($url);
             }
 
-            $dispatcher->dispatch(FOSUserEvents::CHANGE_PASSWORD_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+            $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 
             return $response;
         }
 
-        return $this->render('FOSUserBundle:ChangePassword:change_password.html.twig', array(
+        return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
             'form' => $form->createView()
         ));
     }

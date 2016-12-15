@@ -9,38 +9,45 @@
     <div class="formulairetop">
         <h2 class="mysubtitle">Liste des Messages</h2>
         <div class="mycontentform">
-            <table>
+            <ul>
+                <li>
+                    <a class="addtab" href="{{ path('message_new') }}">
+                        <span class="fa fa-plus" >&nbsp;&nbsp;Créer un nouveau Message</span>
+                    </a>
+                </li>
+            </ul>
+            <table class="tableautitle">
                 <thead>
-                    <tr>
-                        <th>Idmessage</th>
-                        <th>id_freelancer</th>
-                        <th>id_societe</th>
-                        <th>Type</th>
-                        <th>Sujet</th>
-                        <th>Contenu</th>
-                        <th>Date</th>
-                        <th>Idadmin</th>
-                        <th>Actions</th>
+                    <tr class="tableautitlecontent">
+                        <th class="center">De</th>
+                        <th class="center">Pour</th>
+                        <th class="center">Type</th>
+                        <th class="center">Sujet</th>
+                        <th class="center">Contenu</th>
+                        <th class="center">Date</th>
+                        <th class="center">Actions</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="mytbody">
                 {% for message in messages %}
                     <tr>
-                        <td><a href="{{ path('message_show', { 'id': message.idMessage }) }}">{{ message.idMessage }}</a></td>
-                        <td>{{ message.id_freelancer }}</td>
-                        <td>{{ message.id_societe }}</td>
-                        <td>{{ message.type }}</td>
-                        <td>{{ message.sujet }}</td>
-                        <td>{{ message.contenu }}</td>
-                        <td>{% if message.date %}{{ message.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-                        <td>{{ message.idAdmin }}</td>
-                        <td>
+                        <a class="mydisplaynone" href="{{ path('message_show', { 'id': message.idMessage }) }}">{{ message.idMessage }}</a>
+                        <input type="hidden" value="{{message.id_freelancer }}" /> 
+                        <input type="hidden" value="{{ message.id_societe }}" />
+                        <td class="mytdtab">{{ dump(message) }}</td>
+                        <td class="mytdtab">{{ dump(message) }}</td>
+                        <td class="mytdtab">{{ message.type }}</td>
+                        <td class="mytdtab2">{{ message.sujet }}</td>
+                        <td class="mytdtab">{{ message.contenu }}</td>
+                        <td class="mytdtab2">{% if message.date %}{{ message.date|date('d-m-Y H:i:s') }}{% endif %}</td>
+                        <input type="hidden" value="{{ message.idAdmin }}" />
+                        <td class="mytdtab">
                             <ul>
-                                <li>
-                                    <a href="{{ path('message_show', { 'id': message.idMessage }) }}">Afficher</a>
+                                <li style="display:inline-block;margin-top:8px;">
+                                    <a class="btn btn-default" href="{{ path('message_show', { 'id': message.idMessage }) }}">Afficher</a>
                                 </li>
-                                <li>
-                                    <a href="{{ path('message_edit', { 'id': message.idMessage }) }}">Modifier</a>
+                                <li  style="display:inline-block;"> 
+                                    <a class="btn btn-info"  style="color:white;" href="{{ path('message_edit', { 'id': message.idMessage }) }}">Modifier</a>
                                 </li>
                             </ul>
                         </td>
@@ -48,12 +55,6 @@
                 {% endfor %}
                 </tbody>
             </table>
-
-            <ul>
-                <li>
-                    <a href="{{ path('message_new') }}">Créer un nouveau  message</a>
-                </li>
-            </ul>
         </div>
     </div>
 {% endblock %}

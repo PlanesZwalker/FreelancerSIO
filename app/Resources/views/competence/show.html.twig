@@ -8,36 +8,38 @@
 {% block body %}    
     <div class="formulairetop">
         <h2 class="mysubtitle">Voir les Compétences</h2>
-        <div class="mycontentform">
-            <table>
+        <div class="mycontentformshow">
+            <ul>
+                <li class="returnlist">
+                    <a class="btn btn-default" href="{{ path('competence_index') }}">Retourner à la liste</a>
+                </li>
+            </ul>
+            <table class="tableautitle">
                 <tbody>
                     <tr>
-                        <th>id_competence</th>
-                        <td>{{ competence.id_competence }}</td>
+                        <th class="mytdtabshow">Competence</th>
+                        <td class="mytdtabshow">{{ competence.id_competence }}</td>
                     </tr>
                     <tr>
-                        <th>Categorie</th>
-                        <td>{{ competence.categorie }}</td>
+                        <th class="mytdtabshow2">Categorie</th>
+                        <td class="mytdtabshow2">{{ competence.categorie }}</td>
                     </tr>
                     <tr>
-                        <th>Description</th>
-                        <td>{{ competence.description }}</td>
+                        <th class="mytdtabshow">Description</th>
+                        <td class="mytdtabshow">{{ competence.description }}</td>
                     </tr>
                     <tr>
-                        <th>id_freelancer</th>
-                        <td>{{ competence.id_freelancer }}</td>
+                        <th class="mytdtabshow2">Freelancer</th>
+                        <td class="mytdtabshow2">{{ competence.id_freelancer }}</td>
                     </tr>
                 </tbody>
             </table>
 
             <ul>
-                <li>
-                    <a href="{{ path('competence_index') }}">Retourner à la liste</a>
+                <li class="myeditli">
+                    <a class="btn btn-info" style="color:white;" href="{{ path('competence_edit', { 'id': competence.id_competence }) }}">Modifier</a>
                 </li>
-                <li>
-                    <a href="{{ path('competence_edit', { 'id': competence.id_competence }) }}">Modifier</a>
-                </li>
-                <li>
+                <li class="mydeleteli">
                     {{ form_start(delete_form) }}
                         <input type="submit" value="Delete">
                     {{ form_end(delete_form) }}

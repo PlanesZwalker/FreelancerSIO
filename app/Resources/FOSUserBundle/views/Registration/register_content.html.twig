@@ -1,18 +1,33 @@
 {% trans_default_domain 'FOSUserBundle' %}
-   
+
 <div class="formulairetop">
     {% block soustitre %} 
         <h2 class="mysubtitle">Formulaire d'inscription</h2> 
     {% endblock %}
-    
-{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register', 'style':'margin-top:-3%; background-color:#E0E0E1; margin-bottom:20%; padding:2%; border-radius:0px 0px 8px 8px ;'} }) }}
-    
+
+    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register', 'style':'margin-top:-3%; background-color:#E0E0E1; margin-bottom:20%; padding:2%; border-radius:0px 0px 8px 8px ;'} }) }}
+
     {{ form_errors(form) }}
     <div style="margin-left:30%; text-align:center; width:40%">
-        {{ form_widget(form) }}
+        {% if form_errors(form) %}
+            <h3 class="myerror">{{ form_errors(form) }}</h3>
+        {% endif %}
+        {{ form_label(form.typecompte, 'Sélectionnez le type de compte que vous souhaiter créer', {'label_attr': {'class': 'bigtitle'} } ) }}
+        <select style="color:black; ">
+          
+            <option>Société / Permet de publier un Projet</option>
+            <option>Freelancer / Permet de répondre à des Projets</option> 
+            <option style="display:none;">{{ form_widget(form.typecompte) }}</option>  
+        </select>
+        {{ dump(form) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.plainPassword) }}
+        {{ form_row(form.pseudo) }}
+
     </div>
     <div style="margin-top:3%;">
         <input type="submit" value="{{ 'registration.submit'|trans }}" />
     </div>
-{{ form_end(form) }}
+    {{ form_end(form) }}
 </div>

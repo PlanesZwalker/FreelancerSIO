@@ -20,7 +20,7 @@
     <nav id="manavnavbar" data-role="navbar" >
         <div style="width:15vw; position:absolute; top:3.7vw; left:4.5vw; ">
             {% if not (app.request.attributes.get('_route')=='re_service') %}
-                <li style='list-style-type: none;width:15vw;'><a  data-ajax="false" class="manav icon fa-book" href="{{ path("re_service") }}" >  &nbsp;&nbsp;&nbsp;<span>Documentation</span></a></li>
+                <li style='list-style-type: none;width:15vw;'><a data-ajax="false" class="manav icon fa-book" href="{{ path("re_service") }}" >  &nbsp;&nbsp;&nbsp;<span>Documentation</span></a></li>
             {% endif %} 
         </div>
         <ul>    
@@ -46,7 +46,7 @@
                     </li>
                 {% endif %}
             {% endif %}
-            {% if app.request.pathInfo != '/register' %} 
+            {% if not (app.request.attributes.get('_route')=='fos_user_registration_register') %} 
                 {% if not is_granted("ROLE_USER") %}
                     <li>
                         <a data-ajax="false" href="{{ path('fos_user_registration_register') }}" class="manav icon fa-user-plus">
@@ -56,20 +56,20 @@
                 {% endif %}
             {% endif %}               
             <li onmouseover="sousmenuon2()" onmouseout="sousmenuoff2()" id="sousmenu1">
-                <a href="{{ path('projet_index') }}"  class="manav icon fa-newspaper-o ">
-                    &nbsp;&nbsp;&nbsp;<span>Tous les Projets</span>
+                <a data-ajax="false" href="{{ path('projet_index') }}"  class="manav icon fa-newspaper-o ">
+                    &nbsp;&nbsp;&nbsp;<span>Les Projets</span>
                 </a>
                
             </li>           
             <li onmouseover="sousmenuon()" onmouseout="sousmenuoff()">
                 <a data-ajax="false" href="{{ path('freelancer_index') }}"  class="manav icon fa-users" >
-                    &nbsp;&nbsp;&nbsp;<span>Tous les Profils: Freelancers</span>
+                    &nbsp;&nbsp;&nbsp;<span>Les Freelancers</span>
                 </a>  
                 
             </li>
             <li onmouseover="sousmenuon()" onmouseout="sousmenuoff()">
-                <a data-ajax="false" href="{{ path('freelancer_index') }}"  class="manav icon fa-users" >
-                    &nbsp;&nbsp;&nbsp;<span>Tous les Profils: Entreprises</span>
+                <a data-ajax="false" href="{{ path('societe_index') }}"  class="manav icon fa-users" >
+                    &nbsp;&nbsp;&nbsp;<span>Les Entreprises</span>
                 </a>  
                 
             </li>
@@ -105,65 +105,65 @@
                     <a id="administrationbtn" class="manav icon fa-newspaper-o " >
                     &nbsp;&nbsp;&nbsp;<span>Administration</span>
                     </a>
-                    <ul id="administration" style="display:none;background-color:rgba(200,200,200,1); padding:5px;">    
+                    <ul id="administration" style="display:none;background-color:#80B6D4; padding:5px 0px; width:86%;margin-right:2%;">    
                         <li>
                             <a data-ajax="false"  href="{{ path('user_index') }}"  class="manav icon fa-edit" >
-                                &nbsp;&nbsp;&nbsp;<span>Gestion des Utilisateurs</span>
+                                &nbsp;&nbsp;&nbsp;<span>Utilisateurs</span>
                             </a>
                         </li> 
                         <li>
                             <a data-ajax="false" href="{{ path('cahierdescharges_index') }}"  class="manav icon fa-edit" >
-                                &nbsp;&nbsp;&nbsp;<span>Gestion des Cahiers des charges</span>
+                                &nbsp;&nbsp;&nbsp;<span>Cahiers des charges</span>
                             </a>
                         </li> 
                         <li>
                             <a data-ajax="false"  href="{{ path('category_index') }}"  class="manav icon fa-plus-square" >
-                                &nbsp;&nbsp;&nbsp;<span>Gestion des Catégories</span>
+                                &nbsp;&nbsp;&nbsp;<span>Catégories</span>
                             </a>
                         </li> 
                         <li>
                             <a data-ajax="false"  href="{{ path('competence_index') }}"  class="manav icon fa-edit" >
-                                &nbsp;&nbsp;&nbsp;<span>Gestion des Compétences</span>
+                                &nbsp;&nbsp;&nbsp;<span>Compétences</span>
                             </a>
                         </li> 
                         <li>
                             <a data-ajax="false"  href="{{ path('contrat_index') }}"  class="manav icon fa-plus-square" >
-                                &nbsp;&nbsp;&nbsp;<span>Gestion des Contrats</span>
+                                &nbsp;&nbsp;&nbsp;<span>Contrats</span>
                             </a>
                         </li> 
                         <li>
                             <a data-ajax="false"  href="{{ path('freelancer_index') }}"  class="manav icon fa-edit" >
-                                &nbsp;&nbsp;&nbsp;<span>Gestion des Freelancers</span>
+                                &nbsp;&nbsp;&nbsp;<span>Freelancers</span>
                             </a>
                         </li> 
                         <li>
                             <a data-ajax="false"  href="{{ path('message_index') }}"  class="manav icon fa-plus-square" >
-                                &nbsp;&nbsp;&nbsp;<span>Gestion des Messages</span>
+                                &nbsp;&nbsp;&nbsp;<span>Messages</span>
                             </a>
                         </li> 
                         <li>
                             <a data-ajax="false"  href="{{ path('offre_index') }}"  class="manav icon fa-edit" >
-                                &nbsp;&nbsp;&nbsp;<span>Gestion des Offres</span>
+                                &nbsp;&nbsp;&nbsp;<span>Offres</span>
                             </a>
                         </li> 
                         <li>
                             <a data-ajax="false"  href="{{ path('paiement_index') }}"  class="manav icon fa-plus-square" >
-                                &nbsp;&nbsp;&nbsp;<span>Gestion des Paiements</span>
+                                &nbsp;&nbsp;&nbsp;<span>Paiements</span>
                             </a>
                         </li> 
                         <li>
                             <a data-ajax="false"  href="{{ path('projet_index') }}"  class="manav icon fa-edit" >
-                                &nbsp;&nbsp;&nbsp;<span>Gestion des Projets</span>
+                                &nbsp;&nbsp;&nbsp;<span>Projets</span>
                             </a>
                         </li> 
                         <li>
                             <a data-ajax="false"  href="{{ path('societe_index') }}"  class="manav icon fa-plus-square" >
-                                &nbsp;&nbsp;&nbsp;<span>Gestion des Sociétés</span>
+                                &nbsp;&nbsp;&nbsp;<span>Sociétés</span>
                             </a>
                         </li> 
                         <li>
                             <a data-ajax="false"  href="{{ path('test_index') }}"  class="manav icon fa-edit" >
-                                &nbsp;&nbsp;&nbsp;<span>Gestion des Tests</span>
+                                &nbsp;&nbsp;&nbsp;<span>Tests</span>
                             </a>
                         </li> 
                         <li>

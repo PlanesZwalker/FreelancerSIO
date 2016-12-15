@@ -9,47 +9,50 @@
     <div class="formulairetop">
         <h2 class="mysubtitle">Liste des Offres</h2>
         <div class="mycontentform">
-            <table>
+             <ul>
+                <li>
+                    <a class="addtab" href="{{ path('offre_new') }}">
+                        <span class="fa fa-plus" >&nbsp;&nbsp;Créer une nouvelle Offre</span>
+                    </a>
+                </li>
+            </ul>
+            <table class="tableautitle">
                 <thead>
-                    <tr>
-                        <th>id_offre</th>
-                        <th>Tarif</th>
-                        <th>Delai</th>
-                        <th>Propcommerciale</th>
-                        <th>Particularite</th>
-                        <th>id_freelancer</th>
-                        <th>Actions</th>
+                    <tr class="tableautitlecontent">
+                        <th class="center">Intitulé du projet rattaché</th>
+                        <th class="center">Tarif</th>
+                        <th class="center">Delai</th>
+                        <th class="center">Proposition commerciale</th>
+                        <th class="center">Particularités</th>
+                        <th class="center">Nom du Freelancer</th>
+                        <th class="center">Actions</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="mytbody">
                 {% for offre in offres %}
                     <tr>
-                        <td><a href="{{ path('offre_show', { 'id': offre.id_offre }) }}">{{ offre.id_offre }}</a></td>
-                        <td>{{ offre.tarif }}</td>
-                        <td>{{ offre.delai }}</td>
-                        <td>{{ offre.propCommerciale }}</td>
-                        <td>{{ offre.particularite }}</td>
-                        <td>{{ offre.id_freelancer }}</td>
-                        <td>
+                        <a class="mydisplaynone"  href="{{ path('offre_show', { 'id': offre.id_offre }) }}">{{ offre.id_offre }}</a>
+                        <td class="mytdtab">{{ dump(offre) }}</td>
+                        <td class="mytdtab">{{ dump(offre) }}</td>
+                        <td class="mytdtab">{{ offre.tarif }}</td>
+                        <td class="mytdtab">{{ offre.delai }}</td>
+                        <td class="mytdtab">{{ offre.propCommerciale }}</td>
+                        <td class="mytdtab">{{ offre.particularite }}</td>
+                        <input type="hidden" value="offre.id_freelancer }}" />
+                        <td class="mytdtab2">
                             <ul>
-                                <li>
-                                    <a href="{{ path('offre_show', { 'id': offre.id_offre }) }}">Afficher</a>
+                                <li style="display:inline-block;margin-top:8px;">
+                                    <a class="btn btn-default" href="{{ path('offre_show', { 'id': offre.id_offre }) }}">Afficher</a>
                                 </li>
-                                <li>
-                                    <a href="{{ path('offre_edit', { 'id': offre.id_offre }) }}">Modifier</a>
+                                <li style="display:inline-block;">
+                                    <a class="btn btn-info" style="color:white;" href="{{ path('offre_edit', { 'id': offre.id_offre }) }}">Modifier</a>
                                 </li>
                             </ul>
                         </td>
                     </tr>
                 {% endfor %}
                 </tbody>
-            </table>
-
-            <ul>
-                <li>
-                    <a href="{{ path('offre_new') }}">Créer un nouveau  offre</a>
-                </li>
-            </ul>
+            </table> 
         </div>
     </div>
 {% endblock %}

@@ -125,6 +125,10 @@ class DefaultController extends Controller
         ));
     }
     
+    /*
+     * 
+     */
+    
     public function sendFileAction($file){
         
         $file_to_send = "Ressources/public/file/Symfony_book_3_0.pdf";
@@ -133,7 +137,9 @@ class DefaultController extends Controller
         return $response;
     }
     
-    
+    /*
+     * @Routing('service", name="service" }
+     */
     public function serviceAction(){
         return $this->render('/service.html.twig');
     }

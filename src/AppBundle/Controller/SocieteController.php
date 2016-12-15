@@ -48,7 +48,7 @@ class SocieteController extends Controller
             $em->persist($societe);
             $em->flush($societe);
 
-            return $this->redirectToRoute('societe_show', array('id' => $societe->getId()));
+            return $this->redirectToRoute('societe_show', array('id' => $societe->getid_societe()));
         }
 
         return $this->render('societe/new.html.twig', array(
@@ -88,7 +88,7 @@ class SocieteController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('societe_edit', array('id' => $societe->getId()));
+            return $this->redirectToRoute('societe_edit', array('id' => $societe->getid_societe()));
         }
 
         return $this->render('societe/edit.html.twig', array(
@@ -128,7 +128,7 @@ class SocieteController extends Controller
     private function createDeleteForm(Societe $societe)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('societe_delete', array('id' => $societe->getId())))
+            ->setAction($this->generateUrl('societe_delete', array('id' => $societe->getid_societe())))
             ->setMethod('DELETE')
             ->getForm()
         ;

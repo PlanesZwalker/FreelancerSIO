@@ -8,36 +8,38 @@
 {% block body %}    
     <div class="formulairetop">
         <h2 class="mysubtitle">Afficher un Paiement</h2>
-        <div class="mycontentform">
-            <table>
+        <div class="mycontentformshow">
+            <ul>
+                <li class="returnlist">
+                    <a class="btn btn-default" href="{{  path('paiement_index') }}">Retourner à la liste</a>
+                </li>
+            </ul>
+            <table class="tableautitle">
                 <tbody>
                     <tr>
-                        <th>id_paiement</th>
-                        <td>{{ paiement.id_paiement }}</td>
+                        <th class="mytdtabshow">id_paiement</th>
+                        <td class="mytdtabshow">{{ paiement.id_paiement }}</td>
                     </tr>
                     <tr>
-                        <th>Etat</th>
-                        <td>{{ paiement.etat }}</td>
+                        <th class="mytdtabshow2">Etat</th>
+                        <td class="mytdtabshow2">{{ paiement.etat }}</td>
                     </tr>
                     <tr>
-                        <th>Dpsociete</th>
-                        <td>{{ paiement.dpSociete }}</td>
+                        <th class="mytdtabshow">Dpsociete</th>
+                        <td class="mytdtabshow">{{ paiement.dpSociete }}</td>
                     </tr>
                     <tr>
-                        <th>Dpfreelancer</th>
-                        <td>{{ paiement.dpFreelancer }}</td>
+                        <th class="mytdtabshow2">Dpfreelancer</th>
+                        <td class="mytdtabshow2">{{ paiement.dpFreelancer }}</td>
                     </tr>
                 </tbody>
             </table>
 
             <ul>
-                <li>
-                    <a href="{{ path('paiement_index') }}">Retourner à la liste</a>
+                <li  class="myeditli">
+                    <a class="btn btn-info" style="color:white;"  href="{{ path('paiement_edit', { 'id': paiement.id_paiement }) }}">Modifier</a>
                 </li>
-                <li>
-                    <a href="{{ path('paiement_edit', { 'id': paiement.id_paiement }) }}">Modifier</a>
-                </li>
-                <li>
+                <li class="mydeleteli">
                     {{ form_start(delete_form) }}
                         <input type="submit" value="Delete">
                     {{ form_end(delete_form) }}

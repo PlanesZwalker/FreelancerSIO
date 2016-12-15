@@ -13,7 +13,7 @@ class CahierdeschargesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('tarif')->add('delai')->add('idContrat')        ;
+        $builder->add('tarif')->add('delai')->add('idContrat');
     }
     
     /**

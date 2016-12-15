@@ -8,44 +8,46 @@
 {% block body %}    
     <div class="formulairetop">
         <h2 class="mysubtitle">Afficher une Offre</h2>
-        <div class="mycontentform">
-            <table>
+        <div class="mycontentformshow">
+            <ul>
+                <li class="returnlist">
+                    <a class="btn btn-default" href="{{ path('offre_index') }}">Retourner à la liste</a>
+                </li>
+            </ul>
+            <table  class="tableautitle">
                 <tbody>
                     <tr>
-                        <th>id_offre</th>
-                        <td>{{ offre.id_offre }}</td>
+                        <th class="mytdtabshow">id_offre</th>
+                        <td class="mytdtabshow">{{ offre.id_offre }}</td>
                     </tr>
                     <tr>
-                        <th>Tarif</th>
-                        <td>{{ offre.tarif }}</td>
+                        <th class="mytdtabshow2">Tarif</th>
+                        <td class="mytdtabshow2">{{ offre.tarif }}</td>
                     </tr>
                     <tr>
-                        <th>Delai</th>
-                        <td>{{ offre.delai }}</td>
+                        <th class="mytdtabshow">Delai</th>
+                        <td class="mytdtabshow">{{ offre.delai }}</td>
                     </tr>
                     <tr>
-                        <th>Propcommerciale</th>
-                        <td>{{ offre.propCommerciale }}</td>
+                        <th class="mytdtabshow2">Propcommerciale</th>
+                        <td class="mytdtabshow2">{{ offre.propCommerciale }}</td>
                     </tr>
                     <tr>
-                        <th>Particularite</th>
-                        <td>{{ offre.particularite }}</td>
+                        <th class="mytdtabshow">Particularite</th>
+                        <td class="mytdtabshow">{{ offre.particularite }}</td>
                     </tr>
                     <tr>
-                        <th>id_freelancer</th>
-                        <td>{{ offre.id_freelancer }}</td>
+                        <th class="mytdtabshow2">id_freelancer</th>
+                        <td class="mytdtabshow2">{{ offre.id_freelancer }}</td>
                     </tr>
                 </tbody>
             </table>
 
             <ul>
-                <li>
-                    <a href="{{ path('offre_index') }}">Retourner à la liste</a>
+                <li class="myeditli">
+                    <a class="btn btn-info" style="color:white;" href="{{ path('offre_edit', { 'id': offre.id_offre }) }}">Modifier</a>
                 </li>
-                <li>
-                    <a href="{{ path('offre_edit', { 'id': offre.id_offre }) }}">Modifier</a>
-                </li>
-                <li>
+                <li class="mydeleteli">
                     {{ form_start(delete_form) }}
                         <input type="submit" value="Delete">
                     {{ form_end(delete_form) }}

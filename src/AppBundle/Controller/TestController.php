@@ -48,7 +48,7 @@ class TestController extends Controller
             $em->persist($test);
             $em->flush($test);
 
-            return $this->redirectToRoute('test_show', array('id' => $test->getId()));
+            return $this->redirectToRoute('test_show', array('id' => $test->getid_test()));
         }
 
         return $this->render('test/new.html.twig', array(
@@ -88,7 +88,7 @@ class TestController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('test_edit', array('id' => $test->getId()));
+            return $this->redirectToRoute('test_edit', array('id' => $test->getid_test()));
         }
 
         return $this->render('test/edit.html.twig', array(
@@ -128,7 +128,7 @@ class TestController extends Controller
     private function createDeleteForm(Test $test)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('test_delete', array('id' => $test->getId())))
+            ->setAction($this->generateUrl('test_delete', array('id' => $test->getid_test())))
             ->setMethod('DELETE')
             ->getForm()
         ;

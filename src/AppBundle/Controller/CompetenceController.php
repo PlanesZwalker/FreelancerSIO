@@ -48,7 +48,7 @@ class CompetenceController extends Controller
             $em->persist($competence);
             $em->flush($competence);
 
-            return $this->redirectToRoute('competence_show', array('id' => $competence->getId()));
+            return $this->redirectToRoute('competence_show', array('id' => $competence->getid_competence()));
         }
 
         return $this->render('competence/new.html.twig', array(
@@ -88,7 +88,7 @@ class CompetenceController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('competence_edit', array('id' => $competence->getId()));
+            return $this->redirectToRoute('competence_edit', array('id' => $competence->getid_competence()));
         }
 
         return $this->render('competence/edit.html.twig', array(
@@ -128,7 +128,7 @@ class CompetenceController extends Controller
     private function createDeleteForm(Competence $competence)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('competence_delete', array('id' => $competence->getId())))
+            ->setAction($this->generateUrl('competence_delete', array('id' => $competence->getid_competence())))
             ->setMethod('DELETE')
             ->getForm()
         ;

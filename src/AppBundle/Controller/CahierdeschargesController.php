@@ -48,7 +48,7 @@ class CahierdeschargesController extends Controller
             $em->persist($cahierdescharge);
             $em->flush($cahierdescharge);
 
-            return $this->redirectToRoute('cahierdescharges_show', array('id' => $cahierdescharge->getId()));
+            return $this->redirectToRoute('cahierdescharges_show', array('id' => $cahierdescharge->getIdCdc()));
         }
 
         return $this->render('cahierdescharges/new.html.twig', array(
@@ -88,7 +88,7 @@ class CahierdeschargesController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('cahierdescharges_edit', array('id' => $cahierdescharge->getId()));
+            return $this->redirectToRoute('cahierdescharges_edit', array('id' => $cahierdescharge->getIdCdc()));
         }
 
         return $this->render('cahierdescharges/edit.html.twig', array(
@@ -128,7 +128,7 @@ class CahierdeschargesController extends Controller
     private function createDeleteForm(Cahierdescharges $cahierdescharge)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('cahierdescharges_delete', array('id' => $cahierdescharge->getId())))
+            ->setAction($this->generateUrl('cahierdescharges_delete', array('id' => $cahierdescharge->getIdCdc())))
             ->setMethod('DELETE')
             ->getForm()
         ;

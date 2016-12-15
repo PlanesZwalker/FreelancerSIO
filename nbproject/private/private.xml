@@ -3,12 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/FreelancerSIO/src/AppBundle/Entity/User.php</file>
-            <file>file:/C:/xampp/htdocs/FreelancerSIO/src/AppBundle/Entity/Freelancer.php</file>
-            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/Resources/views/nav.html.twig</file>
-            <file>file:/C:/xampp/htdocs/FreelancerSIO/src/AppBundle/Controller/UserController.php</file>
-            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/Resources/views/user/index.html.twig</file>
-            <file>file:/C:/xampp/htdocs/FreelancerSIO/src/AppBundle/Controller/FreelancerController.php</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/src/AppBundle/Controller/DefaultController.php</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/Resources/FOSUserBundle/views/ChangePassword/change_password_content.html.twig</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/src/MyFOSUserBundle/Controller/GroupController.php</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/src/MyFOSUserBundle/Controller/ProfileController.php</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/Resources/views/cahierdescharges/edit.html.twig</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/Resources/FOSUserBundle/views/Registration/register_content.html.twig</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/Resources/FOSUserBundle/views/ChangePassword/change_password.html.twig</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/config/services.yml</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/src/MyFOSUserBundle/Controller/DefaultController.php</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/src/MyFOSUserBundle/Controller/MyChangePasswordController.php</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/src/MyFOSUserBundle/Controller/RegistrationController.php</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/config/config.yml</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/config/routing.yml</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/Resources/FOSUserBundle/views/Profile/show_content.html.twig</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/src/MyFOSUserBundle/Resources/views/Default/index.html.twig</file>
         </group>
     </open-files>
 </project-private>
