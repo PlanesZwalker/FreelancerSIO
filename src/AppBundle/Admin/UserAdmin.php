@@ -13,7 +13,13 @@ class UserAdmin extends Admin
         $formMapper->add('username', 'text');
         $formMapper->add('email', 'text');
         $formMapper->add('password', 'text');
-
+        $formMapper->with('Roles')
+                    ->add('roles', 'choice',
+                        array('choices'=>
+                        array('ROLE_SUPER_ADMIN' => 'ROLE_SUPER_ADMIN', 'ROLE_SOCIETE' => 'ROLE_FREELANCER'),
+                            'expanded'=> true,
+                            'multiple'=> true))
+                    ->end();
 
     }
 

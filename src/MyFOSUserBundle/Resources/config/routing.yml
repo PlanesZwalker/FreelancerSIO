@@ -1,3 +1,4 @@
 my_fos_user_homepage:
     path:     /
     defaults: { _controller: MyFOSUserBundle:Default:index }
+   

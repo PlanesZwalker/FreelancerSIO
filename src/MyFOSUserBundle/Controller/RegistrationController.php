@@ -26,6 +26,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
 /**
  * Controller managing the registration
  *
@@ -44,7 +45,7 @@ class RegistrationController extends Controller
         if ($this->getUser() instanceof UserInterface) {
             return $this->redirectToRoute($this->getParameter('fos_user.user.default_route'));
         }
-
+        
         /** @var $formFactory FactoryInterface */
         $formFactory = $this->get('fos_user.registration.form.factory');
         /** @var $userManager UserManagerInterface */
@@ -63,9 +64,7 @@ class RegistrationController extends Controller
         }
 
         $form = $formFactory->createForm();
-      
-        
-        
+
         $form->setData($user);
         $form->handleRequest($request);
 
@@ -94,7 +93,6 @@ class RegistrationController extends Controller
             }
         }
 
-        
         return $this->render('FOSUserBundle:Registration:register.html.twig', array(
             'form' => $form->createView(),
         ));

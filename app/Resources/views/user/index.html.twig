@@ -22,7 +22,6 @@
                         <th class="center">Utilisateur</th>
                         <th class="center">Nom</th>
                         <th class="center">Mot de passe</th>
-                        <th class="center">Pseudo</th>
                         <th class="center">Roles</th>
                         <th class="center">Actions</th>
                     </tr>
@@ -34,7 +33,6 @@
                         <td class="mytdtab2" style="width:100px;">{{ dump(user) }}</td>
                         <td class="mytdtab2">{{ user.username }}</td>
                         <td class="mytdtab2">{{ user.plainPassword  }}</td>
-                        <td class="mytdtab2">{{ user.pseudo  }}</td>
                         <td class="mytdtab2" >{% for role in user.roles  %}{{ role }}<br/>{% endfor %}   </td>
                         <td class="mytdtab">
                             <ul>

@@ -314,3 +314,7 @@ and open the template in the editor.
     display:inline-block;
     margin:2%;
 }
+
+#fos_user_registration_form_roles{
+    color:black;
+}

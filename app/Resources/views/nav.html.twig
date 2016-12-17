@@ -18,7 +18,7 @@
 {% block nav %}
  
     <nav id="manavnavbar" data-role="navbar" >
-        <div style="width:15vw; position:absolute; top:3.7vw; left:4.5vw; ">
+        <div style="width:15vw; position:absolute; top:3.7vw; left:0.5vw; ">
             {% if not (app.request.attributes.get('_route')=='re_service') %}
                 <li style='list-style-type: none;width:15vw;'><a data-ajax="false" class="manav icon fa-book" href="{{ path("re_service") }}" >  &nbsp;&nbsp;&nbsp;<span>Documentation</span></a></li>
             {% endif %} 
@@ -49,7 +49,7 @@
             {% if not (app.request.attributes.get('_route')=='fos_user_registration_register') %} 
                 {% if not is_granted("ROLE_USER") %}
                     <li>
-                        <a data-ajax="false" href="{{ path('fos_user_registration_register') }}" class="manav icon fa-user-plus">
+                        <a data-ajax="false" href="{{ path('re_fos_user_registration_register') }}" class="manav icon fa-user-plus">
                             &nbsp;&nbsp;&nbsp;<span>Créer un compte</span>
                         </a>
                     </li>

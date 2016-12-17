@@ -8,7 +8,7 @@ app:
     
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-           
+   
 admin:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
     prefix: /admin
@@ -30,7 +30,6 @@ re_fos_user:
    path: /change-password
    defaults: {_controller:MyFOSUserBundle:MyChangePassword:changePassword }
 
-
 re_fos_user_profile_show:
     path: /profil
     defaults: {_controller:MyFOSUserBundle:Profile:show }
@@ -43,22 +42,20 @@ re_fos_user_registration_register:
     path: /registration
     defaults: {_controller:MyFOSUserBundle:Registration:register }
     
-#    <route id=""  methods="GET POST">
-#        <</default>
-#    </route>
-#
-#    <route id="fos_user_registration_check_email" path="/check-email" methods="GET">
-#        <default key="_controller">FOSUserBundle:Registration:checkEmail</default>
-#    </route>
-#
-#    <route id="fos_user_registration_confirm" path="/confirm/{token}" methods="GET">
-#        <default key="_controller">FOSUserBundle:Registration:confirm</default>
-#    </route>
-#
-#    <route id="fos_user_registration_confirmed" path="/confirmed" methods="GET">
-#        <default key="_controller">FOSUserBundle:Registration:confirmed</default>
-#    </route>
-#    
+re_fos_user_registration_check_email:
+    path: /check-email
+    defaults: {_controller:MyFOSUserBundle:Registration:checkEmail }
+
+re_fos_user_registration_confirm :
+    path: /confirm/{token}
+    defaults: {_controller:MyFOSUserBundle:Registration:confirm }
+  
+re_fos_user_registration_confirmed:
+    path: /confirmed
+    defaults: {_controller:MyFOSUserBundle:Registration:confirmed }
+
+
+
 #    
 #    <route id="fos_user_resetting_request" path="/request" methods="GET">
 #        <default key="_controller">FOSUserBundle:Resetting:request</default>

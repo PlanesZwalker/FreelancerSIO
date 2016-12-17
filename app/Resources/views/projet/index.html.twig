@@ -9,6 +9,7 @@
     <div class="formulairetop">
         <h2 class="mysubtitle">Liste des Projets</h2>
         <div class="mycontentform">
+            {% if is_granted('ROLE_USER') %}
              <ul>
                 <li>
                     <a class="addtab"  href="{{ path('projet_new') }}">
@@ -16,6 +17,7 @@
                     </a>
                 </li>
             </ul>
+            {% endif %}
             <table class="tableautitle">
                 <thead>
                     <tr class="tableautitlecontent">

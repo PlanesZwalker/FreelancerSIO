@@ -9,12 +9,7 @@ AppBundle\Entity\User:
             generator:
                 strategy: AUTO
                 fields:
-    pseudo:
-        type: string
-        length: 255
-    typecompte:
-        type: string
-        length: 255
+
 
     lifecycleCallbacks: {  }
 

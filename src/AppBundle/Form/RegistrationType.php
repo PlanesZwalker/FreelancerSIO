@@ -5,14 +5,29 @@ namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\PropertyAccess\PropertyAccess;
+use Symfony\Component\Form\CallbackTransformer;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
 
 class RegistrationType extends AbstractType
 {
+  
+    
     public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder->add('pseudo');
-        $builder->add('typecompte');
+    {        
+                  
+            $builder->add('roles', ChoiceType::class,[ 
+                                'multiple'  => true,
+                                'choices'   => [
+                                        'ROLE_ADMIN' => 'Admin',
+                                        'ROLE_USER' => 'User',
+                                    ]
+                              
+                            ]);
     }
+    
 
     public function getParent()
     {
