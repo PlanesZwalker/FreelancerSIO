@@ -19,13 +19,15 @@ class RegistrationType extends AbstractType
     {        
                   
             $builder->add('roles', ChoiceType::class,[ 
-                                'multiple'  => true,
-                                'choices'   => [
-                                        'ROLE_ADMIN' => 'Admin',
-                                        'ROLE_USER' => 'User',
-                                    ]
-                              
-                            ]);
+                            'label' => 'Selectionnez le type de compte',
+                            'attr'  => array('class' => 'myselect'),
+                            'multiple'  => true,
+                            'choices'   => [
+                                    'ROLE_FRELANCER' => 'Freelancer',
+                                    'ROLE_SOCIETE' => 'Societe',
+                                ]
+
+                        ]);
     }
     
 
