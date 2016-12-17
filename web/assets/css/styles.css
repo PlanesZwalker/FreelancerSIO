@@ -319,7 +319,20 @@ and open the template in the editor.
     color:black;
 }
 
+.my_fos_user_registration_register{ 
+    margin-top:-3%; 
+    background-color:#E0E0E1; 
+    margin-bottom:20%;
+    padding:2%;
+    border-radius:0px 0px 8px 8px ;
+}
+
 .myselect{
-    
+    z-index:999 !important;
     color:black;
+}
+.myselect>options{
+     z-index:999 !important;
+    color:black;
+    height:50px;
 }

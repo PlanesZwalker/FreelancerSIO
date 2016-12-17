@@ -5,7 +5,7 @@
         <h2 class="mysubtitle">Formulaire d'inscription</h2> 
     {% endblock %}
 
-    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register', 'style':'margin-top:-3%; background-color:#E0E0E1; margin-bottom:20%; padding:2%; border-radius:0px 0px 8px 8px ;'} }) }}
+    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'my_fos_user_registration_register'} }) }}
 
     {{ form_errors(form) }}
     <div style="margin-left:20%; text-align:center; width:60%">
