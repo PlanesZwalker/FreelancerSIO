@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class TestType extends AbstractType
 {
@@ -13,7 +14,12 @@ class TestType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('description')->add('urlTest')->add('resultat')->add('datePassage')->add('id_freelancer')->add('id_competence')        ;
+        $builder->add('description')
+                ->add('urlTest')
+                ->add('resultat')
+                ->add('datePassage', DateTimeType::class )
+                ->add('id_freelancer')
+                ->add('id_competence')        ;
     }
     
     /**

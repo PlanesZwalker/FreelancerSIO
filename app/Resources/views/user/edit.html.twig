@@ -9,18 +9,27 @@
     <div class="formulairetop">
         <h2 class="mysubtitle">Editer un Utilisateur </h2>
         <div class="mycontentform">
-            {{ form_start(edit_form) }}
-                {{ form_widget(edit_form) }}
-                <input type="submit" value="Edit" />
-            {{ form_end(edit_form) }}
+            <ul>
+                <li class="returnlist">
+                    <a data-ajax="false" class="btn btn-default" href="{{ path('user_index') }}">Retourner à la liste</a>
+                </li>
+            </ul>
+            <table class="tableautitle">
+                <tbody>
+                    
+                    
+                   {{ form_start(edit_form) }}
+                        {{ form_widget(edit_form) }}
+                        <input type="submit"  class="myeditinput"  value="Enregistrer les modifications" />
+                    {{ form_end(edit_form) }}
 
+                    
+                </tbody>
+            </table> 
             <ul>
                 <li>
-                    <a href="{{ path('user_index') }}">Retourner à la liste</a>
-                </li>
-                <li>
                     {{ form_start(delete_form) }}
-                        <input type="submit" value="Delete">
+                          <input type="submit" value="Supprimer l'utilisateur">
                     {{ form_end(delete_form) }}
                 </li>
             </ul>

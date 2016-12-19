@@ -15,7 +15,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 class CahierdeschargesController extends Controller
 {
     /**
-     * Lists all cahierdescharge entities.
+     * Lists all cahierdescharges entities.
      *
      * @Route("/", name="cahierdescharges_index")
      * @Method("GET")
@@ -32,57 +32,57 @@ class CahierdeschargesController extends Controller
     }
 
     /**
-     * Creates a new cahierdescharge entity.
+     * Creates a new cahierdescharges entity.
      *
      * @Route("/new", name="cahierdescharges_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
-        $cahierdescharge = new Cahierdescharge();
-        $form = $this->createForm('AppBundle\Form\CahierdeschargesType', $cahierdescharge);
+        $cahierdescharges = new Cahierdescharges();
+        $form = $this->createForm('AppBundle\Form\CahierdeschargesType', $cahierdescharges);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($cahierdescharge);
-            $em->flush($cahierdescharge);
+            $em->persist($cahierdescharges);
+            $em->flush($cahierdescharges);
 
             return $this->redirectToRoute('cahierdescharges_show', array('id' => $cahierdescharge->getIdCdc()));
         }
 
         return $this->render('cahierdescharges/new.html.twig', array(
-            'cahierdescharge' => $cahierdescharge,
+            'cahierdescharge' => $cahierdescharges,
             'form' => $form->createView(),
         ));
     }
 
     /**
-     * Finds and displays a cahierdescharge entity.
+     * Finds and displays a cahierdescharges entity.
      *
      * @Route("/{id}", name="cahierdescharges_show")
      * @Method("GET")
      */
-    public function showAction(Cahierdescharges $cahierdescharge)
+    public function showAction(Cahierdescharges $cahierdescharges)
     {
-        $deleteForm = $this->createDeleteForm($cahierdescharge);
+        $deleteForm = $this->createDeleteForm($cahierdescharges);
 
         return $this->render('cahierdescharges/show.html.twig', array(
-            'cahierdescharge' => $cahierdescharge,
+            'cahierdescharges' => $cahierdescharges,
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * Displays a form to edit an existing cahierdescharge entity.
+     * Displays a form to edit an existing cahierdescharges entity.
      *
      * @Route("/{id}/edit", name="cahierdescharges_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Cahierdescharges $cahierdescharge)
+    public function editAction(Request $request, Cahierdescharges $cahierdescharges)
     {
-        $deleteForm = $this->createDeleteForm($cahierdescharge);
-        $editForm = $this->createForm('AppBundle\Form\CahierdeschargesType', $cahierdescharge);
+        $deleteForm = $this->createDeleteForm($cahierdescharges);
+        $editForm = $this->createForm('AppBundle\Form\CahierdeschargesType', $cahierdescharges);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -92,43 +92,43 @@ class CahierdeschargesController extends Controller
         }
 
         return $this->render('cahierdescharges/edit.html.twig', array(
-            'cahierdescharge' => $cahierdescharge,
+            'cahierdescharge' => $cahierdescharges,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * Deletes a cahierdescharge entity.
+     * Deletes a cahierdescharges entity.
      *
      * @Route("/{id}", name="cahierdescharges_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Cahierdescharges $cahierdescharge)
+    public function deleteAction(Request $request, Cahierdescharges $cahierdescharges)
     {
-        $form = $this->createDeleteForm($cahierdescharge);
+        $form = $this->createDeleteForm($cahierdescharges);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->remove($cahierdescharge);
-            $em->flush($cahierdescharge);
+            $em->remove($cahierdescharges);
+            $em->flush($cahierdescharges);
         }
 
         return $this->redirectToRoute('cahierdescharges_index');
     }
 
     /**
-     * Creates a form to delete a cahierdescharge entity.
+     * Creates a form to delete a cahierdescharges entity.
      *
-     * @param Cahierdescharges $cahierdescharge The cahierdescharge entity
+     * @param Cahierdescharges $cahierdescharges The cahierdescharges entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Cahierdescharges $cahierdescharge)
+    private function createDeleteForm(Cahierdescharges $cahierdescharges)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('cahierdescharges_delete', array('id' => $cahierdescharge->getIdCdc())))
+            ->setAction($this->generateUrl('cahierdescharges_delete', array('id' => $cahierdescharges->getIdCdc())))
             ->setMethod('DELETE')
             ->getForm()
         ;

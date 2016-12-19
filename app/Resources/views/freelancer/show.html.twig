@@ -33,20 +33,22 @@
                         <td class="mytdtabshow2">{{ freelancer.age }}</td>
                     </tr>
                     <tr>
-                        <th class="mytdtabshow">Iduser</th>
+                        <th class="mytdtabshow">Résultat des Tests</th>
                         <td class="mytdtabshow">{{ freelancer.idUser }}</td>
                     </tr>
                 </tbody>
             </table>
             <ul>
                 <li class="myeditli">
-                    <a class="btn btn-info" style="color:white;" href="{{ path('freelancer_edit', { 'id': freelancer.id_freelancer }) }}">Modifier</a>
+                    <a class="btn btn-info" style="color:white;" data-ajax="false" href="{{ path('freelancer_edit', { 'id': freelancer.id_freelancer }) }}">Modifier</a>
                 </li>
+                {% if is_granted("ROLE_ADMIN") %}
                 <li class="mydeleteli">
                     {{ form_start(delete_form) }}
                         <input type="submit" value="Delete">
                     {{ form_end(delete_form) }}
                 </li>
+                {% endif %}
             </ul>
         </div>
     </div>

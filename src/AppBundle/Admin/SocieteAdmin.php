@@ -18,6 +18,14 @@ class SocieteAdmin extends Admin
             ->with('Denomination', array('class' => 'col-md-9'))    
                 ->add('denomination', 'text')
              ->end()    
+                
+            ->with('Presentatino', array('class' => 'col-md-9'))    
+                ->add('presentation', 'text')
+             ->end()  
+                
+            ->with('Logo', array('class' => 'col-md-9'))    
+                ->add('logo', 'text')
+             ->end()    
          
         ;        
     }
@@ -26,6 +34,8 @@ class SocieteAdmin extends Admin
     {
         $datagridMapper->add('siret');
         $datagridMapper->add('denomination');
+        $datagridMapper->add('presentation');
+        $datagridMapper->add('logo');
 
     }
 
@@ -33,6 +43,8 @@ class SocieteAdmin extends Admin
     {
         $listMapper->addIdentifier('siret');
         $listMapper->addIdentifier('denomination');
+        $listMapper->addIdentifier('presentation');
+        $listMapper->addIdentifier('logo');
 
     }
 }

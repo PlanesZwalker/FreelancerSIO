@@ -6,10 +6,10 @@ security:
         FOS\UserBundle\Model\UserInterface: bcrypt
 
     role_hierarchy:
-        ROLE_SOCIETE:   ROLE_USER
-        ROLE_FREELANCER: ROLE_USER
-        ROLE_ADMIN:       [ROLE_SOCIETE,ROLE_FREELANCER]
-        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH] 
+        ROLE_SOCIETE:   [ROLE_SOCIETE, ROLE_USER]
+        ROLE_FREELANCER: [ROLE_FREELANCER, ROLE_USER]
+        ROLE_ADMIN:       [ROLE_SOCIETE, ROLE_FREELANCER]
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH, ROLE_USER, ROLE_FREELANCER, ROLE_SOCIETE] 
 
     providers:
         fos_userbundle:

@@ -23,5 +23,5 @@ AppBundle\Entity\Offre:
             length: 255
         id_freelancer:
             type: integer
-            column: id_freelancer
+            
     lifecycleCallbacks: {  }

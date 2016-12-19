@@ -17,13 +17,13 @@ class TestAdmin extends Admin
             ->end()
 
             ->with('url_test', array('class' => 'col-md-9'))    
-                ->add('urlTest', 'text')
+                ->add('url_test', 'text')
              ->end()    
             ->with('resultat', array('class' => 'col-md-9'))
                 ->add('resultat', 'textarea')
             ->end()
             ->with('date_passage', array('class' => 'col-md-9'))
-                ->add('datePassage', 'datetime')
+                ->add('date_passage', 'datetime')
             ->end()
         ;        
     }
@@ -31,7 +31,7 @@ class TestAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper->add('description');
-        $datagridMapper->add('urlTest');
+        $datagridMapper->add('url_test');
         $datagridMapper->add('resultat');
 
     }
@@ -41,7 +41,7 @@ class TestAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->addIdentifier('description');
-        $listMapper->addIdentifier('urlTest');
+        $listMapper->addIdentifier('url_test');
         $listMapper->addIdentifier('resultat');
     }
 

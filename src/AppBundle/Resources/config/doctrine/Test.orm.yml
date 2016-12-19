@@ -12,14 +12,14 @@ AppBundle\Entity\Test:
         description:
             type: string
             length: 255
-        urlTest:
+        url_test:
             type: string
             length: 255
             column: url_test
         resultat:
             type: string
             length: 255
-        datePassage:
+        date_passage:
             type: datetime
             length: 255
             column: date_passage

@@ -18,26 +18,26 @@
             <tbody>
                 <tr>
                     <th class="mytdtabshow">Projet</th>
-                    <td class="mytdtabshow">{{ cahierdescharge.idCdc }}</td>
+                    <td class="mytdtabshow">{{ cahierdescharges.idCdc }}</td>
                 </tr>
                 <tr>
                     <th class="mytdtabshow2">Tarif</th>
-                    <td class="mytdtabshow2">{{ cahierdescharge.tarif }}</td>
+                    <td class="mytdtabshow2">{{ cahierdescharges.tarif }}</td>
                 </tr>
                 <tr>
                     <th class="mytdtabshow">Delai</th>
-                    <td class="mytdtabshow">{{ cahierdescharge.delai }}</td>
+                    <td class="mytdtabshow">{{ cahierdescharges.delai }}</td>
                 </tr>
                 <tr>
                     <th class="mytdtabshow2">Contrat</th>
-                    <td class="mytdtabshow2">{{ cahierdescharge.idContrat }}</td>
+                    <td class="mytdtabshow2">{{ cahierdescharges.idContrat }}</td>
                 </tr>
             </tbody>
         </table>
 
         <ul>
             <li  class="myeditli">
-                <a data-ajax="false" class="btn btn-info" style="color:white;"  href="{{ path('cahierdescharges_edit', { 'id': cahierdescharge.idCdc }) }}">Modifier</a>
+                <a data-ajax="false" class="btn btn-info" style="color:white;"  href="{{ path('cahierdescharges_edit', { 'id': cahierdescharges.idCdc }) }}">Modifier</a>
             </li>
             <li class="mydeleteli">
                 {{ form_start(delete_form) }}

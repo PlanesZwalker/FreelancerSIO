@@ -17,7 +17,7 @@
             <table  class="tableautitle">
                 <tbody>
                     <tr>
-                        <th class="mytdtabshow">id_offre</th>
+                        <th class="mytdtabshow">Intitulé de l'offre</th>
                         <td class="mytdtabshow">{{ offre.id_offre }}</td>
                     </tr>
                     <tr>
@@ -25,11 +25,11 @@
                         <td class="mytdtabshow2">{{ offre.tarif }}</td>
                     </tr>
                     <tr>
-                        <th class="mytdtabshow">Delai</th>
+                        <th class="mytdtabshow">Délai</th>
                         <td class="mytdtabshow">{{ offre.delai }}</td>
                     </tr>
                     <tr>
-                        <th class="mytdtabshow2">Propcommerciale</th>
+                        <th class="mytdtabshow2">Proposition commerciale</th>
                         <td class="mytdtabshow2">{{ offre.propCommerciale }}</td>
                     </tr>
                     <tr>
@@ -37,7 +37,7 @@
                         <td class="mytdtabshow">{{ offre.particularite }}</td>
                     </tr>
                     <tr>
-                        <th class="mytdtabshow2">id_freelancer</th>
+                        <th class="mytdtabshow2">Nom du Freelancer</th>
                         <td class="mytdtabshow2">{{ offre.id_freelancer }}</td>
                     </tr>
                 </tbody>
@@ -47,11 +47,13 @@
                 <li class="myeditli">
                     <a class="btn btn-info" style="color:white;" href="{{ path('offre_edit', { 'id': offre.id_offre }) }}">Modifier</a>
                 </li>
-                <li class="mydeleteli">
+                {% if is_granted("ROLE_ADMIN") %}
+                <li  class="mydeleteli">
                     {{ form_start(delete_form) }}
-                        <input type="submit" value="Delete">
+                        <input type="submit" rel="external" value="Supprimer l'offre">
                     {{ form_end(delete_form) }}
                 </li>
+                {% endif %}
             </ul>
         </div>
     </div>

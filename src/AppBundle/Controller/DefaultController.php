@@ -48,14 +48,7 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $test = array('8','test ok');
-        $name= "Admin";
-                        
-        // replace this example code with whatever you need
-        return $this->render('freelance/index.html.twig', array(
-            'test'=>$test,
-            'name'=>$name
-        ));
+        return $this->frontAction($request);
     }
 
     
@@ -74,8 +67,6 @@ class DefaultController extends Controller
      */
     public function frontAction(Request $request)
     {
-
-    
          $formRecherche = $this->createFormBuilder() 
                 ->add('Recherche', ChoiceType::class, array(
                     'choices' => array(
@@ -143,32 +134,7 @@ class DefaultController extends Controller
     public function serviceAction(){
         return $this->render('/service.html.twig');
     }
-    
-  
-     /**
-     * @Route("/listfreelancer", name="listfreelancer")
-     */
-    public function listFreelancerAction(Request $request)
-    {
-            $name='test';
-        
-         return $this->render('/listfreelancer.html.twig', array(
-            'name' => $name,
-        )); 
-   
-    }
-     /**
-     * @Route("/listprojet", name="listprojet")
-     */
-    public function listProjetAction(Request $request)
-    {
-            $name='test';
-        
-         return $this->render('/listprojet.html.twig', array(
-            'name' => $name,
-        )); 
-   
-    }
+
     
     /**
      * @Route("/editprofil", name="editprofil")

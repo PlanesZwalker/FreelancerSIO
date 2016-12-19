@@ -7,23 +7,46 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h2 class="mysubtitle">Liste des Sociétés</h2>
+        <h2 class="mysubtitle">Modifier le profil de la Société</h2>
         <div class="mycontentform">
-            {{ form_start(edit_form) }}
-                {{ form_widget(edit_form) }}
-                <input type="submit" value="Edit" />
-            {{ form_end(edit_form) }}
-
-            <ul>
-                <li>
-                    <a href="{{ path('societe_index') }}">Retourner à la liste</a>
-                </li>
-                <li>
-                    {{ form_start(delete_form) }}
-                        <input type="submit" value="Delete">
-                    {{ form_end(delete_form) }}
+             <ul>
+                <li class="returnlist">
+                    <a data-ajax="false" class="btn btn-default" href="{{ path('societe_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
+            <table  class="tableautitle">
+                <tbody>
+                    
+                    {{ form_start(edit_form) }}
+                    <tr>
+                        <th class="mytdtabshow">{{ form_row(edit_form.siret) }}</th>
+                    </tr>        
+                    <tr>
+                        <th class="mytdtabshow2">{{ form_row(edit_form.denomination) }}</th>
+                    </tr>  
+                    <tr>
+                        <th class="mytdtabshow">{{ form_row(edit_form.presentation) }}</th>
+                    </tr>        
+                    <tr>
+                        <th class="mytdtabshow2">{{ form_row(edit_form.logo) }}</th>
+                    </tr>  
+           
+                    <input rel="external" class="myeditinput" type="submit" value="Enregistrer les modifications" />
+                    {{ form_end(edit_form) }}
+
+                    {% if is_granted("ROLE_ADMIN") %}            
+                    <ul>
+                         <li class="mydeleteli ">
+
+                                {{ form_start(delete_form) }}
+                                    <input type="submit" rel="external" value="Supprimer le profil" />
+                                {{ form_end(delete_form) }}
+
+                        </li>
+                    </ul> 
+                    {% endif %}
+                 </tbody>
+            </table>  
         </div>
     </div>
 {% endblock %}

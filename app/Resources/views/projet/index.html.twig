@@ -44,11 +44,11 @@
                         <td class="mytdtab">
                             <ul>
                                 <li style="display:inline-block;margin-top:8px;">
-                                    <a class="btn btn-default" href="{{ path('projet_show', { 'id': projet.id_projet }) }}">Afficher</a>
+                                    <a data-ajax="false" class="btn btn-default" href="{{ path('projet_show', { 'id': projet.id_projet }) }}">Afficher</a>
                                 </li>
                                 {% if is_granted('ROLE_ADMIN') %}
                                 <li style="display:inline-block;">
-                                    <a class="btn btn-info" style="color:white;" href="{{ path('projet_edit', { 'id': projet.id_projet }) }}">Modifier</a>
+                                    <a data-ajax="false" class="btn btn-info" style="color:white;" href="{{ path('projet_edit', { 'id': projet.id_projet }) }}">Modifier</a>
                                 </li>
                                 {% endif %}
                             </ul>

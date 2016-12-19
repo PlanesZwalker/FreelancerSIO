@@ -39,6 +39,16 @@ class Competence
     }
 
     /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getdCompetence()
+    {
+        return $this->id_competence;
+    }
+
+    /**
      * Set categorie
      *
      * @param string $categorie
@@ -106,6 +116,30 @@ class Competence
      * @return int
      */
     public function getid_freelancer()
+    {
+        return $this->id_freelancer;
+    }
+    
+    /**
+     * Set id_freelancer
+     *
+     * @param integer $id_freelancer
+     *
+     * @return Competence
+     */
+    public function setIdFreelancer($id_freelancer)
+    {
+        $this->id_freelancer = $id_freelancer;
+
+        return $this;
+    }
+
+    /**
+     * Get id_freelancer
+     *
+     * @return int
+     */
+    public function getIdFreelancer()
     {
         return $this->id_freelancer;
     }

@@ -32,12 +32,12 @@
                 {% for offre in offres %}
                     <tr>
                         <a class="mydisplaynone"  href="{{ path('offre_show', { 'id': offre.id_offre }) }}">{{ offre.id_offre }}</a>
-                        <td class="mytdtab">{{ dump(offre) }}</td>
-                        <td class="mytdtab">{{ dump(offre) }}</td>
+                        <td class="mytdtab2">{{ dump(offre) }}</td>
                         <td class="mytdtab">{{ offre.tarif }}</td>
-                        <td class="mytdtab">{{ offre.delai }}</td>
+                        <td class="mytdtab2">{{ offre.delai }}</td>
                         <td class="mytdtab">{{ offre.propCommerciale }}</td>
-                        <td class="mytdtab">{{ offre.particularite }}</td>
+                        <td class="mytdtab2">{{ offre.particularite }}</td>
+                        <td class="mytdtab">{{ offre.id_freelancer }}</td>
                         <input type="hidden" value="offre.id_freelancer }}" />
                         <td class="mytdtab2">
                             <ul>

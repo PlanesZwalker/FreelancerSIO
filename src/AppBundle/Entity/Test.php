@@ -20,7 +20,7 @@ class Test
     /**
      * @var string
      */
-    private $urlTest;
+    private $url_test;
 
     /**
      * @var string
@@ -28,9 +28,9 @@ class Test
     private $resultat;
 
     /**
-     * @var string
+     * @var /Datetime
      */
-    private $datePassage;
+    private $date_passage;
 
     /**
      * @var int
@@ -80,13 +80,13 @@ class Test
     /**
      * Set urlTest
      *
-     * @param string $urlTest
+     * @param string $url_test
      *
      * @return Test
      */
-    public function setUrlTest($urlTest)
+    public function setUrlTest($url_test)
     {
-        $this->urlTest = $urlTest;
+        $this->url_test = $url_test;
 
         return $this;
     }
@@ -98,7 +98,7 @@ class Test
      */
     public function getUrlTest()
     {
-        return $this->urlTest;
+        return $this->url_test;
     }
 
     /**
@@ -126,15 +126,15 @@ class Test
     }
 
     /**
-     * Set datePassage
+     * Set date_passage
      *
-     * @param string $datePassage
+     * @param string $date_passage
      *
      * @return Test
      */
-    public function setDatePassage($datePassage)
+    public function setDatePassage($date_passage)
     {
-        $this->datePassage = $datePassage;
+        $this->date_passage = $date_passage;
 
         return $this;
     }
@@ -146,7 +146,7 @@ class Test
      */
     public function getDatePassage()
     {
-        return $this->datePassage;
+        return $this->date_passage;
     }
 
     /**
@@ -156,7 +156,7 @@ class Test
      *
      * @return Test
      */
-    public function setid_freelancer($id_freelancer)
+    public function setIdFreelancer($id_freelancer)
     {
         $this->id_freelancer = $id_freelancer;
 
@@ -168,7 +168,7 @@ class Test
      *
      * @return int
      */
-    public function getid_freelancer()
+    public function getIdFreelancer()
     {
         return $this->id_freelancer;
     }
@@ -193,6 +193,30 @@ class Test
      * @return int
      */
     public function getid_competence()
+    {
+        return $this->id_competence;
+    }
+
+    /**
+     * Set id_competence
+     *
+     * @param integer $id_competence
+     *
+     * @return Test
+     */
+    public function setIdCompetence($id_competence)
+    {
+        $this->id_competence = $id_competence;
+
+        return $this;
+    }
+
+    /**
+     * Get id_competence
+     *
+     * @return int
+     */
+    public function getIdCompetence()
     {
         return $this->id_competence;
     }

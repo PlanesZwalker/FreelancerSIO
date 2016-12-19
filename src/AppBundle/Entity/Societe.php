@@ -21,6 +21,14 @@ class Societe
      * @var string
      */
     private $denomination;
+    /**
+     * @var string
+     */
+    private $presentation;
+    /**
+     * @var string
+     */
+    private $logo;
 
     /**
      * @var int
@@ -108,6 +116,23 @@ class Societe
     public function getIdUser()
     {
         return $this->idUser;
+    }
+    
+     
+    function getLogo() {
+        return $this->logo;
+    }
+
+    function getPresentation() {
+        return $this->presentation;
+    }
+
+    function setLogo($logo) {
+        $this->logo = $logo;
+    }
+
+    function setPresentation($presentation) {
+        $this->presentation = $presentation;
     }
 }
 

@@ -14,11 +14,17 @@ class UserAdmin extends Admin
         $formMapper->add('email', 'text');
         $formMapper->add('password', 'text');
         $formMapper->with('Roles')
-                    ->add('roles', 'choice',
-                        array('choices'=>
-                        array('ROLE_SUPER_ADMIN' => 'ROLE_SUPER_ADMIN', 'ROLE_SOCIETE' => 'ROLE_FREELANCER'),
-                            'expanded'=> true,
-                            'multiple'=> true))
+                                
+            ->add('roles', ChoiceType::class,[ 
+                            'label' => 'Selectionnez le type de compte',
+                            'attr'  => array('class' => 'myselect'),
+                            'multiple'  => true,
+                            'choices'   => [
+                                    ' Freelancer' => 'ROLE_FREELANCER',
+                                     ' Société' => 'ROLE_SOCIETE',
+                                    ]
+                              ])
+
                     ->end();
 
     }

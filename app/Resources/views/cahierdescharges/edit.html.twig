@@ -8,7 +8,7 @@
 {% block body %}    
     <div class="formulairetop">
         <h2 class="mysubtitle">Edition du Cahier des Charges</h2>
-        <div class="mycontentformshow">
+        <div class="mycontentform">
             <ul>
                 <li class="returnlist">
                     <a data-ajax="false" class="btn btn-default" href="{{ path('cahierdescharges_index') }}">Retourner à la liste</a>
@@ -28,16 +28,18 @@
                     </tr>             
                 </tbody>
             </table>   
-           <input data-ajax="false" class="myeditinput" type="submit" value="Enregistrer les modifications" />
+           <input  rel="external" class="myeditinput" type="submit" value="Enregistrer les modifications" />
             {{ form_end(edit_form) }}
             {{ dump(edit_form) }}
+            {% if is_granted("ROLE_ADMIN") %}
             <ul>
                 <li class="mydeleteli ">
                     {{ form_start(delete_form) }}
-                        <input data-ajax="false" type="submit" value="Delete">
+                        <input rel="external" type="submit" value="Delete" >
                     {{ form_end(delete_form) }}
                 </li>
             </ul>
+            {% endif %}
         </div>
     </div>                              
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
 
-        <h1 id="logo"><a class="bigtitle">Tests</a></h1>  
+    <h1 id="logo"><a class="bigtitle">Tests</a></h1>  
 
 {% endblock %}
 
@@ -9,21 +9,37 @@
     <div class="formulairetop">
         <h2 class="mysubtitle">Editer un Test</h2>
         <div class="mycontentform">
-            {{ form_start(edit_form) }}
-                {{ form_widget(edit_form) }}
-                <input type="submit" value="Edit" />
-            {{ form_end(edit_form) }}
-
             <ul>
-                <li>
-                    <a href="{{ path('test_index') }}">Retourner à la liste</a>
-                </li>
-                <li>
-                    {{ form_start(delete_form) }}
-                        <input type="submit" value="Delete">
-                    {{ form_end(delete_form) }}
+                <li class="returnlist">
+                    <a data-ajax="false" class="btn btn-default" href="{{ path('test_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
+            <table  class="tableautitle">
+                <tbody>
+                    {{ form_start(edit_form) }}
+                    {{ form_row(edit_form.description) }}
+                    {{ form_row(edit_form.urlTest) }}
+                    {{ form_row(edit_form.resultat) }}
+                
+                    {{ form_row(edit_form.id_freelancer) }}
+                    {{ form_row(edit_form.id_competence) }}
+                
+                </tbody>
+            </table>             
+            <input type="submit"  class="myeditinput"  value="Modifier le test" />
+            {{ form_end(edit_form) }}
+
+          {% if is_granted("ROLE_ADMIN") %}            
+            <ul>
+                 <li class="mydeleteli ">
+                  
+                        {{ form_start(delete_form) }}
+                            <input type="submit" rel="external" value="Supprimer le test" />
+                        {{ form_end(delete_form) }}
+                   
+                </li>
+            </ul> 
+            {% endif %}
         </div>
     </div>
 {% endblock %}

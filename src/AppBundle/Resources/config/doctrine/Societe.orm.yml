@@ -10,8 +10,14 @@ AppBundle\Entity\Societe:
                 strategy: AUTO
     fields:
         siret:
-            type: bigint
+            type: integer
         denomination:
+            type: string
+            length: 255
+        presentation:
+            type: string
+            length: 255
+        logo:
             type: string
             length: 255
         idUser:

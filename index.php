@@ -1,5 +1,5 @@
 <?php
 
-    header('Location:'. $_SERVER["REQUEST_URI"] .'web/front');
+    header('Location:'. $_SERVER["REQUEST_URI"] .'web/');
     exit();
 ?>

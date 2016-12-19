@@ -3,8 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/Resources/FOSUserBundle/views/Registration/register_content.html.twig</file>
-            <file>file:/C:/xampp/htdocs/FreelancerSIO/src/MyFOSUserBundle/Controller/RegistrationController.php</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/src/AppBundle/Controller/DefaultController.php</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/config/security.yml</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/config/config.yml</file>
         </group>
     </open-files>
 </project-private>

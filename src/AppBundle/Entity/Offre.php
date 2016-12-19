@@ -167,5 +167,28 @@ class Offre
     {
         return $this->id_freelancer;
     }
+    /**
+     * Set id_freelancer
+     *
+     * @param integer $id_freelancer
+     *
+     * @return Offre
+     */
+    public function setIdfreelancer($id_freelancer)
+    {
+        $this->id_freelancer = $id_freelancer;
+
+        return $this;
+    }
+
+    /**
+     * Get id_freelancer
+     *
+     * @return int
+     */
+    public function getIdfreelancer()
+    {
+        return $this->id_freelancer;
+    }
 }
 

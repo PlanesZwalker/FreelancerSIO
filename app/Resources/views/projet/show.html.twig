@@ -11,13 +11,13 @@
         <div class="mycontentformshow">
             <ul>
                 <li class="returnlist">
-                    <a class="btn btn-default" href="{{ path('projet_index') }}">Retourner à la liste</a>
+                    <a data-ajax="false" class="btn btn-default" href="{{ path('projet_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
             <table class="tableautitle">
                 <tbody>
                     <tr>
-                        <th class="mytdtabshow">id_projet</th>
+                        <th class="mytdtabshow">Intitulé du Projet</th>
                         <td class="mytdtabshow">{{ projet.id_projet }}</td>
                     </tr>
                     <tr>
@@ -33,11 +33,11 @@
                         <td class="mytdtabshow2">{{ projet.description }}</td>
                     </tr>
                     <tr>
-                        <th class="mytdtabshow">id_societe</th>
+                        <th class="mytdtabshow">Société</th>
                         <td class="mytdtabshow">{{ projet.id_societe }}</td>
                     </tr>
                     <tr>
-                        <th class="mytdtabshow2">Idcdc</th>
+                        <th class="mytdtabshow2">Cahier des Charges</th>
                         <td class="mytdtabshow2">{{ projet.idCdc }}</td>
                     </tr>
                 </tbody>
@@ -45,13 +45,15 @@
 
             <ul>
                 <li class="myeditli">
-                    <a class="btn btn-info" style="color:white;" href="{{ path('projet_edit', { 'id': projet.id_projet }) }}">Modifier</a>
+                    <a data-ajax="false" class="btn btn-info" style="color:white;" href="{{ path('projet_edit', { 'id': projet.id_projet }) }}">Modifier</a>
                 </li>
-                <li class="mydeleteli">
+                   {% if is_granted("ROLE_ADMIN") %}
+                <li  class="mydeleteli">
                     {{ form_start(delete_form) }}
-                        <input type="submit" value="Delete">
+                        <input type="submit" rel="external" value="Supprimer le projet">
                     {{ form_end(delete_form) }}
                 </li>
+                {% endif %}
             </ul>
         </div>
                 

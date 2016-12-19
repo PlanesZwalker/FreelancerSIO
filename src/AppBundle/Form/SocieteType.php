@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class SocieteType extends AbstractType
 {
@@ -13,7 +14,12 @@ class SocieteType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('siret')->add('denomination')->add('idUser')        ;
+        $builder->add('siret')
+                ->add('denomination')
+                ->add('presentation')
+                ->add('logo')
+                ->add('idUser',HiddenType::class) 
+                ;
     }
     
     /**

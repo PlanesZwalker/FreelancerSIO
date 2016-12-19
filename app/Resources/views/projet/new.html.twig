@@ -9,15 +9,23 @@
     <div class="formulairetop">
         <h2 class="mysubtitle">Liste des Projets</h2>
         <div class="mycontentform">
-            {{ form_start(form) }}
-                {{ form_widget(form) }}
-                <input type="submit" value="Create" />
-            {{ form_end(form) }}
-
             <ul>
-                <li>
-                    <a href="{{ path('projet_index') }}">Retourner à la liste</a>
+                <li class="returnlist">
+                    <a data-ajax="false" class="btn btn-default" href="{{ path('projet_index') }}">Retourner à la liste</a>
                 </li>
+            </ul>
+            <table  class="tableautitle">
+                <tbody>
+                    {{ form_start(form) }}
+                        {{ form_row(form.description) }}
+                        {{ form_row(form.etape) }}
+                        {{ form_row(form.description) }}
+                        <input type="submit" value="Ajouter le projet" />
+                    {{ form_end(form) }}
+                </tbody>
+             </table> 
+            <ul>
+             
             </ul>
         </div>
     </div>

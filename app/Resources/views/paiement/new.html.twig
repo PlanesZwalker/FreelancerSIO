@@ -9,16 +9,19 @@
     <div class="formulairetop">
         <h2 class="mysubtitle">Ajouter un Paiement</h2>
         <div class="mycontentform">
-            {{ form_start(form) }}
-                {{ form_widget(form) }}
-                <input type="submit" value="Create" />
-            {{ form_end(form) }}
-
             <ul>
-                <li>
-                    <a href="{{ path('paiement_index') }}">Retourner à la liste</a>
+                <li class="returnlist">
+                    <a data-ajax="false" class="btn btn-default" href="{{ path('paiement_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
+            <table  class="tableautitle">
+                <tbody>
+                    {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                        <input type="submit"  class="myeditinput" value="Enregistrer le paiement" />
+                    {{ form_end(form) }}
+                </tbody>
+            </table>
         </div>
     </div>
 {% endblock %}

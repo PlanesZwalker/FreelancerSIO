@@ -8,21 +8,33 @@
 {% block body %}    
     <div class="formulairetop">
         <h2 class="mysubtitle">Edition d'un Projet</h2>
-        <div class="mycontentform">
-            {{ form_start(edit_form) }}
-                {{ form_widget(edit_form) }}
-                <input type="submit" value="Edit" />
-            {{ form_end(edit_form) }}
-
+            <div class="mycontentform">
             <ul>
-                <li>
-                    <a href="{{ path('projet_index') }}">Retourner à la liste</a>
+                <li class="returnlist">
+                    <a class="btn btn-default" href="{{ path('user_index') }}">Retourner à la liste</a>
                 </li>
-                <li>
+            </ul>
+            <table class="tableautitle">
+                <tbody>
+                    <tr>
+                    {{ form_start(edit_form) }}
+                        {{ form_widget(edit_form) }}
+                        <input type="submit" value="Enregistrer les modifications" />
+                    {{ form_end(edit_form) }}
+                    </tr>
+                </tbody>
+            </table>
+            <ul>
+                <li class="myeditli">
+                    <a class="btn btn-info" style="color:white;"  href="{{ path('cahierdescharges_show', { 'id': projet.idCdc }) }}">Voir le cahier des charges</a>
+                </li>
+                {% if is_granted("ROLE_ADMIN") %}
+                <li  class="mydeleteli">
                     {{ form_start(delete_form) }}
-                        <input type="submit" value="Delete">
+                        <input type="submit" rel="external" value="Supprimer le projet">
                     {{ form_end(delete_form) }}
                 </li>
+                {% endif %}
             </ul>
         </div>
     </div>

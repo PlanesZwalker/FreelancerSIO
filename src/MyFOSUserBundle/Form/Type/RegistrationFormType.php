@@ -15,6 +15,7 @@ use FOS\UserBundle\Util\LegacyFormHelper;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -45,19 +46,19 @@ class RegistrationFormType extends AbstractType
                 'first_options' => array('label' => 'form.password'),
                 'second_options' => array('label' => 'form.password_confirmation'),
                 'invalid_message' => 'fos_user.password.mismatch',
-            ))
-                
-                      
+            ))                       
             ->add('roles', ChoiceType::class,[ 
-                            'label' => 'Selectionnez le type de compte',
-                            'attr'  => array('class' => 'myselect'),
-                            'multiple'  => true,
-                            'choices'   => [
-                                    'ROLE_FRELANCER' => 'Freelancer',
-                                    'ROLE_SOCIETE' => 'Societe',
-                                ]
+                              'label' => 'Selectionnez le type de compte',
+                              'attr'  => array('class' => 'myselect'),
+                              'multiple'  => true,
 
-                        ]);
+                                  'choices'   => [
+                                      ' Freelancer' => 'ROLE_FREELANCER',
+                                       ' Société' => 'ROLE_SOCIETE',
+                                      ]
+
+                          ])               
+                  ;
                             
     }
 

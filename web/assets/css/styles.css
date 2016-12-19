@@ -37,25 +37,69 @@ and open the template in the editor.
 #manavnavbar{
      position:absolute;
      top:10px; 
-     width:100vw; 
+     width:95vw; 
+     list-style:none;
+     left:0px;
+     padding:0;
+     display:inline-block!important;
+
+}
+
+#navleft{
+     position:absolute;
+     top:5px; 
+     list-style:none;
+     left:20px;
+     display:inline-block!important;
+
+}
+
+#navright{
+     position:absolute;
+     top:5px; 
+     list-style:none;
+     right:20px;
+     display:inline-block!important;
+}
+
+#navcenter{
+     position:absolute;
+     top:5px; 
+     list-style:none;
+     right:20px;
+     width:100%;
+     display:inline-block!important;
 }
 
 
 .manav{
-  margin:5px !important;
+  margin:0px 20px !important;
   border-radius:8px;
   font-size:0.75vw !important;
-  background-color: rgba(1,1,1,0.7) !important;
   text-shadow: 1px 3px 3px black !important;
   color:white !important;
   font-weight: 100 !important;
   border:2px solid black !important;
-
+  width:15vw;
+ background-color:rgba(1,1,1,0.6)!important;
 }
 
-.manav:hover{
+.manav2{
+  margin:0px 20px !important;
+  border-radius:8px;
+  font-size:0.75vw !important;
+  text-shadow: 1px 3px 3px black !important;
+  color:white !important;
+  font-weight: 100 !important;
+  border:2px solid black !important;
+  width:15vw;
+   background-color:rgba(1,1,1,0.7)!important;
+}
 
-  background-color: rgba(1,1,1,1) !important;
+
+.manav:hover, .manav2:hover{
+
+  background-color:rgba(25,52,233,0.8)!important;
   color:lightskyblue !important;
   font-weight: 200 !important;
   color:white !important;
@@ -193,25 +237,30 @@ and open the template in the editor.
     padding:0;
 }
 
-#admintistrationbtn{
-
-}
-
 
 #administration{
     position:absolute !important;
+    background-color: rgba(255,255,255,0.9)!important;
     z-index:999!important;
     right:4.5vw;
     width:90vw;
-    top:3vw;
+    top:7vw;
+    padding:2% !important;
     border-radius:18px;
+}
+#administrationbtn{
+   position:absolute; 
+   width:14vw; 
+   float:right; 
+   right:0.5vw; 
+   top:0.2vw;
 }
 .tabdebord{
     position:absolute !important;
     z-index:999!important;
     right:4.5vw;
     width:90vw;
-    top:3vw;
+    top:5vw;
     border-radius:18px;
 }
 
@@ -315,10 +364,6 @@ and open the template in the editor.
     margin:2%;
 }
 
-#fos_user_registration_form_roles{
-    color:black;
-}
-
 .my_fos_user_registration_register{ 
     margin-top:-3%; 
     background-color:#E0E0E1; 
@@ -327,12 +372,3 @@ and open the template in the editor.
     border-radius:0px 0px 8px 8px ;
 }
 
-.myselect{
-    z-index:999 !important;
-    color:black;
-}
-.myselect>options{
-     z-index:999 !important;
-    color:black;
-    height:50px;
-}

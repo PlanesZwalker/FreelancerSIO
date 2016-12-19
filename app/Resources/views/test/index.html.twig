@@ -37,9 +37,9 @@
                         <td class="mytdtab">{{ test.description }}</td>
                         <td class="mytdtab2">{{ test.urlTest }}</td>
                         <td class="mytdtab">{{ test.resultat }}</td>
-                        <td class="mytdtab2">{% if test.datePassage %}{{ test.datePassage|date('Y-m-d H:i:s') }}{% endif %}</td>
-                        <td class="mytdtab">{{ test.id_freelancer }}</td>
-                        <td class="mytdtab2">{{ test.id_competence }}</td>
+                        <td class="mytdtab2">{% if test.datePassage %}{{ test.datePassage|date("d/m/Y h:i:s") }}{% endif %}</td>
+                        <td class="mytdtab">{{ test.idFreelancer }}</td>
+                        <td class="mytdtab2">{{ test.idCompetence }}</td>
                         <td class="mytdtab">
                             <ul>
                                 <li style="display:inline-block;margin-top:8px;">

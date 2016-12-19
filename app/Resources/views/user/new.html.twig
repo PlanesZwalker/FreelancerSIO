@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
 
-        <h1 id="logo"><a class="bigtitle">Utilisateurs</a></h1>  
+    <h1 id="logo"><a class="bigtitle">Utilisateurs</a></h1>  
 
 {% endblock %}
 
@@ -9,16 +9,30 @@
     <div class="formulairetop">
         <h2 class="mysubtitle">Ajouter un Utilisateur </h2>
         <div class="mycontentform">
-            {{ form_start(form) }}
-                {{ form_widget(form) }}
-                <input type="submit" value="Create" />
-            {{ form_end(form) }}
-
             <ul>
-                <li>
-                    <a href="{{ path('user_index') }}">Retourner à la liste</a>
+                <li class="returnlist">
+                    <a data-ajax="false" class="btn btn-default" href="{{ path('user_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
+            <table  class="tableautitle">
+                <tbody>
+                    {{ form_start(form) }}{{ dump(form) }}
+                    <tr>
+                        <th class="mytdtabshow2">{{ form_row(form.username) }}</th>
+                    </tr>        
+                    <tr>
+                        <th class="mytdtabshow">{{ form_row(form.email) }}</th>
+                    </tr>        
+                     <tr>
+                        <th class="mytdtabshow2">{{ form_row(form.password) }}</th>
+                    </tr>        
+                     <tr>
+                        <th class="mytdtabshow">{{ form_row(form.roles) }}</th>
+                    </tr>  
+                </tbody>
+             </table> 
+             <input  rel="external" type="submit" class="myeditinput" value="Enregistrer l'utilisateur" />
+            {{ form_end(form) }}   </table> 
         </div>
     </div>
 {% endblock %}

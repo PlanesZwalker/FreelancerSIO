@@ -23,8 +23,8 @@ class RegistrationType extends AbstractType
                             'attr'  => array('class' => 'myselect'),
                             'multiple'  => true,
                             'choices'   => [
-                                    'ROLE_FRELANCER' => 'Freelancer',
-                                    'ROLE_SOCIETE' => 'Societe',
+                                 'Freelancer' => 'ROLE_FREELANCER',
+                                 'Société' => 'ROLE_SOCIETE',
                                 ]
 
                         ]);
