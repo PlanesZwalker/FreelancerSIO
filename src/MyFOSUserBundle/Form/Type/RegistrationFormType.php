@@ -25,42 +25,15 @@ class RegistrationFormType extends AbstractType
     private $class;
 
     /**
-     * @param string $class The User class name
-     */
-    public function __construct($class)
-    {
-        $this->class = $class;
-    }
-
-    /**
      * {@inheritdoc}
-     */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    */
+        public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
-            ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
-            ->add('plainPassword', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\RepeatedType'), array(
-                'type' => LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'),
-                'options' => array('translation_domain' => 'FOSUserBundle'),
-                'first_options' => array('label' => 'form.password'),
-                'second_options' => array('label' => 'form.password_confirmation'),
-                'invalid_message' => 'fos_user.password.mismatch',
-            ))                       
-            ->add('roles', ChoiceType::class,[ 
-                              'label' => 'Selectionnez le type de compte',
-                              'attr'  => array('class' => 'myselect'),
-                              'multiple'  => true,
 
-                                  'choices'   => [
-                                      ' Freelancer' => 'ROLE_FREELANCER',
-                                       ' Société' => 'ROLE_SOCIETE',
-                                      ]
-
-                          ])               
-                  ;
                             
     }
+                            
+
 
     /**
      * {@inheritdoc}

@@ -37,51 +37,82 @@ and open the template in the editor.
 #manavnavbar{
      position:absolute;
      top:10px; 
-     width:95vw; 
+     width:75vw; 
      list-style:none;
-     left:0px;
+     left:150px !important;
      padding:0;
      display:inline-block!important;
 
 }
 
-#navleft{
+.navright{
      position:absolute;
-     top:5px; 
      list-style:none;
-     left:20px;
-     display:inline-block!important;
-
-}
-
-#navright{
-     position:absolute;
-     top:5px; 
-     list-style:none;
-     right:20px;
+     right:0vw;
+     left:75px;
+     top:0vw;
+     background-color:rgba(1,1,1,0.1)!important;
+     padding:15px;
+     height:3.5vw;
+     width:98vw;
      display:inline-block!important;
 }
-
-#navcenter{
-     position:absolute;
-     top:5px; 
-     list-style:none;
-     right:20px;
-     width:100%;
-     display:inline-block!important;
+.navright:hover{
+     background-color:rgba(255,255,255,0.05)!important;
 }
 
+#administrationbtn{
+    right:3vw;
+    position:absolute;
+    width:160px;
+    top:74px;
+       color:black;
+    text-shadow: 0 0px gray;
+}
+
+#administrationbtn:hover{
+    color:black;
+    text-shadow: 0 0px  #333;
+}
+
+
+#deconnexionbtn{
+    left:1.5vw;
+    position:absolute;
+    width:160px;
+    top:70px;
+}
+
+
+
+#connexionImage:hover{
+    width:130px !important;
+    height:130px; 
+}
+
+#connexionImage{
+    right:2vw;
+    position:absolute;
+    width:110px !important;
+    top:140px;
+    
+}
+
+
+.ui-select{
+    display: inline-block !important;
+}
 
 .manav{
   margin:0px 20px !important;
   border-radius:8px;
   font-size:0.75vw !important;
-  text-shadow: 1px 3px 3px black !important;
-  color:white !important;
+/** text-shadow: 1px 3px 3px black !important;*/
+  color:black !important;
   font-weight: 100 !important;
   border:2px solid black !important;
   width:15vw;
- background-color:rgba(1,1,1,0.6)!important;
+  background-color:rgba(255,255,255,1)!important;
 }
 
 .manav2{
@@ -93,7 +124,7 @@ and open the template in the editor.
   font-weight: 100 !important;
   border:2px solid black !important;
   width:15vw;
-   background-color:rgba(1,1,1,0.7)!important;
+  background-color:rgba(1,1,1,0.7)!important;
 }
 
 
@@ -105,9 +136,22 @@ and open the template in the editor.
   color:white !important;
 }
 
+.nav{
+    border-radius:5px 2px;
+    width:20rem !important;
+    background: rgba(255,255,255,0.8)!important;
+     border:1px solid whitesmoke !important;
+}
+.nav:hover{
+      background: white !important;
+      border:1px solid white !important;
+}
+
+
 .bigtitle{
-    color: black !important;
-   
+   color: black !important;
+   font-size:2vw;
+
 }
 
 .mysubtitle{
@@ -240,21 +284,15 @@ and open the template in the editor.
 
 #administration{
     position:absolute !important;
-    background-color: rgba(255,255,255,0.9)!important;
+    background-image: url("fond.jpg");
     z-index:999!important;
-    right:4.5vw;
-    width:90vw;
-    top:7vw;
-    padding:2% !important;
-    border-radius:18px;
+    right:2vw;
+    left:6vw;
+    top:6vw;
+    padding:5% !important;
+    border-radius:4px;
 }
-#administrationbtn{
-   position:absolute; 
-   width:14vw; 
-   float:right; 
-   right:0.5vw; 
-   top:0.2vw;
-}
+
 .tabdebord{
     position:absolute !important;
     z-index:999!important;
@@ -265,11 +303,13 @@ and open the template in the editor.
 }
 
 #closeadministration{
-    background-color:rgba(205,51,51,1) !important;       
+    background-color:rgba(205,51,51,1) !important;    
+    color:white!important;
 }
 
 #showadministration{
-    background-color:rgba(0,100,0,1) !important;       
+    background-color:rgba(0,100,0,1) !important;     
+        color:white!important;
 }
 
 
@@ -354,6 +394,7 @@ and open the template in the editor.
 .myeditinput{
     display:inline-block;
     margin:2%; 
+    
     float:right;
     color:white; 
     background-color:#5BC0DE !important;

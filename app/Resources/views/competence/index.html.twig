@@ -12,14 +12,14 @@
             <ul>
                 <li>
                     <a class="addtab" href="{{ path('competence_new') }}">
-                         <span class="fa fa-plus" >&nbsp;&nbsp;Créer une nouvelle Compétence</span>
+                         <span class="fa fa-plus" data-ajax="false" >&nbsp;&nbsp;Créer une nouvelle Compétence</span>
                     </a>
                 </li>
             </ul>
             <table class="tableautitle">
                 <thead>
                     <tr class="tableautitlecontent">
-                        <th class="center">Intitulé de la Compétence</th>
+                        <th class="center" data-transition="fade">Intitulé de la Compétence</th>
                         <th class="center">Categorie</th>
                         <th class="center">Description</th>
                         <th class="center">Actions</th>
@@ -28,18 +28,18 @@
                 <tbody class="mytbody">
                 {% for competence in competences %}
                     <tr>
-                        <a class="mydisplaynone" href="{{ path('competence_show', { 'id': competence.id_competence }) }}">{{ competence.id_competence }}</a>
-                           <td class="mytdtab">{{ dump(competence) }}</td>
+                        <a class="mydisplaynone" href="{{ path('competence_show', { 'id': competence.idCompetence }) }}">{{ competence.idCompetence }}</a>
+                           <td class="mytdtab2">{{ competence.intitule }}</td>
                         <td class="mytdtab">{{ competence.categorie }}</td>
                         <td class="mytdtab2">{{ competence.description }}</td>
-                        <input type="hidden" value="{{ competence.id_freelancer }}" />
+                        <input type="hidden" value=" " />
                         <td class="mytdtab">
                             <ul>
                                 <li style="display:inline-block;margin-top:8px;">
-                                    <a class="btn btn-default" href="{{ path('competence_show', { 'id': competence.id_competence }) }}">Afficher</a>
+                                    <a class="btn btn-default" href="{{ path('competence_show', { 'id': competence.idCompetence }) }}">Afficher</a>
                                 </li>
                                 <li style="display:inline-block;">
-                                    <a class="btn btn-info" style="color:white;"  href="{{ path('competence_edit', { 'id': competence.id_competence }) }}">Modifier</a>
+                                    <a class="btn btn-info" style="color:white;"  href="{{ path('competence_edit', { 'id': competence.idCompetence }) }}">Modifier</a>
                                 </li>
                             </ul>
                         </td>

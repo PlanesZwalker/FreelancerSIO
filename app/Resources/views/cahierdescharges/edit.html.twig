@@ -28,14 +28,14 @@
                     </tr>             
                 </tbody>
             </table>   
-           <input  rel="external" class="myeditinput" type="submit" value="Enregistrer les modifications" />
+           <input rel="external" class="myeditinput" type="submit" value="Enregistrer les modifications" />
             {{ form_end(edit_form) }}
             {{ dump(edit_form) }}
             {% if is_granted("ROLE_ADMIN") %}
             <ul>
                 <li class="mydeleteli ">
                     {{ form_start(delete_form) }}
-                        <input rel="external" type="submit" value="Delete" >
+                        <input rel="external" type="submit" value="Supprimer le cahier des charges" >
                     {{ form_end(delete_form) }}
                 </li>
             </ul>

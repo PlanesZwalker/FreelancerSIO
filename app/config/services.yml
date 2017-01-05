@@ -10,83 +10,81 @@ services:
           - { name: form.type, alias: app_user_registration }
 
 
-
-
     admin.category:
-       class: AppBundle\Admin\CategoryAdmin
-       arguments: [~, AppBundle\Entity\Category, ~]
+       class: MyFOSUserBundle\Admin\CategoryAdmin
+       arguments: [~, MyFOSUserBundle\Entity\Category, ~]
        tags:
            - { name: sonata.admin, manager_type: orm, label: Category }
            
     admin.freelancer:
-       class: AppBundle\Admin\FreelancerAdmin
-       arguments: [~, AppBundle\Entity\Freelancer, ~]
+       class: MyFOSUserBundle\Admin\FreelancerAdmin
+       arguments: [~, MyFOSUserBundle\Entity\Freelancer, ~]
        tags:
            - { name: sonata.admin, manager_type: orm, label: FreelancerProfil }      
     
     admin.user:
-       class: AppBundle\Admin\UserAdmin
-       arguments: [~, AppBundle\Entity\User, ~]
+       class: MyFOSUserBundle\Admin\UserAdmin
+       arguments: [~, MyFOSUserBundle\Entity\User, ~]
        tags:
            - { name: sonata.admin, manager_type: orm, label: Utilisateurs }   
 
     admin.blogpost:
-       class: AppBundle\Admin\BlogPostAdmin
-       arguments: [~, AppBundle\Entity\BlogPost, ~]
+       class: MyFOSUserBundle\Admin\BlogPostAdmin
+       arguments: [~, MyFOSUserBundle\Entity\BlogPost, ~]
        tags:
            - { name: sonata.admin, manager_type: orm, label: BlogPost } 
            
     admin.cahierdescharges:
-       class: AppBundle\Admin\CahierdesChargesAdmin
-       arguments: [~, AppBundle\Entity\Cahierdescharges, ~]
+       class: MyFOSUserBundle\Admin\CahierdesChargesAdmin
+       arguments: [~, MyFOSUserBundle\Entity\Cahierdescharges, ~]
        tags:
            - { name: sonata.admin, manager_type: orm, label: CahierDesCharges } 
         
     admin.competence:
-       class: AppBundle\Admin\CompetenceAdmin
-       arguments: [~, AppBundle\Entity\Competence, ~]
+       class: MyFOSUserBundle\Admin\CompetenceAdmin
+       arguments: [~, MyFOSUserBundle\Entity\Competence, ~]
        tags:
            - { name: sonata.admin, manager_type: orm, label: Competence } 
            
     admin.contrat:
-       class: AppBundle\Admin\ContratAdmin
-       arguments: [~, AppBundle\Entity\Contrat, ~]
+       class: MyFOSUserBundle\Admin\ContratAdmin
+       arguments: [~, MyFOSUserBundle\Entity\Contrat, ~]
        tags:
            - { name: sonata.admin, manager_type: orm, label: Contrat } 
     
     admin.message:
-       class: AppBundle\Admin\MessageAdmin
-       arguments: [~, AppBundle\Entity\Message, ~]
+       class: MyFOSUserBundle\Admin\MessageAdmin
+       arguments: [~, MyFOSUserBundle\Entity\Message, ~]
        tags:
            - { name: sonata.admin, manager_type: orm, label: Message } 
      
     admin.offre:
-       class: AppBundle\Admin\OffreAdmin
-       arguments: [~, AppBundle\Entity\Offre, ~]
+       class: MyFOSUserBundle\Admin\OffreAdmin
+       arguments: [~, MyFOSUserBundle\Entity\Offre, ~]
        tags:
            - { name: sonata.admin, manager_type: orm, label: Offre } 
            
     admin.paiement:
-       class: AppBundle\Admin\PaiementAdmin
-       arguments: [~, AppBundle\Entity\Paiement, ~]
+       class: MyFOSUserBundle\Admin\PaiementAdmin
+       arguments: [~, MyFOSUserBundle\Entity\Paiement, ~]
        tags:
            - { name: sonata.admin, manager_type: orm, label: Paiement } 
            
     admin.projet:
-       class: AppBundle\Admin\ProjetAdmin
-       arguments: [~, AppBundle\Entity\Projet, ~]
+       class: MyFOSUserBundle\Admin\ProjetAdmin
+       arguments: [~, MyFOSUserBundle\Entity\Projet, ~]
        tags:
            - { name: sonata.admin, manager_type: orm, label: Projet }       
            
     admin.societe:
-       class: AppBundle\Admin\SocieteAdmin
-       arguments: [~, AppBundle\Entity\Societe, ~]
+       class: MyFOSUserBundle\Admin\SocieteAdmin
+       arguments: [~, MyFOSUserBundle\Entity\Societe, ~]
        tags:
            - { name: sonata.admin, manager_type: orm, label: Societe }    
    
     admin.test:
-       class: AppBundle\Admin\TestAdmin
-       arguments: [~, AppBundle\Entity\Test, ~]
+       class: MyFOSUserBundle\Admin\TestAdmin
+       arguments: [~, MyFOSUserBundle\Entity\Test, ~]
        tags:
            - { name: sonata.admin, manager_type: orm, label: Test }       
            

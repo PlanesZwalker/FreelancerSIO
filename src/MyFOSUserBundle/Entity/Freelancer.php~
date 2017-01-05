@@ -1,0 +1,78 @@
+<?php
+
+namespace MyFOSUserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Freelancer
+ *
+ * @ORM\Table(name="freelancer", indexes={@ORM\Index(name="user", columns={"user"})})
+ * @ORM\Entity
+ */
+class Freelancer
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255, nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pseudo", type="string", length=255, nullable=false)
+     */
+    private $pseudo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nationnalite", type="string", length=255, nullable=false)
+     */
+    private $nationnalite;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="age", type="integer", nullable=false)
+     */
+    private $age;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cv", type="string", length=255, nullable=false)
+     */
+    private $cv;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string", length=255, nullable=false)
+     */
+    private $photo;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+
+}
+

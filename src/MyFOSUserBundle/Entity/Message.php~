@@ -1,0 +1,64 @@
+<?php
+
+namespace MyFOSUserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Message
+ *
+ * @ORM\Table(name="message", indexes={@ORM\Index(name="id_user", columns={"id_user"})})
+ * @ORM\Entity
+ */
+class Message
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_message", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idMessage;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=255, nullable=false)
+     */
+    private $type;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sujet", type="string", length=255, nullable=false)
+     */
+    private $sujet;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="contenu", type="string", length=255, nullable=false)
+     */
+    private $contenu;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     * })
+     */
+    private $idUser;
+
+
+}
+

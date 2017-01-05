@@ -1,0 +1,54 @@
+<?php
+
+namespace MyFOSUserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Test
+ *
+ * @ORM\Table(name="test")
+ * @ORM\Entity
+ */
+class Test
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_test", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idTest;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="intitule", type="string", length=55, nullable=false)
+     */
+    private $intitule;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255, nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url_test", type="string", length=255, nullable=false)
+     */
+    private $urlTest;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="questionnaire", type="string", length=255, nullable=false)
+     */
+    private $questionnaire;
+
+
+}
+

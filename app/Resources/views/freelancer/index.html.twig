@@ -21,10 +21,13 @@
             <table class="tableautitle">
                 <thead>
                     <tr class="tableautitlecontent">
-                        <th class="center">Nom du Freelancer</th>
+                 
+                        <th class="center">Pseudo</th>
+                        <th class="center">Description</th>
                         <th class="center">Curriculum Vitae</th>
                         <th class="center">Photo</th>
                         <th class="center">Age</th>
+                        <th class="center">Nationnalité</th>
                         <th class="center">Compétences</th>
                         <th class="center">Actions</th>
                     </tr>
@@ -32,21 +35,24 @@
                 <tbody class="mytbody">
                 {% for freelancer in freelancers %}
                     <tr>
-                        <a class="mydisplaynone" href="{{ path('freelancer_show', { 'id': freelancer.id_freelancer }) }}">{{ freelancer.id_freelancer }}</a>
-                        <td class="mytdtab">{{ dump(freelancer) }}</td>
-                        <td class="mytdtab2"><a href="path('{{ freelancer.urlCv }}')" ><i class="fa fa-download fa-3x"></i></a></td>
-                        <td class="mytdtab"><img class="myimg" src="/FreelancerSIO/web/{{ freelancer.urlPhoto }}" /></td>
+                        <a class="mydisplaynone" href="{{ path('freelancer_show', { 'id': freelancer.id }) }}">{{ freelancer.id }}</a>
+
+                        <td class="mytdtab2">{{ freelancer.description }}</td>
+                        <td class="mytdtab">{{ freelancer.pseudo }}</td>
+                        <td class="mytdtab2"><a href="path('{{ freelancer.cv }}')" ><i class="fa fa-download fa-3x"></i></a></td>
+                        <td class="mytdtab"><img class="myimg" src="/FreelancerSIO/web/{{ freelancer.photo }}" /></td>
                         <td class="mytdtab2">{{ freelancer.age }}</td>
-                        <td class="mytdtab">{{ freelancer.idUser }}</td>
-                        <input type="hidden" value="{{ freelancer.idUser }}" />
-                        <td class="mytdtab2">
+                        <td class="mytdtab">{{ freelancer.nationnalite }}</td>
+                        <td class="mytdtab2"></td>
+                     
+                        <td class="mytdtab">
                             <ul>
                                 <li style="display:inline-block;margin-top:8px;">
-                                    <a class="btn btn-default" href="{{ path('freelancer_show', { 'id': freelancer.id_freelancer }) }}">Afficher</a>
+                                    <a class="btn btn-default" href="{{ path('freelancer_show', { 'id': freelancer.id }) }}">Afficher</a>
                                 </li>
                                 {% if is_granted('ROLE_ADMIN') %}
                                 <li style="display:inline-block;">
-                                    <a class="btn btn-info" style="color:white;" href="{{ path('freelancer_edit', { 'id': freelancer.id_freelancer }) }}">Modifier</a>
+                                    <a class="btn btn-info" style="color:white;" data-ajax="false" href="{{ path('freelancer_edit', { 'id': freelancer.id }) }}">Modifier</a>
                                 </li>
                                  {% endif %}
                             </ul>

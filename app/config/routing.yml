@@ -1,10 +1,27 @@
+app:
+    resource: "@MyFOSUserBundle/Controller/"
+    type:     annotation
+
+my_fos_user_societe:
+    resource: "@MyFOSUserBundle/Controller/SocieteController.php"
+    type:     annotation
+
+my_fos_user_user:
+    resource: "@MyFOSUserBundle/Controller/UserController.php"
+    type:     annotation
+
+my_fos_user_freelancer:
+    resource: "@MyFOSUserBundle/Controller/FreelancerController.php"
+    type:     annotation
+    
+
+my_fos_user_user:
+    resource: "@MyFOSUserBundle/Controller/UserController.php"
+    type:     annotation
+
 my_fos_user:
     resource: "@MyFOSUserBundle/Resources/config/routing.yml"
     prefix:   /myuser
-
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
     
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
@@ -20,11 +37,11 @@ _sonata_admin:
 
 re_download:
     path : /dl/{file}
-    defaults: {_controller:AppBundle:Default:sendFile }
+    defaults: {_controller:MyFOSUserBundle:Default:sendFile }
     
 re_service:
     path: /service
-    defaults: {_controller:AppBundle:Default:service }
+    defaults: {_controller:MyFOSUserBundle:Default:service }
   
 re_fos_user:   
    path: /change-password

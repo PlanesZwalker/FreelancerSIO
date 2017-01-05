@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@MyFOSUserBundle/Resources/config/services.yml" }
+  #  - { resource: "@GestionProjetBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -67,10 +68,10 @@ doctrine:
 fos_user:
     db_driver: orm 
     firewall_name: main
-    user_class: AppBundle\Entity\User
+    user_class: MyFOSUserBundle\Entity\User
     registration:
         form:
-            type: AppBundle\Form\RegistrationType
+            type: MyFOSUserBundle\Form\RegistrationType
             # if you are using Symfony < 2.8 you should use the type name instead
             # type: app_user_registration  
    # use_listener: false
@@ -122,4 +123,14 @@ knp_menu:
     # the renderer to use, list is also available by default
     default_renderer: twig
     
-    
+#    
+#knp_paginator:
+#    page_range: 5                     
+#    default_options:
+#        page_name: page               
+#        sort_field_name: sort          
+#        sort_direction_name: direction 
+#        distinct: true                 
+#    template:
+#        pagination: KnpPaginatorBundle:Pagination:sliding.html.twig    
+#        sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig

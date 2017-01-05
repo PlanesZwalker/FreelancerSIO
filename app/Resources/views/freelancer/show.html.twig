@@ -7,7 +7,7 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h2 class="mysubtitle">Afficher le Profil d'un Freelancer</h2>
+        <h2 class="mysubtitle">Profil du Freelancer: {{ freelancer.user.username }}</h2>
         <div class="mycontentformshow">
             <ul>
                 <li class="returnlist">
@@ -17,16 +17,36 @@
             <table class="tableautitle">
                 <tbody>
                     <tr>
-                        <th class="mytdtabshow">Nom Freelancer</th>
-                        <td class="mytdtabshow">{{ freelancer.id_freelancer }}</td>
+                        <th class="mytdtabshow2">Nom</th>
+                        <td class="mytdtabshow2">{{ freelancer.user.username }}</td>
+                    </tr>
+                    <tr>
+                        <th class="mytdtabshow">Prénom</th>
+                        <td class="mytdtabshow">{{ freelancer.user.id }}</td>
+                    </tr>
+                    <tr>
+                        <th class="mytdtabshow2">Description</th>
+                       <td class="mytdtabshow2">{{ freelancer.description }}</td>
+                    </tr>
+                    <tr>
+                        <th class="mytdtabshow">Pseudo</th>
+                        <td class="mytdtabshow">{{ freelancer.pseudo }}</td>
+                    </tr>
+                    <tr>
+                        <th class="mytdtabshow2">Competences</th>
+                        <td class="mytdtabshow2"></td>
+                    </tr>
+                    <tr>
+                        <th class="mytdtabshow">Nationnalité</th>
+                        <td class="mytdtabshow">{{ freelancer.nationnalite }}</td>
                     </tr>
                     <tr>
                         <th class="mytdtabshow2">CV</th>
-                        <td class="mytdtabshow2" ><a href="path('{{ freelancer.urlCv }}')" ><i class="fa fa-download fa-3x"></i></a></td>
+                        <td class="mytdtabshow2" ><a href="path('{{ freelancer.cv }}')" ><i class="fa fa-download fa-3x"></i></a></td>
                     </tr>
                     <tr>
                         <th class="mytdtabshow">Photo</th>
-                        <td class="mytdtabshow"><img class="myimg" src="/FreelancerSIO/web/{{ freelancer.urlPhoto }}" /></td>
+                        <td class="mytdtabshow"><img class="myimg" src="/FreelancerSIO/web/{{ freelancer.photo }}" /></td>
                     </tr>
                     <tr>
                         <th class="mytdtabshow2">Age</th>
@@ -34,16 +54,19 @@
                     </tr>
                     <tr>
                         <th class="mytdtabshow">Résultat des Tests</th>
-                        <td class="mytdtabshow">{{ freelancer.idUser }}</td>
+                        <td class="mytdtabshow"></td>
                     </tr>
                 </tbody>
             </table>
-            <ul>
+            <ul> 
+                {% if is_granted("ROLE_ADMIN") %}
                 <li class="myeditli">
                     <a class="btn btn-info" style="color:white;" data-ajax="false" href="{{ path('freelancer_edit', { 'id': freelancer.id_freelancer }) }}">Modifier</a>
                 </li>
-                {% if is_granted("ROLE_ADMIN") %}
-                <li class="mydeleteli">
+               
+                <li class="mydeleteli">   <li class="myeditli">
+                    <a class="btn btn-info" style="color:white;" data-ajax="false" href="{{ path('freelancer_edit', { 'id': freelancer.id_freelancer }) }}">Modifier</a>
+                </li>
                     {{ form_start(delete_form) }}
                         <input type="submit" value="Delete">
                     {{ form_end(delete_form) }}

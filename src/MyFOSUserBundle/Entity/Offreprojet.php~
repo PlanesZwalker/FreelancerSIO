@@ -1,0 +1,39 @@
+<?php
+
+namespace MyFOSUserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Offreprojet
+ *
+ * @ORM\Table(name="offreprojet", indexes={@ORM\Index(name="id_offre", columns={"id_offre"}), @ORM\Index(name="id_projet", columns={"id_projet"})})
+ * @ORM\Entity
+ */
+class Offreprojet
+{
+    /**
+     * @var \Offre
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Offre")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_offre", referencedColumnName="id_offre")
+     * })
+     */
+    private $idOffre;
+
+    /**
+     * @var \Projet
+     *
+     * @ORM\ManyToOne(targetEntity="Projet")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_projet", referencedColumnName="id")
+     * })
+     */
+    private $idProjet;
+
+
+}
+

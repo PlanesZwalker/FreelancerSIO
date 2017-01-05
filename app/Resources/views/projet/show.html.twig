@@ -7,7 +7,7 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h2 class="mysubtitle">Afficher le Projet</h2>
+        <h2 class="mysubtitle">Projet: {{ projet.intitule }}</h2>
         <div class="mycontentformshow">
             <ul>
                 <li class="returnlist">
@@ -17,37 +17,38 @@
             <table class="tableautitle">
                 <tbody>
                     <tr>
+                        <th class="mytdtabshow">Société</th>
+                        <td class="mytdtabshow">{{ projet.societe.denomination }}</td>
+                    </tr>
+                    <tr>
                         <th class="mytdtabshow">Intitulé du Projet</th>
-                        <td class="mytdtabshow">{{ projet.id_projet }}</td>
-                    </tr>
-                    <tr>
-                        <th class="mytdtabshow2">Prix</th>
-                        <td class="mytdtabshow2">{{ projet.prix }}</td>
-                    </tr>
-                    <tr>
-                        <th class="mytdtabshow">Etape</th>
-                        <td class="mytdtabshow">{{ projet.etape }}</td>
+                        <td class="mytdtabshow">{{ projet.intitule }}</td>
                     </tr>
                     <tr>
                         <th class="mytdtabshow2">Description</th>
                         <td class="mytdtabshow2">{{ projet.description }}</td>
                     </tr>
                     <tr>
-                        <th class="mytdtabshow">Société</th>
-                        <td class="mytdtabshow">{{ projet.id_societe }}</td>
+                        <th class="mytdtabshow2">Prix</th>
+                        <td class="mytdtabshow2">{{ projet.prix }}</td>
                     </tr>
                     <tr>
+                        <th class="mytdtabshow">Etat d'avancement</th>
+                        <td class="mytdtabshow">{{ projet.etat }}</td>
+                    </tr>
+
+                    <tr>
                         <th class="mytdtabshow2">Cahier des Charges</th>
-                        <td class="mytdtabshow2">{{ projet.idCdc }}</td>
+                        <td class="mytdtabshow2">{{ projet.cahierdescharges.intitule }}</td>
                     </tr>
                 </tbody>
             </table>
 
-            <ul>
+            <ul> 
+                {% if is_granted("ROLE_ADMIN") %}
                 <li class="myeditli">
-                    <a data-ajax="false" class="btn btn-info" style="color:white;" href="{{ path('projet_edit', { 'id': projet.id_projet }) }}">Modifier</a>
-                </li>
-                   {% if is_granted("ROLE_ADMIN") %}
+                    <a data-ajax="false" class="btn btn-info" style="color:white;" href="{{ path('projet_edit', { 'id': projet.id }) }}">Modifier</a>
+                </li>  
                 <li  class="mydeleteli">
                     {{ form_start(delete_form) }}
                         <input type="submit" rel="external" value="Supprimer le projet">

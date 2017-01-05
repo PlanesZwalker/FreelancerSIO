@@ -32,21 +32,21 @@
                 <tbody class="mytbody">
                 {% for test in tests %}
                     <tr>
-                        <a class="mydisplaynone"  href="{{ path('test_show', { 'id': test.id_test }) }}">{{ test.id_test }}</a>
+                        <a class="mydisplaynone"  href="{{ path('test_show', { 'id': test.idTest }) }}">{{ test.idTest }}</a>
                         <td class="mytdtab2">{{ dump(test) }}</td>
                         <td class="mytdtab">{{ test.description }}</td>
                         <td class="mytdtab2">{{ test.urlTest }}</td>
                         <td class="mytdtab">{{ test.resultat }}</td>
-                        <td class="mytdtab2">{% if test.datePassage %}{{ test.datePassage|date("d/m/Y h:i:s") }}{% endif %}</td>
-                        <td class="mytdtab">{{ test.idFreelancer }}</td>
-                        <td class="mytdtab2">{{ test.idCompetence }}</td>
+                        <td class="mytdtab2">{#% if test.datePassage %}{{ test.datePassage|date("d/m/Y h:i:s") }}{% endif %#}</td>
+                        <td class="mytdtab">{#{ test.idFreelancer }#}</td>
+                        <td class="mytdtab2"></td>
                         <td class="mytdtab">
                             <ul>
                                 <li style="display:inline-block;margin-top:8px;">
-                                    <a class="btn btn-default" href="{{ path('test_show', { 'id': test.id_test }) }}">Afficher</a>
+                                    <a class="btn btn-default" href="{{ path('test_show', { 'id': test.idTest }) }}">Afficher</a>
                                 </li>
                                 <li style="display:inline-block;">
-                                    <a class="btn btn-info" style="color:white;"  href="{{ path('test_edit', { 'id': test.id_test }) }}">Modifier</a>
+                                    <a class="btn btn-info" style="color:white;"  data-ajax="false" href="{{ path('test_edit', { 'id': test.idTest }) }}">Modifier</a>
                                 </li>
                             </ul>
                         </td>

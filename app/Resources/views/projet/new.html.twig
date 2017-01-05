@@ -7,19 +7,22 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h2 class="mysubtitle">Liste des Projets</h2>
+        <h2 class="mysubtitle">Projet</h2>
         <div class="mycontentform">
             <ul>
                 <li class="returnlist">
                     <a data-ajax="false" class="btn btn-default" href="{{ path('projet_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
-            <table  class="tableautitle">
+            <table class="tableautitle">
                 <tbody>
                     {{ form_start(form) }}
-                        {{ form_row(form.description) }}
-                        {{ form_row(form.etape) }}
-                        {{ form_row(form.description) }}
+                        {{ form_row(form.intitule,{'label': 'Intitulé'}) }}
+                        {{ form_row(form.description,{'label': 'Descriptif du projet'}) }}
+                        {{ form_row(form.etat,{'label': 'Avancement du projet'}) }}
+                        {{ form_row(form.prix,{'label': 'Tarif / Horaire - Forfait'}) }}
+                        {{ form_row(form.cahierdescharges)}}
+                        {{ form_row(form.societe) }}
                         <input type="submit" value="Ajouter le projet" />
                     {{ form_end(form) }}
                 </tbody>

@@ -11,24 +11,35 @@
         <div class="mycontentform">
             <ul>
                 <li class="returnlist">
-                    <a class="btn btn-default" href="{{ path('offre_index') }}">Retourner à la liste</a>
+                    <a class="btn btn-default" data-ajax=false" href="{{ path('offre_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
             <table class="tableautitle">
+                <thead>
+                    <div style="font-size:17px;">
+                            Pseudo du freelancer: 
+                        <div class="mytdtabshow2" style=" font-size:17px;"> {{ offre.freelancer.pseudo }}</div>
+                            Intitulé du projet rattaché:
+                        <div class="mytdtabshow2" style=" font-size:17px;"> {{ offre.projet.intitule }}</div>
+                            Societe ayant publié le projet rattaché:
+                        <div class="mytdtabshow2" style=" font-size:17px;"> {{ offre.projet.societe.denomination }}</div>
+                    </div>
+                </thead>
                 <tbody>
                     <tr>
                         {{ form_start(edit_form) }}
                             {{ form_widget(edit_form) }}
-                            <input  class="myeditinput"   type="submit" value="Modifier le projet" />
+                            <input  class="myeditinput"  type="submit" value="Modifier l'offre" />
                         {{ form_end(edit_form) }}
                     </tr>
                 </tbody>
+                     
             </table>
             <ul>
               {% if is_granted("ROLE_ADMIN") %}
                 <li  class="mydeleteli">
                     {{ form_start(delete_form) }}
-                        <input type="submit" rel="external" value="Supprimer l'offre">
+                        <input type="submit" value="Supprimer l'offre">
                     {{ form_end(delete_form) }}
                 </li>
                 {% endif %}

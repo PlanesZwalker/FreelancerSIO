@@ -7,7 +7,7 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h2 class="mysubtitle">Société</h2>
+        <h2 class="mysubtitle">Profil de la Société: {{ societe.denomination }}</h2>
         <div class="mycontentformshow">
             <ul>
                 <li class="returnlist">
@@ -18,7 +18,7 @@
                 <tbody>
                     <tr>
                         <th class="mytdtabshow">Societe</th>
-                        <td class="mytdtabshow">{{ societe.id_societe }}</td>
+                        <td class="mytdtabshow">{{ societe.denomination }}</td>
                     </tr>
                     <tr>
                         <th class="mytdtabshow2">Siret</th>
@@ -26,7 +26,7 @@
                     </tr>
                     <tr>
                         <th class="mytdtabshow">Denomination</th>
-                        <td class="mytdtabshow">{{ societe.denomination }}</td>
+                        <td class="mytdtabshow">{{ societe.adresse }}</td>
                     </tr>
                     <tr>
                         <th class="mytdtabshow2">Présentation</th>
@@ -38,11 +38,12 @@
                     </tr>
                 </tbody>
             </table>
-            <ul>
-                <li class="myeditli">
-                    <a class="btn btn-info" style="color:white;" data-ajax="false" href="{{ path('societe_edit', { 'id': societe.id_societe }) }}">Modifier</a>
-                </li>
+            <ul> 
                 {% if is_granted("ROLE_ADMIN") %}
+                <li>
+                    <a class="btn btn-info" style="color:white;" data-ajax="false" href="{{ path('societe_edit', { 'id': societe.id }) }}">Modifier</a>
+                </li>
+               
                 <li  class="mydeleteli">
                     {{ form_start(delete_form) }}
                         <input type="submit" rel="external" value="Supprimer le profil">

@@ -1,0 +1,47 @@
+<?php
+
+namespace MyFOSUserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Cahierdescharges
+ *
+ * @ORM\Table(name="cahierdescharges")
+ * @ORM\Entity
+ */
+class Cahierdescharges
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="intitule", type="string", length=255, nullable=false)
+     */
+    private $intitule;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="tarif", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $tarif;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="delai", type="string", length=255, nullable=false)
+     */
+    private $delai;
+
+
+}
+

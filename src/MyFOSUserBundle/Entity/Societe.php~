@@ -1,0 +1,78 @@
+<?php
+
+namespace MyFOSUserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Societe
+ *
+ * @ORM\Table(name="societe", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_19653DBD8D93D649", columns={"user"})})
+ * @ORM\Entity
+ */
+class Societe
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="denomination", type="string", length=255, nullable=false)
+     */
+    private $denomination;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="presentation", type="string", length=255, nullable=false)
+     */
+    private $presentation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=255, nullable=false)
+     */
+    private $adresse;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="siret", type="string", length=255, nullable=false)
+     */
+    private $siret;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tel", type="string", length=255, nullable=false)
+     */
+    private $tel;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="logo", type="string", length=255, nullable=false)
+     */
+    private $logo;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+
+}
+

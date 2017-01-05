@@ -9,13 +9,15 @@
     <div class="formulairetop">
         <h2 class="mysubtitle">Liste des Offres</h2>
         <div class="mycontentform">
-             <ul>
-                <li>
-                    <a class="addtab" href="{{ path('offre_new') }}">
-                        <span class="fa fa-plus" >&nbsp;&nbsp;Créer une nouvelle Offre</span>
-                    </a>
-                </li>
-            </ul>
+            {% if is_granted("ROLE_ADMIN") %}
+                <ul>
+                   <li>
+                       <a class="addtab" href="{{ path('offre_new') }}">
+                           <span class="fa fa-plus" data-ajax="false">&nbsp;&nbsp;Créer une nouvelle Offre</span>
+                       </a>
+                   </li>
+               </ul>
+            {% endif %}
             <table class="tableautitle">
                 <thead>
                     <tr class="tableautitlecontent">
@@ -31,22 +33,24 @@
                 <tbody class="mytbody">
                 {% for offre in offres %}
                     <tr>
-                        <a class="mydisplaynone"  href="{{ path('offre_show', { 'id': offre.id_offre }) }}">{{ offre.id_offre }}</a>
-                        <td class="mytdtab2">{{ dump(offre) }}</td>
+                        <a class="mydisplaynone"  href="{{ path('offre_show', { 'id': offre.idOffre }) }}">{{ offre.idOffre }}</a>
+                        <td class="mytdtabshow">{{ offre.projet.intitule }}</td>
                         <td class="mytdtab">{{ offre.tarif }}</td>
                         <td class="mytdtab2">{{ offre.delai }}</td>
-                        <td class="mytdtab">{{ offre.propCommerciale }}</td>
+                        <td class="mytdtab">{{ offre.proposition }}</td>
                         <td class="mytdtab2">{{ offre.particularite }}</td>
-                        <td class="mytdtab">{{ offre.id_freelancer }}</td>
-                        <input type="hidden" value="offre.id_freelancer }}" />
+                        <td class="mytdtab">{{ offre.freelancer.pseudo }}</td>
+                        <input type="hidden" value="offre.freelancer }}" />
                         <td class="mytdtab2">
                             <ul>
                                 <li style="display:inline-block;margin-top:8px;">
-                                    <a class="btn btn-default" href="{{ path('offre_show', { 'id': offre.id_offre }) }}">Afficher</a>
+                                    <a class="btn btn-default" href="{{ path('offre_show', { 'id': offre.idOffre }) }}">Afficher</a>
                                 </li>
-                                <li style="display:inline-block;">
-                                    <a class="btn btn-info" style="color:white;" href="{{ path('offre_edit', { 'id': offre.id_offre }) }}">Modifier</a>
-                                </li>
+                                  {% if is_granted("ROLE_ADMIN") %}
+                                    <li style="display:inline-block;">
+                                        <a class="btn btn-info" style="color:white;" href="{{ path('offre_edit', { 'id': offre.idOffre }) }}">Modifier</a>
+                                    </li>
+                                {% endif %}
                             </ul>
                         </td>
                     </tr>

@@ -1,0 +1,74 @@
+<?php
+
+namespace MyFOSUserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Projet
+ *
+ * @ORM\Table(name="projet", indexes={@ORM\Index(name="societe", columns={"societe"}), @ORM\Index(name="cahierdescharges", columns={"cahierdescharges"})})
+ * @ORM\Entity
+ */
+class Projet
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="intitule", type="string", length=255, nullable=false)
+     */
+    private $intitule;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255, nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prix", type="string", length=255, nullable=false)
+     */
+    private $prix;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etat", type="string", length=255, nullable=false)
+     */
+    private $etat;
+
+    /**
+     * @var \Cahierdescharges
+     *
+     * @ORM\ManyToOne(targetEntity="Cahierdescharges")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="cahierdescharges", referencedColumnName="id")
+     * })
+     */
+    private $cahierdescharges;
+
+    /**
+     * @var \Societe
+     *
+     * @ORM\ManyToOne(targetEntity="Societe")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="societe", referencedColumnName="id")
+     * })
+     */
+    private $societe;
+
+
+}
+

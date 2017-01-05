@@ -17,8 +17,8 @@
             <table  class="tableautitle">
                 <tbody>
                     <tr>
-                        <th class="mytdtabshow">Intitulé de l'offre</th>
-                        <td class="mytdtabshow">{{ offre.id_offre }}</td>
+                        <th class="mytdtabshow">Intitulé du projet rattaché</th>
+                        <td class="mytdtabshow">{{ offre.projet.intitule }}</td>
                     </tr>
                     <tr>
                         <th class="mytdtabshow2">Tarif</th>
@@ -30,7 +30,7 @@
                     </tr>
                     <tr>
                         <th class="mytdtabshow2">Proposition commerciale</th>
-                        <td class="mytdtabshow2">{{ offre.propCommerciale }}</td>
+                        <td class="mytdtabshow2">{{ offre.proposition }}</td>
                     </tr>
                     <tr>
                         <th class="mytdtabshow">Particularite</th>
@@ -38,14 +38,14 @@
                     </tr>
                     <tr>
                         <th class="mytdtabshow2">Nom du Freelancer</th>
-                        <td class="mytdtabshow2">{{ offre.id_freelancer }}</td>
+                        <td class="mytdtabshow2">{{ offre.freelancer.pseudo }}</td>
                     </tr>
                 </tbody>
             </table>
 
             <ul>
                 <li class="myeditli">
-                    <a class="btn btn-info" style="color:white;" href="{{ path('offre_edit', { 'id': offre.id_offre }) }}">Modifier</a>
+                    <a class="btn btn-info" style="color:white;" href="{{ path('offre_edit', { 'id': offre.idOffre }) }}">Modifier</a>
                 </li>
                 {% if is_granted("ROLE_ADMIN") %}
                 <li  class="mydeleteli">

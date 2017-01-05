@@ -1,0 +1,47 @@
+<?php
+
+namespace MyFOSUserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Competence
+ *
+ * @ORM\Table(name="competence")
+ * @ORM\Entity
+ */
+class Competence
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_competence", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idCompetence;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="categorie", type="string", length=255, nullable=false)
+     */
+    private $categorie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255, nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="intitule", type="string", length=255, nullable=false)
+     */
+    private $intitule;
+
+
+}
+

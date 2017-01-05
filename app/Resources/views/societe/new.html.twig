@@ -16,11 +16,17 @@
             </ul>
             <table  class="tableautitle">
                 <tbody>
+                
                     {{ form_start(form) }}
-                        {{ form_row(form.siret) }}
+
                         {{ form_row(form.denomination) }}
-                        {{ form_row(form.presentation) }}
+                        {{ form_row(form.presentation) }}                        
+                        {{ form_row(form.adresse) }}
+                        {{ form_row(form.siret) }}
+                        {{ form_row(form.tel) }}
                         {{ form_row(form.logo) }}
+                        {{ form_row(form.user) }}
+                        
                         <input type="submit" value="Enregistrer le profil" />
                     {{ form_end(form) }}
                 </tbody>
