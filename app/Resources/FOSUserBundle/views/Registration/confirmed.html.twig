@@ -1,14 +1,25 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
 {% block titre %}
-    <h1 id="logo"><a href="index.html" class="bigtitle">Vous voilà connecté</a></h1>
+    <h1 id="logo"><a href="index.html" class="bigtitle">Vous voilà connecté {{ user.username }}</a></h1>
 {% endblock %}
 {% block body %}
     <div style="text-align:center; margin-top:6%">
         {% block soustitre %} 
-            <h2 style="color:gray; margin-top:5%; background-color:rgba(1,1,1,0.2); border-radius:8px 8px 0px 0px;">Inscription de l'utilisateur 
-                <span id="logo"><a href="/" style="color:white ">{{ app.user.username }}</a></span>Validée</h2> 
+            <h2 style="color:white; margin-top:5%; background-color:rgba(1,1,1,0.2); border-radius:8px 8px 0px 0px;">
+                Inscription de l'utilisateur {{ user.username }} Validée
+            </h2> 
         {% endblock %}
+        {% if is_granted("ROLE_FREELANCER") %}
+            <a class="btn btn-success" href="{{ path('freelancer_new') }}">
+                Créer mon profil "Freelancer"
+            </a> 
+        {% endif %}
+        {% if is_granted("ROLE_SOCIETE") %}
+            <a class="btn btn-success" href="{{ path('societe_new') }}">
+             Créer mon profil "Societe"
+            </a> 
+        {% endif %}
     </div>
 {% endblock %}
 {% trans_default_domain 'FOSUserBundle' %}

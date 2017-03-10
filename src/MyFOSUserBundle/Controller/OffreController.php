@@ -5,8 +5,10 @@ namespace MyFOSUserBundle\Controller;
 use MyFOSUserBundle\Entity\Offre;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 /**
  * Offre controller.
  *
@@ -23,11 +25,14 @@ class OffreController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
+           
         $offres = $em->getRepository('MyFOSUserBundle:Offre')->findAll();
 
+        
         return $this->render('offre/index.html.twig', array(
             'offres' => $offres,
+         
+          
         ));
     }
 
@@ -40,7 +45,32 @@ class OffreController extends Controller
     public function newAction(Request $request)
     {
         $offre = new Offre();
-        $form = $this->createForm('MyFOSUserBundle\Form\OffreType', $offre);
+    
+        $form = $this->createFormBuilder($offre)
+                ->add('tarif', null, array(
+                    'label'=> 'Tarif Horaire estimé'
+                    )
+                )
+    
+                ->add('delai', null, array(
+                    'label'=> 'Durée estimée pour réaliser le projet'
+                    )
+                )
+                ->add('particularite', TextareaType::class, array(
+                    'label'=> 'Particularités'
+                    )
+                )
+                ->add('proposition', CKEditorType::class, array(
+                    'input_sync' => true,
+                    'config' => array(
+                        'uiColor' => '#020F58',
+                    ),
+                    'label' => 'Saisir la proposition commerciale ici: ',  
+                  )) 
+           
+                ->getForm();
+      
+            
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -82,9 +112,40 @@ class OffreController extends Controller
     public function editAction(Request $request, Offre $offre)
     {
         $deleteForm = $this->createDeleteForm($offre);
-        $editForm = $this->createForm('MyFOSUserBundle\Form\OffreType', $offre);
-        $editForm->handleRequest($request);
-
+        $editForm = $this->createFormBuilder($offre)
+               ->add('tarif', null, array(
+                    'label'=> 'Tarif Horaire estimé'
+                    )
+                )
+    
+                ->add('delai', null, array(
+                    'label'=> 'Durée estimée pour réaliser le projet'
+                    )
+                )
+                ->add('particularite', TextareaType::class, array(
+                    'label'=> 'Particularités'
+                    )
+                )
+                ->add('proposition', CKEditorType::class, array(
+                    'input_sync' => true,
+                    'config' => array(
+                        'uiColor' => '#020F58',
+                    ),
+                    'label' => 'Saisir la proposition commerciale ici: ',  
+                  )) 
+                ->add('proposition', CKEditorType::class, array(
+                    'input_sync' => true,
+                    'config' => array(
+                        'uiColor' => '#020F58',
+                    ),
+                    'label' => 'Saisir la proposition commerciale ici: ',  
+                  ))
+              
+                ->getForm();
+                
+            
+        $editForm->handleRequest($request);      
+    
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 

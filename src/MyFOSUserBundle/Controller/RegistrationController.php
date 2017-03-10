@@ -26,6 +26,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Model\UserInterface;
+use MyFOSUserBundle\Entity\Freelancer;
+use MyFOSUserBundle\Entity\Societe;
 
 /**
  * Controller managing the registration
@@ -43,7 +45,7 @@ class RegistrationController extends Controller
     public function registerAction(Request $request)
     {
         if ($this->getUser() instanceof UserInterface) {
-            return $this->redirectToRoute($this->getParameter('my_fos_user.user.default_route'));
+                  $url = $this->generateUrl('fos_user_registration_confirmed');
         }
         
         /** @var $formFactory FactoryInterface */
@@ -64,27 +66,24 @@ class RegistrationController extends Controller
         }
 
         $form = $formFactory->createForm();
-
         $form->setData($user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
+                
                 $event = new FormEvent($form, $request);
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
-
                 $userManager->updateUser($user);
 
                 if (null === $response = $event->getResponse()) {
                     $url = $this->generateUrl('fos_user_registration_confirmed');
                     $response = new RedirectResponse($url);
                 }
-
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 
                 return $response;
             }
-
             $event = new FormEvent($form, $request);
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_FAILURE, $event);
 
@@ -92,7 +91,6 @@ class RegistrationController extends Controller
                 return $response;
             }
         }
-
         return $this->render('FOSUserBundle:Registration:register.html.twig', array(
             'form' => $form->createView(),
         ));
@@ -106,7 +104,6 @@ class RegistrationController extends Controller
         if ($this->getUser() instanceof UserInterface) {
             return $this->redirectToRoute($this->getParameter('fos_user.user.default_route'));
         }
-
         $email = $this->get('session')->get('fos_user_send_confirmation_email/email');
 
         if (empty($email)) {
@@ -165,7 +162,7 @@ class RegistrationController extends Controller
         }
 
         $dispatcher->dispatch(FOSUserEvents::REGISTRATION_CONFIRMED, new FilterUserResponseEvent($user, $request, $response));
-
+        
         return $response;
     }
 

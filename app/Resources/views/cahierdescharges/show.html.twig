@@ -10,7 +10,7 @@
         <div class="mycontentformshow">
             <ul>
                 <li class="returnlist">
-                    <a data-ajax="false" class="btn btn-default" href="{{ path('cahierdescharges_index') }}">Retourner à la liste</a>
+                    <a class="btn btn-default" href="{{ path('cahierdescharges_index') }}">Retourner à la liste</a>
                 </li>
                
             </ul>
@@ -18,7 +18,7 @@
             <tbody>
                 <tr>
                     <th class="mytdtabshow">Projet</th>
-                    <td class="mytdtabshow">{{ cahierdescharges.idCdc }}</td>
+                    <td class="mytdtabshow">{{  dump(projets) }}</td>
                 </tr>
                 <tr>
                     <th class="mytdtabshow2">Tarif</th>
@@ -30,18 +30,18 @@
                 </tr>
                 <tr>
                     <th class="mytdtabshow2">Contrat</th>
-                    <td class="mytdtabshow2">{{ cahierdescharges.idContrat }}</td>
+                    <td class="mytdtabshow2">{{  dump(societes) }}</td>
                 </tr>
             </tbody>
         </table>
 
         <ul>
-            <li  class="myeditli">
-                <a data-ajax="false" class="btn btn-info" style="color:white;"  href="{{ path('cahierdescharges_edit', { 'id': cahierdescharges.idCdc }) }}">Modifier</a>
+            <li class="myeditli">
+                <a  class="btn btn-info" style="color:white;"  href="{{ path('cahierdescharges_edit', { 'id': cahierdescharges.id }) }}">Modifier</a>
             </li>
             <li class="mydeleteli">
                 {{ form_start(delete_form) }}
-                    <input data-ajax="false" type="submit" value="Delete">
+                    <input  type="submit" value="Supprimer">
                 {{ form_end(delete_form) }}
             </li>
         </ul>

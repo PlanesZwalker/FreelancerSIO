@@ -1,6 +1,7 @@
 <?php
 
 namespace MyFOSUserBundle\Entity;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -38,9 +39,9 @@ class Freelancer
     /**
      * @var string
      *
-     * @ORM\Column(name="nationnalite", type="string", length=255, nullable=false)
+     * @ORM\Column(name="nationalite", type="string", length=255, nullable=false)
      */
-    private $nationnalite;
+    private $nationalite;
 
     /**
      * @var integer
@@ -134,27 +135,27 @@ class Freelancer
     }
 
     /**
-     * Set nationnalite
+     * Set nationalite
      *
-     * @param string $nationnalite
+     * @param string $nationalite
      *
      * @return Freelancer
      */
-    public function setNationnalite($nationnalite)
+    public function setnationalite($nationalite)
     {
-        $this->nationnalite = $nationnalite;
+        $this->nationalite = $nationalite;
 
         return $this;
     }
 
     /**
-     * Get nationnalite
+     * Get nationalite
      *
      * @return string
      */
-    public function getNationnalite()
+    public function getnationalite()
     {
-        return $this->nationnalite;
+        return $this->nationalite;
     }
 
     /**
@@ -188,7 +189,7 @@ class Freelancer
      *
      * @return Freelancer
      */
-    public function setCv($cv)
+    public function setCv(UploadedFile $cv)
     {
         $this->cv = $cv;
 
@@ -212,7 +213,7 @@ class Freelancer
      *
      * @return Freelancer
      */
-    public function setPhoto($photo)
+    public function setPhoto(UploadedFile $photo)
     {
         $this->photo = $photo;
 
@@ -229,6 +230,88 @@ class Freelancer
         return $this->photo;
     }
 
+    
+    /*
+     *  UPLOAD DE LA PHOTO
+     * 
+     */
+    
+    public function getUploadPhotoDir(){
+        return '/user/photo';
+    }
+ 
+    public function getAbsolutePhotoRoot(){ 
+            return $this->getUploadPhotoRoot().$this->pseudo;
+    }
+
+    public function getWebPhotoPath(){
+
+        return $this->getUploadPhotoDir().'/'.$this->pseudo;
+    }
+
+    public function getUploadPhotoRoot(){
+         return __DIR__.'/../../../web'. $this->getUploadPhotoDir().'/';
+    }   
+    
+    public function uploadPhoto(){
+   
+
+        if($this->photo === null){
+            return;
+        }
+      
+        $this->pseudo = $this->getPseudo();
+        
+        if(!is_dir($this->getWebPhotoPath())){
+             mkdir($this->getWebPhotoPath(), '0777',true); 
+        }
+              
+        $this->photo->move($this->getUploadPhotoRoot(), $this->pseudo);
+   
+        unset($this->photo);
+    }
+        
+    
+    /*
+     * 
+     *      UPLOAD DU CV
+     */
+    public function getUploadCvDir(){
+        return '/user/cv';
+    }
+  
+    public function getAbsoluteCvRoot(){
+        return $this->getUploadCvRoot().$this->user->getName();
+    }
+    
+    public function getWebCvPath(){
+
+        return $this->getUploadCvDir().'/'.$this->pseudo;
+    }
+    
+    public function getUploadCvRoot(){
+         return __DIR__.'/../../../web'. $this->getUploadCvDir().'/';
+    }
+ 
+    public function uploadCv(){
+        
+        if($this->cv === null){
+            return;
+        }
+        $this->pseudo = $this->getPseudo();
+        
+        if(!is_dir($this->getWebCvPath())){
+            
+             mkdir($this->getWebCvPath(), '0777', true);
+        }
+              
+        $this->cv->move($this->getUploadCvRoot(), $this->pseudo);
+   
+         unset($this->cv);
+    }
+    
+    
+    
     /**
      * Set user
      *
@@ -236,7 +319,7 @@ class Freelancer
      *
      * @return Freelancer
      */
-    public function setUser(\MyFOSUserBundle\Entity\User $user = null)
+    public function setUser(\MyFOSUserBundle\Entity\User $user )
     {
         $this->user = $user;
 

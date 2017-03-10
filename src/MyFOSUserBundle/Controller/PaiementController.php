@@ -5,7 +5,8 @@ namespace MyFOSUserBundle\Controller;
 use MyFOSUserBundle\Entity\Paiement;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Paiement controller.
@@ -48,7 +49,7 @@ class PaiementController extends Controller
             $em->persist($paiement);
             $em->flush($paiement);
 
-            return $this->redirectToRoute('paiement_show', array('id' => $paiement->getId()));
+            return $this->redirectToRoute('paiement_show', array('id' => $paiement->getIdPaiement()));
         }
 
         return $this->render('paiement/new.html.twig', array(
@@ -88,7 +89,7 @@ class PaiementController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('paiement_edit', array('id' => $paiement->getId()));
+            return $this->redirectToRoute('paiement_edit', array('id' => $paiement->getIdPaiement()));
         }
 
         return $this->render('paiement/edit.html.twig', array(
@@ -128,7 +129,7 @@ class PaiementController extends Controller
     private function createDeleteForm(Paiement $paiement)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('paiement_delete', array('id' => $paiement->getId())))
+            ->setAction($this->generateUrl('paiement_delete', array('id' => $paiement->getIdPaiement())))
             ->setMethod('DELETE')
             ->getForm()
         ;

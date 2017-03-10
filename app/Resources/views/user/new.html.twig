@@ -11,24 +11,30 @@
         <div class="mycontentform">
             <ul>
                 <li class="returnlist">
-                    <a data-ajax="false" class="btn btn-default" href="{{ path('user_index') }}">Retourner à la liste</a>
+                    <a  class="btn btn-default" href="{{ path('user_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
             <table  class="tableautitle">
                 <tbody>
-                    {{ form_start(form) }}{{ dump(form) }}
+                {{ form_start(form) }}
                     <tr>
-                        <th class="mytdtabshow2">{{ form_row(form.username) }}</th>
-                    </tr>        
-                    <tr>
-                        <th class="mytdtabshow">{{ form_row(form.email) }}</th>
-                    </tr>        
-                     <tr>
-                        <th class="mytdtabshow2">{{ form_row(form.password) }}</th>
-                    </tr>        
-                     <tr>
-                        <th class="mytdtabshow">{{ form_row(form.roles) }}</th>
+                        <th class="mytdtabshow">{{ form_row(form.roles, { 'label':'Type de compte'}) }}</th>
                     </tr>  
+                    <tr>
+                        <th class="mytdtabshow2">{{ form_row(form.username, { 'label':'Identifiant'}) }}</th>
+                    </tr>        
+                    <tr>
+                        <th class="mytdtabshow">{{ form_row(form.email, { 'label':'Adresse Email'}) }}</th>
+                    </tr>        
+                     <tr>
+                        <th class="mytdtabshow2">{{ form_row(form.password, { 'label':'Mot de passe'}) }}</th>
+                    </tr>        
+                    <tr>
+                        <th class="mytdtabshow">{{ form_row(form.name, { 'label':'Nom'}) }}</th>
+                    </tr>        
+                     <tr>
+                        <th class="mytdtabshow2">{{ form_row(form.firstname, { 'label':'Prénom'}) }}</th>
+                    </tr>   
                 </tbody>
              </table> 
              <input  rel="external" type="submit" class="myeditinput" value="Enregistrer l'utilisateur" />

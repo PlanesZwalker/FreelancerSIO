@@ -17,42 +17,42 @@
             <table class="tableautitle">
                 <tbody>
                     <tr>
-                        <th class="mytdtabshow">Test</th>
-                        <td class="mytdtabshow">{{ test.id_test }}</td>
+                        <th class="mytdtabshow">Competence</th>
+                        <td class="mytdtabshow">{{ testcompetence.Competence.intitule }}</td>
+                    </tr>
+                    <tr>
+                        <th class="mytdtabshow2">Intitulé</th>
+                        <td class="mytdtabshow2">{{ test.intitule }}</td>
+                    </tr>
+                    <tr>
+                        <th class="mytdtabshow">Lien vers le questionnaire</th>
+                        <td class="mytdtabshow">{{ test.urlTest }}</td>
                     </tr>
                     <tr>
                         <th class="mytdtabshow2">Description</th>
                         <td class="mytdtabshow2">{{ test.description }}</td>
                     </tr>
                     <tr>
-                        <th class="mytdtabshow">Contenu du Test</th>
-                        <td class="mytdtabshow">{{ test.url_test }}</td>
+                        <th class="mytdtabshow">Résultats au questionnaire</th>
+                        <td class="mytdtabshow">{{ test.questionnaire }}</td>
                     </tr>
                     <tr>
-                        <th class="mytdtabshow2">Résultat</th>
-                        <td class="mytdtabshow2">{{ test.resultat }}</td>
+                        <th class="mytdtabshow2">Date de Passage</th>
+                        <td class="mytdtabshow2">{% if testfreelancer.datePassage %}{{ testfreelancer.datePassage|date('d-m-Y H:i:s') }}{% endif %}</td>
                     </tr>
                     <tr>
-                        <th class="mytdtabshow">Date de Passage</th>
-                        <td class="mytdtabshow">{% if test.date_passage %}{{ test.date_passage|date('Y-m-d H:i:s') }}{% endif %}</td>
-                    </tr>
-                    <tr>
-                        <th class="mytdtabshow2">Freelancer</th>
-                        <td class="mytdtabshow2">{{ test.id_freelancer }}</td>
-                    </tr>
-                    <tr>
-                        <th class="mytdtabshow">Competence</th>
-                        <td class="mytdtabshow">{{ test.id_competence }}</td>
+                        <th class="mytdtabshow">Freelancer</th>
+                        <td class="mytdtabshow">{{ testfreelancer.Freelancer.pseudo }}</td>
                     </tr>
                 </tbody>
             </table>
             <ul>
                 <li class="myeditli">
-                    <a class="btn btn-info" style="color:white;"  href="{{ path('test_edit', { 'id': test.id_test }) }}">Modifier</a>
+                    <a  class="btn btn-default" href="{{ path('test_edit', { 'id': test.idTest }) }}">Modifier</a>
                 </li>
                 <li class="mydeleteli">
                     {{ form_start(delete_form) }}
-                        <input type="submit" value="Delete">
+                        <input type="submit" value="Supprimer le test">
                     {{ form_end(delete_form) }}
                 </li>
             </ul>

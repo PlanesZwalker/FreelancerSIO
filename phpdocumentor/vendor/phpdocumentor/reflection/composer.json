@@ -1,0 +1,39 @@
+{
+    "name": "phpdocumentor/reflection",
+    "description": "Reflection library to do Static Analysis for PHP Projects",
+    "keywords": ["phpdoc", "phpDocumentor", "reflection", "static analysis"],
+    "homepage": "http://www.phpdoc.org",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "phpDocumentor\\": ["src/phpDocumentor"]
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "phpDocumentor\\": [
+                "tests/component/",
+                "tests/unit/phpDocumentor",
+                "tests/mocks/"
+            ]
+        }
+    },
+    "require": {
+        "php":                               ">=5.4.0",
+        "psr/log":                           "~1.0",
+        "nikic/php-parser":                  "^2.0",
+        "phpdocumentor/reflection-docblock": "^3.0@dev",
+        "phpdocumentor/reflection-common":   "^1.0@dev"
+    },
+    "require-dev": {
+        "phpunit/phpunit":    "~4.0",
+        "mockery/mockery":    "~0.8",
+        "mikey179/vfsStream": "~1.2",
+        "squizlabs/php_codesniffer": "^2.5"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        }
+    }
+}

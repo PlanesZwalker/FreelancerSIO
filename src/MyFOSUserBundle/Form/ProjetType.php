@@ -20,7 +20,8 @@ class ProjetType extends AbstractType
                 ->add('etat')
                 ->add('cahierdescharges',ChoiceType::class)
                 ->add('societe',ChoiceType::class)        
-                 ;
+        ;
+    
     }
     
     /**

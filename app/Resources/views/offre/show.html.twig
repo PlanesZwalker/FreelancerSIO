@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
 
-        <h1 id="logo"><a class="bigtitle">Offres</a></h1>  
+    <h1 id="logo"><a class="bigtitle">Offres</a></h1>  
 
 {% endblock %}
 
@@ -14,47 +14,62 @@
                     <a class="btn btn-default" href="{{ path('offre_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
-            <table  class="tableautitle">
-                <tbody>
-                    <tr>
-                        <th class="mytdtabshow">Intitulé du projet rattaché</th>
-                        <td class="mytdtabshow">{{ offre.projet.intitule }}</td>
-                    </tr>
-                    <tr>
-                        <th class="mytdtabshow2">Tarif</th>
-                        <td class="mytdtabshow2">{{ offre.tarif }}</td>
-                    </tr>
-                    <tr>
-                        <th class="mytdtabshow">Délai</th>
-                        <td class="mytdtabshow">{{ offre.delai }}</td>
-                    </tr>
-                    <tr>
-                        <th class="mytdtabshow2">Proposition commerciale</th>
-                        <td class="mytdtabshow2">{{ offre.proposition }}</td>
-                    </tr>
-                    <tr>
-                        <th class="mytdtabshow">Particularite</th>
-                        <td class="mytdtabshow">{{ offre.particularite }}</td>
-                    </tr>
-                    <tr>
-                        <th class="mytdtabshow2">Nom du Freelancer</th>
-                        <td class="mytdtabshow2">{{ offre.freelancer.pseudo }}</td>
-                    </tr>
-                </tbody>
-            </table>
-
             <ul>
-                <li class="myeditli">
-                    <a class="btn btn-info" style="color:white;" href="{{ path('offre_edit', { 'id': offre.idOffre }) }}">Modifier</a>
-                </li>
-                {% if is_granted("ROLE_ADMIN") %}
-                <li  class="mydeleteli">
-                    {{ form_start(delete_form) }}
-                        <input type="submit" rel="external" value="Supprimer l'offre">
-                    {{ form_end(delete_form) }}
-                </li>
+            {% if is_granted('ROLE_FREELANCER') or is_granted("ROLE_ADMIN") %}
+                {% if  offre.Freelancer.id==user.id %}
+                    <li>
+                        <a class="btn btn-info" href="{{ path('offre_edit', { 'id': offre.idOffre }) }}">Modifier l'offre</a>
+                    </li>
+                    <li  class="mydeleteli">
+                        {{ form_start(delete_form) }}
+                        <input type="submit" value="Supprimer l'offre">
+                        {{ form_end(delete_form) }}
+                    </li>
                 {% endif %}
+            {% endif %}
             </ul>
+            <table style="width:35%; display:inline-table; margin:1%;margin-left:10%;">
+                <tr>
+                    <th class="mytdtabshow">Intitulé du projet rattaché</th>
+                    <td class="mytdtabshow">{{ offre.Projet.intitule }}</td>
+                </tr>
+                <tr>
+                    <th class="mytdtabshow">Logo de la société du projet rattaché</th>
+                    <td class="mytdtabshow">            
+                        <img class="myimg" src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/logo/{{ offre.Projet.Societe.denomination }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/logo/{{ offre.Projet.Societe.denomination }}{% endif %}" />
+                    </td>
+                </tr>
+                <tr>
+                    <th class="mytdtabshow">Tarif Horaire estimé</th>
+                    <td class="mytdtabshow">{{ offre.tarif }}</td>
+                </tr>
+                <tr>
+                    <th class="mytdtabshow">Délai estimé de réalisation</th>
+                    <td class="mytdtabshow">{{ offre.delai }}</td>
+                </tr>
+                <tr>
+                    <th class="mytdtabshow">Particularite</th>
+                    <td class="mytdtabshow">{{ offre.particularite }}</td>
+                </tr>
+            </table>
+            <table style="width:35%; display:inline-table; margin:1%;">
+                <tr>
+                    <th class="mytdtabshow">Nom du Freelancer</th>
+                    <td class="mytdtabshow">{{ offre.Freelancer.pseudo }}</td>
+                </tr>
+                <tr>
+                    <th class="mytdtabshow">Photo du Freelancer</th>
+                    <td class="mytdtabshow">
+                        <img class="myimg" src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/photo/{{ offre.Freelancer.pseudo }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/photo/{{ offre.Freelancer.pseudo }}{% endif %}" />
+                    </td>
+                </tr>
+            </table>
+            <table style="margin:1%;width:70%;margin-left:10%;">
+                <tr>
+                    <th class="mytdtabshow">Proposition commerciale</th>
+                    <td class="mytdtabshow">{{ offre.proposition|raw }}</td>
+                </tr>
+            </table>
         </div>
     </div>
 {% endblock %}

@@ -6,7 +6,7 @@ use MyFOSUserBundle\Entity\Projet;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
-
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 /**
  * Projet controller.
  *
@@ -25,7 +25,7 @@ class ProjetController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $projets = $em->getRepository('MyFOSUserBundle:Projet')->findAll();
-
+        
         return $this->render('projet/index.html.twig', array(
             'projets' => $projets,
         ));
@@ -40,7 +40,16 @@ class ProjetController extends Controller
     public function newAction(Request $request)
     {
         $projet = new Projet();
-        $form = $this->createForm('MyFOSUserBundle\Form\ProjetType', $projet);
+        $cdc = new \MyFOSUserBundle\Entity\Cahierdescharges();
+        $em = $this->getDoctrine()->getManager();
+
+        $form = $this->createFormBuilder($projet)
+                ->add('intitule')
+                ->add('description')
+                ->add('prix')
+                ->add('etat')
+                ->getForm();
+                ;
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -54,6 +63,7 @@ class ProjetController extends Controller
         return $this->render('projet/new.html.twig', array(
             'projet' => $projet,
             'form' => $form->createView(),
+            'cdc' =>$cdc
         ));
     }
 
@@ -82,7 +92,15 @@ class ProjetController extends Controller
     public function editAction(Request $request, Projet $projet)
     {
         $deleteForm = $this->createDeleteForm($projet);
-        $editForm = $this->createForm('MyFOSUserBundle\Form\ProjetType', $projet);
+        
+             $editForm = $this->createFormBuilder($projet)
+                ->add('intitule')
+                ->add('description')
+                ->add('prix')
+                ->add('etat')
+               
+                ->getForm();
+        
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -133,4 +151,8 @@ class ProjetController extends Controller
             ->getForm()
         ;
     }
+    
+    
+    
+    
 }

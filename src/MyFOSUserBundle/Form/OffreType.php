@@ -17,9 +17,6 @@ class OffreType extends AbstractType
                 ->add('delai')
                 ->add('proposition')
                 ->add('particularite')
-            
-                  
-                
                 ;
     }
     

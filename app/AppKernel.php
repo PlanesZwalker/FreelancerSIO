@@ -18,11 +18,9 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new MyFOSUserBundle\MyFOSUserBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
-            new Sonata\CoreBundle\SonataCoreBundle(),   
-            new Sonata\BlockBundle\SonataBlockBundle(),
+
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),  
-            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
-            new Sonata\AdminBundle\SonataAdminBundle(),
+
       //      new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
         ];
 

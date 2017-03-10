@@ -85,7 +85,7 @@ class DefaultController extends Controller
             $form =  $this->createFormBuilder() 
                  ->add('Editeur', CKEditorType::class, array(
                     'config' => array(
-                        'uiColor' => '#ffffff',
+                        'uiColor' => '#020F58',
                     ),
                     'label' => 'Editeur de texte',  
                   ))           

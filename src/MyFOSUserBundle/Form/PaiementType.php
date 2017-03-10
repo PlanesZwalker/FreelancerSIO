@@ -13,7 +13,10 @@ class PaiementType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('etat')->add('dpSociete')->add('dpFreelancer')        ;
+        $builder->add('etat')
+                ->add('dpSociete')
+                ->add('dpFreelancer')
+             ;
     }
     
     /**

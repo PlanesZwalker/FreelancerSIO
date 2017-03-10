@@ -14,19 +14,21 @@
                     <a data-ajax="false" class="btn btn-default" href="{{ path('projet_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
-            <table class="tableautitle">
-                <tbody>
-                    {{ form_start(form) }}
-                        {{ form_row(form.intitule,{'label': 'Intitulé'}) }}
+
+                    <form action="{{ path('projet_new') }}" method="post" >
+                        
+                        {{ form_row(form.intitule,{'label': 'Intitulé du projet'}) }}
                         {{ form_row(form.description,{'label': 'Descriptif du projet'}) }}
                         {{ form_row(form.etat,{'label': 'Avancement du projet'}) }}
                         {{ form_row(form.prix,{'label': 'Tarif / Horaire - Forfait'}) }}
-                        {{ form_row(form.cahierdescharges)}}
-                        {{ form_row(form.societe) }}
-                        <input type="submit" value="Ajouter le projet" />
-                    {{ form_end(form) }}
-                </tbody>
-             </table> 
+       
+                        {% if societe is defined %}      
+                            <input type="hidden" name="societe" class="mytdtabshow2" style=" font-size:17px;"value="{{ societe.id }}" >
+                        {% endif %} 
+                        
+                        <input type="submit"  class="myeditinput"  value="Ajouter le projet" />
+                    </form>
+
             <ul>
              
             </ul>

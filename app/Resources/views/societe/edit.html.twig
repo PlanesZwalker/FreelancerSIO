@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
 
-        <h1 id="logo"><a class="bigtitle">Sociétés</a></h1>  
+    <h1 id="logo"><a class="bigtitle">Sociétés</a></h1>  
 
 {% endblock %}
 
@@ -9,47 +9,56 @@
     <div class="formulairetop">
         <h2 class="mysubtitle">Modifier le profil de la Société</h2>
         <div class="mycontentform">
-             <ul>
-                <li class="returnlist">
-                    <a data-ajax="false" class="btn btn-default" href="{{ path('societe_index') }}">Retourner à la liste</a>
-                </li>
-            </ul>
-            <table  class="tableautitle">
-                <tbody>
+            {% if is_granted("ROLE_USER") %}     
+                <ul>
+                    <li class="returnlist">
+                        <a class="btn btn-default" href="{{ path('societe_index') }}">Retourner à la liste</a>
+                    </li>
+                </ul>
+            {% endif %}     
+            <div  class="tableautitle">             
+                {{ form_start(edit_form) }}
+                <div style="width:30%; display:inline-block;margin-left:100px;">
+
+                    <div class="mytdtabshow">
+                        <img class="myimg"  src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/logo/{{ societe.denomination }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/logo/{{ societe.denomination }}{% endif %}" />
+                    </div>
+
+                    <div class="mytdtabshow">{{ form_row(edit_form.logo|raw) }}</div>
                     
-                    {{ form_start(edit_form) }}
-                    <tr>
-                        <th class="mytdtabshow">{{ form_row(edit_form.siret) }}</th>
-                    </tr>        
-                    <tr>
-                        <th class="mytdtabshow2">{{ form_row(edit_form.denomination) }}</th>
-                    </tr>  
-                    <tr>
-                        <th class="mytdtabshow">{{ form_row(edit_form.presentation) }}</th>
-                    </tr>        
-                    <tr>
-                        <th class="mytdtabshow">{{ form_row(edit_form.adresse) }}</th>
-                    </tr>        
-                    <tr>
-                        <th class="mytdtabshow2">{{ form_row(edit_form.logo) }}</th>
-                    </tr>  s
-           
-                    <input rel="external" class="myeditinput" type="submit" value="Enregistrer les modifications" />
-                    {{ form_end(edit_form) }}
+                    <div class="mytdtabshow">{{ form_row(edit_form.denomination) }}</div>
+                    <div class="mytdtabshow" >{{ form_row(edit_form.presentation) }}</div>
 
-                    {% if is_granted("ROLE_ADMIN") %}            
-                    <ul>
-                         <li class="mydeleteli ">
 
-                                {{ form_start(delete_form) }}
-                                    <input type="submit" rel="external" value="Supprimer le profil" />
-                                {{ form_end(delete_form) }}
+                </div>
+                <div style="width:30%; display:inline-block;margin-left:100px;">   
 
-                        </li>
-                    </ul> 
-                    {% endif %}
-                 </tbody>
-            </table>  
+                    <div class="mytdtabshow">{{ form_row(edit_form.adresse) }}</div>
+
+                    <div class="mytdtabshow">{{ form_row(edit_form.siret) }}</div>
+
+                    <div class="mytdtabshow">{{ form_row(edit_form.tel) }}</div>
+
+                    <div class="mytdtabshow">{{ form_row(edit_form.user) }}</div>
+                </div>
+
+
+
+                <input class="myeditinput" type="submit" value="Enregistrer les modifications" />
+                {{ form_end(edit_form) }}
+            </div>  
+
+            {% if is_granted("ROLE_ADMIN") %}            
+                <ul>
+                    <li class="mydeleteli ">
+
+                        {{ form_start(delete_form) }}
+                        <input type="submit"  value="Supprimer le profil" />
+                        {{ form_end(delete_form) }}
+
+                    </li>
+                </ul> 
+            {% endif %}
         </div>
     </div>
 {% endblock %}

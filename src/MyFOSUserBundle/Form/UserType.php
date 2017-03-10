@@ -21,18 +21,8 @@ class UserType extends AbstractType
                 ->add('name')
                 ->add('firstname')
                 ->add('email')
-                
+                ->add('roles')
                 ->add('password',PasswordType::class)
-                ->add('roles', ChoiceType::class,[ 
-                                'label' => 'Selectionnez le type de compte',
-                                'attr'  => array('class' => 'myselect'),
-                                'multiple'  => true,
-                                'choices'   => [
-                                    ' Freelancer' => 'ROLE_FREELANCER',
-                                    ' Société' => 'ROLE_SOCIETE',
-                                ]
-
-                          ])    
                 ->add('last_login', DateTimeType::class)        
                 
                 ;

@@ -7,28 +7,33 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h2 class="mysubtitle">Ajouter une Société</h2>
+        <h2 class="mysubtitle">Nouveau Profil Société</h2>
         <div class="mycontentform">
             <ul>
                 <li class="returnlist">
-                    <a data-ajax="false" class="btn btn-default" href="{{ path('societe_index') }}">Retourner à la liste</a>
+                    <a class="btn btn-default" href="{{ path('societe_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
             <table  class="tableautitle">
                 <tbody>
                 
                     {{ form_start(form) }}
-
+                <div style="width:40%;margin-left:15%;  float:left; display:inline-table;">
                         {{ form_row(form.denomination) }}
                         {{ form_row(form.presentation) }}                        
                         {{ form_row(form.adresse) }}
                         {{ form_row(form.siret) }}
+                </div>
+                <div style="width:40%; float:left; display:inline-table;">
                         {{ form_row(form.tel) }}
                         {{ form_row(form.logo) }}
                         {{ form_row(form.user) }}
-                        
-                        <input type="submit" value="Enregistrer le profil" />
-                    {{ form_end(form) }}
+                       
+                </div>   
+                <input class="myeditinput"  type="submit" value="Enregistrer le profil" />
+
+                        {{ form_end(form) }}
+                  
                 </tbody>
              </table> 
             <ul>

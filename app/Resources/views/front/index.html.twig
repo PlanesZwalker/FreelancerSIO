@@ -1,191 +1,119 @@
 {% extends "layout.html.twig" %}
 
-{% block style %}
-    
-<style type="text/css">
-
-
-    #ui-datepicker-div{
-        z-index: 999 !important;
-        background-color: salmon;
-    }
-</style>
-    
-{% endblock %}
+{% block style %}{% endblock %}
     
 {% block titre %}
-        <h1 id="logo"><a href="front" class="bigtitle">Free Demat'Lancer's</a></h1>
+        <h1 id="logo"><a class="bigtitle">Free Demat'Lancer's</a></h1>
 {% endblock %}
 
 
 {% block body %}
     <!-- Main -->
-      
-<!-- Banner -->
-<div id="banner-wrapper" style="margin-top:6%; margin-left:4%;width:93%;">
-    <div class="inner" style="padding-bottom:3vw;">
-        <section id="banner" class="container">
-            <p>Projet en ligne / &nbsp;Développeurs Connectés
-                <br />
-            </p>
-            <img src="loupe.png" style="width:8vw;" />
-            <ul class="actions">
-                <li><a href="{{ path('projet_index') }}"  data-ajax="false" class="button icon fa-file">Consulter les projets</a></li>
-                <li><a href="{{ path('freelancer_index') }}"  data-ajax="false" class="button icon fa-file">Voir les profils des Freelancers</a></li>
-            </ul>
-        </section>
-    </div>
-</div> 
-  
-<!-- Banner -->
-<div id="banner-wrapper" style="margin-top:2%; margin-left:4%;width:93%;">
-    <div class="inner">
-        <div class="inner">
-            <section id="banner" class="container">
-                <p>Elaboration de cahier des charges <strong>Contrat</strong>.<br />
-                    Paiement en ligne</p>
 
-                <!-- Ajout d'un projet -->
-                {{ form_start(form) }}
-                {{ form_widget(form) }}
-                    <input type="submit"  data-ajax="false"  value="Editeur de texte intégré" style="margin:5px;"/>
-                {{ form_end(form) }}
-               
+    <!-- Banner -->
+    <div id="banner-wrapper" style="margin-top:5.3%; margin-left:4%;width:93%;">
+        <div class="inner" style="padding-bottom:0vw;">
+            <section id="banner" class="container">
+                <p>Projet en ligne / &nbsp;Développeurs Connectés
+                    <br />
+                </p>
+          
+                <ul class="actions">
+                    <li><a href="{{ path('projet_index') }}"  class="button btn btn-info icon fa-info" >Consulter les projets</a></li>
+                    <li><a href="{{ path('freelancer_index') }}"  class="button btn btn-success icon fa-female">Voir les profils des Freelancers</a></li>
+                </ul>
+                  
             </section>
         </div>
-    </div>
-</div>
-                
-<!-- Banner -->
-<div id="banner-wrapper" style="margin-top:2%; margin-left:4%;width:93%;">
-    <div class="inner">
-        <section id="banner" class="container"> 
-            
-                {{ form_start(formRecherche) }}    
-                    <h2>Rechercher sur le site</h2>
-                        {{ form_errors(formRecherche) }}
-                        {{ form_widget(formRecherche.Recherche) }}
-                        {{ form_widget(formRecherche.MotsCles) }}
-                    {{ form_widget(formRecherche.NombreDeResultat) }}
-                    <input data-ajax="false" type="submit" value="Lancer la recherche"/>
-                    
-                {{ form_end(formRecherche) }}  
-                
-            
-         </section>
-    </div>
-</div> 
+    </div> 
 
-<!-- Footer -->               
-<div id="banner-wrapper"  style="margin-top:2%; margin-left:4%;width:93%;margin-bottom:5%;">
-    <div class="inner">
-        <section id="banner" class="container">           
-            <header>
-                <h2 >Questions ou Commentaires ? <strong>C'est ici:</strong></h2>
-            </header>
-            <div class="row">
-                <div class="6u 12u(mobile)">
-                    <section>
+    <!-- Banner -->
+    <div id="banner-wrapper" style=" margin-left:4%;width:93%;">
+        <div class="inner">
+            <div class="inner">
+                <section id="banner" class="container">
+                    <p>Elaboration de cahier des charges <strong>Contrat</strong>.<br />
+                        Paiement en ligne</p>
 
-                            <div class="row 50%">
-                                <div class="6u 12u(mobile)">
-                                    <input name="name" placeholder="Nom" style="width:14vw;" type="text" />
-                                </div>
-                                <div class="6u 12u(mobile)">
-                                    <input name="email" placeholder="Email" style="width:14.1vw;" type="text" />
-                                </div>
-                                <div>
-                                    <input name="objet" placeholder="Objet" style="width:30vw;" type="text" />
-                                </div>
-                            </div>
-                            <div class="row 50%">
-                                <div class="12u">
-                                    <textarea name="message" placeholder="Message"></textarea>
-                                </div>
-                            </div>
-                            <div class="row 50%">
-                                <div class="12u">
-                                    <a href="#"  data-ajax="false" class="form-button-submit button icon fa-envelope" style="margin-left:11vw;">Envoyer</a>
-                                </div>
-                            </div>
+                    <!-- Ajout d'un projet -->
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                        <!--  <input type="submit"  data-ajax="false"  value="Editeur de texte intégré" style="margin:5px;"/> -->
+                    {{ form_end(form) }}
 
-                    </section>
-                </div>
-                <div class="6u 12u(mobile)">
-                    <section>
-
-                        <div class="row" style="margin-top:1%;">
-
-                            <div class="6u 12u(mobile)">
-                                <ul class="icons" >
-                                    <li class="icon fa-twitter">
-                                        <a href="#" style="color:white;">@freelancer</a>
-                                    </li>
-                                    <li class="icon fa-instagram">
-                                        <a href="#" style="color:white;">instagram.com/freelancer</a>
-                                    </li>
-                                    <li class="icon fa-dribbble">
-                                        <a href="#" style="color:white;">dribbble.com/freelancer</a>
-                                    </li>
-                                    <li class="icon fa-facebook">
-                                        <a href="#" style="color:white;">facebook.com/freelancer</a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                        </div>
-                    </section>
-                </div>
+                </section>
             </div>
-        </section>
+        </div>
     </div>
-</div>
-          
 
+    <!-- Footer -->               
+    <div id="banner-wrapper"  style="margin-left:15vw;width:70vw;margin-bottom:5%;">
+        <div class="inner">
+            <section id="banner" class="container">           
+                <header>
+                    <h2 >Questions ou Commentaires ? <strong>C'est ici:</strong></h2>
+                </header>
+                <div class="row">
+                    <div class="6u 12u(mobile)" style="margin-left:20%;"> 
+                        <section>
+                            <form method="post" action="">
+                                <div class="row 50%">
+                                    <div class="6u 12u(mobile)">
+                                        <label>Pseudo</label>
+                                        <input name="name" style="width:14vw; background-color:#216FCD" type="text" />
+                                    </div>
+                                    <div class="6u 12u(mobile)">
+                                        <label>Email</label>
+                                        <input name="email" style="width:14.1vw; background-color:#216FCD;" type="text" />
+                                    </div>
+                                    <div>
+                                        <label>Objet</label>
+                                        <input name="objet"style="width:29vw; background-color:#216FCD" type="text" />
+                                    </div>
+                                </div>
+                                <div class="row 50%">
+                                    <div>
+                                        <label>Message</label>
+                                        <textarea name="message"  style="width:29vw;height:50px; background-color:#0186E2;"  ></textarea>
+                                    </div>
+                                </div>
+                                <div class="row 40%">
+                                    <div >
+                                        <input type="submit" class="myeditinput icon fa-envelope" style="margin-left:80%;"  value="Envoyer">
+                                    </div>
+                                </div>
+                            </form>
+                        </section>
+                    </div>             
+            </section>
+        </div> 
+        <div class="6u 12u(mobile)">
+                <section>
 
+                    <div class="row" style="margin-left:50vw;">
 
-{#    app
-    app.environment
-    app.debug
-    app.user
-    app.request
-    app.request.attributes
-    app.request.query
-    app.request.server
-    app.request.parameter
-    app.request.files
-    app.request.cookies
-    app.request.headers
-    app.request.content
-    app.request.languages
-    app.request.charsets
-    app.request.acceptableContentTypes
-    app.request.pathInfo
-    app.request.requestUri
-    app.request.baseUrl
-    app.request.basePath
-    app.request.method
-    app.request.format
-    
-app.security
-    app.security.token
-    app.security.key
-    app.security.user
-    app.security.roles
-    app.security.authenticated
-    app.security.attributes
-    app.security.alwaysAuthenticate
-    app.session
-    app.session.locale
-    app.session.defaultLocale
-    app.session.saved
+                        <div class="6u 12u(mobile)">
+                            <ul class="icons" >
+                                <li class="icon fa-twitter">
+                                    <a href="#" style="color:white;text-shadow:1px 1px black;">@freelancer</a>
+                                </li>
+                                <li class="icon fa-instagram">
+                                    <a href="#" style="color:white;text-shadow:1px 1px black;">instagram.com/freelancer</a>
+                                </li>
+                                <li class="icon fa-dribbble">
+                                    <a href="#" style="color:white;text-shadow:1px 1px black;">dribbble.com/freelancer</a>
+                                </li>
+                                <li class="icon fa-facebook">
+                                    <a href="#" style="color:white;text-shadow:1px 1px black;">facebook.com/freelancer</a>
+                                </li>
+                            </ul>
+                        </div>
 
-    #}
-
-
-
-    </div>
-</div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>    
 {% endblock %}
 
 

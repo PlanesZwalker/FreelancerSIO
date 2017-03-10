@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block titre %}
+
+        <h1 id="logo"><a class="bigtitle">Test des Freelancers</a></h1>  
+
+{% endblock %}
+{% block body %}
+   <div class="formulairetop">
+        <h2 class="mysubtitle">Liste des Tests passés par les Freelancers</h2>
+        <table class="tableautitle">
+            <thead class="tableautitlecontent">
+                <tr>
+                    <th  class="center">Intitulé du Test</th>
+                    <th  class="center">Pseudo du Freelancer</th>
+                    <th  class="center">Resultat</th>
+                    <th  class="center">Datepassage</th>
+                    <th  class="center">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="mytbody">
+
+
+            {% for testfreelancer in testfreelancers %}
+                <tr>
+                    <td class="mytdtab">{% if testfreelancer.Test.intitule %}{{ testfreelancer.Test.intitule }}{% endif %}</td>
+                    <td class="mytdtab2">{% if testfreelancer.Freelancer.pseudo %}{{ testfreelancer.Freelancer.pseudo }}{% endif %}</td>   
+                    <td class="mytdtab">{{ testfreelancer.resultat }}</td>
+                    <td class="mytdtab2">{% if testfreelancer.datePassage %}{{ testfreelancer.datePassage|date('d-m-Y H:i:s') }}{% endif %}</td>
+
+                    <td class="mytdtab">
+                        <ul>
+                            <li style="display:inline-block;margin-top:8px;">
+                                <a  class="btn btn-info" style="color:white;"  href="{{ path('testfreelancer_show', { 'id': testfreelancer.Freelancer.id }) }}">Voir ce test</a>
+                            </li>
+                            <li style="display:inline-block;">
+                                <a  class="btn btn-success" style="color:white;"  href="{{ path('testfreelancer_edit', { 'id': testfreelancer.Freelancer.id }) }}">Editer ce test</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <ul>
+            <li class="btn btn-default"> Passer un Test de compétence: Choisir la compétence
+                <select>
+                    <option>
+                         <a href="{{ path('testfreelancer_new') }}"> </a>
+                    <option>
+                </select>
+            </li>
+        </ul>
+   </div>
+{% endblock %}

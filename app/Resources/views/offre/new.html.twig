@@ -18,20 +18,29 @@
                 <tbody>
                     <tr>
                     {{ form_start(form) }}
-                        {{ form_row(form.tarif) }}
-                        {{ form_row(form.delai) }}
-                        {{ form_row(form.proposition) }}
-                        {{ form_row(form.particularite) }}
-                        {{ dump(offre) }}
-                        <div style="font-size:17px;">
-                            Pseudo du freelancer: 
-                            <div class="mytdtabshow2" style=" font-size:17px;">{# {{ offre.freelancer.pseudo }} #}</div>
-                                Intitulé du projet rattaché:
-                            <div class="mytdtabshow2" style=" font-size:17px;">{# {{ offre.projet.intitule }} #}</div>
-                                Societe ayant publié le projet rattaché:
-                            <div class="mytdtabshow2" style=" font-size:17px;">{# {{ offre.projet.societe.denomination }} #}</div>
+                        <div style="width:40%; display:inline-block;">
+                            {{ form_row(form.tarif) }}
+                            {{ form_row(form.delai) }}
                         </div>
-                        <input type="submit" value="Enregistrer l'offre" />
+                     
+                        <div style="margin-top:50px;">
+                            {{ form_row(form.proposition) }}
+                        </div>
+                        <div style="width:40%;display:inline-block;">
+                             {{ form_row(form.particularite) }} 
+                        </div>
+                       {% if freelancer is defined %}
+                            <input type="hidden" name="freelancer" class="mytdtabshow2" style=" font-size:17px;" value="{{ freelancer.id }}" >
+                        {% endif %}   
+                        {% if projet is defined %}
+                            <input type="hidden" name="projet" class="mytdtabshow2" style=" font-size:17px;" value="{{ projet.id }}" >
+                        {% endif %}   
+                        {% if societe is defined %}      
+                            <input type="hidden" name="societe" class="mytdtabshow2" style=" font-size:17px;"value="{{ societe.id }}" >
+                        {% endif %} 
+                        
+                        <input type="submit" class="myeditinput" value="Enregistrer l'offre" />
+                        <input type="submit" class="myeditinput" value="Envoyer l'offre" />
                     {{ form_end(form) }}
                     </tr>
                 </tbody>
