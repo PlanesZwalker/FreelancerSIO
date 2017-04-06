@@ -11,8 +11,29 @@
     <!-- Main -->
 
     <!-- Banner -->
-    <div id="banner-wrapper" style="margin-top:5.3%; margin-left:4%;width:93%;">
+    <div id="banner-wrapper" style="margin-left:4%;width:93%;">
+           
+            {% if is_granted("ROLE_SUPER_ADMIN") %}
+                <h1 class="mysubtitle" style="margin-top:0px; margin-bottom: 100px">
+                   Espace personnel "ADMINISTRATEUR"
+                </h1> 
+            {% endif %}
+            
+             {% if is_granted("ROLE_FREELANCER") and not is_granted("ROLE_SUPER_ADMIN")%}
+                <h1>
+                   Espace personnel "FREELANCER"
+                </h1> 
+            {% endif %}
+            
+             {% if is_granted("ROLE_SUPER_ADMIN") and not is_granted("ROLE_SUPER_ADMIN") %}
+                <h1>
+                   Espace personnel "SOCIETE"
+                </h1> 
+            {% endif %}
+            
+            
         <div class="inner" style="padding-bottom:0vw;">
+         
             <section id="banner" class="container">
                 <p>Projet en ligne / &nbsp;Développeurs Connectés
                     <br />
@@ -27,7 +48,7 @@
         </div>
     </div> 
 
-    <!-- Banner -->
+    <!-- Banner 
     <div id="banner-wrapper" style=" margin-left:4%;width:93%;">
         <div class="inner">
             <div class="inner">
@@ -35,18 +56,17 @@
                     <p>Elaboration de cahier des charges <strong>Contrat</strong>.<br />
                         Paiement en ligne</p>
 
-                    <!-- Ajout d'un projet -->
+         
                     {{ form_start(form) }}
                     {{ form_widget(form) }}
-                        <!--  <input type="submit"  data-ajax="false"  value="Editeur de texte intégré" style="margin:5px;"/> -->
                     {{ form_end(form) }}
 
                 </section>
             </div>
         </div>
     </div>
-
-    <!-- Footer -->               
+-->
+    <!-- Footer              
     <div id="banner-wrapper"  style="margin-left:15vw;width:70vw;margin-bottom:5%;">
         <div class="inner">
             <section id="banner" class="container">           
@@ -113,7 +133,7 @@
                 </section>
             </div>
         </div>
-    </div>    
+    </div>  -->    
 {% endblock %}
 
 

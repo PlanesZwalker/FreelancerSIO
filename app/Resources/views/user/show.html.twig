@@ -16,7 +16,7 @@
                     </li>
                 </ul>  
             {% endif %}
-            <table class="tableautitle">
+            <table class="tableautitle" style="margin-top:50px;">
                 <tbody>
                     <tr>
                         <th class="mytdtabshow2">Utilisateur</th>
@@ -42,7 +42,13 @@
                         <tr>
                             <th class="mytdtabshow">nationalite</th>
                             <td class="mytdtabshow">{{ freelancer.nationalite }}
-                                <img class="mydrapeau" style="display:inline-block; width:100px; height:50px; margin-top:0px;"  src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/drapeau/{{ freelancer.nationalite }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/drapeau/{{ freelancer.nationalite }}{% endif %}.gif" /> 
+                                <img class="mydrapeau" style="display:inline-block; width:100px; height:50px; margin-top:0px;"  
+                                     {% if app.request.server.get('BASE') %}
+                                        src="{{ app.request.server.get('BASE')}}/user/drapeau/{{ freelancer.nationalite }}.gif" 
+                                    {% else %}
+                                        src="{{ app.request.get('HTTP_HOST')}}/web/user/drapeau/{{ freelancer.nationalite }}.gif" 
+                                    {% endif %}
+                                /> 
                             </td>
                         </tr>
                         <tr>
@@ -52,7 +58,13 @@
                         <tr>
                             <th class="mytdtabshow">Curriculum Vitae</th>
                             <td class="mytdtabshow">
-                                <a href="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/cv/{{ freelancer.pseudo }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/cv/{{ freelancer.pseudo }}{% endif %}">
+                                <a href="
+                                   {% if app.request.server.get('BASE') %}
+                                       {{ app.request.server.get('BASE')}}/user/cv/{{ freelancer.user.id }}
+                                   {% else %}
+                                       {{ app.request.get('HTTP_HOST')}}/web/user/cv/{{ freelancer.user.id }}
+                                   {% endif %}"
+                                   >
                                     <i class="fa fa-download fa-3x"></i>
                                 </a>
                             </td>
@@ -60,7 +72,13 @@
                         <tr>
                             <th class="mytdtabshow2">Photo</th>
                             <td class="mytdtabshow2">
-                                <img class="myimg" src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/photo/{{ freelancer.pseudo }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/photo/{{ freelancer.pseudo }}{% endif %}"  /></td>
+                                <img class="myimg" src="
+                                    {% if app.request.server.get('BASE') %}
+                                        {{ app.request.server.get('BASE')}}/user/photo/{{ freelancer.user.id }}
+                                    {% else %}
+                                       {{ app.request.get('HTTP_HOST')}}/web/user/photo/{{ freelancer.user.id }}
+                                    {% endif %}"  />
+                            </td>
                         </tr>
                     {% elseif is_granted("ROLE_SOCIETE") and societe%}   
                         <tr>
@@ -82,25 +100,30 @@
                         <tr>
                             <th class="mytdtabshow">Logo</th>
                             <td class="mytdtabshow">
-                                <img class="myimg" src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/logo/{{ societe.denomination }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/logo/{{ societe.denomination }}{% endif %}">
+                                <img class="myimg" src="{% if app.request.server.get('BASE') %}
+                                        {{ app.request.server.get('BASE')}}/user/logo/{{ societe.user.id }}
+                                   {% else %}
+                                       {{ app.request.get('HTTP_HOST')}}/web/user/logo/{{ societe.user.id }}
+                                   {% endif %}
+                                ">
                             </td>
                         </tr>
                     {% elseif is_granted("ROLE_SOCIETE") %}  
-                        {% if not societe %}
+                        {% if not societe and not is_granted("ROLE_SUPER_ADMIN") %}
                         <li class="myeditli">
                             <a class="btn btn-default"  href="{{ path('societe_new') }}">Créer mon Profil Societe</a>
                         </li>
                     {% endif %}
                 {% elseif is_granted("ROLE_FREELANCER") %}  
-                    {% if not freelancer %}
+                    {% if not freelancer and not is_granted("ROLE_SUPER_ADMIN")%}
                         <li class="myeditli">
                             <a class="btn btn-default"  href="{{ path('freelancer_new') }}">Créer mon Profil Freelancer</a>
                         </li>
                     {% endif %}  
                 {% endif %}  
                 <tr>
-                    <th class="mytdtabshow2">Dernière Connexion</th>
-                    <td class="mytdtabshow2">{% if user.lastLogin %}{{ user.lastLogin|date('d/m/Y H:i:s') }}{% endif %}</td>
+                    <th class="mytdtabshow">Dernière Connexion</th>
+                    <td class="mytdtabshow">{% if user.lastLogin %}{{ user.lastLogin|date('d/m/Y H:i:s') }}{% endif %}</td>
                 </tr>
                 </tbody>
             </table>
@@ -109,17 +132,17 @@
                 <li class="myeditli">
                     <a class="btn btn-info" style="color:white;"  href="{{ path('user_edit', { 'id': user.id }) }}">Modifier les informations UTILISATEUR</a>
                 </li>
-                {% if is_granted("ROLE_FREELANCER") and freelancer.id is defined %}
+                {% if is_granted("ROLE_FREELANCER" ) and freelancer.id is defined %}
                     <li class="myeditli">
                         <a class="btn btn-info" style="color:white;"  href="{{ path('freelancer_edit', { 'id': freelancer.id }) }}">Modifier mon profil FREELANCER</a>
                     </li>
-                {% elseif is_granted("ROLE_FREELANCER") and freelancer.id is not defined %}
+                {% elseif is_granted("ROLE_FREELANCER") and freelancer.id is not defined  and not is_granted("ROLE_SUPER_ADMIN")%}
                     <li class="myeditli">
                         <a class="btn btn-success" style="color:white;"  href="{{ path('freelancer_new') }}">Créer mon profil FREELANCER</a>
                     </li>
                 {%endif %}
                 
-                {% if is_granted("ROLE_SOCIETE")  and societe.id is defined %}
+                {% if is_granted("ROLE_SOCIETE")  and societe.id is defined and not is_granted("ROLE_SUPER_ADMIN") %}
                     <li class="myeditli">
                         <a class="btn btn-info" style="color:white;"  href="{{ path('societe_show', { 'id': societe.id }) }}">Voir mon profil SOCIETE</a>
                     </li>

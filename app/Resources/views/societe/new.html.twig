@@ -5,7 +5,7 @@
 
 {% endblock %}
 
-{% block body %}    
+{% block body %}   
     <div class="formulairetop">
         <h2 class="mysubtitle">Nouveau Profil Société</h2>
         <div class="mycontentform">
@@ -17,7 +17,7 @@
             <table  class="tableautitle">
                 <tbody>
                 
-                    {{ form_start(form) }}
+                {{ form_start(form) }}
                 <div style="width:40%;margin-left:15%;  float:left; display:inline-table;">
                         {{ form_row(form.denomination) }}
                         {{ form_row(form.presentation) }}                        
@@ -32,7 +32,7 @@
                 </div>   
                 <input class="myeditinput"  type="submit" value="Enregistrer le profil" />
 
-                        {{ form_end(form) }}
+                {{ form_end(form) }}
                   
                 </tbody>
              </table> 

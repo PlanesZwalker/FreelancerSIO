@@ -14,31 +14,30 @@
                     <a  class="btn btn-default" href="{{ path('user_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
-            <table  class="tableautitle">
-                <tbody>
+           
                 {{ form_start(form) }}
-                    <tr>
-                        <th class="mytdtabshow">{{ form_row(form.roles, { 'label':'Type de compte'}) }}</th>
-                    </tr>  
-                    <tr>
-                        <th class="mytdtabshow2">{{ form_row(form.username, { 'label':'Identifiant'}) }}</th>
-                    </tr>        
-                    <tr>
-                        <th class="mytdtabshow">{{ form_row(form.email, { 'label':'Adresse Email'}) }}</th>
-                    </tr>        
-                     <tr>
-                        <th class="mytdtabshow2">{{ form_row(form.password, { 'label':'Mot de passe'}) }}</th>
-                    </tr>        
-                    <tr>
-                        <th class="mytdtabshow">{{ form_row(form.name, { 'label':'Nom'}) }}</th>
-                    </tr>        
-                     <tr>
-                        <th class="mytdtabshow2">{{ form_row(form.firstname, { 'label':'Prénom'}) }}</th>
-                    </tr>   
-                </tbody>
-             </table> 
+                <div style="width:40%; display:inline-table">
+
+                        <span class="mytdtabshow">{{ form_row(form.username, { 'label':'Identifiant'}) }}</span>
+                        <span class="mytdtabshow">{{ form_row(form.email, { 'label':'Adresse Email'}) }}</span>
+                        <span class="mytdtabshow">{{ form_row(form.plainPassword.first, { 'label':'Mot de passe'}) }}</span>
+                        
+                   
+                </div>
+
+                <div style="width:40%; display:inline-table; margin-left:50px;">
+
+                        <span class="mytdtabshow">{{ form_row(form.name, { 'label':'Nom'}) }}</span>
+                        <span class="mytdtabshow">{{ form_row(form.firstname, { 'label':'Prénom'}) }}</span>
+                        <span class="mytdtabshow">{{ form_row(form.plainPassword.second, { 'label':'Mot de passe ( confirmation )'}) }}</span>
+
+                </div>
+            
+               
+             
              <input  rel="external" type="submit" class="myeditinput" value="Enregistrer l'utilisateur" />
-            {{ form_end(form) }}   </table> 
+            {{ form_end(form) }}   
+  
         </div>
     </div>
 {% endblock %}

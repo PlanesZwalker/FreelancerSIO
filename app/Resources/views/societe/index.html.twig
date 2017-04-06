@@ -9,15 +9,7 @@
     <div class="formulairetop">
         <h2 class="mysubtitle">Liste des Sociétés</h2>
         <div class="mycontentform">
-           {% if is_granted('ROLE_ADMIN') %}
-            <ul>
-                <li>
-                    <a class="addtab" href="{{ path('societe_new') }}">
-                        <span class="fa fa-plus" >&nbsp;&nbsp;Créer une nouvelle Société</span>
-                    </a>
-                </li>
-            </ul>
-            {% endif %}
+          
             <table class="tableautitle">
                 <thead>
                     <tr class="tableautitlecontent">
@@ -36,7 +28,6 @@
                         <td class="mytdtab2">{{ societe.siret }}</td>
                         <td class="mytdtab">{{ societe.presentation }}</td>
                         <td class="mytdtab2"><img class="myimg" src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/logo/{{ societe.denomination }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/logo/{{ societe.denomination }}{% endif %}" /></td>
-                        <input type="hidden" value="{{ societe.user.username }}" />
                         <td class="mytdtab">
                             <ul>
                                 <li style="display:inline-block;margin-top:8px;">

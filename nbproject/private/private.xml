@@ -2,6 +2,17 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/Resources/views/test/index.html.twig</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/Resources/views/user/show.html.twig</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/Resources/views/freelancer/index.html.twig</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/src/MyFOSUserBundle/Entity/Test.php</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/src/MyFOSUserBundle/Controller/FreelancerController.php</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/Resources/views/freelancer/new.html.twig</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/Resources/views/freelancer/show.html.twig</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/Resources/views/freelancer/edit.html.twig</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/src/MyFOSUserBundle/Entity/Freelancer.php</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/src/MyFOSUserBundle/Controller/TestController.php</file>
+        </group>
     </open-files>
 </project-private>

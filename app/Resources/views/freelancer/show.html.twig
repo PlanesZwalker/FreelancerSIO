@@ -51,7 +51,13 @@
                     <tr>
                         <th class="mytdtabshow2">Photo</th>
                         <td class="mytdtabshow2">
-                            <img class="myimg" src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/photo/{{ freelancer.pseudo }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/photo/{{ freelancer.pseudo }}{% endif %}"/>
+                            <img class="myimg" src="
+                                 {% if app.request.server.get('BASE') %}
+                                     {{ app.request.server.get('BASE')}}/user/photo/{{ freelancer.user.id }}
+                                 {% else %}
+                                     {{ app.request.get('HTTP_HOST')}}/web/user/photo/{{ freelancer.user.id }}
+                                 {% endif %}"
+                                 />
                         </td>
                     </tr>
                     <tr>
@@ -67,43 +73,59 @@
                        <td class="mytdtabshow">{{ freelancer.description }}</td>
                     </tr> 
                 
-                        <tr>
-                            <th class="mytdtabshow2">Competences validées</th>
-                            <td class="mytdtabshow2">
+                    <tr>
+                        <th class="mytdtabshow2">Competences validées</th>
+                        <td class="mytdtabshow2">
                             {% if competencesFreelancer %}
-                                    <img class="mydrapeau" style="display:inline-block; width:150px; height:100px; margin-top:0px;"  src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/competence/{{ competencesFreelancer.Competence.intitule }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/competence/{{ competencesFreelancer.Competence.intitule }}{% endif %}.gif" />
+                                <img class="mydrapeau" style="display:inline-block; width:150px; height:100px; margin-top:0px;"  
+                                     src="{% if app.request.server.get('BASE') %}
+                                     {{ app.request.server.get('BASE')}}/user/competence/{{ competencesFreelancer.Competence.intitule }}
+                                    {% else %}
+                                        {{ app.request.get('HTTP_HOST')}}/web/user/competence/{{ competencesFreelancer.Competence.intitule }}
+                                    {% endif %}.gif" 
+                                />
                             {% else %}
                                     Aucune compétence validée
-                            {% endif %}  
-                           
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="mytdtabshow">Nationalité</th>
-                            <td class="mytdtabshow">{{ freelancer.nationalite }}
-                                <img class="mydrapeau" style="display:inline-block; width:100px; height:50px; margin-top:0px;"  src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/drapeau/{{ freelancer.nationalite }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/drapeau/{{ freelancer.nationalite }}{% endif %}.gif" />
-                            </td>
-                        </tr>
-                         <tr>
-                            <th class="mytdtabshow2">Age</th>
-                            <td class="mytdtabshow2">{{ freelancer.age }}</td>
-                        </tr>
+                            {% endif %}                             
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="mytdtabshow">Nationalité</th>
+                        <td class="mytdtabshow">{{ freelancer.nationalite }}
+                            <img class="mydrapeau" style="display:inline-block; width:100px; height:50px; margin-top:0px;"  
+                                {% if app.request.server.get('BASE') %}
+                                   src="{{ app.request.server.get('BASE')}}/user/drapeau/{{ freelancer.nationalite }}.gif"
+                                {% else %}
+                                   src="{{ app.request.get('HTTP_HOST')}}/web/user/drapeau/{{ freelancer.nationalite }}.gif"
+                                {% endif %} 
+                                />
+                        </td>
+                    </tr>
+                     <tr>
+                        <th class="mytdtabshow2">Age</th>
+                        <td class="mytdtabshow2">{{ freelancer.age }}</td>
+                    </tr>
 
-                        <tr>
-                            <th class="mytdtabshow">CV</th>
-                            <td class="mytdtabshow" >
-                                <a href="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/cv/{{ freelancer.pseudo }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/cv/{{ freelancer.pseudo }}{% endif %}" ><i class="fa fa-download fa-3x"></i></a>
-                            </td>
-                        </tr>
-                        <tr> 
-                            {% if is_granted('ROLE_USER') %}
-                       
-                                    <a   class="btn btn-info" >Voir les Résultat des Tests de compétences pour tous les freelancers</a>
-                              
-                           {% endif %}
-                        </tr>
-                       
-                    </div>
+                    <tr>
+                        <th class="mytdtabshow">CV</th>
+                        <td class="mytdtabshow" >
+                            <a href="
+                               {% if app.request.server.get('BASE') %}
+                                    {{ app.request.server.get('BASE')}}/user/cv/{{ freelancer.user.id }}
+                               {% else %}
+                                    {{ app.request.get('HTTP_HOST')}}/web/user/cv/{{ freelancer.user.id }}
+                                {% endif %}" >
+
+                                <i class="fa fa-download fa-3x"></i>
+
+                            </a>
+                        </td>
+                    </tr>
+                    <tr> 
+                        {% if is_granted('ROLE_USER') %}                       
+                            <a class="btn btn-info" >Voir les Résultat des Tests de compétences pour tous les freelancers</a>                             
+                       {% endif %}
+                    </tr>
                 </tbody>
             </table>
             <ul> 

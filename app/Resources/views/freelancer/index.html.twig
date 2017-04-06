@@ -9,15 +9,7 @@
     <div class="formulairetop">
         <h2 class="mysubtitle">Liste des Freelancers</h2>
         <div class="mycontentform">
-            {% if is_granted('ROLE_ADMIN') %}
-            <ul>
-                <li>
-                    <a class="addtab" href="{{ path('freelancer_new') }}">
-                        <span class="fa fa-plus">&nbsp;&nbsp;Créer un nouveau Freelancer</span>
-                    </a>
-                </li>
-            </ul>
-            {% endif %} 
+          
             <table class="tableautitle">
                 <thead>
                     <tr class="tableautitlecontent">
@@ -38,20 +30,43 @@
                        
                         <td class="mytdtab">{{ freelancer.description }}</td>
                         <td class="mytdtab2">{{ freelancer.pseudo }}</td>
-                        <td class="mytdtab"><a href="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/cv/{{ freelancer.pseudo }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/cv/{{ freelancer.pseudo }}{% endif %}" ><i class="fa fa-download fa-3x"></i></a></td>
+                        <td class="mytdtab">
+                            <a href="
+                                {% if app.request.server.get('BASE') %}
+                                    {{ app.request.server.get('BASE')}}/user/cv/{{ freelancer.user.id }}
+                                {% else %}
+                                    {{ app.request.get('HTTP_HOST')}}/web/user/cv/{{ freelancer.user.id }}
+                                {% endif %}" >
+                                <i class="fa fa-download fa-3x"></i>
+                            </a>
+                        </td>
                         <td class="mytdtab2">
-                            <img class="myimg" src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/photo/{{ freelancer.pseudo }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/photo/{{ freelancer.pseudo }}{% endif %}" />
+                            <img class="myimg" src="{% if app.request.server.get('BASE') %}
+                                 {{ app.request.server.get('BASE')}}/user/photo/{{ freelancer.user.id }}
+                            {% else %}
+                                {{ app.request.get('HTTP_HOST')}}/web/user/photo/{{ freelancer.user.id }}
+                            {% endif %}"
+                                />
                         </td>
                         <td class="mytdtab">{{ freelancer.age }}</td>
                         <td class="mytdtab2">{{ freelancer.nationalite }}
-                            <img class="mydrapeau" style="display:inline-block; width:100px; height:50px; margin-top:0px;" src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/drapeau/{{ freelancer.nationalite }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/drapeau/{{ freelancer.nationalite }}{% endif %}.gif" /> 
+                            <img class="mydrapeau" style="display:inline-block; width:100px; height:50px; margin-top:0px;" 
+                                 src="
+                                 {% if app.request.server.get('BASE') %}
+                                    {{ app.request.server.get('BASE')}}/user/drapeau/{{ freelancer.nationalite }}.gif
+                                 {% else %}
+                                     {{ app.request.get('HTTP_HOST')}}/web/user/drapeau/{{ freelancer.nationalite }}.gif
+                                {% endif %}" /> 
                         </td>
                         <td class="mytdtab">
                             {% for competence in competences %}
                                 <img class="mydrapeau" style="display:inline-block; width:150px; height:100px; margin-top:0px;"  
-                                     src="{% if app.request.server.get('BASE') and competence %}{{ app.request.server.get('BASE')}}/user/competence/{{ competence.intitule }}
-                                     {% elseif competence %}{{ app.request.get('HTTP_HOST')}}/web/user/competence/{{ competence.intitule }}
-                                     {% endif %}.gif" 
+                                    src="
+                                    {% if app.request.server.get('BASE') and competence %}
+                                       {{ app.request.server.get('BASE')}}/user/competence/{{ competence.intitule }}
+                                    {% elseif competence %}
+                                        {{ app.request.get('HTTP_HOST')}}/web/user/competence/{{ competence.intitule }}
+                                    {% endif %}.gif" 
                                 />
                             {% endfor %}
                         </td>

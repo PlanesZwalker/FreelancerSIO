@@ -115,11 +115,8 @@ class FreelancerController extends Controller
                      'choices'=>$nationalites
                  ))
                  ->add('age')
-                 ->add('user', ChoiceType::class,array(
-                     'label' => ' Nom Utilisateur : ',
-                     'choices'=>$pseudo
-                 ))            
-                
+               
+
                 ->getForm()
         ;
         
@@ -127,9 +124,10 @@ class FreelancerController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             
+            $freelancer->setUser($this->getUser());
             $freelancer->uploadPhoto();
-             $freelancer->uploadCv();
-             
+            $freelancer->uploadCv();
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($freelancer);
             $em->flush($freelancer);
@@ -225,12 +223,7 @@ class FreelancerController extends Controller
                             'choices'=>$nationalites
                         ))
                         ->add('age')
-                        ->add('user', ChoiceType::class,array(
-                            'label' => ' Nom Utilisateur : ',
-                            'choices'=>$pseudo
-                        ))            
-                     //   ->add('Valider', SubmitType::class)  
-                       
+
                         ->getForm()
                 ; 
           
@@ -238,7 +231,7 @@ class FreelancerController extends Controller
           
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-           
+          
             if($freelancer->getPhoto()!=$maphoto){
                   $freelancer->uploadPhoto();
             }
@@ -247,10 +240,11 @@ class FreelancerController extends Controller
                   $freelancer->uploadCv();
             }
            
+            $freelancer->setUser($freelancer->getUser());
            
             $this->getDoctrine()->getManager()->flush();
          
-            return $this->redirectToRoute('freelancer_edit', array('id' => $freelancer->getId()));
+            return $this->redirectToRoute('freelancer_show', array('id' => $freelancer->getId()));
         }
         
         

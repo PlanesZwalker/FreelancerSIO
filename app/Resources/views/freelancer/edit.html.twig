@@ -5,7 +5,8 @@
 
 {% endblock %}
 
-{% block body %}    
+{% block body %}   
+    
     <div class="formulairetop">
         <h2 class="mysubtitle">Edition du Profil Freelancer de {{ freelancer.pseudo }}</h2>
         <div class="mycontentform">
@@ -19,10 +20,10 @@
             <div style="margin-left:15%; text-align:center; width:30%;display:inline-table;">                  
                 <div class="mytdtabshow"> {{ form_row(edit_form.photo) }}</div>
                 <div class="mytdtabshow">
-                    <img class="myimg"  src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/photo/{{ freelancer.pseudo }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/photo/{{ freelancer.pseudo }}{% endif %}" />
+                    <img class="myimg"  src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/photo/{{ freelancer.user.id }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/photo/{{ freelancer.user.id }}{% endif %}" />
                 </div>
                 <div class="mytdtabshow">{{ form_row(edit_form.cv) }}</div>
-                <a href="{% if app.request.server.get('BASE')  %}{{ app.request.server.get('BASE')}}/user/cv/{{ freelancer.pseudo }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/cv/{{ freelancer.pseudo }}{% endif %}" >
+                <a href="{% if app.request.server.get('BASE')  %}{{ app.request.server.get('BASE')}}/user/cv/{{ freelancer.user.id }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/cv/{{ freelancer.user.id }}{% endif %}" >
                     <h3><i class="fa fa-download fa-3x"></i></h3>
                 </a>
             </div>
@@ -31,16 +32,13 @@
                 <div class="mytdtabshow" >{{ form_row(edit_form.pseudo) }}</div>
                 <div class="mytdtabshow"> {{ form_row(edit_form.description) }}</div>
                 <div class="mytdtabshow">{{ form_row(edit_form.age) }}</div>
-            </div>
-            <div style="margin-left:15%; text-align:center; width:30%;display:inline-table;">   
+          
                 <div class="mytdtabshow" >
                     <div style="display:inline-table">{{ form_row(edit_form.nationalite) }}     </div>                  
                     <img class="mydrapeau" style="display:inline-table; width:100px; height:50px; margin-top:50px;"  src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/drapeau/{{ freelancer.nationalite }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/drapeau/{{ freelancer.nationalite }}{% endif %}.gif" /> 
                 </div>                
             </div>
-            <div style="margin-left:5%; text-align:center; width:30%; height:auto; display:inline-table;">   
-                <div class="mytdtabshow">{{ form_row(edit_form.user) }}</div>
-            </div>
+ 
             <input type="submit"  class="myeditinput"  value="Enregistrer le profil" />
             {{ form_end(edit_form) }}
 

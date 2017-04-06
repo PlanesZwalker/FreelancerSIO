@@ -35,52 +35,5 @@ class Messagefreelancer
     private $message;
 
 
-
-    /**
-     * Set freelancer
-     *
-     * @param \MyFOSUserBundle\Entity\Freelancer $freelancer
-     *
-     * @return Messagefreelancer
-     */
-    public function setFreelancer(\MyFOSUserBundle\Entity\Freelancer $freelancer = null)
-    {
-        $this->freelancer = $freelancer;
-
-        return $this;
-    }
-
-    /**
-     * Get freelancer
-     *
-     * @return \MyFOSUserBundle\Entity\Freelancer
-     */
-    public function getFreelancer()
-    {
-        return $this->freelancer;
-    }
-
-    /**
-     * Set message
-     *
-     * @param \MyFOSUserBundle\Entity\Message $message
-     *
-     * @return Messagefreelancer
-     */
-    public function setMessage(\MyFOSUserBundle\Entity\Message $message)
-    {
-        $this->message = $message;
-
-        return $this;
-    }
-
-    /**
-     * Get message
-     *
-     * @return \MyFOSUserBundle\Entity\Message
-     */
-    public function getMessage()
-    {
-        return $this->message;
-    }
 }
+

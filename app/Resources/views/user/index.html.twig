@@ -9,10 +9,15 @@
     <div class="formulairetop">
         <h2 class="mysubtitle">Liste des Utilisateurs </h2>
         <div class="mycontentform">
-            <ul>
+            <ul style="margin-bottom:50px;">
                 <li>
+                    <a class="addtab"  href="{{ path('re_fos_user_registration_register') }}">
+                        <span class="fa fa-plus" style="color:violet" >&nbsp;&nbsp;Créer un nouvel Utilisateur ( Société ou Freelancer )</span>
+                    </a>
+                </li>
+                <li style="float:left">
                     <a class="addtab"  href="{{ path('user_new') }}">
-                        <span class="fa fa-plus" >&nbsp;&nbsp;Créer un nouvel Utilisateur</span>
+                        <span class="fa fa-plus" style="color:#0482D8">&nbsp;&nbsp;Créer un nouvel Administrateur</span>
                     </a>
                 </li>
             </ul>

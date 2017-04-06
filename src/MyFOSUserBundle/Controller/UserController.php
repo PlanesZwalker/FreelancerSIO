@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\CheckBoxType;
 
+use FOS\UserBundle\Util\LegacyFormHelper;
 /**
  * User controller.
  *
@@ -44,37 +45,47 @@ class UserController extends Controller
      */
     public function newAction(Request $request)
     {
-        $user = new User();
+         
+       $user = new User();
         $form = $this->createFormBuilder($user)
-                    ->add('roles', CheckboxType::class,[ 
-                                    'label' => 'Selectionnez le type de compte',                              
-                                    'multiple'  => true,
-                                    'data'   => [
-                                        ' Freelancer' => 'ROLE_FREELANCER',
-                                        ' Société' => 'ROLE_SOCIETE',
-                                    ]
-                              ]) 
+                   
                     ->add('username')
                     ->add('name')
                     ->add('firstname')
                     ->add('email')
-                     ->add('password')
+                    ->add('plainPassword', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\RepeatedType'), array(
+                      'type' => LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'),
+                      'options' => array('translation_domain' => 'MyFOSUserBundle'),
+                      'first_options' => array('label' => 'form.password'),
+                      'second_options' => array('label' => 'form.password_confirmation'),
+                      'invalid_message' => 'fos_user.password.mismatch',
+                  ))     
+                
                 ->getForm();
         
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+           $user->setEnabled(true);
+           $role = serialize("ROLE_SUPER_ADMIN");
+           $user->setRoles(array ($role=>"ROLE_SUPER_ADMIN"));
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush($user);
 
-            return $this->redirectToRoute('user_show', array('id' => $user->getIdTe()));
+            return $this->redirectToRoute('user_show', array('id' => $user->getId()));
         }
 
         return $this->render('user/new.html.twig', array(
             'user' => $user,
             'form' => $form->createView(),
         ));
+      
+      
+    
+      
     }
 
     /**
@@ -138,7 +149,7 @@ class UserController extends Controller
             $editForm = $this->createFormBuilder($user)
                 ->add('roles', ChoiceType::class,[ 
                                     'label' => 'Selectionnez le type de compte',                              
-                                    'expanded' => true,
+                                   // 'expanded' => true,
                                     'multiple' => true,
                                     'choices'   => [
                                         'Freelancer' => 'ROLE_FREELANCER',
