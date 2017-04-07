@@ -3,6 +3,7 @@
 namespace MyFOSUserBundle\Controller;
 
 use MyFOSUserBundle\Entity\Freelancer;
+use MyFOSUserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -94,7 +95,7 @@ class FreelancerController extends Controller
     {
         $freelancer = new Freelancer();
      
-        $pseudo=array($this->getUser()->getName() => $request->getUser() );
+       // $pseudo=array($this->getUser()->getName() => $request->getUser() );
          
         $nationalites=$this->getNationalite();
 
@@ -111,12 +112,13 @@ class FreelancerController extends Controller
                      'data_class' => null))
                 
                  ->add('pseudo')
+                
                  ->add('nationalite', ChoiceType::class,array(                            
                      'choices'=>$nationalites
                  ))
+                
                  ->add('age')
                
-
                 ->getForm()
         ;
         
@@ -149,11 +151,16 @@ class FreelancerController extends Controller
      */
     public function showAction(Freelancer $freelancer)
     {
+      
         $deleteForm = $this->createDeleteForm($freelancer);
         $em = $this->getDoctrine()->getManager();
         
         // on recupere l'id de l'utilisateur 
-        $idUserFreelancer= $this->getUser()->getId();
+       
+        $user = new User();
+        
+        $idUserFreelancer= $user->getId();
+        
         $criteria = array ('user'=>$idUserFreelancer);
         $freelancerUser = $em->getRepository('MyFOSUserBundle:Freelancer')->findOneBy($criteria);
         

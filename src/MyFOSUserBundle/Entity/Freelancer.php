@@ -180,7 +180,7 @@ class Freelancer
               
         $this->cv->move($this->getUploadCvRoot(), $this->getUser()->getId());
    
-         unset($this->cv);
+        unset($this->cv);
     }
     
     function getCv() {

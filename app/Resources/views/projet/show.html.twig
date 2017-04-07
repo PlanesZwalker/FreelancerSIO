@@ -14,7 +14,7 @@
                     <a data-ajax="false" class="btn btn-default" href="{{ path('projet_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
-            <table class="tableautitle">
+            <table class="tableautitle" style="margin-top:50px">
                 <tbody>
                     <tr>
                         <th class="mytdtabshow2">Société</th>
@@ -39,7 +39,11 @@
 
                     <tr>
                         <th class="mytdtabshow">Cahier des Charges</th>
-                        <td class="mytdtabshow">{{ projet.cahierdescharges.intitule }}</td>
+                        <td class="mytdtabshow">
+                            <a href="{% if projet.cahierdescharges is defined %}{{ projet.cahierdescharges }}{% endif %}">
+                                <i class="fa fa-download" style="font-size:72px"></i>
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>

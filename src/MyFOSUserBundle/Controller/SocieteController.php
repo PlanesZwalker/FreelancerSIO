@@ -3,10 +3,12 @@
 namespace MyFOSUserBundle\Controller;
 
 use MyFOSUserBundle\Entity\Societe;
+use MyFOSUserBundle\Entity\User;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
-//use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 //use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -47,28 +49,31 @@ class SocieteController extends Controller
     public function newAction(Request $request)
     {
         $societe = new Societe();
+       
         $form = $this->createFormBuilder($societe)
-                        ->add('denomination')
-                        ->add('presentation') 
-                        ->add('adresse')
-                        ->add('siret')  
-                        ->add('tel', TextType::class,array('label' => 'Téléphone : ')) 
-                        ->add('logo', FileType::class, array(
-                                'label' => 'Votre Logo : ',
-                                'data_class' => null)
-                            )
                 
-                        ->add('user', HiddenType::class, array(
-                            'data'=>$request->getUser()->getId()
-                        ))              
-               
-                        ->getForm()
+                    ->add('denomination')
+                
+                    ->add('presentation') 
+                
+                    ->add('adresse')
+                
+                    ->add('siret')  
+                
+                    ->add('tel', TextType::class,array('label' => 'Téléphone : ')) 
+                   
+                    ->add('logo', FileType::class, array(
+                            'label' => 'Votre Logo : ',
+                            'data_class' => null)
+                        )
+
+                    ->getForm()
                 ;
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+            $societe->setUser($this->getUser());
             $societe->uploadLogo();
             
             $em = $this->getDoctrine()->getManager();
@@ -109,6 +114,8 @@ class SocieteController extends Controller
     public function editAction(Request $request, Societe $societe)
     {
         $deleteForm = $this->createDeleteForm($societe);
+        $monlogo = new UploadedFile($societe->getAbsoluteLogoRoot(),$societe->getWebLogoPath());
+        
         $editForm = $this->createFormBuilder($societe)
                         ->add('denomination')
                         ->add('presentation') 
@@ -116,11 +123,12 @@ class SocieteController extends Controller
                         ->add('siret')  
                         ->add('tel') 
                         ->add('logo', FileType::class, array(
+                                'required' => false,
+                                'empty_data' => $monlogo,
+                                'data'=>$monlogo,
                                 'label' => 'Votre Logo : ',
                                 'data_class' => null)
-                            )
-                
-                        ->add('user')              
+                            )           
                
                         ->getForm()
                 ;
@@ -129,11 +137,14 @@ class SocieteController extends Controller
   
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             
-            $societe->uploadLogo();
+            $societe->setUser($this->getUser());
+            if($societe->getLogo()!=$monlogo){
+                $societe->uploadLogo();
+            }
             
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('societe_edit', array('id' => $societe->getId()));
+            return $this->redirectToRoute('societe_show', array('id' => $societe->getId()));
         }
 
         return $this->render('societe/edit.html.twig', array(

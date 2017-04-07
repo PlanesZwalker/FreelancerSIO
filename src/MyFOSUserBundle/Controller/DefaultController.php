@@ -33,11 +33,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
-
-
-
-
-$formFactory = Forms::createFormFactory();
+//$formFactory = Forms::createFormFactory();
 
 class DefaultController extends Controller
 {
@@ -48,8 +44,9 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-     
-         $formRecherche = $this->createFormBuilder() 
+       
+ 
+        $formRecherche = $this->createFormBuilder() 
                 ->add('Recherche', ChoiceType::class, array(
                     'choices' => array(
                         'Projets en ligne' => 'Projetenligne',
@@ -95,9 +92,29 @@ class DefaultController extends Controller
         return $this->render('/front/index.html.twig', array(
             'formRecherche' => $formRecherche->createView(),
             'form' => $form->createView(),
+         
         ));
     }
 
+    public function mytbb(){
+        
+        $societe = new SocieteController();
+        $freelancer = new FreelancerController();
+     
+        $em = $this->getDoctrine()->getManager();
+
+        $maSociete=["user"=>$this->getUser()];
+        $monFreelancer=["user"=>$this->getUser()];
+        
+        $societe = $em->getRepository("MyFOSUserBundle:Societe")->findOneBy($maSociete);
+        $freelancer = $em->getRepository("MyFOSUserBundle:Freelancer")->findOneBy($monFreelancer);
+        
+        return $this->render('nav.html.twig', array(
+
+            'societe' => $societe,
+            'freelancer' => $freelancer
+        ));
+    }
     
     public function sendFileAction($file){
         

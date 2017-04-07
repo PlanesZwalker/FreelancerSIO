@@ -9,29 +9,26 @@
     <div class="formulairetop">
         <h2 class="mysubtitle">Projet</h2>
         <div class="mycontentform">
+            
             <ul>
                 <li class="returnlist">
                     <a data-ajax="false" class="btn btn-default" href="{{ path('projet_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
 
-                    <form action="{{ path('projet_new') }}" method="post" >
-                        
-                        {{ form_row(form.intitule,{'label': 'Intitulé du projet'}) }}
-                        {{ form_row(form.description,{'label': 'Descriptif du projet'}) }}
-                        {{ form_row(form.etat,{'label': 'Avancement du projet'}) }}
-                        {{ form_row(form.prix,{'label': 'Tarif / Horaire - Forfait'}) }}
-       
-                        {% if societe is defined %}      
-                            <input type="hidden" name="societe" class="mytdtabshow2" style=" font-size:17px;"value="{{ societe.id }}" >
-                        {% endif %} 
-                        
-                        <input type="submit"  class="myeditinput"  value="Ajouter le projet" />
-                    </form>
+            {{ form_start(form) }}
+                {{ form_row(form.intitule,{'label': 'Intitulé du projet'}) }}
+                {{ form_row(form.description,{'label': 'Descriptif du projet'}) }}
+                {{ form_row(form.prix,{'label': 'Tarif / Horaire - Forfait'}) }}
+                
+                <div style="margin-top:50px;">
+                    {{ form_row(form.cahierdescharges) }}
+                </div>
+                
+                <input type="submit"  class="myeditinput"  value="Publier le projet" />
 
-            <ul>
-             
-            </ul>
+            {{ form_end(form) }}
+
         </div>
     </div>
 {% endblock %}

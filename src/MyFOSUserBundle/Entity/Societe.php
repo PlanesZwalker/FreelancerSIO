@@ -227,8 +227,8 @@ class Societe
     }
     
     
-       /*
-     *  UPLOAD DE LU LOGO
+    /*
+     *  UPLOAD DU LOGO
      * 
      */
     
@@ -237,11 +237,11 @@ class Societe
     }
  
     public function getAbsoluteLogoRoot(){
-        return $this->getUploadLogoRoot().$this->denomination;
+        return $this->getUploadLogoRoot().$this->getUser()->getId();
     }
 
     public function getWebLogoPath(){
-        return $this->getUploadLogoDir().'/'.$this->denomination;
+        return $this->getUploadLogoDir().'/'.$this->getUser()->getId();
     }
 
     public function getUploadLogoRoot(){
@@ -249,22 +249,17 @@ class Societe
     }   
     
     public function uploadLogo(){
-     
 
-        if($this->logo === null){
-            return;
-        }
-        $this->denomination = $this->getDenomination();
         
-        if(!is_dir($this->getUploadLogoRoot())){
+        if(!is_dir($this->getWebLogoPath())){
    
-             mkdir($this->getUploadLogoRoot(), '0777',true);
+             mkdir($this->getWebLogoPath(), '0777',true);
               
         }
               
-        $this->logo->move($this->getUploadLogoRoot(), $this->denomination);
+        $this->logo->move($this->getUploadLogoRoot(), $this->getUser()->getId());
    
-         unset($this->logo);
+        unset($this->logo);
     }
         
 

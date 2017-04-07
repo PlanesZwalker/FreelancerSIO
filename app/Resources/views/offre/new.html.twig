@@ -29,17 +29,7 @@
                         <div style="width:40%;display:inline-block;">
                              {{ form_row(form.particularite) }} 
                         </div>
-                       {% if freelancer is defined %}
-                            <input type="hidden" name="freelancer" class="mytdtabshow2" style=" font-size:17px;" value="{{ freelancer.id }}" >
-                        {% endif %}   
-                        {% if projet is defined %}
-                            <input type="hidden" name="projet" class="mytdtabshow2" style=" font-size:17px;" value="{{ projet.id }}" >
-                        {% endif %}   
-                        {% if societe is defined %}      
-                            <input type="hidden" name="societe" class="mytdtabshow2" style=" font-size:17px;"value="{{ societe.id }}" >
-                        {% endif %} 
-                        
-                        <input type="submit" class="myeditinput" value="Enregistrer l'offre" />
+
                         <input type="submit" class="myeditinput" value="Envoyer l'offre" />
                     {{ form_end(form) }}
                     </tr>

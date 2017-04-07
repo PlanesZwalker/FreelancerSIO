@@ -3,6 +3,8 @@
 namespace MyFOSUserBundle\Controller;
 
 use MyFOSUserBundle\Entity\Offre;
+use MyFOSUserBundle\Entity\Freelancer;
+use MyFOSUserBundle\Entity\Projet;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -20,19 +22,22 @@ class OffreController extends Controller
      * Lists all offre entities.
      *
      * @Route("/", name="offre_index")
-     * @Method("GET")
+     * @Method({"GET","POST"})
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-           
-        $offres = $em->getRepository('MyFOSUserBundle:Offre')->findAll();
-
+        $id_projet = $request->get('id');
         
+        $criteria = ["projet"=>$id_projet];
+        
+        $offresById = $em->getRepository("MyFOSUserBundle:Offre")->findBy($criteria);
+        $offres = $em->getRepository('MyFOSUserBundle:Offre')->findAll();
+    
         return $this->render('offre/index.html.twig', array(
             'offres' => $offres,
-         
-          
+            'offresById' => $offresById,
+            'id_projet' => $id_projet
         ));
     }
 
@@ -45,13 +50,23 @@ class OffreController extends Controller
     public function newAction(Request $request)
     {
         $offre = new Offre();
-    
+        $freelancer = new Freelancer();
+        $projet = new Projet();
+        
+        $em = $this->getDoctrine()->getManager();
+        
+        $id_projet=$request->get('id');
+        $criteria = ["id" => $id_projet];
+        $projet = $em->getRepository("MyFOSUserBundle:Projet")->findOneBy($criteria);
+        
+        $monIdfreelancer= ["user"=>$this->getUser()->getId()];
+        $freelancer = $em->getRepository("MyFOSUserBundle:Freelancer")->findOneBy($monIdfreelancer);    
+            
         $form = $this->createFormBuilder($offre)
                 ->add('tarif', null, array(
                     'label'=> 'Tarif Horaire estimé'
                     )
                 )
-    
                 ->add('delai', null, array(
                     'label'=> 'Durée estimée pour réaliser le projet'
                     )
@@ -69,11 +84,14 @@ class OffreController extends Controller
                   )) 
            
                 ->getForm();
-      
-            
+          
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            $offre->setFreelancer($freelancer);
+            $offre->setProjet($projet);
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($offre);
             $em->flush($offre);
@@ -96,7 +114,8 @@ class OffreController extends Controller
     public function showAction(Offre $offre)
     {
         $deleteForm = $this->createDeleteForm($offre);
-
+        $projet = new Projet();
+        
         return $this->render('offre/show.html.twig', array(
             'offre' => $offre,
             'delete_form' => $deleteForm->createView(),

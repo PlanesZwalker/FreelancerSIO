@@ -50,15 +50,15 @@
 
         {% if (app.request.attributes.get('_route')!='user_show') %}
             <a href="{{ path('user_show', { 'id': app.user.id }) }}" class="nav" >
-                <img id="iconProfil" src="{{ asset('iconProfil.png')}}">
+                <img id="iconProfil" src="{{ asset('iconProfil.png') }}">
             </a>
         {% endif %}
-        {% if not  is_granted('ROLE_ADMIN') %}   
+        {% if not is_granted('ROLE_ADMIN') %}   
             <a class="nav" id="tableaudebordbtn">
-                <img id="iconAdmin" src="{{ asset('iconTableaudeBord.png')}}" >
+                <img id="iconAdmin" src="{{ asset('iconTableaudeBord.png') }}" >
             </a>
             <div id="tableaudebord" style="display:none;background-color:#80B6D4; border:5px ridge white; padding:5px 0px; margin-right:2%;"> 
-         
+
                {% if is_granted('ROLE_FREELANCER') %}
                    {% if freelancer.id is defined %}
                     <a   href="{{ path('offre_index', { 'id': freelancer.id }) }}"  class="manav "  id="showuser" >
@@ -75,8 +75,10 @@
                     </a>
                     {% endif %}
                 {% endif %}
-                {% if is_granted('ROLE_SOCIETE') %} 
-                    {% if societe.id is defined %}
+                
+                
+                {% if is_granted('ROLE_SOCIETE') and societe is defined %} 
+                
                      <a   href="{{ path('projet_index', { 'id': societe.id }) }}"  class="manav "  id="showuser" >
                         <span class="icon fa-edit">&nbsp;&nbsp;&nbsp;Mes Projets</span>
                     </a>
@@ -89,7 +91,7 @@
                     <a   href="{{ path('user_index', { 'id': societe.id }) }}"  class="manav "  id="showuser" >
                         <span class="icon fa-edit">&nbsp;&nbsp;&nbsp;Mes Données Utilisateurs</span>
                     </a>
-                    {% endif %}
+                 
                {% endif %}  
                
                <a   class="manav icon fa-edit" id="closetableaudebord" >

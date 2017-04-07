@@ -27,7 +27,14 @@
                         <td class="mytdtab">{{ societe.denomination }}</td>
                         <td class="mytdtab2">{{ societe.siret }}</td>
                         <td class="mytdtab">{{ societe.presentation }}</td>
-                        <td class="mytdtab2"><img class="myimg" src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/logo/{{ societe.denomination }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/logo/{{ societe.denomination }}{% endif %}" /></td>
+                        <td class="mytdtab2">
+                            <img class="myimg" src="
+                                 {% if app.request.server.get('BASE') %}
+                                     {{ app.request.server.get('BASE')}}/user/logo/{{ societe.user.id }}
+                                 {% else %}
+                                     {{ app.request.get('HTTP_HOST')}}/web/user/logo/{{ societe.user.id }}
+                                 {% endif %}" />
+                        </td>
                         <td class="mytdtab">
                             <ul>
                                 <li style="display:inline-block;margin-top:8px;">
