@@ -9,20 +9,26 @@
     <div class="formulairetop">
         <h2 class="mysubtitle">Liste des Utilisateurs </h2>
         <div class="mycontentform">
-            <ul>
+            <ul style="margin-bottom:50px;">
                 <li>
+                    <a class="addtab"  href="{{ path('re_fos_user_registration_register') }}">
+                        <span class="fa fa-plus" style="color:violet" >&nbsp;&nbsp;Créer un nouvel Utilisateur ( Société ou Freelancer )</span>
+                    </a>
+                </li>
+                <li style="float:left">
                     <a class="addtab"  href="{{ path('user_new') }}">
-                        <span class="fa fa-plus" >&nbsp;&nbsp;Créer un nouvel Utilisateur</span>
+                        <span class="fa fa-plus" style="color:#0482D8">&nbsp;&nbsp;Créer un nouvel Administrateur</span>
                     </a>
                 </li>
             </ul>
             <table class="tableautitle">
                 <thead>
                     <tr class="tableautitlecontent">
-        
+                        <th class="center">Identifiant</th>
                         <th class="center">Nom</th>
                         <th class="center">Prénom</th>
                         <th class="center">Roles</th>
+                         <th class="center">Email</th>
                         <th class="center">Dernière Connexion</th>
                         <th class="center">Actions</th>
                     </tr>
@@ -31,16 +37,18 @@
                 {% for user in users %}
                     <tr>
                         <td class="mytdtab" >{{ user.username }}</td>
+                         <td class="mytdtab2" >{{ user.name }}</td>
                         <td class="mytdtab">{{ user.firstname }}</td>
-                        <td class="mytdtab" >{% for role in user.roles  %}{{ role }}<br/>{% endfor %}   </td>
+                        <td class="mytdtab2" >{% for role in user.roles  %}{{ role }}<br/>{% endfor %}   </td>
+                           <td class="mytdtab">{{ user.email }}</td>
                         <td class="mytdtab2" >{{ user.lastlogin|date("d/m/Y") }}</td>
                         <td class="mytdtab">
                             <ul>
                                 <li style="display:inline-block;margin-top:8px;">
-                                    <a class="btn btn-default" data-ajax="false" href="{{ path('user_show', { 'id': user.id }) }}">Afficher</a>
+                                    <a class="btn btn-default"  href="{{ path('user_show', { 'id': user.id }) }}">Afficher</a>
                                 </li>
                                 <li  style="display:inline-block;">
-                                    <a class="btn btn-info" style="color:white;"  data-ajax="false" href="{{ path('user_edit', { 'id': user.id }) }}">Modifier</a>
+                                    <a class="btn btn-info" style="color:white;"  href="{{ path('user_edit', { 'id': user.id }) }}">Modifier</a>
                                 </li>
                               
                             </ul>

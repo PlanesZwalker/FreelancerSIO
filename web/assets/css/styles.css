@@ -8,83 +8,99 @@ and open the template in the editor.
     Author     : passpass
 */
 
-/* Page and overlay */
+/* ERREURS */
 .myerror{
 
-    color:#111;
-    background-color:rgba(255, 0, 0, 0.6);
-    border-radius:18px;
+    color:red;
     font-size:18px;
     text-shadow:none;
     padding:8px;
-    font-weight:500;
-    
-    
+    font-weight:500;  
 }
 
-.ui-page-theme-a
-{
-	background-image: url("fond.jpg");
-       
+/*
+*   TABLEAU EDIT
+*/
+.divTable{
+    font-size:17px;  
+    width:40%; 
+    padding:10px; 
+    
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,7db9e8+100&1+0,0+100;Blue+to+Transparent */
+    background: -moz-linear-gradient(-45deg,  rgba(30,87,153,1) 0%, rgba(125,185,232,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg,  rgba(30,87,153,1) 0%,rgba(125,185,232,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg,  rgba(30,87,153,1) 0%,rgba(125,185,232,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#007db9e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
-.ui-grid-a > .ui-block-a, .ui-grid-a > .ui-block-b {
-    width: 15vw !important;
+/*  SELECT ROLE   */
+#fos_user_registration_form_roles{
+    height:78px;
+   
+}
+
+.myselect{
+    height:100px!important;   
+}
+
+.button{
+    letter-spacing: 1px !important;
+   font-family: Helvetica, Verdana, sans-serif !important;
+   font-weight: 700 !important;
+}
+/*
+/*      MISE EN FORME CONTENU DES CHAMPS DES FORMULAIRES ne fonctionne que inline
+
+
+.divGauche{
+    margin-left:2%;
+    text-align:center;
+    width:30%!important;
+    display:inline-block!important;
+    
+}
+.divGauche{
+    margin-left:2%; 
+    text-align:center; 
+    width:30%!important; 
+    height:auto; 
     display:inline-block !important;
-    float:none;
+}
+.divBas{
+    width:30%; 
+    margin-left:35%;
+}
+*/
+
+/*
+/*  BOUTON ACCUEIL
+*/
+#slog{
+    display:block;
+    visibility:visible;
 }
 
-#manavnavbar{
-     position:absolute;
-     top:10px; 
-     width:75vw; 
-     list-style:none;
-     left:150px !important;
-     padding:0;
-     display:inline-block!important;
-
+@media only screen and (max-width: 1300px) {
+    #slog{
+        display:none;
+        visibility:hidden;
+    }
 }
 
-.navright{
-     position:absolute;
-     list-style:none;
-     right:0vw;
-     left:75px;
-     top:0vw;
-     background-color:rgba(1,1,1,0.1)!important;
-     padding:15px;
-     height:3.5vw;
-     width:98vw;
-     display:inline-block!important;
-}
-.navright:hover{
-     background-color:rgba(255,255,255,0.05)!important;
-}
-
-#administrationbtn{
-    right:3vw;
-    position:absolute;
-    width:160px;
-    top:74px;
-       color:black;
-    text-shadow: 0 0px gray;
-}
-
-#administrationbtn:hover{
-    color:black;
-    text-shadow: 0 0px  #333;
-}
-
-
+/*
+/*  BOUTON DECONNEXION
+*/
 #deconnexionbtn{
-    left:1.5vw;
+    left:100px;
     position:absolute;
     width:160px;
     top:70px;
 }
 
 
-
+/*
+/*  BOUTON CONNEXION
+*/
 #connexionImage:hover{
     width:130px !important;
     height:130px; 
@@ -94,79 +110,356 @@ and open the template in the editor.
     right:2vw;
     position:absolute;
     width:110px !important;
-    top:140px;
-    
+    top:160px;
+
 }
 
 
-.ui-select{
-    display: inline-block !important;
+/*
+/*  BOUTONS DU TABLEAU DE BORD DE L'ADMIN
+*/
+#showtest, #showsociete, #showprojet, #showoffre, #showpaiement, #showmessage, #showfreelancer, #showcompetence, #showcdc, #showcontrat, #showuser {
+    background-color:rgba(70, 110, 249,0.8)!important;     
+    color:white!important;
+    font-weight:700;
+    font-size:16px;
+    height:150px;
+    width:150px;
+    margin:10px;
+    border-radius:80px;
+    text-align:center;
+    padding-top:45px;
+    padding-left:15px;
+    padding-right:15px;
+    border-bottom: solid 15px #010E54;
+    display:inline-block !important;
+    position:relative!important;
+    margin-left:5vw;
+
+}
+
+#showtest:hover, #showsociete:hover, #showprojet:hover, #showoffre:hover, #showpaiement:hover, #showmessage:hover, #showfreelancer:hover,
+#showcompetence:hover, #showcdc:hover, #showcontrat:hover, #showuser:hover, #showadministration:hover, #closeadministration:hover{
+    height:180px;
+    width:180px;
+    border-radius:100px;
+}
+
+
+#closeadministration,#closetableaudebord {
+    background-color:rgba(205,51,51,0.8) !important;    
+    color:white!important;
+    font-weight:700;
+    font-size:16px;
+    height:150px;
+    width:150px;
+    margin:10px;
+    border-radius:80px;
+    text-align:center;
+    padding-top:45px;
+    padding-left:15px;
+    padding-right:15px;
+    border-bottom: solid 15px #010E54;
+    display:inline-block !important;
+    position:relative!important;
+    float:right;
+    margin-right:10vw;
+
+}
+
+#showadministration,#showtableaudebord{
+    background-color:rgba(0,100,0,0.8) !important;     
+    color:white!important;
+    font-weight:700;
+    font-size:16px;
+    height:150px;
+    width:150px;
+    margin:10px;
+    border-radius:80px;
+    text-align:center;
+    padding-top:45px;
+    padding-left:15px;
+    padding-right:15px;
+    border-bottom: solid 15px #010E54;
+    display:inline-block !important;
+    position:relative!important;
+    float:right;
+    margin-right:5vw;
+}
+
+/*
+*   BOUTON PASSER TEST
+*/
+#iconPasserTest{
+   width:7vw;
+   height:7vw;
+   position:absolute;
+   right:-3vw;
+}
+#iconPasserTest:hover{
+   width:7vw;
+   height:7vw;
+   position:absolute;
+   right:-2.5vw;
+}
+/*
+*   BOUTON RETOUR LISTE
+*/
+
+#iconRetourListe{
+   width:7vw;
+   height:7vw;
+   position:absolute;
+   right:3vw;
+   top:-3vw;
+}
+#iconRetourListe:hover{
+   width:7vw;
+   height:7vw;
+   position:absolute;
+   right:2vw;
+   top:-1.5vw;
+}
+
+/*
+*       TABLEAU DE BORD 
+*/
+#administration{
+    position:absolute !important;
+    background-image: url("fond3.jpg");
+    z-index:999!important;
+    right:2vw;
+    left:6vw;
+    top:9vw;
+    padding:3% !important;
+    border-radius:4px;
+    width:86%;
+    height:700px;
+}
+
+.tabdebord{
+    position:absolute !important;
+    z-index:999!important;
+    right:4.5vw;
+    width:90vw;
+    top:5vw;
+    border-radius:18px;
+}
+
+
+
+.tableautitle{
+    margin:10px;
+    color:white;
+    font-size:16px;
+    text-align:center;
+
+}
+
+.tableautitlecontent {
+    background-color:rgba(1,1,1,0.7); 
+    height:50px;
+    border-bottom:2px solid white;
+    padding-top:15px !important;   
+}
+
+#tableaudebord{
+   position:absolute !important;
+    background-image: url("fond3.jpg");
+    z-index:999!important;
+    right:2vw;
+    left:6vw;
+    top:9vw;
+    padding:3% !important;
+    border-radius:4px;
+    width:86%;
+    height:700px;
 }
 
 .manav{
-  margin:0px 20px !important;
-  border-radius:8px;
-  font-size:0.75vw !important;
-/** text-shadow: 1px 3px 3px black !important;*/
-  color:black !important;
-  font-weight: 100 !important;
-  border:2px solid black !important;
-  width:15vw;
-  background-color:rgba(255,255,255,1)!important;
+    display:inline-block;
+    width:250px;
+    height:250px;
 }
 
-.manav2{
-  margin:0px 20px !important;
-  border-radius:8px;
-  font-size:0.75vw !important;
-  text-shadow: 1px 3px 3px black !important;
-  color:white !important;
-  font-weight: 100 !important;
-  border:2px solid black !important;
-  width:15vw;
-  background-color:rgba(1,1,1,0.7)!important;
-}
-
-
-.manav:hover, .manav2:hover{
-
-  background-color:rgba(25,52,233,0.8)!important;
-  color:lightskyblue !important;
-  font-weight: 200 !important;
-  color:white !important;
-}
-
+/*
+ *      NAVIGATION
+*/
 .nav{
-    border-radius:5px 2px;
-    width:20rem !important;
-    background: rgba(255,255,255,0.8)!important;
-     border:1px solid whitesmoke !important;
+    border:none;
+    margin-left: 45px;
 }
 .nav:hover{
-      background: white !important;
-      border:1px solid white !important;
+
+    margin-left: 0px;
+    margin-top:-35px;
+}
+
+@media only screen and (max-width: 1300px) {
+
+    .nav{
+        border:none;
+        margin-left: 45px;
+    }
+    .nav:hover{
+
+        margin-left: 0px;
+        margin-top:-35px;
+    }
+}
+
+#iconProfil:hover, #iconAdmin:hover, #iconCompte:hover, #iconDocumentation:hover, #iconSociete:hover , #iconFreelancers:hover, #iconProjet:hover{
+    width:165px;
+    height:165px; 
+}
+
+#iconProfil, #iconAdmin, #iconCompte, #iconDocumentation, #iconSociete, #iconFreelancers, #iconProjet{
+    width:120px;
+    height:120px;
+    margin-top:0px;
 }
 
 
-.bigtitle{
-   color: black !important;
-   font-size:2vw;
+@media only screen and (max-width: 1300px) {
 
+    #iconProfil:hover, #iconAdmin:hover, #iconCompte:hover, #iconDocumentation:hover, #iconSociete:hover , #iconFreelancers:hover, #iconProjet:hover{
+        width:145px;
+        height:145px; 
+    }
+
+    #iconProfil, #iconAdmin, #iconCompte, #iconDocumentation, #iconSociete, #iconFreelancers, #iconProjet{
+        width:100px;
+        height:100px;
+        margin-top:0px;
+    }
+
+}
+
+/*
+ *      Titres
+*/
+.bigtitle{
+    color: white !important;
+    font-size:1.3vw;
 }
 
 .mysubtitle{
     color:white; 
-    margin-top:7.5%;
-    background-color:rgba(1,1,1,0.6); 
-    border-radius:8px 8px 0px 0px;
-    height:70px; 
-    font-size:17px;
-    padding:15px;
-   text-align:center;
+    /*    background: rgb(30,87,153);  Old browsers 
+      background: -moz-linear-gradient(top, rgba(30,87,153,1) 0%, rgba(41,137,216,1) 27%, rgba(32,124,202,1) 76%, rgba(125,185,232,1) 100%);  FF3.6-15 
+      background: -webkit-linear-gradient(top, rgba(30,87,153,1) 0%,rgba(41,137,216,1) 27%,rgba(32,124,202,1) 76%,rgba(125,185,232,1) 100%);  Chrome10-25,Safari5.1-6 
+      background: linear-gradient(to bottom, rgba(30,87,153,1) 0%,rgba(41,137,216,1) 27%,rgba(32,124,202,1) 76%,rgba(125,185,232,1) 100%);  W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ 
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 );
+
+      */
+    background: -moz-linear-gradient(top, rgba(253,137,215,0.5) 10%, rgba(253,137,215,0.5) 12%, rgba(251,166,225,0.5) 50%, rgba(252,236,252,0.3) 98%, rgba(255,124,216,0.5) 100%);  
+    background: -webkit-linear-gradient(top, rgba(253,137,215,0.5) 10%,rgba(253,137,215,0.5) 12%,rgba(251,166,225,0.5) 50%,rgba(252,236,252,0.3) 98%,rgba(255,124,216,0.5) 100%);  
+    background: linear-gradient(to bottom, rgba(253,137,215,0.5) 10%,rgba(253,137,215,0.5) 12%,rgba(251,166,225,0.5) 50%,rgba(252,236,252,0.3) 98%,rgba(255,124,216,0.5) 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fd89d7', endColorstr='#80ff7cd8',GradientType=0 );
+    letter-spacing: 5px;
+    border-radius:5px 5px 0px 0px;
+    height:45px; 
+    font-size:22px;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    line-height: 30px !important;
+    padding-top:10px;
+    margin-bottom:25px;
+    text-align:center;
+    font-family:Lucida Sans Unicode, Lucida Grande, sans-serif;
+    width:80%;
+    margin-left:10%;
+}
+
+#monSousTitre{
+    margin-top:65px;
+    color:white;
+    text-shadow: 0 1px 0 black;
+    font-weight:600;
+    width:50vw;
+    margin-left:25vw; 
+    text-align:center; 
+    font-size:14px;    
 }
 
 
+#logo{
 
+    position:absolute;
+    
+    /* VERT */
+    /* background: rgb(180,227,145); /* Old browsers */
+    /* background: -moz-linear-gradient(top, rgba(180,227,145,1) 0%, rgba(97,196,25,1) 50%, rgba(180,227,145,1) 100%); /* FF3.6-15 */
+    /* background: -webkit-linear-gradient(top, rgba(180,227,145,1) 0%,rgba(97,196,25,1) 50%,rgba(180,227,145,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    /* background: linear-gradient(to bottom, rgba(180,227,145,1) 0%,rgba(97,196,25,1) 50%,rgba(180,227,145,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4e391', endColorstr='#b4e391',GradientType=0 );
+    */
+    
+    /* BLEU */
+   /* background: -moz-linear-gradient(top, rgba(91,110,191,0.6) 0%, rgba(96,171,248,0.84) 81%, rgba(64,150,238,0.8) 100%); /* FF3.6-15 */
+   /* background: -webkit-linear-gradient(top, rgba(91,110,191,0.6) 0%,rgba(96,171,248,0.84) 81%,rgba(64,150,238,0.8) 100%); /* Chrome10-25,Safari5.1-6 */
+   /* background: linear-gradient(to bottom, rgba(91,110,191,0.6) 0%,rgba(96,171,248,0.84) 81%,rgba(64,150,238,0.8) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5b6ebf', endColorstr='#cc4096ee',GradientType=0 ); 
+   */
+    
+    padding-top:5px;
+    padding-bottom:5px;
+    width:100vw;
+    top:90px;
+    text-align:center;
+   
+   /* ORANGE */
+   /* background: rgb(247,150,33); /* Old browsers */
+   /* background: -moz-linear-gradient(top, rgba(247,150,33,0.8) 0%, rgba(249,198,103,0.6) 100%); /* FF3.6-15 */
+   /* background: -webkit-linear-gradient(top, rgba(247,150,33,0.8) 0%,rgba(249,198,103,0.6) 100%); /* Chrome10-25,Safari5.1-6 */
+   /* background: linear-gradient(to bottom, rgba(247,150,33,0.8) 0%,rgba(249,198,103,0.6) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+   /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f79621', endColorstr='#f9c667',GradientType=0 ); 
+   */ 
+/*   
+   background: -moz-linear-gradient(top, rgba(255,197,120,0.5) 0%, rgba(255,196,118,0.5) 2%, rgba(251,157,35,0.5) 100%);  FF3.6-15 
+background: -webkit-linear-gradient(top, rgba(255,197,120,0.5) 0%,rgba(255,196,118,0.5) 2%,rgba(251,157,35,0.5) 100%);  Chrome10-25,Safari5.1-6 
+background: linear-gradient(to bottom, rgba(255,197,120,0.5) 0%,rgba(255,196,118,0.5) 2%,rgba(251,157,35,0.5) 100%);  W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80ffc578', endColorstr='#80fb9d23',GradientType=0 );
+   */
+
+/*
+/*  ROSE
+*/
+/*background: -moz-linear-gradient(top, rgba(253,137,215,1) 0%, rgba(253,137,215,0.94) 12%, rgba(251,166,225,0.75) 50%, rgba(252,236,252,0.51) 98%, rgba(255,124,216,0.5) 100%);  FF3.6-15 
+background: -webkit-linear-gradient(top, rgba(253,137,215,1) 0%,rgba(253,137,215,0.94) 12%,rgba(251,166,225,0.75) 50%,rgba(252,236,252,0.51) 98%,rgba(255,124,216,0.5) 100%);  Chrome10-25,Safari5.1-6 
+background: linear-gradient(to bottom, rgba(253,137,215,1) 0%,rgba(253,137,215,0.94) 12%,rgba(251,166,225,0.75) 50%,rgba(252,236,252,0.51) 98%,rgba(255,124,216,0.5) 100%);  W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fd89d7', endColorstr='#80ff7cd8',GradientType=0 );*/
+
+
+
+/*
+/*  MAUVE
+*/
+
+background: -moz-linear-gradient(top, rgba(171,103,181,0.8) 0%, rgba(171,103,181,0.5) 12%, rgba(219,162,242,0.75) 50%, rgba(252,236,252,0.51) 98%, rgba(255,124,216,0.5) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(171,103,181,0.8) 0%,rgba(171,103,181,0.5) 12%,rgba(219,162,242,0.75) 50%,rgba(252,236,252,0.51) 98%,rgba(255,124,216,0.5) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(171,103,181,0.8) 0%,rgba(171,103,181,0.5) 12%,rgba(219,162,242,0.75) 50%,rgba(252,236,252,0.51) 98%,rgba(255,124,216,0.5) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ab67b5', endColorstr='#80ff7cd8',GradientType=0 ); 
+
+/* BLEU CLAIR */
+  /*  background: rgb(30,87,153); /* Old browsers */
+/*  background: -moz-linear-gradient(top, rgba(30,87,153,1) 0%, rgba(41,137,216,1) 27%, rgba(32,124,202,1) 76%, rgba(125,185,232,1) 100%);  FF3.6-15 
+  background: -webkit-linear-gradient(top, rgba(30,87,153,1) 0%,rgba(41,137,216,1) 27%,rgba(32,124,202,1) 76%,rgba(125,185,232,1) 100%);  Chrome10-25,Safari5.1-6 
+  background: linear-gradient(to bottom, rgba(30,87,153,1) 0%,rgba(41,137,216,1) 27%,rgba(32,124,202,1) 76%,rgba(125,185,232,1) 100%);  W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ 
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 );*/
+
+}
+
+#monico:hover{
+
+
+    opacity:0; 
+}
+
+
+/*
+*       FOOTER
+*/
 #footer-wrapper{
     width:63%; 
     padding-left:2vw !important;
@@ -176,19 +469,18 @@ and open the template in the editor.
     box-shadow: 7px 6px 7px 6px #98CFE4;
 }
 
-#header-wrapper{
-  
-    
-}
 
+/*
+ *      Mots de passe
+*/
 #password, 
 #fos_user_registration_form_email,
 #fos_user_registration_form_plainPassword_first, 
 #fos_user_registration_form_plainPassword_second,
 #fos_user_profile_form_email,
 #fos_user_profile_form_current_password{
-    
-     background: #e8e8e8 none repeat scroll 0 0;
+
+       background: linear-gradient(to bottom, rgba(96,108,136,0.5) 38%,rgba(63,76,107,0.7) 77%);
     border: 0 none;
     border-radius: 4px;
     box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.1) inset;
@@ -207,7 +499,7 @@ and open the template in the editor.
 #fos_user_profile_form_current_password:hover,
 #fos_user_profile_form_username:hover,
 #fos_user_registration_form_typecompte:hover{
-        background: #fff;
+  background: linear-gradient(to bottom, rgba(96,108,136,0.7) 38%,rgba(63,76,107,0.7) 77%);
 }
 
 #password:active,
@@ -219,32 +511,50 @@ and open the template in the editor.
 #username:hover,
 #fos_user_profile_form_email:active,
 #fos_user_profile_form_current_password:active{
-        background: #fff;
+     background: linear-gradient(to bottom, rgba(96,108,136,0.7) 38%,rgba(63,76,107,0.7) 77%);
 }
 
-
+/*
+ *   CONTENU DE LA PAGE    
+*/
 .formulairetop{
-    text-align:center;top:155px; position:absolute; width:60%; left:20vw;
+    text-align:center;
+    top:230px;
+    position:absolute;
+    width:80%; 
+    left:10vw;
+    color:white;
+    text-shadow:2px 2px black;
 }
+.formulairetop2{
+    text-align:center;
+    top:230px;
+    position:absolute;
+    width:95%; 
+    left:2vw;
+    color:white;
+    text-shadow:2px 2px black;
+}
+
 
 .inputformtop{
-    
+
     width:50% ; margin-left:25%; text-align:center;
 }
 
-#logo{
-    background-color:rgba(255,255,255,0.3);   
+.mydrapeau{
+    height:80px;
+    width:80px;
+    padding:15px;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+38,132d68+76&1+0,0.3+100 */
+    background: -moz-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 0%, rgba(255,255,255,0.73) 38%, rgba(19,45,104,0.47) 76%, rgba(19,45,104,0.3) 100%); /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 0%,rgba(255,255,255,0.73) 38%,rgba(19,45,104,0.47) 76%,rgba(19,45,104,0.3) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center,  rgba(255,255,255,1) 0%,rgba(255,255,255,0.73) 38%,rgba(19,45,104,0.47) 76%,rgba(19,45,104,0.3) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#4d132d68',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
-
-#monico:hover{
-    height:8vw !important;
-    width:8vw !important;
-    top:7vw !important;
-}
-
 
 .monform{
-    
+
     margin-top: -2%;
     background-color: #E0E0E1;
     margin-bottom: 20%;
@@ -252,25 +562,48 @@ and open the template in the editor.
     border-radius: 0px 0px 8px 8px;
 }
 
-
-
-.mycontentform{
-    
-    margin-top: -3%;
-    background-color: #E0E0E1;
-    margin-bottom: 20%;
-    padding: 2% !important;
-    border-radius: 0px 0px 8px 8px;
-    text-align:left;
+.btn-default{
+  
+     border-color:#7F466F!important;
+    padding:6px 15px !important;
+    background-color: #A278B2!important;
+    color: #fff!important;
+    text-shadow: 0 1px 0 #555!important;
 }
-.mycontentformshow{
+
+.btn-default:hover{
+     background-color: #dc6af9e6!important;
+}
+.btn-info {
+    color: #fff;
+    background-color: #0482D8!important;
+    border-color: #0172C5!important;
+}
+.btn-info:hover {
     
-    margin-top: -3%;
-    background-color:#777;
+    background-color: #11B8FA!important;
+}
+/*
+*   CONTENU DU FORMULAIRE
+*/
+.mycontentform{
+    margin-top: -1.5%;
+   background-color: rgba(1, 1, 1, 0.4);
     margin-bottom: 20%;
     padding: 2% !important;
     border-radius: 0px 0px 8px 8px;
     text-align:left;
+
+}
+
+.mycontentformshow{
+
+    margin-top: -3%;
+    margin-bottom: 20%;
+    padding: 2% !important;
+    border-radius: 0px 0px 8px 8px;
+    text-align:left;
+
 }
 
 .flash-success{
@@ -282,51 +615,11 @@ and open the template in the editor.
 }
 
 
-#administration{
-    position:absolute !important;
-    background-image: url("fond.jpg");
-    z-index:999!important;
-    right:2vw;
-    left:6vw;
-    top:6vw;
-    padding:5% !important;
-    border-radius:4px;
-}
-
-.tabdebord{
-    position:absolute !important;
-    z-index:999!important;
-    right:4.5vw;
-    width:90vw;
-    top:5vw;
-    border-radius:18px;
-}
-
-#closeadministration{
-    background-color:rgba(205,51,51,1) !important;    
-    color:white!important;
-}
-
-#showadministration{
-    background-color:rgba(0,100,0,1) !important;     
-        color:white!important;
-}
 
 
-.tableautitle{
-    margin:10px;
-    color:white;
-    font-size:16px;
-    text-align:center;
-  
-}
-    
-.tableautitlecontent {
-    background-color:rgba(1,1,1,0.7); 
-    height:50px;
-    border-bottom:2px solid white;
-    padding-top:15px !important;   
-}
+
+
+
 
 .mytbody{
     background-color:rgba(1,1,1,0.3);
@@ -334,16 +627,36 @@ and open the template in the editor.
 
 .center{
     text-align:center;
+    max-width:250px !important;
+     padding:15px;
 }
+
+/* tableau */
 
 .mytdtab{
     background-color:rgba(1,1,1,0.2);
     border-bottom:2px solid white;
+        max-width:350px !important;
+        padding:5px;
 }
 
 .mytdtab2{
     background-color:rgba(255,255,255,0.2);
-   border-bottom:2px solid white; 
+    border-bottom:2px solid white; 
+        max-width:350px !important;
+         padding:5px;
+     
+}
+
+.tableauInfo{
+    width:40%;
+    display:inline-block;
+    margin-left:2%;
+
+}
+.tititretab{
+  height:50px; 
+  font-size:18px;  
 }
 
 .mydisplaynone{
@@ -353,36 +666,63 @@ and open the template in the editor.
 .addtab{
     font-size:17px;
     float:right !important;
-    padding-bottom:10px;
+    padding:10px;
     margin-top:-15px; 
     margin-right:25px;
+    color:white!important;
 }
 
+
+#form_particularite{
+    height:150px;
+    width:30vw;
+
+    color:white;
+    display:block;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,7db9e8+100&1+0,0+100;Blue+to+Transparent */
+    background: -moz-linear-gradient(-45deg,  rgba(30,87,153,1) 0%, rgba(125,185,232,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg,  rgba(30,87,153,1) 0%,rgba(125,185,232,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg,  rgba(30,87,153,1) 0%,rgba(125,185,232,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#007db9e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    padding:15px;
+    border:none;
+}
+
+
+/*
+/*      DRAPEAU ET IMAGES LOGO ET PHOTO
+*/
 .myimg{
     height:120px;
     width:120px;
+    margin:15px 0px 15px 0px;
 }
 
+.mydrapeau{
+    margin-left:50px;
+    height:20px;
+    width:20px;
+}
 
 .mytdtabshow{
     background-color:rgba(1,1,1,0.2);
-    border-bottom:2px solid white;
-     text-align:center;
-     padding:1%
+    text-align:center;
+    padding:1%;
+
 }
 
 .mytdtabshow2{
     background-color:rgba(255,255,255,0.2);
     border-bottom:2px solid white;
     text-align:center;
-    padding:1%
+    padding:1%;
+
 }
 
 .returnlist{
     float:right; 
-    margin:2%;
-    margin-top:-4%;
-    
+    margin-right:3vw;
+    margin-top:0;
 }
 
 .myeditli{
@@ -394,10 +734,13 @@ and open the template in the editor.
 .myeditinput{
     display:inline-block;
     margin:2%; 
-    
+
     float:right;
     color:white; 
-    background-color:#5BC0DE !important;
+    background: linear-gradient(to bottom, rgba(38,38,53,1) 0%,rgba(19,104,185,1) 49%,rgba(51,54,86,1) 100%) !important;
+}
+.myeditinput:hover{
+    background: linear-gradient(to bottom, rgba(38,38,53,0.5), rgba(19,104,185,1) 49%,rgba(51,54,86,1) 100%) !important;
 }
 
 .mydeleteli{
@@ -407,9 +750,9 @@ and open the template in the editor.
 
 .my_fos_user_registration_register{ 
     margin-top:-3%; 
-    background-color:#E0E0E1; 
+    background-color:rgba(1,1,1,0); 
     margin-bottom:20%;
     padding:2%;
     border-radius:0px 0px 8px 8px ;
+    color:white !important;
 }
-

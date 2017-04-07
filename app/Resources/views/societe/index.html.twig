@@ -9,22 +9,13 @@
     <div class="formulairetop">
         <h2 class="mysubtitle">Liste des Sociétés</h2>
         <div class="mycontentform">
-           {% if is_granted('ROLE_ADMIN') %}
-            <ul>
-                <li>
-                    <a class="addtab" href="{{ path('societe_new') }}" rel="external">
-                        <span class="fa fa-plus" >&nbsp;&nbsp;Créer une nouvelle Société</span>
-                    </a>
-                </li>
-            </ul>
-            {% endif %}
+          
             <table class="tableautitle">
                 <thead>
                     <tr class="tableautitlecontent">
                         <th class="center">Societe</th>
                         <th class="center">Siret</th>
-                        <th class="center">Denomination</th>
-                        <th class="center">Présentation</th>
+                           <th class="center">Présentation</th>
                         <th class="center">Logo</th>
                         <th class="center">Actions</th>
                     </tr>
@@ -33,20 +24,25 @@
                 {% for societe in societes %}
                     <tr>
                         <a class="mydisplaynone" href="{{ path('societe_show', { 'id': societe.id }) }}">{{ societe.id }}</a>
-                        <td class="mytdtab">{{ dump(societe) }}</td>
-                        <td class="mytdtab2">{{ societe.siret }}</td>
                         <td class="mytdtab">{{ societe.denomination }}</td>
-                        <td class="mytdtab2">{{ societe.presentation }}</td>
-                        <td class="mytdtab"><img class="myimg" src="/FreelancerSIO/web/{{ societe.logo }}" /></td>
-                        <input type="hidden" value="{{ societe.user.username }}" />
+                        <td class="mytdtab2">{{ societe.siret }}</td>
+                        <td class="mytdtab">{{ societe.presentation }}</td>
                         <td class="mytdtab2">
+                            <img class="myimg" src="
+                                 {% if app.request.server.get('BASE') %}
+                                     {{ app.request.server.get('BASE')}}/user/logo/{{ societe.user.id }}
+                                 {% else %}
+                                     {{ app.request.get('HTTP_HOST')}}/web/user/logo/{{ societe.user.id }}
+                                 {% endif %}" />
+                        </td>
+                        <td class="mytdtab">
                             <ul>
                                 <li style="display:inline-block;margin-top:8px;">
-                                    <a class="btn btn-default" rel="external"  href="{{ path('societe_show', { 'id': societe.id }) }}">Afficher</a>
+                                    <a class="btn btn-default" href="{{ path('societe_show', { 'id': societe.id }) }}">Afficher</a>
                                 </li>
                                 {% if is_granted('ROLE_ADMIN') %}
                                 <li style="display:inline-block;">
-                                    <a class="btn btn-info" style="color:white;" rel="external"  href="{{ path('societe_edit', { 'id': societe.id }) }}">Modifier</a>
+                                    <a class="btn btn-info" style="color:white;"  href="{{ path('societe_edit', { 'id': societe.id }) }}">Modifier</a>
                                 </li>
                                 {% endif %}
                             </ul>

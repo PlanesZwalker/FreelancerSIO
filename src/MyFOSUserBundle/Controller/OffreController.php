@@ -3,10 +3,14 @@
 namespace MyFOSUserBundle\Controller;
 
 use MyFOSUserBundle\Entity\Offre;
+use MyFOSUserBundle\Entity\Freelancer;
+use MyFOSUserBundle\Entity\Projet;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 /**
  * Offre controller.
  *
@@ -18,16 +22,22 @@ class OffreController extends Controller
      * Lists all offre entities.
      *
      * @Route("/", name="offre_index")
-     * @Method("GET")
+     * @Method({"GET","POST"})
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-
+        $id_projet = $request->get('id');
+        
+        $criteria = ["projet"=>$id_projet];
+        
+        $offresById = $em->getRepository("MyFOSUserBundle:Offre")->findBy($criteria);
         $offres = $em->getRepository('MyFOSUserBundle:Offre')->findAll();
-
+    
         return $this->render('offre/index.html.twig', array(
             'offres' => $offres,
+            'offresById' => $offresById,
+            'id_projet' => $id_projet
         ));
     }
 
@@ -40,10 +50,48 @@ class OffreController extends Controller
     public function newAction(Request $request)
     {
         $offre = new Offre();
-        $form = $this->createForm('MyFOSUserBundle\Form\OffreType', $offre);
+        $freelancer = new Freelancer();
+        $projet = new Projet();
+        
+        $em = $this->getDoctrine()->getManager();
+        
+        $id_projet=$request->get('id');
+        $criteria = ["id" => $id_projet];
+        $projet = $em->getRepository("MyFOSUserBundle:Projet")->findOneBy($criteria);
+        
+        $monIdfreelancer= ["user"=>$this->getUser()->getId()];
+        $freelancer = $em->getRepository("MyFOSUserBundle:Freelancer")->findOneBy($monIdfreelancer);    
+            
+        $form = $this->createFormBuilder($offre)
+                ->add('tarif', null, array(
+                    'label'=> 'Tarif Horaire estimé'
+                    )
+                )
+                ->add('delai', null, array(
+                    'label'=> 'Durée estimée pour réaliser le projet'
+                    )
+                )
+                ->add('particularite', TextareaType::class, array(
+                    'label'=> 'Particularités'
+                    )
+                )
+                ->add('proposition', CKEditorType::class, array(
+                    'input_sync' => true,
+                    'config' => array(
+                        'uiColor' => '#020F58',
+                    ),
+                    'label' => 'Saisir la proposition commerciale ici: ',  
+                  )) 
+           
+                ->getForm();
+          
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            $offre->setFreelancer($freelancer);
+            $offre->setProjet($projet);
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($offre);
             $em->flush($offre);
@@ -66,7 +114,8 @@ class OffreController extends Controller
     public function showAction(Offre $offre)
     {
         $deleteForm = $this->createDeleteForm($offre);
-
+        $projet = new Projet();
+        
         return $this->render('offre/show.html.twig', array(
             'offre' => $offre,
             'delete_form' => $deleteForm->createView(),
@@ -82,9 +131,40 @@ class OffreController extends Controller
     public function editAction(Request $request, Offre $offre)
     {
         $deleteForm = $this->createDeleteForm($offre);
-        $editForm = $this->createForm('MyFOSUserBundle\Form\OffreType', $offre);
-        $editForm->handleRequest($request);
-
+        $editForm = $this->createFormBuilder($offre)
+               ->add('tarif', null, array(
+                    'label'=> 'Tarif Horaire estimé'
+                    )
+                )
+    
+                ->add('delai', null, array(
+                    'label'=> 'Durée estimée pour réaliser le projet'
+                    )
+                )
+                ->add('particularite', TextareaType::class, array(
+                    'label'=> 'Particularités'
+                    )
+                )
+                ->add('proposition', CKEditorType::class, array(
+                    'input_sync' => true,
+                    'config' => array(
+                        'uiColor' => '#020F58',
+                    ),
+                    'label' => 'Saisir la proposition commerciale ici: ',  
+                  )) 
+                ->add('proposition', CKEditorType::class, array(
+                    'input_sync' => true,
+                    'config' => array(
+                        'uiColor' => '#020F58',
+                    ),
+                    'label' => 'Saisir la proposition commerciale ici: ',  
+                  ))
+              
+                ->getForm();
+                
+            
+        $editForm->handleRequest($request);      
+    
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 

@@ -40,7 +40,16 @@ class MessageController extends Controller
     public function newAction(Request $request)
     {
         $message = new Message();
-        $form = $this->createForm('MyFOSUserBundle\Form\MessageType', $message);
+        $form = $this->createFormBuilder($message)
+                ->add('type')
+                ->add('sujet')
+                ->add('contenu')
+                ->add('date', DateType::class, array(
+                    'empty_value' => date('d/m/Y'),
+                    'data' => date('d/m/Y'),
+                ))
+                ->getForm();
+                
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -9,6 +9,7 @@
     <div class="formulairetop">
         <h2 class="mysubtitle">Liste des Compétences</h2>
         <div class="mycontentform">
+            {% if is_granted('ROLE_ADMIN') %}
             <ul>
                 <li>
                     <a class="addtab" href="{{ path('competence_new') }}">
@@ -16,6 +17,7 @@
                     </a>
                 </li>
             </ul>
+            {% endif %}
             <table class="tableautitle">
                 <thead>
                     <tr class="tableautitlecontent">
@@ -40,6 +42,9 @@
                                 </li>
                                 <li style="display:inline-block;">
                                     <a class="btn btn-info" style="color:white;"  href="{{ path('competence_edit', { 'id': competence.idCompetence }) }}">Modifier</a>
+                                </li>
+                                <li style="display:inline-block;">
+                                    <a class="btn btn-success" style="color:white;"  href="{{ path('test_index', { 'id': competence.idCompetence }) }}">Passer un Test</a>
                                 </li>
                             </ul>
                         </td>

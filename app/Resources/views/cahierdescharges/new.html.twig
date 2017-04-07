@@ -7,18 +7,26 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h2 class="mysubtitle">Ajouter un Cahier des Charges</h2>
-        <div class="mycontentform">
-            {{ form_start(form) }}
-                {{ form_widget(form) }}
-                <input type="submit" value="Create" />
-            {{ form_end(form) }}
-
-            <ul>
-                <li>
-                    <a  href="{{ path('cahierdescharges_index') }}">Retourner à la liste</a>
+         <h2 class="mysubtitle">Ajouter un Cahier des Charges</h2>
+         <div class="mycontentformshow">
+             <ul>
+                <li class="returnlist">
+                 <ul>
+                       <li>
+                           <a  class="btn btn-default" href="{{ path('cahierdescharges_index') }}">Retourner à la liste</a>
+                       </li>
+                   </ul>
                 </li>
-            </ul>
-        </div>
+             </ul>
+            <div class="mycontentform">
+
+                {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <input type="submit" class="myeditinput" value="Enregitrer le cahier des charges" />
+                {{ form_end(form) }}
+
+
+            </div>
+         </div>      
     </div>
 {% endblock %}

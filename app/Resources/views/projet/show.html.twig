@@ -14,11 +14,11 @@
                     <a data-ajax="false" class="btn btn-default" href="{{ path('projet_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
-            <table class="tableautitle">
+            <table class="tableautitle" style="margin-top:50px">
                 <tbody>
                     <tr>
-                        <th class="mytdtabshow">Société</th>
-                        <td class="mytdtabshow">{{ projet.societe.denomination }}</td>
+                        <th class="mytdtabshow2">Société</th>
+                        <td class="mytdtabshow2">{{ projet.societe.denomination }}</td>
                     </tr>
                     <tr>
                         <th class="mytdtabshow">Intitulé du Projet</th>
@@ -29,17 +29,21 @@
                         <td class="mytdtabshow2">{{ projet.description }}</td>
                     </tr>
                     <tr>
-                        <th class="mytdtabshow2">Prix</th>
-                        <td class="mytdtabshow2">{{ projet.prix }}</td>
+                        <th class="mytdtabshow">Prix</th>
+                        <td class="mytdtabshow">{{ projet.prix }}</td>
                     </tr>
                     <tr>
-                        <th class="mytdtabshow">Etat d'avancement</th>
-                        <td class="mytdtabshow">{{ projet.etat }}</td>
+                        <th class="mytdtabshow2">Etat d'avancement</th>
+                        <td class="mytdtabshow2">{{ projet.etat }}</td>
                     </tr>
 
                     <tr>
-                        <th class="mytdtabshow2">Cahier des Charges</th>
-                        <td class="mytdtabshow2">{{ projet.cahierdescharges.intitule }}</td>
+                        <th class="mytdtabshow">Cahier des Charges</th>
+                        <td class="mytdtabshow">
+                            <a href="{% if projet.cahierdescharges is defined %}{{ projet.cahierdescharges }}{% endif %}">
+                                <i class="fa fa-download" style="font-size:72px"></i>
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>

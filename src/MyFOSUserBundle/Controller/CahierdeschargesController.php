@@ -6,7 +6,7 @@ use MyFOSUserBundle\Entity\Cahierdescharges;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
-
+use MyFOSUserBundle\Controller\ProjetController;
 /**
  * Cahierdescharge controller.
  *
@@ -39,20 +39,20 @@ class CahierdeschargesController extends Controller
      */
     public function newAction(Request $request)
     {
-        $cahierdescharge = new Cahierdescharge();
-        $form = $this->createForm('MyFOSUserBundle\Form\CahierdeschargesType', $cahierdescharge);
+        $cahierdescharges = new Cahierdescharges();
+        $form = $this->createForm('MyFOSUserBundle\Form\CahierdeschargesType', $cahierdescharges);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($cahierdescharge);
-            $em->flush($cahierdescharge);
+            $em->persist($cahierdescharges);
+            $em->flush($cahierdescharges);
 
-            return $this->redirectToRoute('cahierdescharges_show', array('id' => $cahierdescharge->getId()));
+            return $this->redirectToRoute('cahierdescharges_show', array('id' => $cahierdescharges->getId()));
         }
 
         return $this->render('cahierdescharges/new.html.twig', array(
-            'cahierdescharge' => $cahierdescharge,
+            'cahierdescharges' => $cahierdescharges,
             'form' => $form->createView(),
         ));
     }
@@ -63,12 +63,19 @@ class CahierdeschargesController extends Controller
      * @Route("/{id}", name="cahierdescharges_show")
      * @Method("GET")
      */
-    public function showAction(Cahierdescharges $cahierdescharge)
+    public function showAction(Cahierdescharges $cahierdescharges)
     {
-        $deleteForm = $this->createDeleteForm($cahierdescharge);
-
+        $deleteForm = $this->createDeleteForm($cahierdescharges);
+        
+        $em = $this->getDoctrine()->getManager();
+              
+        $projets = $em->getRepository('MyFOSUserBundle:Projet')->findAll();
+        $societes = $em->getRepository('MyFOSUserBundle:Societe')->findAll();
+        
         return $this->render('cahierdescharges/show.html.twig', array(
-            'cahierdescharge' => $cahierdescharge,
+            'projets' => $projets,
+            'societes' => $societes,
+            'cahierdescharges' => $cahierdescharges,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -79,20 +86,20 @@ class CahierdeschargesController extends Controller
      * @Route("/{id}/edit", name="cahierdescharges_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Cahierdescharges $cahierdescharge)
+    public function editAction(Request $request, Cahierdescharges $cahierdescharges)
     {
-        $deleteForm = $this->createDeleteForm($cahierdescharge);
-        $editForm = $this->createForm('MyFOSUserBundle\Form\CahierdeschargesType', $cahierdescharge);
+        $deleteForm = $this->createDeleteForm($cahierdescharges);
+        $editForm = $this->createForm('MyFOSUserBundle\Form\CahierdeschargesType', $cahierdescharges);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('cahierdescharges_edit', array('id' => $cahierdescharge->getId()));
+            return $this->redirectToRoute('cahierdescharges_edit', array('id' => $cahierdescharges->getId()));
         }
 
         return $this->render('cahierdescharges/edit.html.twig', array(
-            'cahierdescharge' => $cahierdescharge,
+            'cahierdescharges' => $cahierdescharges,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));

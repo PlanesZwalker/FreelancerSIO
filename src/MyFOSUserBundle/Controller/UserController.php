@@ -3,10 +3,16 @@
 namespace MyFOSUserBundle\Controller;
 
 use MyFOSUserBundle\Entity\User;
+use MyFOSUserBundle\Entity\Freelancer;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\CheckBoxType;
 
+use FOS\UserBundle\Util\LegacyFormHelper;
 /**
  * User controller.
  *
@@ -39,11 +45,32 @@ class UserController extends Controller
      */
     public function newAction(Request $request)
     {
-        $user = new User();
-        $form = $this->createForm('MyFOSUserBundle\Form\UserType', $user);
+         
+       $user = new User();
+        $form = $this->createFormBuilder($user)
+                   
+                    ->add('username')
+                    ->add('name')
+                    ->add('firstname')
+                    ->add('email')
+                    ->add('plainPassword', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\RepeatedType'), array(
+                      'type' => LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'),
+                      'options' => array('translation_domain' => 'MyFOSUserBundle'),
+                      'first_options' => array('label' => 'form.password'),
+                      'second_options' => array('label' => 'form.password_confirmation'),
+                      'invalid_message' => 'fos_user.password.mismatch',
+                  ))     
+                
+                ->getForm();
+        
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+           $user->setEnabled(true);
+           $role = serialize("ROLE_SUPER_ADMIN");
+           $user->setRoles(array ($role=>"ROLE_SUPER_ADMIN"));
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush($user);
@@ -55,6 +82,10 @@ class UserController extends Controller
             'user' => $user,
             'form' => $form->createView(),
         ));
+      
+      
+    
+      
     }
 
     /**
@@ -66,9 +97,16 @@ class UserController extends Controller
     public function showAction(User $user)
     {
         $deleteForm = $this->createDeleteForm($user);
-
+          
+        $em = $this->getDoctrine()->getManager();
+        $id =$user->getId();
+        $criteria=  array ('user' => $id);
+        $freelancer = $em->getRepository('MyFOSUserBundle:Freelancer')->findOneBy($criteria);
+        $societe = $em->getRepository('MyFOSUserBundle:Societe')->findOneBy($criteria);
         return $this->render('user/show.html.twig', array(
             'user' => $user,
+            'freelancer' => $freelancer,
+            'societe' => $societe,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -82,19 +120,71 @@ class UserController extends Controller
     public function editAction(Request $request, User $user)
     {
         $deleteForm = $this->createDeleteForm($user);
-        $editForm = $this->createForm('MyFOSUserBundle\Form\UserType', $user);
+        $em = $this->getDoctrine()->getManager();
+        
+        $id = $user->getId();
+        $criteria=  array ('user' => $id);
+        $freelancer = $em->getRepository('MyFOSUserBundle:Freelancer')->findOneBy($criteria);
+       
+        $freelancers = $em->getRepository('MyFOSUserBundle:Freelancer')->findAll();
+                
+        $role=$user->getRoles();
+        if($role[0]=="ROLE_SUPER_ADMIN"){
+             $editForm = $this->createFormBuilder($user)
+             ->add('roles', ChoiceType::class,[ 
+                                'label' => 'Selectionnez le type de compte',                              
+                                'multiple'  => true,
+                                'choices'   => [
+                                    ' Freelancer' => 'ROLE_FREELANCER',
+                                    ' Admin' => 'ROLE_SUPER_ADMIN',
+                                    ' Société' => 'ROLE_SOCIETE',
+                                ]
+                          ]) 
+                ->add('username')
+                ->add('name')
+                ->add('firstname')
+                ->add('email')
+            ->getForm();                            
+        }else{
+            $editForm = $this->createFormBuilder($user)
+                ->add('roles', ChoiceType::class,[ 
+                                    'label' => 'Selectionnez le type de compte',                              
+                                   // 'expanded' => true,
+                                    'multiple' => true,
+                                    'choices'   => [
+                                        'Freelancer' => 'ROLE_FREELANCER',
+                                        'Société' => 'ROLE_SOCIETE',
+                                    ],
+                                    'preferred_choices' => [
+                                       
+                                        ' Société' => 'ROLE_SOCIETE',
+                                    ]
+                                 
+                              ]) 
+                    ->add('username')
+                    ->add('name')
+                    ->add('firstname')
+                    ->add('email')
+                ->getForm();
+        }
+    
+                
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('user_edit', array('id' => $user->getId()));
+            return $this->redirectToRoute('user_show', array('id' => $user->getId()));
         }
 
         return $this->render('user/edit.html.twig', array(
             'user' => $user,
+            'freelancers' =>$freelancers,
+            'freelancer' =>$freelancer,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'id'=>$id,
         ));
     }
 

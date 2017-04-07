@@ -7,70 +7,139 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h2 class="mysubtitle">Profil du Freelancer: {{ freelancer.user.username }}</h2>
+        <h2 class="mysubtitle">Profil du Freelancer: {{ freelancer.pseudo }}</h2>
         <div class="mycontentformshow">
+            
             <ul>
                 <li class="returnlist">
-                    <a class="btn btn-default" href="{{ path('freelancer_index') }}">Retourner à la liste</a>
+                    <a  href="{{ path('freelancer_index') }}">
+                        <img id="iconRetourListe" src="{{ asset('RetourListe.png')}}">
+                    </a>
                 </li>
             </ul>
+            {% if is_granted('ROLE_ADMIN')  or is_granted('ROLE_USER') %}
+                {% if freelancer.User and app.user.id==freelancer.User.id  %}
+                    <ul>
+                        <li>
+                            <a href="{{ path('competence_index') }}">
+                                <img id="iconPasserTest" src="{{ asset('PasserTest.png')}}">
+                            </a>
+                        </li>
+                    </ul>
+                {% endif %} 
+           {% endif %}
+            {% if is_granted('ROLE_USER') %}
+                {% if freelancer.user.id is defined %}
+                    {% if freelancer.user.id==app.user.id %} 
+                        <a class="btn btn-success " href="{{ path('message_index', { 'id': freelancer.id }) }}">
+                            Voir tous mes messages
+                        </a>
+                    {% else %}    
+                        <a class="btn btn-success " href="{{ path('message_new', { 'id': freelancer.id }) }}">
+                            Envoyer un message à ce freelancer
+                        </a>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+                  
             <table class="tableautitle">
                 <tbody>
-                    <tr>
-                        <th class="mytdtabshow2">Nom</th>
-                        <td class="mytdtabshow2">{{ freelancer.user.username }}</td>
-                    </tr>
-                    <tr>
-                        <th class="mytdtabshow">Prénom</th>
-                        <td class="mytdtabshow">{{ freelancer.user.id }}</td>
-                    </tr>
-                    <tr>
-                        <th class="mytdtabshow2">Description</th>
-                       <td class="mytdtabshow2">{{ freelancer.description }}</td>
-                    </tr>
                     <tr>
                         <th class="mytdtabshow">Pseudo</th>
                         <td class="mytdtabshow">{{ freelancer.pseudo }}</td>
                     </tr>
                     <tr>
-                        <th class="mytdtabshow2">Competences</th>
-                        <td class="mytdtabshow2"></td>
+                        <th class="mytdtabshow2">Photo</th>
+                        <td class="mytdtabshow2">
+                            <img class="myimg" src="
+                                 {% if app.request.server.get('BASE') %}
+                                     {{ app.request.server.get('BASE')}}/user/photo/{{ freelancer.user.id }}
+                                 {% else %}
+                                     {{ app.request.get('HTTP_HOST')}}/web/user/photo/{{ freelancer.user.id }}
+                                 {% endif %}"
+                                 />
+                        </td>
                     </tr>
                     <tr>
-                        <th class="mytdtabshow">Nationnalité</th>
-                        <td class="mytdtabshow">{{ freelancer.nationnalite }}</td>
+                        <th class="mytdtabshow">Nom Utilisateur</th>
+                        <td class="mytdtabshow">{{ freelancer.user.name }}</td>
                     </tr>
                     <tr>
-                        <th class="mytdtabshow2">CV</th>
-                        <td class="mytdtabshow2" ><a href="path('{{ freelancer.cv }}')" ><i class="fa fa-download fa-3x"></i></a></td>
+                        <th class="mytdtabshow2">Prénom</th>
+                        <td class="mytdtabshow2">{{ freelancer.user.firstname }}</td>
                     </tr>
                     <tr>
-                        <th class="mytdtabshow">Photo</th>
-                        <td class="mytdtabshow"><img class="myimg" src="/FreelancerSIO/web/{{ freelancer.photo }}" /></td>
+                        <th class="mytdtabshow">Description</th>
+                       <td class="mytdtabshow">{{ freelancer.description }}</td>
+                    </tr> 
+                
+                    <tr>
+                        <th class="mytdtabshow2">Competences validées</th>
+                        <td class="mytdtabshow2">
+                            {% if competencesFreelancer %}
+                                <img class="mydrapeau" style="display:inline-block; width:150px; height:100px; margin-top:0px;"  
+                                     src="{% if app.request.server.get('BASE') %}
+                                     {{ app.request.server.get('BASE')}}/user/competence/{{ competencesFreelancer.Competence.intitule }}
+                                    {% else %}
+                                        {{ app.request.get('HTTP_HOST')}}/web/user/competence/{{ competencesFreelancer.Competence.intitule }}
+                                    {% endif %}.gif" 
+                                />
+                            {% else %}
+                                    Aucune compétence validée
+                            {% endif %}                             
+                        </td>
                     </tr>
                     <tr>
+                        <th class="mytdtabshow">Nationalité</th>
+                        <td class="mytdtabshow">{{ freelancer.nationalite }}
+                            <img class="mydrapeau" style="display:inline-block; width:100px; height:50px; margin-top:0px;"  
+                                {% if app.request.server.get('BASE') %}
+                                   src="{{ app.request.server.get('BASE')}}/user/drapeau/{{ freelancer.nationalite }}.gif"
+                                {% else %}
+                                   src="{{ app.request.get('HTTP_HOST')}}/web/user/drapeau/{{ freelancer.nationalite }}.gif"
+                                {% endif %} 
+                                />
+                        </td>
+                    </tr>
+                     <tr>
                         <th class="mytdtabshow2">Age</th>
                         <td class="mytdtabshow2">{{ freelancer.age }}</td>
                     </tr>
+
                     <tr>
-                        <th class="mytdtabshow">Résultat des Tests</th>
-                        <td class="mytdtabshow"></td>
+                        <th class="mytdtabshow">CV</th>
+                        <td class="mytdtabshow" >
+                            <a href="
+                               {% if app.request.server.get('BASE') %}
+                                    {{ app.request.server.get('BASE')}}/user/cv/{{ freelancer.user.id }}
+                               {% else %}
+                                    {{ app.request.get('HTTP_HOST')}}/web/user/cv/{{ freelancer.user.id }}
+                                {% endif %}" >
+
+                                <i class="fa fa-download fa-3x"></i>
+
+                            </a>
+                        </td>
+                    </tr>
+                    <tr> 
+                        {% if is_granted('ROLE_USER') %}                       
+                            <a class="btn btn-info" >Voir les Résultat des Tests de compétences pour tous les freelancers</a>                             
+                       {% endif %}
                     </tr>
                 </tbody>
             </table>
             <ul> 
+                {% if is_granted("ROLE_ADMIN") or is_granted('ROLE_USER') %}
+                    {% if freelancer.User and app.user.id==freelancer.User.id  %}
+                        <li class="myeditli">
+                            <a class="btn btn-info" style="color:white;" href="{{ path('freelancer_edit', { 'id': freelancer.id }) }}">Modifier</a>
+                        </li>
+                    {% endif %}
+                {% endif %}
                 {% if is_granted("ROLE_ADMIN") %}
-                <li class="myeditli">
-                    <a class="btn btn-info" style="color:white;" data-ajax="false" href="{{ path('freelancer_edit', { 'id': freelancer.id_freelancer }) }}">Modifier</a>
-                </li>
-               
-                <li class="mydeleteli">   <li class="myeditli">
-                    <a class="btn btn-info" style="color:white;" data-ajax="false" href="{{ path('freelancer_edit', { 'id': freelancer.id_freelancer }) }}">Modifier</a>
-                </li>
                     {{ form_start(delete_form) }}
-                        <input type="submit" value="Delete">
+                        <input type="submit" value="Supprimer le profil de l'utilisateur">
                     {{ form_end(delete_form) }}
-                </li>
                 {% endif %}
             </ul>
         </div>

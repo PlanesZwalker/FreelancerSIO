@@ -9,15 +9,7 @@
     <div class="formulairetop">
         <h2 class="mysubtitle">Liste des Freelancers</h2>
         <div class="mycontentform">
-            {% if is_granted('ROLE_ADMIN') %}
-            <ul>
-                <li>
-                    <a class="addtab" href="{{ path('freelancer_new') }}">
-                        <span class="fa fa-plus" >&nbsp;&nbsp;Créer un nouveau Freelancer</span>
-                    </a>
-                </li>
-            </ul>
-            {% endif %} 
+          
             <table class="tableautitle">
                 <thead>
                     <tr class="tableautitlecontent">
@@ -27,7 +19,7 @@
                         <th class="center">Curriculum Vitae</th>
                         <th class="center">Photo</th>
                         <th class="center">Age</th>
-                        <th class="center">Nationnalité</th>
+                        <th class="center">Nationalité</th>
                         <th class="center">Compétences</th>
                         <th class="center">Actions</th>
                     </tr>
@@ -35,24 +27,58 @@
                 <tbody class="mytbody">
                 {% for freelancer in freelancers %}
                     <tr>
-                        <a class="mydisplaynone" href="{{ path('freelancer_show', { 'id': freelancer.id }) }}">{{ freelancer.id }}</a>
-
-                        <td class="mytdtab2">{{ freelancer.description }}</td>
-                        <td class="mytdtab">{{ freelancer.pseudo }}</td>
-                        <td class="mytdtab2"><a href="path('{{ freelancer.cv }}')" ><i class="fa fa-download fa-3x"></i></a></td>
-                        <td class="mytdtab"><img class="myimg" src="/FreelancerSIO/web/{{ freelancer.photo }}" /></td>
-                        <td class="mytdtab2">{{ freelancer.age }}</td>
-                        <td class="mytdtab">{{ freelancer.nationnalite }}</td>
-                        <td class="mytdtab2"></td>
-                     
+                       
+                        <td class="mytdtab">{{ freelancer.description }}</td>
+                        <td class="mytdtab2">{{ freelancer.pseudo }}</td>
                         <td class="mytdtab">
+                            <a href="
+                                {% if app.request.server.get('BASE') %}
+                                    {{ app.request.server.get('BASE')}}/user/cv/{{ freelancer.user.id }}
+                                {% else %}
+                                    {{ app.request.get('HTTP_HOST')}}/web/user/cv/{{ freelancer.user.id }}
+                                {% endif %}" >
+                                <i class="fa fa-download fa-3x"></i>
+                            </a>
+                        </td>
+                        <td class="mytdtab2">
+                            <img class="myimg" src="{% if app.request.server.get('BASE') %}
+                                 {{ app.request.server.get('BASE')}}/user/photo/{{ freelancer.user.id }}
+                            {% else %}
+                                {{ app.request.get('HTTP_HOST')}}/web/user/photo/{{ freelancer.user.id }}
+                            {% endif %}"
+                                />
+                        </td>
+                        <td class="mytdtab">{{ freelancer.age }}</td>
+                        <td class="mytdtab2">{{ freelancer.nationalite }}
+                            <img class="mydrapeau" style="display:inline-block; width:100px; height:50px; margin-top:0px;" 
+                                 src="
+                                 {% if app.request.server.get('BASE') %}
+                                    {{ app.request.server.get('BASE')}}/user/drapeau/{{ freelancer.nationalite }}.gif
+                                 {% else %}
+                                     {{ app.request.get('HTTP_HOST')}}/web/user/drapeau/{{ freelancer.nationalite }}.gif
+                                {% endif %}" /> 
+                        </td>
+                        <td class="mytdtab">
+                            {% for competence in competences %}
+                                <img class="mydrapeau" style="display:inline-block; width:150px; height:100px; margin-top:0px;"  
+                                    src="
+                                    {% if app.request.server.get('BASE') and competence %}
+                                       {{ app.request.server.get('BASE')}}/user/competence/{{ competence.intitule }}
+                                    {% elseif competence %}
+                                        {{ app.request.get('HTTP_HOST')}}/web/user/competence/{{ competence.intitule }}
+                                    {% endif %}.gif" 
+                                />
+                            {% endfor %}
+                        </td>
+                     
+                        <td class="mytdtab2">
                             <ul>
                                 <li style="display:inline-block;margin-top:8px;">
                                     <a class="btn btn-default" href="{{ path('freelancer_show', { 'id': freelancer.id }) }}">Afficher</a>
                                 </li>
                                 {% if is_granted('ROLE_ADMIN') %}
                                 <li style="display:inline-block;">
-                                    <a class="btn btn-info" style="color:white;" data-ajax="false" href="{{ path('freelancer_edit', { 'id': freelancer.id }) }}">Modifier</a>
+                                    <a class="btn btn-info" style="color:white;"  href="{{ path('freelancer_edit', { 'id': freelancer.id }) }}">Modifier</a>
                                 </li>
                                  {% endif %}
                             </ul>

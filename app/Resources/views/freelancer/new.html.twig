@@ -7,16 +7,29 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h2 class="mysubtitle">Ajouter un Freelancer</h2>
+        <h2 class="mysubtitle">Création du profil Freelancer</h2>
         <div class="mycontentform">
             <ul>
                 <li class="returnlist">
-                    <a data-ajax="false" class="btn btn-default" href="{{ path('freelancer_index') }}">Retourner à la liste</a>
+                    <a  class="btn btn-default" href="{{ path('freelancer_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
             {{ form_start(form) }}
-                {{ form_widget(form) }}
-                <input class="myeditinput" rel="external" type="submit" type="submit" value="Enregistrer le profil" />
+                <div style="margin-left:15%; text-align:center; width:30%;display:inline-block;">
+                   
+                    {{ form_row(form.photo) }}
+                    {{ form_row(form.cv) }}
+                    {{ form_row(form.pseudo) }}
+                    {{ form_row(form.description) }}             
+                </div>
+                <div style="margin-left:5%; text-align:center; width:30%; height:auto; display:inline-block;">
+                   
+                    {{ form_row(form.nationalite) }}  
+                    {{ form_row(form.age) }}
+      
+                </div>   
+                
+                <input class="myeditinput"  type="submit" value="Enregistrer le profil" />
             {{ form_end(form) }}
 
            

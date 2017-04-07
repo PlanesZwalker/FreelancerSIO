@@ -53,11 +53,11 @@
 
             <ul> 
                 <li class="myeditli">
-                    <a class="btn btn-info" style="color:white;"  href="{{ path('message_edit', { 'id': message.idMessage }) }}">Modifier</a>
+                    <a  class="myeditinput" href="{{ path('message_edit', { 'id': message.idMessage }) }}">Modifier</a>
                 </li>
                 <li  class="mydeleteli">
                     {{ form_start(delete_form) }}
-                        <input type="submit" value="Delete">
+                        <input type="submit" value="Supprimer le message">
                     {{ form_end(delete_form) }}
                 </li>
             </ul>

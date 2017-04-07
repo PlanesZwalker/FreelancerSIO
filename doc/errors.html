@@ -1,0 +1,960 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>phpDocumentor Parser Errors and Warnings</title>
+			<link rel="stylesheet" href="media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+						<a href="#Post-parsing">Post-parsing</a><br>
+<a href="#CahierdeschargesController.php">CahierdeschargesController.php</a><br>
+<a href="#cahierdeschargesControllerTest.php">cahierdeschargesControllerTest.php</a><br>
+<a href="#CahierdeschargesType.php">CahierdeschargesType.php</a><br>
+<a href="#ChangePasswordFormType.php">ChangePasswordFormType.php</a><br>
+<a href="#Competence.php">Competence.php</a><br>
+<a href="#CompetenceController.php">CompetenceController.php</a><br>
+<a href="#CompetenceControllerTest.php">CompetenceControllerTest.php</a><br>
+<a href="#CompetenceType.php">CompetenceType.php</a><br>
+<a href="#Contrat.php">Contrat.php</a><br>
+<a href="#ContratController.php">ContratController.php</a><br>
+<a href="#ContratControllerTest.php">ContratControllerTest.php</a><br>
+<a href="#ContratType.php">ContratType.php</a><br>
+<a href="#DefaultController.php">DefaultController.php</a><br>
+<a href="#FactoryInterface.php">FactoryInterface.php</a><br>
+<a href="#FormFactory.php">FormFactory.php</a><br>
+<a href="#Freelancer.php">Freelancer.php</a><br>
+<a href="#FreelancerController.php">FreelancerController.php</a><br>
+<a href="#FreelancerControllerTest.php">FreelancerControllerTest.php</a><br>
+<a href="#FreelancerRepository.php">FreelancerRepository.php</a><br>
+<a href="#FreelancerType.php">FreelancerType.php</a><br>
+<a href="#GroupController.php">GroupController.php</a><br>
+<a href="#GroupFormType.php">GroupFormType.php</a><br>
+<a href="#Message.php">Message.php</a><br>
+<a href="#MessageController.php">MessageController.php</a><br>
+<a href="#MessageControllerTest.php">MessageControllerTest.php</a><br>
+<a href="#Messagefreelancer.php">Messagefreelancer.php</a><br>
+<a href="#MessagefreelancerController.php">MessagefreelancerController.php</a><br>
+<a href="#MessagefreelancerControllerTest.php">MessagefreelancerControllerTest.php</a><br>
+<a href="#Messagesociete.php">Messagesociete.php</a><br>
+<a href="#MessagesocieteController.php">MessagesocieteController.php</a><br>
+<a href="#MessagesocieteControllerTest.php">MessagesocieteControllerTest.php</a><br>
+<a href="#MessageType.php">MessageType.php</a><br>
+<a href="#MyChangePasswordController.php">MyChangePasswordController.php</a><br>
+<a href="#MyFOSUserBundle.php">MyFOSUserBundle.php</a><br>
+<a href="#Offre.php">Offre.php</a><br>
+<a href="#OffreController.php">OffreController.php</a><br>
+<a href="#OffreControllerTest.php">OffreControllerTest.php</a><br>
+<a href="#Offreprojet.php">Offreprojet.php</a><br>
+<a href="#OffreprojetController.php">OffreprojetController.php</a><br>
+<a href="#OffreprojetControllerTest.php">OffreprojetControllerTest.php</a><br>
+<a href="#OffreType.php">OffreType.php</a><br>
+<a href="#Paiement.php">Paiement.php</a><br>
+<a href="#PaiementController.php">PaiementController.php</a><br>
+<a href="#PaiementControllerTest.php">PaiementControllerTest.php</a><br>
+<a href="#PaiementType.php">PaiementType.php</a><br>
+<a href="#ProfileController.php">ProfileController.php</a><br>
+<a href="#ProfileFormType.php">ProfileFormType.php</a><br>
+<a href="#Projet.php">Projet.php</a><br>
+<a href="#ProjetController.php">ProjetController.php</a><br>
+<a href="#ProjetControllerTest.php">ProjetControllerTest.php</a><br>
+<a href="#ProjetType.php">ProjetType.php</a><br>
+<a href="#RegistrationController.php">RegistrationController.php</a><br>
+<a href="#RegistrationFormType.php">RegistrationFormType.php</a><br>
+<a href="#RegistrationType.php">RegistrationType.php</a><br>
+<a href="#ResettingController.php">ResettingController.php</a><br>
+<a href="#ResettingFormType.php">ResettingFormType.php</a><br>
+<a href="#SecurityController.php">SecurityController.php</a><br>
+<a href="#Societe.php">Societe.php</a><br>
+<a href="#SocieteController.php">SocieteController.php</a><br>
+<a href="#SocieteControllerTest.php">SocieteControllerTest.php</a><br>
+<a href="#SocieteRepository.php">SocieteRepository.php</a><br>
+<a href="#SocieteType.php">SocieteType.php</a><br>
+<a href="#Test.php">Test.php</a><br>
+<a href="#Testcompetence.php">Testcompetence.php</a><br>
+<a href="#TestcompetenceController.php">TestcompetenceController.php</a><br>
+<a href="#TestcompetenceControllerTest.php">TestcompetenceControllerTest.php</a><br>
+<a href="#TestController.php">TestController.php</a><br>
+<a href="#TestControllerTest.php">TestControllerTest.php</a><br>
+<a href="#Testfreelancer.php">Testfreelancer.php</a><br>
+<a href="#TestfreelancerController.php">TestfreelancerController.php</a><br>
+<a href="#TestfreelancerControllerTest.php">TestfreelancerControllerTest.php</a><br>
+<a href="#TestfreelancerType.php">TestfreelancerType.php</a><br>
+<a href="#TestType.php">TestType.php</a><br>
+<a href="#User.php">User.php</a><br>
+<a href="#UserController.php">UserController.php</a><br>
+<a href="#UserControllerTest.php">UserControllerTest.php</a><br>
+<a href="#UsernameFormType.php">UsernameFormType.php</a><br>
+<a href="#UserRepository.php">UserRepository.php</a><br>
+<a href="#UserToUsernameTransformer.php">UserToUsernameTransformer.php</a><br>
+<a href="#UserType.php">UserType.php</a><br>
+<a name="Post-parsing"></a>
+<h1>Post-parsing</h1>
+<h2>Warnings:</h2><br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - Class ProjetControllerTest parent WebTestCase not found<br>
+<b>Warning</b> - Class SocieteControllerTest parent WebTestCase not found<br>
+<b>Warning</b> - Class PaiementControllerTest parent WebTestCase not found<br>
+<b>Warning</b> - Class OffreprojetControllerTest parent WebTestCase not found<br>
+<b>Warning</b> - Class OffreControllerTest parent WebTestCase not found<br>
+<b>Warning</b> - Class TestcompetenceControllerTest parent WebTestCase not found<br>
+<b>Warning</b> - Class TestControllerTest parent WebTestCase not found<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - Class UserControllerTest parent WebTestCase not found<br>
+<b>Warning</b> - Class TestfreelancerControllerTest parent WebTestCase not found<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - Class MessagesocieteControllerTest parent WebTestCase not found<br>
+<b>Warning</b> - Class MessagefreelancerControllerTest parent WebTestCase not found<br>
+<b>Warning</b> - Class ResettingController parent Controller not found<br>
+<b>Warning</b> - Class SecurityController parent Controller not found<br>
+<b>Warning</b> - Class RegistrationController parent Controller not found<br>
+<b>Warning</b> - Class ProjetController parent Controller not found<br>
+<b>Warning</b> - Class ProfileController parent Controller not found<br>
+<b>Warning</b> - Class SocieteController parent Controller not found<br>
+<b>Warning</b> - Class TestcompetenceController parent Controller not found<br>
+<b>Warning</b> - Class User parent BaseUser not found<br>
+<b>Warning</b> - Class CahierdeschargesType parent AbstractType not found<br>
+<b>Warning</b> - Class UserController parent Controller not found<br>
+<b>Warning</b> - Class TestfreelancerController parent Controller not found<br>
+<b>Warning</b> - Class TestController parent Controller not found<br>
+<b>Warning</b> - Class PaiementController parent Controller not found<br>
+<b>Warning</b> - Class OffreprojetController parent Controller not found<br>
+<b>Warning</b> - Class DefaultController parent Controller not found<br>
+<b>Warning</b> - Class FreelancerController parent Controller not found<br>
+<b>Warning</b> - Class ContratController parent Controller not found<br>
+<b>Warning</b> - Class CompetenceController parent Controller not found<br>
+<b>Warning</b> - Class CahierdeschargesController parent Controller not found<br>
+<b>Warning</b> - Class GroupController parent Controller not found<br>
+<b>Warning</b> - Class MessageController parent Controller not found<br>
+<b>Warning</b> - Class OffreController parent Controller not found<br>
+<b>Warning</b> - Class MyChangePasswordController parent Controller not found<br>
+<b>Warning</b> - Class MessagesocieteController parent Controller not found<br>
+<b>Warning</b> - Class MessagefreelancerController parent Controller not found<br>
+<b>Warning</b> - Class CompetenceType parent AbstractType not found<br>
+<b>Warning</b> - Class ContratType parent AbstractType not found<br>
+<b>Warning</b> - Class FreelancerRepository parent \ not found<br>
+<b>Warning</b> - Class SocieteRepository parent \ not found<br>
+<b>Warning</b> - Class MyFOSUserBundle parent Bundle not found<br>
+<b>Warning</b> - Class UserType parent AbstractType not found<br>
+<b>Warning</b> - Class UsernameFormType parent AbstractType not found<br>
+<b>Warning</b> - Class UserRepository parent \ not found<br>
+<b>Warning</b> - Class CahierdeschargesControllerTest parent WebTestCase not found<br>
+<b>Warning</b> - Class MessageControllerTest parent WebTestCase not found<br>
+<b>Warning</b> - Class FreelancerControllerTest parent WebTestCase not found<br>
+<b>Warning</b> - Class ContratControllerTest parent WebTestCase not found<br>
+<b>Warning</b> - Class CompetenceControllerTest parent WebTestCase not found<br>
+<b>Warning</b> - Class ResettingFormType parent AbstractType not found<br>
+<b>Warning</b> - Class RegistrationFormType parent AbstractType not found<br>
+<b>Warning</b> - Class PaiementType parent AbstractType not found<br>
+<b>Warning</b> - Class ProjetType parent AbstractType not found<br>
+<b>Warning</b> - Class OffreType parent AbstractType not found<br>
+<b>Warning</b> - Class MessageType parent AbstractType not found<br>
+<b>Warning</b> - Class FreelancerType parent AbstractType not found<br>
+<b>Warning</b> - Class RegistrationType parent AbstractType not found<br>
+<b>Warning</b> - Class SocieteType parent AbstractType not found<br>
+<b>Warning</b> - Class ProfileFormType parent AbstractType not found<br>
+<b>Warning</b> - Class GroupFormType parent AbstractType not found<br>
+<b>Warning</b> - Class ChangePasswordFormType parent AbstractType not found<br>
+<b>Warning</b> - Class TestType parent AbstractType not found<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - Class TestfreelancerType parent AbstractType not found<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<b>Warning</b> - {@inheritdoc} can only be used in the docblock of a child class<br>
+<a name="Cahierdescharges.php"></a>
+<h1>Cahierdescharges.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Entity" used<br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Table(name="cahierdescharges")" used<br>
+<b>Warning on line 13</b> - no @package tag was used in a DocBlock for class Cahierdescharges<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\GeneratedValue(strategy="IDENTITY")" used<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\Id" used<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\Column(name="id"," used<br>
+<b>Warning on line 28</b> - Unknown tag "@ORM\Column(name="intitule"," used<br>
+<b>Warning on line 35</b> - Unknown tag "@ORM\Column(name="tarif"," used<br>
+<b>Warning on line 42</b> - Unknown tag "@ORM\Column(name="delai"," used<br>
+<b>Warning on line 127</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Entity\Cahierdescharges.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="CahierdeschargesController.php"></a>
+<h1>CahierdeschargesController.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 14</b> - Unknown tag "@Route("cahierdescharges")" used<br>
+<b>Warning on line 15</b> - no @package tag was used in a DocBlock for class CahierdeschargesController<br>
+<b>Warning on line 22</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 22</b> - Unknown tag "@Route("/"," used<br>
+<b>Warning on line 39</b> - Unknown tag "@Method({"GET"," used<br>
+<b>Warning on line 39</b> - Unknown tag "@Route("/new"," used<br>
+<b>Warning on line 65</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 65</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 88</b> - Unknown tag "@Route("/{id}/edit"," used<br>
+<b>Warning on line 88</b> - Unknown tag "@Method({"GET"," used<br>
+<b>Warning on line 113</b> - Unknown tag "@Method("DELETE")" used<br>
+<b>Warning on line 113</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 142</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Controller\CahierdeschargesController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="cahierdeschargesControllerTest.php"></a>
+<h1>cahierdeschargesControllerTest.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 7</b> - no @package tag was used in a DocBlock for class CahierdeschargesControllerTest<br>
+<b>Warning on line 54</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Tests\Controller\cahierdeschargesControllerTest.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="CahierdeschargesType.php"></a>
+<h1>CahierdeschargesType.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 9</b> - no @package tag was used in a DocBlock for class CahierdeschargesType<br>
+<b>Warning on line 40</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Form\CahierdeschargesType.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="ChangePasswordFormType.php"></a>
+<h1>ChangePasswordFormType.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 20</b> - no @package tag was used in a DocBlock for class ChangePasswordFormType<br>
+<b>Warning on line 92</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Form\Type\ChangePasswordFormType.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="Competence.php"></a>
+<h1>Competence.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Entity" used<br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Table(name="competence")" used<br>
+<b>Warning on line 13</b> - no @package tag was used in a DocBlock for class Competence<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\Id" used<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\GeneratedValue(strategy="IDENTITY")" used<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\Column(name="id_competence"," used<br>
+<b>Warning on line 28</b> - Unknown tag "@ORM\Column(name="categorie"," used<br>
+<b>Warning on line 35</b> - Unknown tag "@ORM\Column(name="description"," used<br>
+<b>Warning on line 42</b> - Unknown tag "@ORM\Column(name="intitule"," used<br>
+<b>Warning on line 127</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Entity\Competence.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="CompetenceController.php"></a>
+<h1>CompetenceController.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 14</b> - Unknown tag "@Route("competence")" used<br>
+<b>Warning on line 15</b> - no @package tag was used in a DocBlock for class CompetenceController<br>
+<b>Warning on line 22</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 22</b> - Unknown tag "@Route("/"," used<br>
+<b>Warning on line 39</b> - Unknown tag "@Method({"GET"," used<br>
+<b>Warning on line 39</b> - Unknown tag "@Route("/new"," used<br>
+<b>Warning on line 72</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 72</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 88</b> - Unknown tag "@Method({"GET"," used<br>
+<b>Warning on line 88</b> - Unknown tag "@Route("/{id}/edit"," used<br>
+<b>Warning on line 113</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 113</b> - Unknown tag "@Method("DELETE")" used<br>
+<b>Warning on line 142</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Controller\CompetenceController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="CompetenceControllerTest.php"></a>
+<h1>CompetenceControllerTest.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 7</b> - no @package tag was used in a DocBlock for class CompetenceControllerTest<br>
+<b>Warning on line 54</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Tests\Controller\CompetenceControllerTest.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="CompetenceType.php"></a>
+<h1>CompetenceType.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 9</b> - no @package tag was used in a DocBlock for class CompetenceType<br>
+<b>Warning on line 40</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Form\CompetenceType.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="Contrat.php"></a>
+<h1>Contrat.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Entity" used<br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Table(name="contrat"," used<br>
+<b>Warning on line 13</b> - no @package tag was used in a DocBlock for class Contrat<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\Id" used<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\Column(name="id_contrat"," used<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\GeneratedValue(strategy="IDENTITY")" used<br>
+<b>Warning on line 28</b> - Unknown tag "@ORM\Column(name="tarif"," used<br>
+<b>Warning on line 35</b> - Unknown tag "@ORM\Column(name="delai"," used<br>
+<b>Warning on line 42</b> - Unknown tag "@ORM\Column(name="date_sign"," used<br>
+<b>Warning on line 52</b> - Unknown tag "@ORM\JoinColumn(name="paiement"," used<br>
+<b>Warning on line 52</b> - Unknown tag "@ORM\ManyToOne(targetEntity="Paiement")" used<br>
+<b>Warning on line 52</b> - Unknown tag "@ORM\JoinColumns({" used<br>
+<b>Warning on line 62</b> - Unknown tag "@ORM\ManyToOne(targetEntity="Projet")" used<br>
+<b>Warning on line 62</b> - Unknown tag "@ORM\JoinColumn(name="projet"," used<br>
+<b>Warning on line 62</b> - Unknown tag "@ORM\JoinColumns({" used<br>
+<b>Warning on line 195</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Entity\Contrat.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="ContratController.php"></a>
+<h1>ContratController.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 14</b> - Unknown tag "@Route("contrat")" used<br>
+<b>Warning on line 15</b> - no @package tag was used in a DocBlock for class ContratController<br>
+<b>Warning on line 22</b> - Unknown tag "@Route("/"," used<br>
+<b>Warning on line 22</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 39</b> - Unknown tag "@Method({"GET"," used<br>
+<b>Warning on line 39</b> - Unknown tag "@Route("/new"," used<br>
+<b>Warning on line 65</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 65</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 81</b> - Unknown tag "@Method({"GET"," used<br>
+<b>Warning on line 81</b> - Unknown tag "@Route("/{id}/edit"," used<br>
+<b>Warning on line 106</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 106</b> - Unknown tag "@Method("DELETE")" used<br>
+<b>Warning on line 135</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Controller\ContratController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="ContratControllerTest.php"></a>
+<h1>ContratControllerTest.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 7</b> - no @package tag was used in a DocBlock for class ContratControllerTest<br>
+<b>Warning on line 54</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Tests\Controller\ContratControllerTest.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="ContratType.php"></a>
+<h1>ContratType.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 9</b> - no @package tag was used in a DocBlock for class ContratType<br>
+<b>Warning on line 37</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Form\ContratType.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="DefaultController.php"></a>
+<h1>DefaultController.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 42</b> - no @package tag was used in a DocBlock for class DefaultController<br>
+<b>Warning on line 48</b> - Unknown tag "@Route("/"," used<br>
+<b>Warning on line 121</b> - Unknown tag "@Route("/logout"," used<br>
+<b>Warning on line 126</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Controller\DefaultController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="FactoryInterface.php"></a>
+<h1>FactoryInterface.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 16</b> - no @package tag was used in a DocBlock for interface FactoryInterface<br>
+<b>Warning on line 21</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Form\Factory\FactoryInterface.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="FormFactory.php"></a>
+<h1>FormFactory.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 16</b> - no @package tag was used in a DocBlock for class FormFactory<br>
+<b>Warning on line 62</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Form\Factory\FormFactory.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="Freelancer.php"></a>
+<h1>Freelancer.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 13</b> - Unknown tag "@ORM\Table(name="freelancer"," used<br>
+<b>Warning on line 13</b> - Unknown tag "@ORM\Entity" used<br>
+<b>Warning on line 14</b> - no @package tag was used in a DocBlock for class Freelancer<br>
+<b>Warning on line 22</b> - Unknown tag "@ORM\Column(name="id"," used<br>
+<b>Warning on line 22</b> - Unknown tag "@ORM\GeneratedValue(strategy="IDENTITY")" used<br>
+<b>Warning on line 22</b> - Unknown tag "@ORM\Id" used<br>
+<b>Warning on line 29</b> - Unknown tag "@ORM\Column(name="description"," used<br>
+<b>Warning on line 36</b> - Unknown tag "@ORM\Column(name="pseudo"," used<br>
+<b>Warning on line 43</b> - Unknown tag "@ORM\Column(name="nationalite"," used<br>
+<b>Warning on line 50</b> - Unknown tag "@ORM\Column(name="age"," used<br>
+<b>Warning on line 57</b> - Unknown tag "@ORM\Column(name="cv"," used<br>
+<b>Warning on line 64</b> - Unknown tag "@ORM\Column(name="photo"," used<br>
+<b>Warning on line 74</b> - Unknown tag "@ORM\ManyToOne(targetEntity="User")" used<br>
+<b>Warning on line 74</b> - Unknown tag "@ORM\JoinColumn(name="user"," used<br>
+<b>Warning on line 74</b> - Unknown tag "@ORM\JoinColumns({" used<br>
+<b>Warning on line 337</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Entity\Freelancer.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="FreelancerController.php"></a>
+<h1>FreelancerController.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 17</b> - Unknown tag "@Route("freelancer")" used<br>
+<b>Warning on line 18</b> - no @package tag was used in a DocBlock for class FreelancerController<br>
+<b>Warning on line 62</b> - Unknown tag "@Route("/"," used<br>
+<b>Warning on line 62</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 92</b> - Unknown tag "@Method({"GET"," used<br>
+<b>Warning on line 92</b> - Unknown tag "@Route("/new"," used<br>
+<b>Warning on line 151</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 151</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 194</b> - Unknown tag "@Route("/{id}/edit"," used<br>
+<b>Warning on line 194</b> - Unknown tag "@Method({"GET"," used<br>
+<b>Warning on line 270</b> - Unknown tag "@Method("DELETE")" used<br>
+<b>Warning on line 270</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 299</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Controller\FreelancerController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="FreelancerControllerTest.php"></a>
+<h1>FreelancerControllerTest.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 7</b> - no @package tag was used in a DocBlock for class FreelancerControllerTest<br>
+<b>Warning on line 54</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Tests\Controller\FreelancerControllerTest.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="FreelancerRepository.php"></a>
+<h1>FreelancerRepository.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 11</b> - no @package tag was used in a DocBlock for class FreelancerRepository<br>
+<b>Warning on line 12</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Repository\FreelancerRepository.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="FreelancerType.php"></a>
+<h1>FreelancerType.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 11</b> - no @package tag was used in a DocBlock for class FreelancerType<br>
+<b>Warning on line 53</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Form\FreelancerType.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="GroupController.php"></a>
+<h1>GroupController.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 34</b> - no @package tag was used in a DocBlock for class GroupController<br>
+<b>Warning on line 207</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Controller\GroupController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="GroupFormType.php"></a>
+<h1>GroupFormType.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 18</b> - no @package tag was used in a DocBlock for class GroupFormType<br>
+<b>Warning on line 69</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Form\Type\GroupFormType.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="Message.php"></a>
+<h1>Message.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Table(name="message"," used<br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Entity" used<br>
+<b>Warning on line 13</b> - no @package tag was used in a DocBlock for class Message<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\Column(name="id_message"," used<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\GeneratedValue(strategy="IDENTITY")" used<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\Id" used<br>
+<b>Warning on line 28</b> - Unknown tag "@ORM\Column(name="type"," used<br>
+<b>Warning on line 35</b> - Unknown tag "@ORM\Column(name="sujet"," used<br>
+<b>Warning on line 42</b> - Unknown tag "@ORM\Column(name="contenu"," used<br>
+<b>Warning on line 49</b> - Unknown tag "@ORM\Column(name="date"," used<br>
+<b>Warning on line 59</b> - Unknown tag "@ORM\ManyToOne(targetEntity="User")" used<br>
+<b>Warning on line 59</b> - Unknown tag "@ORM\JoinColumns({" used<br>
+<b>Warning on line 59</b> - Unknown tag "@ORM\JoinColumn(name="id_user"," used<br>
+<b>Warning on line 192</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Entity\Message.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="MessageController.php"></a>
+<h1>MessageController.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 14</b> - Unknown tag "@Route("message")" used<br>
+<b>Warning on line 15</b> - no @package tag was used in a DocBlock for class MessageController<br>
+<b>Warning on line 22</b> - Unknown tag "@Route("/"," used<br>
+<b>Warning on line 22</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 39</b> - Unknown tag "@Method({"GET"," used<br>
+<b>Warning on line 39</b> - Unknown tag "@Route("/new"," used<br>
+<b>Warning on line 74</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 74</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 90</b> - Unknown tag "@Method({"GET"," used<br>
+<b>Warning on line 90</b> - Unknown tag "@Route("/{id}/edit"," used<br>
+<b>Warning on line 115</b> - Unknown tag "@Method("DELETE")" used<br>
+<b>Warning on line 115</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 144</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Controller\MessageController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="MessageControllerTest.php"></a>
+<h1>MessageControllerTest.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 7</b> - no @package tag was used in a DocBlock for class MessageControllerTest<br>
+<b>Warning on line 54</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Tests\Controller\MessageControllerTest.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="Messagefreelancer.php"></a>
+<h1>Messagefreelancer.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Entity" used<br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Table(name="messagefreelancer"," used<br>
+<b>Warning on line 13</b> - no @package tag was used in a DocBlock for class Messagefreelancer<br>
+<b>Warning on line 22</b> - Unknown tag "@ORM\JoinColumns({" used<br>
+<b>Warning on line 22</b> - Unknown tag "@ORM\JoinColumn(name="freelancer"," used<br>
+<b>Warning on line 22</b> - Unknown tag "@ORM\ManyToOne(targetEntity="Freelancer")" used<br>
+<b>Warning on line 34</b> - Unknown tag "@ORM\JoinColumns({" used<br>
+<b>Warning on line 34</b> - Unknown tag "@ORM\OneToOne(targetEntity="Message")" used<br>
+<b>Warning on line 34</b> - Unknown tag "@ORM\Id" used<br>
+<b>Warning on line 34</b> - Unknown tag "@ORM\JoinColumn(name="message"," used<br>
+<b>Warning on line 34</b> - Unknown tag "@ORM\GeneratedValue(strategy="NONE")" used<br>
+<b>Warning on line 85</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Entity\Messagefreelancer.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="MessagefreelancerController.php"></a>
+<h1>MessagefreelancerController.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 14</b> - Unknown tag "@Route("messagefreelancer")" used<br>
+<b>Warning on line 15</b> - no @package tag was used in a DocBlock for class MessagefreelancerController<br>
+<b>Warning on line 22</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 22</b> - Unknown tag "@Route("/"," used<br>
+<b>Warning on line 39</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 39</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 46</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Controller\MessagefreelancerController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="MessagefreelancerControllerTest.php"></a>
+<h1>MessagefreelancerControllerTest.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 7</b> - no @package tag was used in a DocBlock for class MessagefreelancerControllerTest<br>
+<b>Warning on line 24</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Tests\Controller\MessagefreelancerControllerTest.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="Messagesociete.php"></a>
+<h1>Messagesociete.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Table(name="messagesociete"," used<br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Entity" used<br>
+<b>Warning on line 13</b> - no @package tag was used in a DocBlock for class Messagesociete<br>
+<b>Warning on line 24</b> - Unknown tag "@ORM\Id" used<br>
+<b>Warning on line 24</b> - Unknown tag "@ORM\GeneratedValue(strategy="NONE")" used<br>
+<b>Warning on line 24</b> - Unknown tag "@ORM\OneToOne(targetEntity="Message")" used<br>
+<b>Warning on line 24</b> - Unknown tag "@ORM\JoinColumns({" used<br>
+<b>Warning on line 24</b> - Unknown tag "@ORM\JoinColumn(name="message"," used<br>
+<b>Warning on line 34</b> - Unknown tag "@ORM\ManyToOne(targetEntity="Societe")" used<br>
+<b>Warning on line 34</b> - Unknown tag "@ORM\JoinColumns({" used<br>
+<b>Warning on line 34</b> - Unknown tag "@ORM\JoinColumn(name="societe"," used<br>
+<b>Warning on line 85</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Entity\Messagesociete.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="MessagesocieteController.php"></a>
+<h1>MessagesocieteController.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 14</b> - Unknown tag "@Route("messagesociete")" used<br>
+<b>Warning on line 15</b> - no @package tag was used in a DocBlock for class MessagesocieteController<br>
+<b>Warning on line 22</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 22</b> - Unknown tag "@Route("/"," used<br>
+<b>Warning on line 39</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 39</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 46</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Controller\MessagesocieteController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="MessagesocieteControllerTest.php"></a>
+<h1>MessagesocieteControllerTest.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 7</b> - no @package tag was used in a DocBlock for class MessagesocieteControllerTest<br>
+<b>Warning on line 24</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Tests\Controller\MessagesocieteControllerTest.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="MessageType.php"></a>
+<h1>MessageType.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 9</b> - no @package tag was used in a DocBlock for class MessageType<br>
+<b>Warning on line 37</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Form\MessageType.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="MyChangePasswordController.php"></a>
+<h1>MyChangePasswordController.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 34</b> - no @package tag was used in a DocBlock for class MyChangePasswordController<br>
+<b>Warning on line 90</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Controller\MyChangePasswordController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="MyFOSUserBundle.php"></a>
+<h1>MyFOSUserBundle.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 7</b> - no @package tag was used in a DocBlock for class MyFOSUserBundle<br>
+<b>Warning on line 12</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\MyFOSUserBundle.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="Offre.php"></a>
+<h1>Offre.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Entity" used<br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Table(name="offre"," used<br>
+<b>Warning on line 13</b> - no @package tag was used in a DocBlock for class Offre<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\Id" used<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\Column(name="id_offre"," used<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\GeneratedValue(strategy="IDENTITY")" used<br>
+<b>Warning on line 28</b> - Unknown tag "@ORM\Column(name="tarif"," used<br>
+<b>Warning on line 35</b> - Unknown tag "@ORM\Column(name="delai"," used<br>
+<b>Warning on line 42</b> - Unknown tag "@ORM\Column(name="proposition"," used<br>
+<b>Warning on line 49</b> - Unknown tag "@ORM\Column(name="particularite"," used<br>
+<b>Warning on line 59</b> - Unknown tag "@ORM\JoinColumns({" used<br>
+<b>Warning on line 59</b> - Unknown tag "@ORM\JoinColumn(name="freelancer"," used<br>
+<b>Warning on line 59</b> - Unknown tag "@ORM\ManyToOne(targetEntity="Freelancer")" used<br>
+<b>Warning on line 69</b> - Unknown tag "@ORM\ManyToOne(targetEntity="Projet")" used<br>
+<b>Warning on line 69</b> - Unknown tag "@ORM\JoinColumns({" used<br>
+<b>Warning on line 69</b> - Unknown tag "@ORM\JoinColumn(name="projet"," used<br>
+<b>Warning on line 226</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Entity\Offre.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="OffreController.php"></a>
+<h1>OffreController.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 16</b> - Unknown tag "@Route("offre")" used<br>
+<b>Warning on line 17</b> - no @package tag was used in a DocBlock for class OffreController<br>
+<b>Warning on line 24</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 24</b> - Unknown tag "@Route("/"," used<br>
+<b>Warning on line 44</b> - Unknown tag "@Route("/new"," used<br>
+<b>Warning on line 44</b> - Unknown tag "@Method({"GET"," used<br>
+<b>Warning on line 95</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 95</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 111</b> - Unknown tag "@Method({"GET"," used<br>
+<b>Warning on line 111</b> - Unknown tag "@Route("/{id}/edit"," used<br>
+<b>Warning on line 167</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 167</b> - Unknown tag "@Method("DELETE")" used<br>
+<b>Warning on line 196</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Controller\OffreController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="OffreControllerTest.php"></a>
+<h1>OffreControllerTest.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 7</b> - no @package tag was used in a DocBlock for class OffreControllerTest<br>
+<b>Warning on line 54</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Tests\Controller\OffreControllerTest.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="Offreprojet.php"></a>
+<h1>Offreprojet.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Entity" used<br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Table(name="offreprojet"," used<br>
+<b>Warning on line 13</b> - no @package tag was used in a DocBlock for class Offreprojet<br>
+<b>Warning on line 24</b> - Unknown tag "@ORM\GeneratedValue(strategy="NONE")" used<br>
+<b>Warning on line 24</b> - Unknown tag "@ORM\JoinColumns({" used<br>
+<b>Warning on line 24</b> - Unknown tag "@ORM\JoinColumn(name="id_offre"," used<br>
+<b>Warning on line 24</b> - Unknown tag "@ORM\Id" used<br>
+<b>Warning on line 24</b> - Unknown tag "@ORM\OneToOne(targetEntity="Offre")" used<br>
+<b>Warning on line 34</b> - Unknown tag "@ORM\JoinColumns({" used<br>
+<b>Warning on line 34</b> - Unknown tag "@ORM\JoinColumn(name="id_projet"," used<br>
+<b>Warning on line 34</b> - Unknown tag "@ORM\ManyToOne(targetEntity="Projet")" used<br>
+<b>Warning on line 85</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Entity\Offreprojet.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="OffreprojetController.php"></a>
+<h1>OffreprojetController.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 14</b> - Unknown tag "@Route("offreprojet")" used<br>
+<b>Warning on line 15</b> - no @package tag was used in a DocBlock for class OffreprojetController<br>
+<b>Warning on line 22</b> - Unknown tag "@Route("/"," used<br>
+<b>Warning on line 22</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 39</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 39</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 46</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Controller\OffreprojetController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="OffreprojetControllerTest.php"></a>
+<h1>OffreprojetControllerTest.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 7</b> - no @package tag was used in a DocBlock for class OffreprojetControllerTest<br>
+<b>Warning on line 24</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Tests\Controller\OffreprojetControllerTest.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="OffreType.php"></a>
+<h1>OffreType.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 9</b> - no @package tag was used in a DocBlock for class OffreType<br>
+<b>Warning on line 41</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Form\OffreType.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="Paiement.php"></a>
+<h1>Paiement.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Table(name="paiement")" used<br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Entity" used<br>
+<b>Warning on line 13</b> - no @package tag was used in a DocBlock for class Paiement<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\GeneratedValue(strategy="IDENTITY")" used<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\Column(name="id_paiement"," used<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\Id" used<br>
+<b>Warning on line 28</b> - Unknown tag "@ORM\Column(name="etat"," used<br>
+<b>Warning on line 35</b> - Unknown tag "@ORM\Column(name="dp_societe"," used<br>
+<b>Warning on line 42</b> - Unknown tag "@ORM\Column(name="dp_freelancer"," used<br>
+<b>Warning on line 127</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Entity\Paiement.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="PaiementController.php"></a>
+<h1>PaiementController.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 15</b> - Unknown tag "@Route("paiement")" used<br>
+<b>Warning on line 16</b> - no @package tag was used in a DocBlock for class PaiementController<br>
+<b>Warning on line 23</b> - Unknown tag "@Route("/"," used<br>
+<b>Warning on line 23</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 40</b> - Unknown tag "@Route("/new"," used<br>
+<b>Warning on line 40</b> - Unknown tag "@Method({"GET"," used<br>
+<b>Warning on line 66</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 66</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 82</b> - Unknown tag "@Route("/{id}/edit"," used<br>
+<b>Warning on line 82</b> - Unknown tag "@Method({"GET"," used<br>
+<b>Warning on line 107</b> - Unknown tag "@Method("DELETE")" used<br>
+<b>Warning on line 107</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 136</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Controller\PaiementController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="PaiementControllerTest.php"></a>
+<h1>PaiementControllerTest.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 7</b> - no @package tag was used in a DocBlock for class PaiementControllerTest<br>
+<b>Warning on line 54</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Tests\Controller\PaiementControllerTest.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="PaiementType.php"></a>
+<h1>PaiementType.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 9</b> - no @package tag was used in a DocBlock for class PaiementType<br>
+<b>Warning on line 40</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Form\PaiementType.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="ProfileController.php"></a>
+<h1>ProfileController.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 33</b> - no @package tag was used in a DocBlock for class ProfileController<br>
+<b>Warning on line 104</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Controller\ProfileController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="ProfileFormType.php"></a>
+<h1>ProfileFormType.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 20</b> - no @package tag was used in a DocBlock for class ProfileFormType<br>
+<b>Warning on line 100</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Form\Type\ProfileFormType.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="Projet.php"></a>
+<h1>Projet.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Table(name="projet"," used<br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Entity" used<br>
+<b>Warning on line 13</b> - no @package tag was used in a DocBlock for class Projet<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\Id" used<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\Column(name="id"," used<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\GeneratedValue(strategy="IDENTITY")" used<br>
+<b>Warning on line 28</b> - Unknown tag "@ORM\Column(name="intitule"," used<br>
+<b>Warning on line 35</b> - Unknown tag "@ORM\Column(name="description"," used<br>
+<b>Warning on line 42</b> - Unknown tag "@ORM\Column(name="prix"," used<br>
+<b>Warning on line 49</b> - Unknown tag "@ORM\Column(name="etat"," used<br>
+<b>Warning on line 59</b> - Unknown tag "@ORM\JoinColumns({" used<br>
+<b>Warning on line 59</b> - Unknown tag "@ORM\ManyToOne(targetEntity="Cahierdescharges")" used<br>
+<b>Warning on line 59</b> - Unknown tag "@ORM\JoinColumn(name="cahierdescharges"," used<br>
+<b>Warning on line 69</b> - Unknown tag "@ORM\ManyToOne(targetEntity="Societe")" used<br>
+<b>Warning on line 69</b> - Unknown tag "@ORM\JoinColumn(name="societe"," used<br>
+<b>Warning on line 69</b> - Unknown tag "@ORM\JoinColumns({" used<br>
+<b>Warning on line 226</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Entity\Projet.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="ProjetController.php"></a>
+<h1>ProjetController.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 14</b> - Unknown tag "@Route("projet")" used<br>
+<b>Warning on line 15</b> - no @package tag was used in a DocBlock for class ProjetController<br>
+<b>Warning on line 22</b> - Unknown tag "@Route("/"," used<br>
+<b>Warning on line 22</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 39</b> - Unknown tag "@Route("/new"," used<br>
+<b>Warning on line 39</b> - Unknown tag "@Method({"GET"," used<br>
+<b>Warning on line 75</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 75</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 91</b> - Unknown tag "@Method({"GET"," used<br>
+<b>Warning on line 91</b> - Unknown tag "@Route("/{id}/edit"," used<br>
+<b>Warning on line 124</b> - Unknown tag "@Method("DELETE")" used<br>
+<b>Warning on line 124</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 157</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Controller\ProjetController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="ProjetControllerTest.php"></a>
+<h1>ProjetControllerTest.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 7</b> - no @package tag was used in a DocBlock for class ProjetControllerTest<br>
+<b>Warning on line 54</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Tests\Controller\ProjetControllerTest.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="ProjetType.php"></a>
+<h1>ProjetType.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 10</b> - no @package tag was used in a DocBlock for class ProjetType<br>
+<b>Warning on line 45</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Form\ProjetType.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="RegistrationController.php"></a>
+<h1>RegistrationController.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 38</b> - no @package tag was used in a DocBlock for class RegistrationController<br>
+<b>Warning on line 202</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Controller\RegistrationController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="RegistrationFormType.php"></a>
+<h1>RegistrationFormType.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 20</b> - no @package tag was used in a DocBlock for class RegistrationFormType<br>
+<b>Warning on line 66</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Form\Type\RegistrationFormType.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="RegistrationType.php"></a>
+<h1>RegistrationType.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 20</b> - no @package tag was used in a DocBlock for class RegistrationType<br>
+<b>Warning on line 74</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Form\RegistrationType.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="ResettingController.php"></a>
+<h1>ResettingController.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 34</b> - no @package tag was used in a DocBlock for class ResettingController<br>
+<b>Warning on line 226</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Controller\ResettingController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="ResettingFormType.php"></a>
+<h1>ResettingFormType.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 19</b> - no @package tag was used in a DocBlock for class ResettingFormType<br>
+<b>Warning on line 76</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Form\Type\ResettingFormType.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="SecurityController.php"></a>
+<h1>SecurityController.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 22</b> - no @package tag was used in a DocBlock for class SecurityController<br>
+<b>Warning on line 101</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Controller\SecurityController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="Societe.php"></a>
+<h1>Societe.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 13</b> - Unknown tag "@ORM\Entity" used<br>
+<b>Warning on line 13</b> - Unknown tag "@ORM\Table(name="societe"," used<br>
+<b>Warning on line 14</b> - no @package tag was used in a DocBlock for class Societe<br>
+<b>Warning on line 22</b> - Unknown tag "@ORM\GeneratedValue(strategy="IDENTITY")" used<br>
+<b>Warning on line 22</b> - Unknown tag "@ORM\Column(name="id"," used<br>
+<b>Warning on line 22</b> - Unknown tag "@ORM\Id" used<br>
+<b>Warning on line 29</b> - Unknown tag "@ORM\Column(name="denomination"," used<br>
+<b>Warning on line 36</b> - Unknown tag "@ORM\Column(name="presentation"," used<br>
+<b>Warning on line 43</b> - Unknown tag "@ORM\Column(name="adresse"," used<br>
+<b>Warning on line 50</b> - Unknown tag "@ORM\Column(name="siret"," used<br>
+<b>Warning on line 57</b> - Unknown tag "@ORM\Column(name="tel"," used<br>
+<b>Warning on line 65</b> - Unknown tag "@ORM\Column(name="logo"," used<br>
+<b>Warning on line 75</b> - Unknown tag "@ORM\ManyToOne(targetEntity="User")" used<br>
+<b>Warning on line 75</b> - Unknown tag "@ORM\JoinColumns({" used<br>
+<b>Warning on line 75</b> - Unknown tag "@ORM\JoinColumn(name="user"," used<br>
+<b>Warning on line 298</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Entity\Societe.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="SocieteController.php"></a>
+<h1>SocieteController.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 21</b> - Unknown tag "@Route("societe")" used<br>
+<b>Warning on line 22</b> - no @package tag was used in a DocBlock for class SocieteController<br>
+<b>Warning on line 29</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 29</b> - Unknown tag "@Route("/"," used<br>
+<b>Warning on line 46</b> - Unknown tag "@Route("/new"," used<br>
+<b>Warning on line 46</b> - Unknown tag "@Method({"GET"," used<br>
+<b>Warning on line 92</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 92</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 108</b> - Unknown tag "@Route("/{id}/edit"," used<br>
+<b>Warning on line 108</b> - Unknown tag "@Method({"GET"," used<br>
+<b>Warning on line 151</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 151</b> - Unknown tag "@Method("DELETE")" used<br>
+<b>Warning on line 204</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 204</b> - Unknown tag "@Route("/{id}/projet"," used<br>
+<b>Warning on line 219</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Controller\SocieteController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="SocieteControllerTest.php"></a>
+<h1>SocieteControllerTest.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 7</b> - no @package tag was used in a DocBlock for class SocieteControllerTest<br>
+<b>Warning on line 54</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Tests\Controller\SocieteControllerTest.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="SocieteRepository.php"></a>
+<h1>SocieteRepository.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 11</b> - no @package tag was used in a DocBlock for class SocieteRepository<br>
+<b>Warning on line 12</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Repository\SocieteRepository.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="SocieteType.php"></a>
+<h1>SocieteType.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 11</b> - no @package tag was used in a DocBlock for class SocieteType<br>
+<b>Warning on line 47</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Form\SocieteType.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="Test.php"></a>
+<h1>Test.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Table(name="test")" used<br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Entity" used<br>
+<b>Warning on line 13</b> - no @package tag was used in a DocBlock for class Test<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\GeneratedValue(strategy="IDENTITY")" used<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\Id" used<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\Column(name="id_test"," used<br>
+<b>Warning on line 28</b> - Unknown tag "@ORM\Column(name="intitule"," used<br>
+<b>Warning on line 35</b> - Unknown tag "@ORM\Column(name="description"," used<br>
+<b>Warning on line 42</b> - Unknown tag "@ORM\Column(name="url_test"," used<br>
+<b>Warning on line 49</b> - Unknown tag "@ORM\Column(name="questionnaire"," used<br>
+<b>Warning on line 158</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Entity\Test.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="Testcompetence.php"></a>
+<h1>Testcompetence.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Entity" used<br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Table(name="testcompetence"," used<br>
+<b>Warning on line 13</b> - no @package tag was used in a DocBlock for class Testcompetence<br>
+<b>Warning on line 24</b> - Unknown tag "@ORM\JoinColumn(name="competence"," used<br>
+<b>Warning on line 24</b> - Unknown tag "@ORM\JoinColumns({" used<br>
+<b>Warning on line 24</b> - Unknown tag "@ORM\Id" used<br>
+<b>Warning on line 24</b> - Unknown tag "@ORM\GeneratedValue(strategy="NONE")" used<br>
+<b>Warning on line 24</b> - Unknown tag "@ORM\OneToOne(targetEntity="Competence")" used<br>
+<b>Warning on line 34</b> - Unknown tag "@ORM\JoinColumns({" used<br>
+<b>Warning on line 34</b> - Unknown tag "@ORM\ManyToOne(targetEntity="Test")" used<br>
+<b>Warning on line 34</b> - Unknown tag "@ORM\JoinColumn(name="test"," used<br>
+<b>Warning on line 85</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Entity\Testcompetence.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="TestcompetenceController.php"></a>
+<h1>TestcompetenceController.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 14</b> - Unknown tag "@Route("testcompetence")" used<br>
+<b>Warning on line 15</b> - no @package tag was used in a DocBlock for class TestcompetenceController<br>
+<b>Warning on line 22</b> - Unknown tag "@Route("/"," used<br>
+<b>Warning on line 22</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 39</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 39</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 46</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Controller\TestcompetenceController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="TestcompetenceControllerTest.php"></a>
+<h1>TestcompetenceControllerTest.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 7</b> - no @package tag was used in a DocBlock for class TestcompetenceControllerTest<br>
+<b>Warning on line 24</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Tests\Controller\TestcompetenceControllerTest.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="TestController.php"></a>
+<h1>TestController.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 14</b> - Unknown tag "@Route("test")" used<br>
+<b>Warning on line 15</b> - no @package tag was used in a DocBlock for class TestController<br>
+<b>Warning on line 22</b> - Unknown tag "@Route("/"," used<br>
+<b>Warning on line 22</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 39</b> - Unknown tag "@Route("/new"," used<br>
+<b>Warning on line 39</b> - Unknown tag "@Method({"GET"," used<br>
+<b>Warning on line 65</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 65</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 100</b> - Unknown tag "@Route("/{id}/edit"," used<br>
+<b>Warning on line 100</b> - Unknown tag "@Method({"GET"," used<br>
+<b>Warning on line 125</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 125</b> - Unknown tag "@Method("DELETE")" used<br>
+<b>Warning on line 154</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Controller\TestController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="TestControllerTest.php"></a>
+<h1>TestControllerTest.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 7</b> - no @package tag was used in a DocBlock for class TestControllerTest<br>
+<b>Warning on line 54</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Tests\Controller\TestControllerTest.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="Testfreelancer.php"></a>
+<h1>Testfreelancer.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Entity" used<br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Table(name="testfreelancer"," used<br>
+<b>Warning on line 13</b> - no @package tag was used in a DocBlock for class Testfreelancer<br>
+<b>Warning on line 19</b> - Unknown tag "@ORM\Column(name="resultat"," used<br>
+<b>Warning on line 26</b> - Unknown tag "@ORM\Column(name="date_passage"," used<br>
+<b>Warning on line 38</b> - Unknown tag "@ORM\OneToOne(targetEntity="Freelancer")" used<br>
+<b>Warning on line 38</b> - Unknown tag "@ORM\JoinColumns({" used<br>
+<b>Warning on line 38</b> - Unknown tag "@ORM\JoinColumn(name="freelancer"," used<br>
+<b>Warning on line 38</b> - Unknown tag "@ORM\GeneratedValue(strategy="NONE")" used<br>
+<b>Warning on line 38</b> - Unknown tag "@ORM\Id" used<br>
+<b>Warning on line 48</b> - Unknown tag "@ORM\JoinColumns({" used<br>
+<b>Warning on line 48</b> - Unknown tag "@ORM\JoinColumn(name="test"," used<br>
+<b>Warning on line 48</b> - Unknown tag "@ORM\ManyToOne(targetEntity="Test")" used<br>
+<b>Warning on line 147</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Entity\Testfreelancer.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="TestfreelancerController.php"></a>
+<h1>TestfreelancerController.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 14</b> - Unknown tag "@Route("testfreelancer")" used<br>
+<b>Warning on line 15</b> - no @package tag was used in a DocBlock for class TestfreelancerController<br>
+<b>Warning on line 22</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 22</b> - Unknown tag "@Route("/"," used<br>
+<b>Warning on line 37</b> - Unknown tag "@Route("/new"," used<br>
+<b>Warning on line 37</b> - Unknown tag "@Method({"GET"," used<br>
+<b>Warning on line 63</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 63</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 79</b> - Unknown tag "@Route("/{id}/edit"," used<br>
+<b>Warning on line 79</b> - Unknown tag "@Method({"GET"," used<br>
+<b>Warning on line 104</b> - Unknown tag "@Method("DELETE")" used<br>
+<b>Warning on line 104</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 133</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Controller\TestfreelancerController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="TestfreelancerControllerTest.php"></a>
+<h1>TestfreelancerControllerTest.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 7</b> - no @package tag was used in a DocBlock for class TestfreelancerControllerTest<br>
+<b>Warning on line 54</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Tests\Controller\TestfreelancerControllerTest.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="TestfreelancerType.php"></a>
+<h1>TestfreelancerType.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 9</b> - no @package tag was used in a DocBlock for class TestfreelancerType<br>
+<b>Warning on line 37</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Form\TestfreelancerType.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="TestType.php"></a>
+<h1>TestType.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 9</b> - no @package tag was used in a DocBlock for class TestType<br>
+<b>Warning on line 41</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Form\TestType.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="User.php"></a>
+<h1>User.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Table(name="user"," used<br>
+<b>Warning on line 12</b> - Unknown tag "@ORM\Entity" used<br>
+<b>Warning on line 13</b> - no @package tag was used in a DocBlock for class User<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\GeneratedValue(strategy="IDENTITY")" used<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\Id" used<br>
+<b>Warning on line 21</b> - Unknown tag "@ORM\Column(name="id"," used<br>
+<b>Warning on line 29</b> - Unknown tag "@ORM\Column(name="name"," used<br>
+<b>Warning on line 36</b> - Unknown tag "@ORM\Column(name="firstname"," used<br>
+<b>Warning on line 359</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Entity\User.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="UserController.php"></a>
+<h1>UserController.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 19</b> - Unknown tag "@Route("user")" used<br>
+<b>Warning on line 20</b> - no @package tag was used in a DocBlock for class UserController<br>
+<b>Warning on line 27</b> - Unknown tag "@Route("/"," used<br>
+<b>Warning on line 27</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 44</b> - Unknown tag "@Method({"GET"," used<br>
+<b>Warning on line 44</b> - Unknown tag "@Route("/new"," used<br>
+<b>Warning on line 85</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 85</b> - Unknown tag "@Method("GET")" used<br>
+<b>Warning on line 108</b> - Unknown tag "@Method({"GET"," used<br>
+<b>Warning on line 108</b> - Unknown tag "@Route("/{id}/edit"," used<br>
+<b>Warning on line 185</b> - Unknown tag "@Method("DELETE")" used<br>
+<b>Warning on line 185</b> - Unknown tag "@Route("/{id}"," used<br>
+<b>Warning on line 214</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Controller\UserController.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="UserControllerTest.php"></a>
+<h1>UserControllerTest.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 7</b> - no @package tag was used in a DocBlock for class UserControllerTest<br>
+<b>Warning on line 54</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Tests\Controller\UserControllerTest.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="UsernameFormType.php"></a>
+<h1>UsernameFormType.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 24</b> - no @package tag was used in a DocBlock for class UsernameFormType<br>
+<b>Warning on line 72</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Form\Type\UsernameFormType.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="UserRepository.php"></a>
+<h1>UserRepository.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 11</b> - no @package tag was used in a DocBlock for class UserRepository<br>
+<b>Warning on line 13</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Repository\UserRepository.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="UserToUsernameTransformer.php"></a>
+<h1>UserToUsernameTransformer.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 24</b> - no @package tag was used in a DocBlock for class UserToUsernameTransformer<br>
+<b>Warning on line 83</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Form\DataTransformer\UserToUsernameTransformer.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+<a name="UserType.php"></a>
+<h1>UserType.php</h1>
+<h2>Warnings:</h2><br>
+<b>Warning on line 12</b> - no @package tag was used in a DocBlock for class UserType<br>
+<b>Warning on line 49</b> - File "C:\xampp\htdocs\FreelancerSIO\src\MyFOSUserBundle\Form\UserType.php" has no page-level DocBlock, use @package in the first DocBlock to create one<br>
+	<p class="notes" id="credit">
+		Documentation generated on Fri, 10 Mar 2017 11:49:18 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+	</p>
+	</body>
+</html>

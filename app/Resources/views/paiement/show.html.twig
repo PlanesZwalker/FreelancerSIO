@@ -17,27 +17,29 @@
             <table class="tableautitle">
                 <tbody>
                     <tr>
-                        <th class="mytdtabshow">id_paiement</th>
-                        <td class="mytdtabshow">{{ paiement.id_paiement }}</td>
+                        <th class="mytdtabshow">Référence du paiement</th>
+                        <td class="mytdtabshow">N°{{ paiement.idPaiement }}</td>
                     </tr>
                     <tr>
                         <th class="mytdtabshow2">Etat</th>
-                        <td class="mytdtabshow2">{{ paiement.etat }}</td>
+                        <td class="mytdtabshow2">
+                            {{ paiement.etat }}
+                        </td>
                     </tr>
                     <tr>
                         <th class="mytdtabshow">Dpsociete</th>
-                        <td class="mytdtabshow">{{ paiement.dpSociete }}</td>
+                        <td class="mytdtabshow">{{ paiement.dpSociete|date("d-mY") }}</td>
                     </tr>
                     <tr>
                         <th class="mytdtabshow2">Dpfreelancer</th>
-                        <td class="mytdtabshow2">{{ paiement.dpFreelancer }}</td>
+                        <td class="mytdtabshow2">{{ paiement.dpFreelancer|date("d-mY") }}</td>
                     </tr>
                 </tbody>
             </table>
 
             <ul>
                 <li  class="myeditli">
-                    <a class="btn btn-info" style="color:white;"  href="{{ path('paiement_edit', { 'id': paiement.id_paiement }) }}">Modifier</a>
+                    <a class="btn btn-info" style="color:white;"  href="{{ path('paiement_edit', { 'id': paiement.idPaiement }) }}">Modifier</a>
                 </li>
                 <li class="mydeleteli">
                     {{ form_start(delete_form) }}

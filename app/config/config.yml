@@ -9,7 +9,10 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
-
+    cv_directory: '%kernel.root_dir%/../web/user/cv' 
+    logo_directory: '%kernel.root_dir%/../web/user/logo'
+    photo_directory: '%kernel.root_dir%/../web/user/photo'
+    
 framework:
     #esi:             ~
     translator:      { fallbacks: ["%locale%"] }
@@ -66,6 +69,7 @@ doctrine:
       
 # FOSUserBundle Configuration       
 fos_user:
+    
     db_driver: orm 
     firewall_name: main
     user_class: MyFOSUserBundle\Entity\User
@@ -75,7 +79,10 @@ fos_user:
             # if you are using Symfony < 2.8 you should use the type name instead
             # type: app_user_registration  
    # use_listener: false
-    
+    from_email:
+        address: you@example.com
+        sender_name: You
+        
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
@@ -96,23 +103,8 @@ ivory_ck_editor:
         filebrowsers:
             - VideoBrowse
             - VideoUpload
-              
-sonata_block:
-    default_contexts: [cms]
-    blocks:
-        # enable the SonataAdminBundle block
-        sonata.admin.block.admin_list:
-            contexts: [admin]
-        sonata.admin.block.search_result:
-            contexts: [admin]
-
-sonata_admin:
-    title:                "Free Demat' Lancer's"
-    title_logo:           /iconFD2.png
-    templates:
-        # other configuration options
-        search:              SonataAdminBundle:Core:search.html.twig
-        search_result_block: SonataAdminBundle:Block:block_search_result.html.twig          
+ 
+    
 
 knp_menu:
     # use "twig: false" to disable the Twig extension and the TwigRenderer

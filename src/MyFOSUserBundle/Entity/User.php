@@ -35,7 +35,6 @@ class User extends BaseUser
      * @ORM\Column(name="firstname", type="string", length=255, nullable=false)
      */
     protected $firstname;
-    
 
     /**
      * Get id

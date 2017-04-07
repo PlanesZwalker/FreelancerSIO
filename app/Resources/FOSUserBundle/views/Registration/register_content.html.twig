@@ -8,19 +8,27 @@
     {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'my_fos_user_registration_register'} }) }}
 
     {{ form_errors(form) }}
-    <div style="margin-left:20%; text-align:center; width:60%">
-        
-          {{ form_row(form.roles,{'label': 'Type de Compte'}) }}
-          {{ form_row(form.username,{'label': 'Pseudo'}) }}
+    <div style="margin-left:2%; text-align:center; width:30%;display:inline-block;">
           {{ form_row(form.name,{'label': 'Nom'}) }}
+          {{ form_row(form.username,{'label': 'Pseudo'}) }}
+          {{ form_row(form.plainPassword.first,{'label': 'Mot de passe'}) }}  
+    </div>
+    <div style="margin-left:2%; text-align:center; width:30%; height:auto; display:inline-block;">
           {{ form_row(form.firstname,{'label': 'Prénom'}) }}
-          {{ form_row(form.email,{'label': 'Email'}) }}
-          {{ form_row(form.plainPassword.first,{'label': 'Mot de passe'}) }}    
+         {{ form_row(form.email,{'label': 'Email'}) }} 
           {{ form_row(form.plainPassword.second,{'label': 'Mot de passe ( confirmation )'}) }}
- 
+    </div>
+    <div style="width:30%; margin-left:35%;">
+        
+        {% if is_granted("ROLE_SUPER_ADMIN") %}
+                {{ form_row(form.roles,{'label': 'Type de Compte', 'attr': {'class': 'labelForm'} }) }}
+        {% else %}
+                {{ form_row(form.roles,{'label': 'Type de Compte', 'attr': {'class': 'labelForm'} }) }}
+        {% endif %}
+          
     </div>
     <div style="margin-top:3%;">
-        <input type="submit" data-ajax="false" value="{{ 'registration.submit'|trans }}" />
+        <input type="submit"  value="{{ 'registration.submit'|trans }}" />
     </div>
     {{ form_end(form) }}
 </div>

@@ -1,38 +1,57 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
 
-        <h1 id="logo"><a class="bigtitle">Freelancer</a></h1>  
+    <h1 id="logo"><a class="bigtitle">Freelancer</a></h1>  
 
 {% endblock %}
 
-{% block body %}    
+{% block body %}   
+    
     <div class="formulairetop">
-        <h2 class="mysubtitle">Edition du Profil Freelancer</h2>
+        <h2 class="mysubtitle">Edition du Profil Freelancer de {{ freelancer.pseudo }}</h2>
         <div class="mycontentform">
             <ul>
                 <li class="returnlist">
                     <a class="btn btn-default" href="{{ path('freelancer_index') }}">Retourner à la liste</a>
                 </li>
-            </ul>
-            <table class="tableautitle">
-                <tbody>
-                    <tr>
-                        {{ form_start(edit_form) }}
-                            {{ form_widget(edit_form) }}
-                            <input type="submit"  class="myeditinput"  value="Modifier le profil" />
-                        {{ form_end(edit_form) }}
-                    </tr>
-                </tbody>
-            </table>
+            </ul>      
+            {{ form_start(edit_form) }}   
+
+            <div style="margin-left:15%; text-align:center; width:30%;display:inline-table;">                  
+                <div class="mytdtabshow"> {{ form_row(edit_form.photo) }}</div>
+                <div class="mytdtabshow">
+                    <img class="myimg"  src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/photo/{{ freelancer.user.id }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/photo/{{ freelancer.user.id }}{% endif %}" />
+                </div>
+                <div class="mytdtabshow">{{ form_row(edit_form.cv) }}</div>
+                <a href="{% if app.request.server.get('BASE')  %}{{ app.request.server.get('BASE')}}/user/cv/{{ freelancer.user.id }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/cv/{{ freelancer.user.id }}{% endif %}" >
+                    <h3><i class="fa fa-download fa-3x"></i></h3>
+                </a>
+            </div>
+            <div style="margin-left:5%; text-align:center; width:30%;display:inline-table;">   
+
+                <div class="mytdtabshow" >{{ form_row(edit_form.pseudo) }}</div>
+                <div class="mytdtabshow"> {{ form_row(edit_form.description) }}</div>
+                <div class="mytdtabshow">{{ form_row(edit_form.age) }}</div>
+          
+                <div class="mytdtabshow" >
+                    <div style="display:inline-table">{{ form_row(edit_form.nationalite) }}     </div>                  
+                    <img class="mydrapeau" style="display:inline-table; width:100px; height:50px; margin-top:50px;"  src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/drapeau/{{ freelancer.nationalite }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/drapeau/{{ freelancer.nationalite }}{% endif %}.gif" /> 
+                </div>                
+            </div>
+ 
+            <input type="submit"  class="myeditinput"  value="Enregistrer le profil" />
+            {{ form_end(edit_form) }}
+
             <ul>
-               {% if is_granted("ROLE_ADMIN") %}
-                <li  class="mydeleteli">
-                    {{ form_start(delete_form) }}
-                        <input type="submit" rel="external" value="Supprimer le profil du freelancer">
-                    {{ form_end(delete_form) }}
-                </li>
+                {% if is_granted("ROLE_ADMIN") %}
+                    <li  class="mydeleteli">
+                        {{ form_start(delete_form) }}
+                        <input type="submit" value="Supprimer le profil du freelancer">
+                        {{ form_end(delete_form) }}
+                    </li>
                 {% endif %}
             </ul>
-        </div>
+        </div>   
     </div>
+</div>
 {% endblock %}

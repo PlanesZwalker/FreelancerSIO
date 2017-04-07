@@ -1,6 +1,7 @@
 <?php
 
 namespace MyFOSUserBundle\Entity;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -56,11 +57,7 @@ class Societe
      */
     private $tel;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="logo", type="string", length=255, nullable=false)
-     */
+
     private $logo;
 
     /**
@@ -212,7 +209,7 @@ class Societe
      *
      * @return Societe
      */
-    public function setLogo($logo)
+    public function setLogo(UploadedFile $logo)
     {
         $this->logo = $logo;
 
@@ -228,6 +225,43 @@ class Societe
     {
         return $this->logo;
     }
+    
+    
+    /*
+     *  UPLOAD DU LOGO
+     * 
+     */
+    
+    public function getUploadLogoDir(){
+        return '/user/logo';
+    }
+ 
+    public function getAbsoluteLogoRoot(){
+        return $this->getUploadLogoRoot().$this->getUser()->getId();
+    }
+
+    public function getWebLogoPath(){
+        return $this->getUploadLogoDir().'/'.$this->getUser()->getId();
+    }
+
+    public function getUploadLogoRoot(){
+         return __DIR__.'/../../../web'. $this->getUploadLogoDir().'/';
+    }   
+    
+    public function uploadLogo(){
+
+        
+        if(!is_dir($this->getWebLogoPath())){
+   
+             mkdir($this->getWebLogoPath(), '0777',true);
+              
+        }
+              
+        $this->logo->move($this->getUploadLogoRoot(), $this->getUser()->getId());
+   
+        unset($this->logo);
+    }
+        
 
     /**
      * Set user
@@ -236,7 +270,7 @@ class Societe
      *
      * @return Societe
      */
-    public function setUser(\MyFOSUserBundle\Entity\User $user = null)
+    public function setUser(\MyFOSUserBundle\Entity\User $user)
     {
         $this->user = $user;
 

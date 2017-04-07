@@ -3,10 +3,13 @@
 namespace MyFOSUserBundle\Controller;
 
 use MyFOSUserBundle\Entity\Projet;
+use MyFOSUserBundle\Entity\Societe;
+use MyFOSUserBundle\Entity\Cahierdescharges;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
-
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 /**
  * Projet controller.
  *
@@ -18,16 +21,21 @@ class ProjetController extends Controller
      * Lists all projet entities.
      *
      * @Route("/", name="projet_index")
-     * @Method("GET")
+     * @Method({"GET","POST"})
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+        
+        $id_societe = $request->get('id');
+        $criteria=["societe"=>$id_societe];
+        $projetsBySociete = $em->getRepository("MyFOSUserBundle:Projet")->findBy($criteria);
 
         $projets = $em->getRepository('MyFOSUserBundle:Projet')->findAll();
-
+        
         return $this->render('projet/index.html.twig', array(
             'projets' => $projets,
+            'projetsBySociete' => $projetsBySociete,
         ));
     }
 
@@ -40,13 +48,36 @@ class ProjetController extends Controller
     public function newAction(Request $request)
     {
         $projet = new Projet();
-        $form = $this->createForm('MyFOSUserBundle\Form\ProjetType', $projet);
+        $societe = new Societe();
+        
+        $em = $this->getDoctrine()->getManager();
+        $criteria = ['user'=>$this->getUser()->getId()];             
+        $maSociete = $em->getRepository('MyFOSUserBundle:Societe')->findOneBy($criteria); 
+        
+        $form = $this->createFormBuilder($projet)
+                ->add('intitule')
+                ->add('description')
+                ->add('prix')
+                ->add('cahierdescharges', CKEditorType::class, array(
+                    'input_sync' => true,
+                    'config' => array(
+                        'uiColor' => '#020F58',
+                    ),
+                    'label' => 'Saisir les clauses du cahier des charges ici: ',  
+                  )) 
+                ->getForm();
+            ;
         $form->handleRequest($request);
-
+      
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($projet);
-            $em->flush($projet);
+    
+        $projet->setEtat("Publié");
+       
+        $projet->setSociete($maSociete);
+ 
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($projet);
+        $em->flush($projet);
 
             return $this->redirectToRoute('projet_show', array('id' => $projet->getId()));
         }
@@ -54,6 +85,7 @@ class ProjetController extends Controller
         return $this->render('projet/new.html.twig', array(
             'projet' => $projet,
             'form' => $form->createView(),
+      
         ));
     }
 
@@ -82,7 +114,15 @@ class ProjetController extends Controller
     public function editAction(Request $request, Projet $projet)
     {
         $deleteForm = $this->createDeleteForm($projet);
-        $editForm = $this->createForm('MyFOSUserBundle\Form\ProjetType', $projet);
+        
+             $editForm = $this->createFormBuilder($projet)
+                ->add('intitule')
+                ->add('description')
+                ->add('prix')
+                ->add('etat')
+               
+                ->getForm();
+        
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -133,4 +173,8 @@ class ProjetController extends Controller
             ->getForm()
         ;
     }
+    
+    
+    
+    
 }

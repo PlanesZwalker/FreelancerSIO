@@ -11,7 +11,7 @@
         <div class="mycontentform">
             <ul>
                 <li class="returnlist">
-                    <a data-ajax="false" class="btn btn-default" href="{{ path('test_index') }}">Retourner à la liste</a>
+                    <a  class="btn btn-default" href="{{ path('test_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
             <table  class="tableautitle">
@@ -19,14 +19,11 @@
                     {{ form_start(edit_form) }}
                     {{ form_row(edit_form.description) }}
                     {{ form_row(edit_form.urlTest) }}
-                    {{ form_row(edit_form.resultat) }}
-                
-                    {{ form_row(edit_form.id_freelancer) }}
-                    {{ form_row(edit_form.id_competence) }}
+             
                 
                 </tbody>
             </table>             
-            <input type="submit"  class="myeditinput"  value="Modifier le test" />
+            <input type="submit"  class="myeditinput"  value="Enregistrer les modifications" />
             {{ form_end(edit_form) }}
 
           {% if is_granted("ROLE_ADMIN") %}            
@@ -34,7 +31,7 @@
                  <li class="mydeleteli ">
                   
                         {{ form_start(delete_form) }}
-                            <input type="submit" rel="external" value="Supprimer le test" />
+                            <input type="submit"  value="Supprimer le test" />
                         {{ form_end(delete_form) }}
                    
                 </li>

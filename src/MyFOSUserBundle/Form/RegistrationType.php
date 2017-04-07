@@ -23,19 +23,20 @@ class RegistrationType extends AbstractType
 
      public function buildForm(FormBuilderInterface $builder, array $options)
     {
+      
         $builder
-          ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'MyFOSUserBundle'))
-            ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'MyFOSUserBundle'))
-            ->add('name')
-            ->add('firstname')
-            ->add('plainPassword', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\RepeatedType'), array(
-                'type' => LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'),
-                'options' => array('translation_domain' => 'MyFOSUserBundle'),
-                'first_options' => array('label' => 'form.password'),
-                'second_options' => array('label' => 'form.password_confirmation'),
-                'invalid_message' => 'fos_user.password.mismatch',
-            ))                       
-            ->add('roles', ChoiceType::class,[ 
+               ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'MyFOSUserBundle'))
+                ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'MyFOSUserBundle'))
+                ->add('name')
+                ->add('firstname')
+                ->add('plainPassword', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\RepeatedType'), array(
+                    'type' => LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'),
+                    'options' => array('translation_domain' => 'MyFOSUserBundle'),
+                    'first_options' => array('label' => 'form.password'),
+                    'second_options' => array('label' => 'form.password_confirmation'),
+                    'invalid_message' => 'fos_user.password.mismatch',
+                ))                       
+                ->add('roles', ChoiceType::class,[ 
                                 'label' => 'Selectionnez le type de compte',
                                 'attr'  => array('class' => 'myselect'),
                                 'multiple'  => true,
@@ -45,8 +46,8 @@ class RegistrationType extends AbstractType
                                 ]
 
                           ])    
-              
-                  ;
+                      ;
+      
                             
     }
     

@@ -7,16 +7,23 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h2 class="mysubtitle">Ajouter un Message</h2>
+        <h2 class="mysubtitle">Envoyer un Message à</h2>
         <div class="mycontentform">           
             <ul>
                 <li class="returnlist">
-                    <a data-ajax="false" class="btn btn-default" href="{{ path('message_index') }}">Retourner à la liste</a>
+                    <a class="btn btn-default" href="{{ path('message_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
             {{ form_start(form) }}
-                {{ form_widget(form) }}
+            
+                {{ form_row(form.type) }}
+                
+                {{ form_row(form.sujet) }}
+
+                {{ form_row(form.contenu) }}
+ 
                 <input type="submit" value="Envoyer" />
+                
             {{ form_end(form) }}
 
                    </div>

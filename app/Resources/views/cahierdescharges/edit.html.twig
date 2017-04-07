@@ -11,12 +11,15 @@
         <div class="mycontentform">
             <ul>
                 <li class="returnlist">
-                    <a data-ajax="false" class="btn btn-default" href="{{ path('cahierdescharges_index') }}">Retourner à la liste</a>
+                    <a class="btn btn-default" href="{{ path('cahierdescharges_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
             <table  class="tableautitle">
                 <tbody>
                     {{ form_start(edit_form) }}
+                    <tr>
+                        <th class="mytdtabshow2">{{ form_row(edit_form.intitule) }}</th>
+                    </tr>    
                     <tr>
                         <th class="mytdtabshow">{{ form_row(edit_form.tarif) }}</th>
                     </tr>        
@@ -24,18 +27,18 @@
                         <th class="mytdtabshow2">{{ form_row(edit_form.delai) }}</th>
                     </tr>        
                     <tr>
-                        <th class="mytdtabshow" style="display:none;">{{ form_row(edit_form.idContrat) }}</th>
+                        <th class="mytdtabshow" style="display:none;">{{ cahierdescharges.id }}</th>
                     </tr>             
                 </tbody>
             </table>   
-           <input rel="external" class="myeditinput" type="submit" value="Enregistrer les modifications" />
+           <input class="myeditinput" type="submit" value="Enregistrer les modifications" />
             {{ form_end(edit_form) }}
-            {{ dump(edit_form) }}
+           
             {% if is_granted("ROLE_ADMIN") %}
             <ul>
                 <li class="mydeleteli ">
                     {{ form_start(delete_form) }}
-                        <input rel="external" type="submit" value="Supprimer le cahier des charges" >
+                        <input  type="submit" value="Supprimer le cahier des charges" >
                     {{ form_end(delete_form) }}
                 </li>
             </ul>

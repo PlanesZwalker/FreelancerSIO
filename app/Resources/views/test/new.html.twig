@@ -11,18 +11,18 @@
         <div class="mycontentform">
             <ul>
                 <li class="returnlist">
-                    <a data-ajax="false" class="btn btn-default" href="{{ path('test_index') }}">Retourner à la liste</a>
+                    <a  class="btn btn-default" href="{{ path('test_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
             <table  class="tableautitle">
                 <tbody>
                 {{ form_start(form) }}
+                      {{ form_row(form.intitule) }}
                         {{ form_row(form.description) }}
-                        {{ form_row(form.url_test) }}
-                        {{ form_row(form.resultat) }}
-                        {{ form_row(form.date_passage) }}
-                    
-                    <input data-ajax="false" type="submit" value="Ajouter le Test" />
+                        {{ form_row(form.urlTest) }}
+                       {{ form_row(form.questionnaire) }}
+                 
+                    <input type="submit" class="myeditinput" value="Ajouter le Test" />
                 {{ form_end(form) }}
                  </tbody>
              </table> 

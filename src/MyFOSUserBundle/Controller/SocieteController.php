@@ -3,11 +3,18 @@
 namespace MyFOSUserBundle\Controller;
 
 use MyFOSUserBundle\Entity\Societe;
+use MyFOSUserBundle\Entity\User;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
-//use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+//use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+
+
 // ...
 /**
  * Societe controller.
@@ -42,10 +49,33 @@ class SocieteController extends Controller
     public function newAction(Request $request)
     {
         $societe = new Societe();
-        $form = $this->createForm('MyFOSUserBundle\Form\SocieteType', $societe);
+       
+        $form = $this->createFormBuilder($societe)
+                
+                    ->add('denomination')
+                
+                    ->add('presentation') 
+                
+                    ->add('adresse')
+                
+                    ->add('siret')  
+                
+                    ->add('tel', TextType::class,array('label' => 'Téléphone : ')) 
+                   
+                    ->add('logo', FileType::class, array(
+                            'label' => 'Votre Logo : ',
+                            'data_class' => null)
+                        )
+
+                    ->getForm()
+                ;
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $societe->setUser($this->getUser());
+            $societe->uploadLogo();
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($societe);
             $em->flush($societe);
@@ -84,17 +114,37 @@ class SocieteController extends Controller
     public function editAction(Request $request, Societe $societe)
     {
         $deleteForm = $this->createDeleteForm($societe);
-        $editForm = $this->createForm('MyFOSUserBundle\Form\SocieteType', $societe);
-        $editForm->handleRequest($request);
-
-        $logo->setBrochure(
-            new File($this->getParameter('logo_directory').'/'.$logo->getLogo())
-        );
+        $monlogo = new UploadedFile($societe->getAbsoluteLogoRoot(),$societe->getWebLogoPath());
         
+        $editForm = $this->createFormBuilder($societe)
+                        ->add('denomination')
+                        ->add('presentation') 
+                        ->add('adresse')
+                        ->add('siret')  
+                        ->add('tel') 
+                        ->add('logo', FileType::class, array(
+                                'required' => false,
+                                'empty_data' => $monlogo,
+                                'data'=>$monlogo,
+                                'label' => 'Votre Logo : ',
+                                'data_class' => null)
+                            )           
+               
+                        ->getForm()
+                ;
+        $editForm->handleRequest($request);
+  
+  
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            
+            $societe->setUser($this->getUser());
+            if($societe->getLogo()!=$monlogo){
+                $societe->uploadLogo();
+            }
+            
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('societe_edit', array('id' => $societe->getId()));
+            return $this->redirectToRoute('societe_show', array('id' => $societe->getId()));
         }
 
         return $this->render('societe/edit.html.twig', array(
@@ -154,5 +204,28 @@ class SocieteController extends Controller
         }
 
         // ...
+    }
+    
+    
+    /**
+     * Finds and displays a societe entity: with project published
+     *
+     * @Route("/{id}/projet", name="societe_projet")
+     * @Method("GET")
+     */
+    public function projetAction(Societe $societe,Request $request)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        
+        $id = array ('societe' => $request->get('id') );
+
+        $projets = $em->getRepository('MyFOSUserBundle:Projet')->findBy($id);
+      
+        return $this->render('projet/index.html.twig', array(
+            'societe' => $societe,
+            'projets' =>$projets,
+           
+        ));
     }
 }

@@ -9,27 +9,26 @@
     <div class="formulairetop">
         <h2 class="mysubtitle">Projet</h2>
         <div class="mycontentform">
+            
             <ul>
                 <li class="returnlist">
                     <a data-ajax="false" class="btn btn-default" href="{{ path('projet_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
-            <table class="tableautitle">
-                <tbody>
-                    {{ form_start(form) }}
-                        {{ form_row(form.intitule,{'label': 'Intitulé'}) }}
-                        {{ form_row(form.description,{'label': 'Descriptif du projet'}) }}
-                        {{ form_row(form.etat,{'label': 'Avancement du projet'}) }}
-                        {{ form_row(form.prix,{'label': 'Tarif / Horaire - Forfait'}) }}
-                        {{ form_row(form.cahierdescharges)}}
-                        {{ form_row(form.societe) }}
-                        <input type="submit" value="Ajouter le projet" />
-                    {{ form_end(form) }}
-                </tbody>
-             </table> 
-            <ul>
-             
-            </ul>
+
+            {{ form_start(form) }}
+                {{ form_row(form.intitule,{'label': 'Intitulé du projet'}) }}
+                {{ form_row(form.description,{'label': 'Descriptif du projet'}) }}
+                {{ form_row(form.prix,{'label': 'Tarif / Horaire - Forfait'}) }}
+                
+                <div style="margin-top:50px;">
+                    {{ form_row(form.cahierdescharges) }}
+                </div>
+                
+                <input type="submit"  class="myeditinput"  value="Publier le projet" />
+
+            {{ form_end(form) }}
+
         </div>
     </div>
 {% endblock %}

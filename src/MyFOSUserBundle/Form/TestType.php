@@ -13,7 +13,11 @@ class TestType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('intitule')->add('description')->add('urlTest')->add('questionnaire')->add('resultat')        ;
+        $builder->add('intitule')
+                ->add('description')
+                ->add('urlTest')
+                ->add('questionnaire')       
+                ;
     }
     
     /**

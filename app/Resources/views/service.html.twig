@@ -1,29 +1,35 @@
 {% extends "base.html.twig" %}
 
 {% block titre %}
-        <h1 id="logo"><a class="bigtitle">Téléchargement de fichier</a></h1>  
+        <h1 id="logo"><a class="bigtitle">DOCUMENTATIONS    </a></h1>  
 {% endblock %}
 
 {% block body %}
    <div class="formulairetop">
         <h2 class="mysubtitle">Téléchargement de Fichiers</h2>
-        <div class="mycontentform" style="height:40vh;">
+        <div class="mycontentform" style="height:40vh;margin-left: 10%; width: 80%;">
            
-            <h1 style='margin-left:2vw;'>Documentation du Projet Free Demat' Lancer's</h1>
+            <h2 style="margin-left:8%;">Documentation du Projet Free Demat' Lancer's</h2>
             
             
-            <div style='width:25vw; float:left; margin-left:10vw;'>
+            <div style='float:left; margin-left:4vw;'>
                
-                <a data-ajax="false" href="{{ path('re_download', {'file': "DocumentationTechniquePPE.pdf" }) }}">
+                <a href="{{ path('re_download', {'file': "DocumentationTechniquePPE.pdf" }) }}">
                     <h1><i class="fa fa-download fa-3x"></i></h1>
                 </a>
                 <p style="font-size:17px; margin-left:-2vw;">Documentation Technique</p>  
             </div>
                     
+            <div style=' float:left; margin-left:14vw;'>   
+                <a href="{{ path('re_download', {'file': "DocumentationUtilisateurPPE.pdf" }) }}">
+                    <h1><i class="fa fa-download fa-3x"></i></h1>
+                </a>
+                <p style="font-size:17px; margin-left:-2vw;">Documentation Utilisateur</p>  
+            </div>
                     
-            <div style='width:20vw; float:right; margin-right:0vw;'>
+            <div style=' float:left; margin-left:14vw; '>
           
-                <a data-ajax="false" href="{{ path('re_download', {'file': "CahierDesCharges.pdf" }) }}">         
+                <a  href="{{ path('re_download', {'file': "CahierDesCharges.pdf" }) }}">         
                     <h1><i class="fa fa-download fa-3x"></i></h1>
                 </a> 
                 <p style="font-size:17px; margin-left:-1vw;">Cahier des Charges</p>    

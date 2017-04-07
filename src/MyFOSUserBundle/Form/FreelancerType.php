@@ -19,17 +19,15 @@ class FreelancerType extends AbstractType
                 ->add('cv', FileType::class, array(
                     'label' => 'Votre Cv : ',
                     
-                    'data_class' => null))
+                  ))
                 ->add('photo', FileType::class, array(
                     'label' => 'Votre photo : ',
                     
-                    'data_class' => null))
+                    ))
                 ->add('pseudo')
-                ->add('nationnalite')
+                ->add('nationalite')
                 ->add('age')
                 ->add('user')
-              
-             
                 ;
     }
     
@@ -39,7 +37,8 @@ class FreelancerType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'MyFOSUserBundle\Entity\Freelancer'
+            'data_class' => 'MyFOSUserBundle\Entity\Freelancer',
+            
         ));
     }
 

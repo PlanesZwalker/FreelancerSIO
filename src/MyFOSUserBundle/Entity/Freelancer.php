@@ -38,9 +38,9 @@ class Freelancer
     /**
      * @var string
      *
-     * @ORM\Column(name="nationnalite", type="string", length=255, nullable=false)
+     * @ORM\Column(name="nationalite", type="string", length=255, nullable=false)
      */
-    private $nationnalite;
+    private $nationalite;
 
     /**
      * @var integer
@@ -49,20 +49,10 @@ class Freelancer
      */
     private $age;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="cv", type="string", length=255, nullable=false)
-     */
     private $cv;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="photo", type="string", length=255, nullable=false)
-     */
+    
     private $photo;
-
+    
     /**
      * @var \User
      *
@@ -73,183 +63,143 @@ class Freelancer
      */
     private $user;
 
-
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
+    function getId() {
         return $this->id;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Freelancer
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
+    function getDescription() {
         return $this->description;
     }
 
-    /**
-     * Set pseudo
-     *
-     * @param string $pseudo
-     *
-     * @return Freelancer
-     */
-    public function setPseudo($pseudo)
-    {
-        $this->pseudo = $pseudo;
-
-        return $this;
-    }
-
-    /**
-     * Get pseudo
-     *
-     * @return string
-     */
-    public function getPseudo()
-    {
+    function getPseudo() {
         return $this->pseudo;
     }
 
-    /**
-     * Set nationnalite
-     *
-     * @param string $nationnalite
-     *
-     * @return Freelancer
-     */
-    public function setNationnalite($nationnalite)
-    {
-        $this->nationnalite = $nationnalite;
-
-        return $this;
+    function getNationalite() {
+        return $this->nationalite;
     }
 
-    /**
-     * Get nationnalite
-     *
-     * @return string
-     */
-    public function getNationnalite()
-    {
-        return $this->nationnalite;
-    }
-
-    /**
-     * Set age
-     *
-     * @param integer $age
-     *
-     * @return Freelancer
-     */
-    public function setAge($age)
-    {
-        $this->age = $age;
-
-        return $this;
-    }
-
-    /**
-     * Get age
-     *
-     * @return integer
-     */
-    public function getAge()
-    {
+    function getAge() {
         return $this->age;
     }
 
-    /**
-     * Set cv
-     *
-     * @param string $cv
-     *
-     * @return Freelancer
-     */
-    public function setCv($cv)
-    {
-        $this->cv = $cv;
-
-        return $this;
+    function getUser(){
+        return $this->user;
     }
 
-    /**
-     * Get cv
-     *
-     * @return string
+    function setId($id) {
+        $this->id = $id;
+    }
+
+    function setDescription($description) {
+        $this->description = $description;
+    }
+
+    function setPseudo($pseudo) {
+        $this->pseudo = $pseudo;
+    }
+
+    function setNationalite($nationalite) {
+        $this->nationalite = $nationalite;
+    }
+
+    function setAge($age) {
+        $this->age = $age;
+    }
+
+        function setUser($user) {
+        $this->user = $user;
+    }
+
+ 
+    /*
+     *  UPLOAD DE LA PHOTO
+     * 
      */
-    public function getCv()
-    {
+    
+    public function getUploadPhotoDir(){
+        return '/user/photo';
+    }
+ 
+    public function getAbsolutePhotoRoot(){ 
+            return $this->getUploadPhotoRoot().$this->getUser()->getId();
+    }
+
+    public function getWebPhotoPath(){
+
+        return $this->getUploadPhotoDir().'/'.$this->getUser()->getId();
+    }
+
+    public function getUploadPhotoRoot(){
+         return __DIR__.'/../../../web'. $this->getUploadPhotoDir().'/';
+    }   
+    
+    public function uploadPhoto(){
+
+        
+        if(!is_dir($this->getWebPhotoPath())){
+             
+            mkdir($this->getWebPhotoPath(), '0777',true); 
+        }
+              
+        $this->photo->move($this->getUploadPhotoRoot(), $this->getUser()->getId());
+   
+        unset($this->photo);
+        
+    }
+        
+    
+    /*
+     * 
+     *      UPLOAD DU CV
+     */
+    public function getUploadCvDir(){
+        return '/user/cv';
+    }
+  
+    public function getAbsoluteCvRoot(){
+        return $this->getUploadCvRoot().$this->getUser()->getId();
+    }
+    
+    public function getWebCvPath(){
+
+        return $this->getUploadCvDir().'/'.$this->getUser()->getId();
+    }
+    
+    public function getUploadCvRoot(){
+         return __DIR__.'/../../../web'. $this->getUploadCvDir().'/';
+    }
+ 
+    public function uploadCv(){
+        
+     
+        if(!is_dir($this->getWebCvPath())){
+            
+             mkdir($this->getWebCvPath(), '0777', true);
+        }
+              
+        $this->cv->move($this->getUploadCvRoot(), $this->getUser()->getId());
+   
+        unset($this->cv);
+    }
+    
+    function getCv() {
         return $this->cv;
     }
 
-    /**
-     * Set photo
-     *
-     * @param string $photo
-     *
-     * @return Freelancer
-     */
-    public function setPhoto($photo)
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
-
-    /**
-     * Get photo
-     *
-     * @return string
-     */
-    public function getPhoto()
-    {
+    function getPhoto() {
         return $this->photo;
     }
 
-    /**
-     * Set user
-     *
-     * @param \MyFOSUserBundle\Entity\User $user
-     *
-     * @return Freelancer
-     */
-    public function setUser(\MyFOSUserBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
+    function setCv($cv) {
+        $this->cv = $cv;
     }
 
-    /**
-     * Get user
-     *
-     * @return \MyFOSUserBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
+    function setPhoto($photo) {
+        $this->photo = $photo;
     }
+
+
+
 }
+

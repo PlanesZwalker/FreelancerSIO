@@ -1,47 +1,70 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
 
-        <h1 id="logo"><a class="bigtitle">Offres</a></h1>  
+    <h1 id="logo"><a class="bigtitle">Offres</a></h1>  
 
 {% endblock %}
 
 {% block body %}    
     <div class="formulairetop">
-        <h2 class="mysubtitle">Edition d'une Offre</h2>
+        <h2 class="mysubtitle">
+            Modification de l'offre: Projet {{ offre.Projet.intitule }}
+        </h2>   
+
         <div class="mycontentform">
             <ul>
                 <li class="returnlist">
-                    <a class="btn btn-default" data-ajax=false" href="{{ path('offre_index') }}">Retourner à la liste</a>
+                    <a class="btn btn-default"  href="{{ path('offre_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
-            <table class="tableautitle">
-                <thead>
-                    <div style="font-size:17px;">
-                            Pseudo du freelancer: 
-                        <div class="mytdtabshow2" style=" font-size:17px;"> {{ offre.freelancer.pseudo }}</div>
-                            Intitulé du projet rattaché:
-                        <div class="mytdtabshow2" style=" font-size:17px;"> {{ offre.projet.intitule }}</div>
-                            Societe ayant publié le projet rattaché:
-                        <div class="mytdtabshow2" style=" font-size:17px;"> {{ offre.projet.societe.denomination }}</div>
-                    </div>
-                </thead>
-                <tbody>
-                    <tr>
-                        {{ form_start(edit_form) }}
-                            {{ form_widget(edit_form) }}
-                            <input  class="myeditinput"  type="submit" value="Modifier l'offre" />
-                        {{ form_end(edit_form) }}
-                    </tr>
-                </tbody>
-                     
-            </table>
+
+
+
+            <div class="divTable" style="display:inline-table;">
+
+                Pseudo du freelancer: 
+                <div   style="padding:10px;margin-top:50px;"> 
+                    {{ offre.Freelancer.pseudo }}
+                    <img class="myimg" style="float:right" src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/photo/{{ offre.Freelancer.pseudo }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/photo/{{ offre.Freelancer.pseudo }}{% endif %}" />
+                </div>
+
+            </div>
+            <div class="divTable"  style="display:inline-table;margin-left:50px;">     
+                Societe ayant publié le projet rattaché:
+                <div style="padding:10px;"> 
+                    {{ offre.Projet.Societe.denomination}}
+                    <img class="myimg" style="float:right" src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/logo/{{ offre.Projet.Societe.denomination }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/logo/{{ offre.Projet.Societe.denomination }}{% endif %}" />
+                </div>
+            </div>
+
+
+            {{ form_start(edit_form) }}
+
+
+            <div class="divTable" style="display: inline-table; width:60%;  margin-left:15%; margin-top:50px;">
+                {{ form_row(edit_form.tarif) }}
+                {{ form_row(edit_form.delai) }}
+                {{ form_row(edit_form.particularite) }}
+
+            </div>
+
+
+
+            <div class="divTable"  style="display:block; width:90%; margin-top:50px;">   
+                {{ form_row(edit_form.proposition) }}
+            </div>    
+
+            <input  class="myeditinput"  type="submit" value="Enregistrer les modifications" />
+
+            {{ form_end(edit_form) }}
+
             <ul>
-              {% if is_granted("ROLE_ADMIN") %}
-                <li  class="mydeleteli">
-                    {{ form_start(delete_form) }}
+                {% if is_granted("ROLE_ADMIN") %}
+                    <li  class="mydeleteli">
+                        {{ form_start(delete_form) }}
                         <input type="submit" value="Supprimer l'offre">
-                    {{ form_end(delete_form) }}
-                </li>
+                        {{ form_end(delete_form) }}
+                    </li>
                 {% endif %}
             </ul>
         </div>

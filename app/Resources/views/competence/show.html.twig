@@ -7,7 +7,7 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h2 class="mysubtitle">Voir les Compétences</h2>
+        <h2 class="mysubtitle">Compétence: {{ competence.intitule }}</h2>
         <div class="mycontentformshow">
             <ul>
                 <li class="returnlist">
@@ -17,10 +17,6 @@
             <table class="tableautitle">
                 <tbody>
                     <tr>
-                        <th class="mytdtabshow">Competence</th>
-                        <td class="mytdtabshow">{{ competence.id_competence }}</td>
-                    </tr>
-                    <tr>
                         <th class="mytdtabshow2">Categorie</th>
                         <td class="mytdtabshow2">{{ competence.categorie }}</td>
                     </tr>
@@ -28,20 +24,16 @@
                         <th class="mytdtabshow">Description</th>
                         <td class="mytdtabshow">{{ competence.description }}</td>
                     </tr>
-                    <tr>
-                        <th class="mytdtabshow2">Freelancer</th>
-                        <td class="mytdtabshow2">{{ competence.id_freelancer }}</td>
-                    </tr>
                 </tbody>
             </table>
 
             <ul>
                 <li class="myeditli">
-                    <a class="btn btn-info" style="color:white;" href="{{ path('competence_edit', { 'id': competence.id_competence }) }}">Modifier</a>
+                    <a class="btn btn-info" style="color:white;" href="{{ path('competence_edit', { 'id': competence.idCompetence }) }}">Enregistrer la Compétence</a>
                 </li>
                 <li class="mydeleteli">
                     {{ form_start(delete_form) }}
-                        <input type="submit" value="Delete">
+                        <input type="submit"  value="Supprimer la compétence">
                     {{ form_end(delete_form) }}
                 </li>
             </ul>

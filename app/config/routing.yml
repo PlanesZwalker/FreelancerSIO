@@ -8,32 +8,33 @@ my_fos_user_societe:
 
 my_fos_user_user:
     resource: "@MyFOSUserBundle/Controller/UserController.php"
-    type:     annotation
-
+    type:     annotation 
+    
 my_fos_user_freelancer:
     resource: "@MyFOSUserBundle/Controller/FreelancerController.php"
     type:     annotation
     
-
+my_fos_user.user.default_route:
+    resource:  "@MyFOSUserBundle/Controller/UserController.php"
+    type:       annotation
+    
 my_fos_user_user:
     resource: "@MyFOSUserBundle/Controller/UserController.php"
     type:     annotation
 
 my_fos_user:
-    resource: "@MyFOSUserBundle/Resources/config/routing.yml"
-    prefix:   /myuser
+    path : /
+    defaults: {_controller:MyFOSUserBundle:Default:index }
     
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-   
-admin:
-    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
-    prefix: /admin
+    type:     xml
 
-_sonata_admin:
-    resource: .
-    type: sonata_admin
-    prefix: /admin
+
+
+
+
+
 
 re_download:
     path : /dl/{file}

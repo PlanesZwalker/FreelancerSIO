@@ -48,7 +48,7 @@ class TestController extends Controller
             $em->persist($test);
             $em->flush($test);
 
-            return $this->redirectToRoute('test_show', array('id' => $test->getId()));
+            return $this->redirectToRoute('test_show', array('id' => $test->getIdTest()));
         }
 
         return $this->render('test/new.html.twig', array(
@@ -66,9 +66,28 @@ class TestController extends Controller
     public function showAction(Test $test)
     {
         $deleteForm = $this->createDeleteForm($test);
-
+        
+        $em = $this->getDoctrine()->getManager();
+           
+        $user = $this->getUser();
+        $myuser = $user->getId();
+        var_dump($myuser);
+           
+        $iduser = array('user'=> $myuser);
+     
+        $myfreelancer =  $em->getRepository('MyFOSUserBundle:Freelancer')->findOneBy($iduser);
+        $idfreelancer = $myfreelancer->getId();
+        $freelancer=array('freelancer'=> $idfreelancer);// recuperer l'id de l'utilisateur en cours
+        $testfreelancer = $em->getRepository('MyFOSUserBundle:Testfreelancer')->findOneBy($freelancer);
+        
+        $competence=array('competence'=>1);// recuperer l'id de la competence en cours
+        $testcompetence = $em->getRepository('MyFOSUserBundle:Testcompetence')->findOneBy($competence);
+        //$testcompetence->getCompetence();
+        
         return $this->render('test/show.html.twig', array(
             'test' => $test,
+            'testfreelancer' => $testfreelancer,
+            'testcompetence' => $testcompetence,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -88,7 +107,7 @@ class TestController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('test_edit', array('id' => $test->getId()));
+            return $this->redirectToRoute('test_edit', array('id' => $test->getIdTest()));
         }
 
         return $this->render('test/edit.html.twig', array(
@@ -128,7 +147,7 @@ class TestController extends Controller
     private function createDeleteForm(Test $test)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('test_delete', array('id' => $test->getId())))
+            ->setAction($this->generateUrl('test_delete', array('id' => $test->getIdTest())))
             ->setMethod('DELETE')
             ->getForm()
         ;

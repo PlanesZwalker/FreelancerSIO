@@ -7,8 +7,9 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h2 class="mysubtitle">Liste des Tests</h2>
+        <h2 class="mysubtitle">  : liste des Tests disponibles </h2>
         <div class="mycontentform">
+            {% if is_granted("ROLE_SUPER_AMDIN") %}
             <ul>
                 <li>
                     <a class="addtab"href="{{ path('test_new') }}">
@@ -16,37 +17,37 @@
                     </a>
                 </li>
             </ul>
+            {% endif %}
             <table class="tableautitle">
                 <thead>
-                    <tr  class="tableautitlecontent">
+                    <tr  class="tableautitlecontent">     
+
                         <th class="center">Intitulé du Test</th>
                         <th class="center">Description</th>
                         <th class="center">Questionnaire</th>
-                        <th class="center">Résultat</th>
                         <th class="center">Date de passage</th>
-                        <th class="center">Freelancer</th>
-                        <th class="center">Competence</th>
+                        <th class="center">Résultat</th>
                         <th class="center">Actions</th>
                     </tr>
                 </thead>
-                <tbody class="mytbody">
+                <tbody class="mytbody">{{ dump(tests) }}
                 {% for test in tests %}
                     <tr>
-                        <a class="mydisplaynone"  href="{{ path('test_show', { 'id': test.idTest }) }}">{{ test.idTest }}</a>
-                        <td class="mytdtab2">{{ dump(test) }}</td>
-                        <td class="mytdtab">{{ test.description }}</td>
-                        <td class="mytdtab2">{{ test.urlTest }}</td>
-                        <td class="mytdtab">{{ test.resultat }}</td>
-                        <td class="mytdtab2">{#% if test.datePassage %}{{ test.datePassage|date("d/m/Y h:i:s") }}{% endif %#}</td>
-                        <td class="mytdtab">{#{ test.idFreelancer }#}</td>
-                        <td class="mytdtab2"></td>
-                        <td class="mytdtab">
+                        <a class="mydisplaynone" href="{{ path('test_show', { 'id': test.idTest }) }}">{{ test.idTest }}</a>
+                        <td class="mytdtab2">{{ test.intitule }}</td>
+                        
+                        <td class="mytdtab2">{{ test.description }}</td>
+                        <td class="mytdtab">{{ test.urlTest }}</td>
+                        <td class="mytdtab">{#% if test.datePassage %}{{ test.datePassage|date("d/m/Y h:i:s") }}{% endif %#}</td>       
+                        <td class="mytdtab"></td>
+                        
+                        <td class="mytdtab2">
                             <ul>
                                 <li style="display:inline-block;margin-top:8px;">
                                     <a class="btn btn-default" href="{{ path('test_show', { 'id': test.idTest }) }}">Afficher</a>
                                 </li>
                                 <li style="display:inline-block;">
-                                    <a class="btn btn-info" style="color:white;"  data-ajax="false" href="{{ path('test_edit', { 'id': test.idTest }) }}">Modifier</a>
+                                    <a class="btn btn-info" style="color:white;"  href="{{ path('test_edit', { 'id': test.idTest }) }}">Modifier</a>
                                 </li>
                             </ul>
                         </td>
