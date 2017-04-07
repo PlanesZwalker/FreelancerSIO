@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Test
  *
- * @ORM\Table(name="test")
+ * @ORM\Table(name="test", indexes={@ORM\Index(name="id_competence", columns={"competence"})})
  * @ORM\Entity
  */
 class Test
@@ -49,111 +49,64 @@ class Test
      */
     private $questionnaire;
 
-
-
     /**
-     * Get idTest
+     * @var \Competence
      *
-     * @return integer
+     * @ORM\ManyToOne(targetEntity="Competence")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="competence", referencedColumnName="id_competence")
+     * })
      */
-    public function getIdTest()
-    {
+    private $competence;
+
+    function getIdTest() {
         return $this->idTest;
     }
 
-    /**
-     * Set intitule
-     *
-     * @param string $intitule
-     *
-     * @return Test
-     */
-    public function setIntitule($intitule)
-    {
-        $this->intitule = $intitule;
-
-        return $this;
-    }
-
-    /**
-     * Get intitule
-     *
-     * @return string
-     */
-    public function getIntitule()
-    {
+    function getIntitule() {
         return $this->intitule;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Test
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
+    function getDescription() {
         return $this->description;
     }
 
-    /**
-     * Set urlTest
-     *
-     * @param string $urlTest
-     *
-     * @return Test
-     */
-    public function setUrlTest($urlTest)
-    {
-        $this->urlTest = $urlTest;
-
-        return $this;
-    }
-
-    /**
-     * Get urlTest
-     *
-     * @return string
-     */
-    public function getUrlTest()
-    {
+    function getUrlTest() {
         return $this->urlTest;
     }
 
-    /**
-     * Set questionnaire
-     *
-     * @param string $questionnaire
-     *
-     * @return Test
-     */
-    public function setQuestionnaire($questionnaire)
-    {
-        $this->questionnaire = $questionnaire;
-
-        return $this;
-    }
-
-    /**
-     * Get questionnaire
-     *
-     * @return string
-     */
-    public function getQuestionnaire()
-    {
+    function getQuestionnaire() {
         return $this->questionnaire;
     }
+
+    function getCompetence() {
+        return $this->competence;
+    }
+
+    function setIdTest($idTest) {
+        $this->idTest = $idTest;
+    }
+
+    function setIntitule($intitule) {
+        $this->intitule = $intitule;
+    }
+
+    function setDescription($description) {
+        $this->description = $description;
+    }
+
+    function setUrlTest($urlTest) {
+        $this->urlTest = $urlTest;
+    }
+
+    function setQuestionnaire($questionnaire) {
+        $this->questionnaire = $questionnaire;
+    }
+
+    function setCompetence(\Competence $competence) {
+        $this->competence = $competence;
+    }
+
+
 }
+

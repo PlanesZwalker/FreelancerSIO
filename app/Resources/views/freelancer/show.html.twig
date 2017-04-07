@@ -79,9 +79,9 @@
                             {% if competencesFreelancer %}
                                 <img class="mydrapeau" style="display:inline-block; width:150px; height:100px; margin-top:0px;"  
                                      src="{% if app.request.server.get('BASE') %}
-                                     {{ app.request.server.get('BASE')}}/user/competence/{{ competencesFreelancer.Competence.intitule }}
+                                     {{ app.request.server.get('BASE')}}/user/competence/{{ competencesFreelancer.competence.intitule }}
                                     {% else %}
-                                        {{ app.request.get('HTTP_HOST')}}/web/user/competence/{{ competencesFreelancer.Competence.intitule }}
+                                        {{ app.request.get('HTTP_HOST')}}/web/user/competence/{{ competencesFreelancer.competence.intitule }}
                                     {% endif %}.gif" 
                                 />
                             {% else %}

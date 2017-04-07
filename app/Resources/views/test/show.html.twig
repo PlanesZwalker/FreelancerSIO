@@ -4,9 +4,8 @@
         <h1 id="logo"><a class="bigtitle">Tests</a></h1>  
 
 {% endblock %}
-
 {% block body %}    
-    <div class="formulairetop">
+    <div class="formulairetop" style="margin-top:20px;">
         <h2 class="mysubtitle">Test</h2>
         <div class="mycontentformshow">
             <ul>
@@ -14,11 +13,11 @@
                     <a class="btn btn-default" href="{{ path('test_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
-            <table class="tableautitle">
+            <table class="tableautitle" >
                 <tbody>
                     <tr>
                         <th class="mytdtabshow">Competence</th>
-                        <td class="mytdtabshow">{{ testcompetence.Competence.intitule }}</td>
+                        <td class="mytdtabshow">{{ test.competence.intitule }}</td>
                     </tr>
                     <tr>
                         <th class="mytdtabshow2">Intitulé</th>
@@ -36,26 +35,29 @@
                         <th class="mytdtabshow">Résultats au questionnaire</th>
                         <td class="mytdtabshow">{{ test.questionnaire }}</td>
                     </tr>
-                    <tr>
+                 {#<tr>
                         <th class="mytdtabshow2">Date de Passage</th>
                         <td class="mytdtabshow2">{% if testfreelancer.datePassage %}{{ testfreelancer.datePassage|date('d-m-Y H:i:s') }}{% endif %}</td>
                     </tr>
+                 
                     <tr>
                         <th class="mytdtabshow">Freelancer</th>
-                        <td class="mytdtabshow">{{ testfreelancer.Freelancer.pseudo }}</td>
-                    </tr>
+                        <td class="mytdtabshow">{{ test.freelancer.pseudo }}</td>
+                    </tr>   #}
                 </tbody>
             </table>
-            <ul>
-                <li class="myeditli">
-                    <a  class="btn btn-default" href="{{ path('test_edit', { 'id': test.idTest }) }}">Modifier</a>
-                </li>
-                <li class="mydeleteli">
-                    {{ form_start(delete_form) }}
-                        <input type="submit" value="Supprimer le test">
-                    {{ form_end(delete_form) }}
-                </li>
-            </ul>
+            {% if is_granted("ROLE_ADMIN") %}
+                <ul>
+                    <li class="myeditli">
+                        <a  class="btn btn-default" href="{{ path('test_edit', { 'id': test.idTest }) }}">Modifier</a>
+                    </li>
+                    <li class="mydeleteli">
+                        {{ form_start(delete_form) }}
+                            <input type="submit" value="Supprimer le test">
+                        {{ form_end(delete_form) }}
+                    </li>
+                </ul>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

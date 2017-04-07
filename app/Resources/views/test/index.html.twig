@@ -7,7 +7,7 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h2 class="mysubtitle">  : liste des Tests disponibles </h2>
+        <h2 class="mysubtitle">{{ tests[0].competence.intitule }} : liste des Tests disponibles </h2>
         <div class="mycontentform">
             {% if is_granted("ROLE_SUPER_AMDIN") %}
             <ul>
@@ -30,7 +30,7 @@
                         <th class="center">Actions</th>
                     </tr>
                 </thead>
-                <tbody class="mytbody">{{ dump(tests) }}
+                <tbody class="mytbody">
                 {% for test in tests %}
                     <tr>
                         <a class="mydisplaynone" href="{{ path('test_show', { 'id': test.idTest }) }}">{{ test.idTest }}</a>
@@ -41,6 +41,11 @@
                         <td class="mytdtab">{#% if test.datePassage %}{{ test.datePassage|date("d/m/Y h:i:s") }}{% endif %#}</td>       
                         <td class="mytdtab"></td>
                         
+                         <td class="mytdtab">
+                             <a class="btn btn-success" href="{{ path('test_show', { 'id': test.idTest }) }}">Passer le test</a>
+                         </td>
+                         
+                        {% if is_granted("ROLE_ADMIN") %}
                         <td class="mytdtab2">
                             <ul>
                                 <li style="display:inline-block;margin-top:8px;">
@@ -51,6 +56,7 @@
                                 </li>
                             </ul>
                         </td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
                 </tbody>

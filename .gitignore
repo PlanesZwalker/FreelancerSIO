@@ -17,3 +17,5 @@
 /app/config/parameters
 /nbproject/*
 !/nbproject
+!/fpdf/*
+!/phpdocumentor/*

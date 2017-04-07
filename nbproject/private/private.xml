@@ -3,19 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/Resources/views/layout.html.twig</file>
-            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/Resources/views/projet/index.html.twig</file>
-            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/Resources/views/projet/new.html.twig</file>
-            <file>file:/C:/xampp/htdocs/FreelancerSIO/src/MyFOSUserBundle/Controller/OffreController.php</file>
-            <file>file:/C:/xampp/htdocs/FreelancerSIO/src/MyFOSUserBundle/Entity/Projet.php</file>
-            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/AppKernel.php</file>
-            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/Resources/views/base.html.twig</file>
-            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/Resources/views/nav.html.twig</file>
-            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/Resources/views/offre/index.html.twig</file>
-            <file>file:/C:/xampp/htdocs/FreelancerSIO/src/MyFOSUserBundle/Controller/DefaultController.php</file>
-            <file>file:/C:/xampp/htdocs/FreelancerSIO/src/MyFOSUserBundle/Controller/ProjetController.php</file>
-            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/Resources/views/offre/new.html.twig</file>
-            <file>file:/C:/xampp/htdocs/FreelancerSIO/app/Resources/views/projet/show.html.twig</file>
+            <file>file:/C:/xampp/htdocs/FreelancerSIO/.gitignore</file>
         </group>
     </open-files>
 </project-private>
