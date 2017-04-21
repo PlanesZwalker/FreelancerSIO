@@ -15,8 +15,10 @@
 /vendor/
 /web/bundles/
 /app/config/parameters
+
 /nbproject/
-!/nbproject
 /fpdf/
 /phpdocumentor/
-/phpunit.xml.dist
+phpunit.xml.dist
+
+/bin/
