@@ -31,13 +31,12 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
  */
-class ResettingController extends Controller
-{
+class ResettingController extends Controller {
+
     /**
      * Request reset user password: show form
      */
-    public function requestAction()
-    {
+    public function requestAction() {
         if ($this->getUser() instanceof UserInterface) {
             return $this->redirectToRoute($this->getParameter('fos_user.user.default_route'));
         }
@@ -52,8 +51,7 @@ class ResettingController extends Controller
      *
      * @return Response
      */
-    public function sendEmailAction(Request $request)
-    {
+    public function sendEmailAction(Request $request) {
         if ($this->getUser() instanceof UserInterface) {
             return $this->redirectToRoute($this->getParameter('fos_user.user.default_route'));
         }
@@ -75,7 +73,7 @@ class ResettingController extends Controller
 
         if (null === $user) {
             return $this->render('FOSUserBundle:Resetting:request.html.twig', array(
-                'invalid_username' => $username
+                        'invalid_username' => $username
             ));
         }
 
@@ -115,8 +113,7 @@ class ResettingController extends Controller
         if (null !== $event->getResponse()) {
             return $event->getResponse();
         }
-        return new RedirectResponse($this->generateUrl('fos_user_resetting_check_email',
-            array('email' => $this->getObfuscatedEmail($user))
+        return new RedirectResponse($this->generateUrl('fos_user_resetting_check_email', array('email' => $this->getObfuscatedEmail($user))
         ));
     }
 
@@ -127,8 +124,7 @@ class ResettingController extends Controller
      *
      * @return Response
      */
-    public function checkEmailAction(Request $request)
-    {
+    public function checkEmailAction(Request $request) {
         if ($this->getUser() instanceof UserInterface) {
             return $this->redirectToRoute($this->getParameter('fos_user.user.default_route'));
         }
@@ -141,7 +137,7 @@ class ResettingController extends Controller
         }
 
         return $this->render('FOSUserBundle:Resetting:check_email.html.twig', array(
-            'email' => $email,
+                    'email' => $email,
         ));
     }
 
@@ -153,8 +149,7 @@ class ResettingController extends Controller
      *
      * @return Response
      */
-    public function resetAction(Request $request, $token)
-    {
+    public function resetAction(Request $request, $token) {
         if ($this->getUser() instanceof UserInterface) {
             return $this->redirectToRoute($this->getParameter('fos_user.user.default_route'));
         }
@@ -201,8 +196,8 @@ class ResettingController extends Controller
         }
 
         return $this->render('FOSUserBundle:Resetting:reset.html.twig', array(
-            'token' => $token,
-            'form' => $form->createView(),
+                    'token' => $token,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -215,8 +210,7 @@ class ResettingController extends Controller
      *
      * @return string
      */
-    protected function getObfuscatedEmail(UserInterface $user)
-    {
+    protected function getObfuscatedEmail(UserInterface $user) {
         $email = $user->getEmail();
         if (false !== $pos = strpos($email, '@')) {
             $email = '...' . substr($email, $pos);
@@ -224,4 +218,5 @@ class ResettingController extends Controller
 
         return $email;
     }
+
 }

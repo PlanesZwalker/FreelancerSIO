@@ -14,7 +14,7 @@
         <div class="mycontentform">
             <ul>
                 <li class="returnlist">
-                    <a class="btn btn-default"  href="{{ path('offre_index') }}">Retourner à la liste</a>
+                    <a class="btn btn-success"  href="{{ path('offre_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
 
@@ -25,7 +25,7 @@
                 Pseudo du freelancer: 
                 <div   style="padding:10px;margin-top:50px;"> 
                     {{ offre.Freelancer.pseudo }}
-                    <img class="myimg" style="float:right" src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/photo/{{ offre.Freelancer.pseudo }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/photo/{{ offre.Freelancer.pseudo }}{% endif %}" />
+                    <img class="myimg" style="float:right" src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/photo/{{ offre.Freelancer.pseudo }}{% else %}{{ app.request.get('HTTP_HOST')}}/user/photo/{{ offre.Freelancer.pseudo }}{% endif %}" />
                 </div>
 
             </div>
@@ -33,7 +33,7 @@
                 Societe ayant publié le projet rattaché:
                 <div style="padding:10px;"> 
                     {{ offre.Projet.Societe.denomination}}
-                    <img class="myimg" style="float:right" src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/logo/{{ offre.Projet.Societe.denomination }}{% else %}{{ app.request.get('HTTP_HOST')}}/web/user/logo/{{ offre.Projet.Societe.denomination }}{% endif %}" />
+                    <img class="myimg" style="float:right" src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/logo/{{ offre.Projet.Societe.denomination }}{% else %}{{ app.request.get('HTTP_HOST')}}/user/logo/{{ offre.Projet.Societe.denomination }}{% endif %}" />
                 </div>
             </div>
 

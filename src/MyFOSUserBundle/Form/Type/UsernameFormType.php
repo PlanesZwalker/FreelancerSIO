@@ -21,8 +21,8 @@ use Symfony\Component\Form\FormBuilderInterface;
  *
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  */
-class UsernameFormType extends AbstractType
-{
+class UsernameFormType extends AbstractType {
+
     /**
      * @var UserToUsernameTransformer
      */
@@ -33,24 +33,21 @@ class UsernameFormType extends AbstractType
      *
      * @param UserToUsernameTransformer $usernameTransformer
      */
-    public function __construct(UserToUsernameTransformer $usernameTransformer)
-    {
+    public function __construct(UserToUsernameTransformer $usernameTransformer) {
         $this->usernameTransformer = $usernameTransformer;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->addModelTransformer($this->usernameTransformer);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getParent()
-    {
+    public function getParent() {
         return LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\TextType');
     }
 
@@ -58,16 +55,15 @@ class UsernameFormType extends AbstractType
     /**
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->getBlockPrefix();
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
-    {
+    public function getBlockPrefix() {
         return 'fos_user_username';
     }
+
 }

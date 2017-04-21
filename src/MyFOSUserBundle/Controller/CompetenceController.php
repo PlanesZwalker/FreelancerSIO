@@ -5,29 +5,29 @@ namespace MyFOSUserBundle\Controller;
 use MyFOSUserBundle\Entity\Competence;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
- 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+
 /**
  * Competence controller.
  *
  * @Route("competence")
  */
-class CompetenceController extends Controller
-{
+class CompetenceController extends Controller {
+
     /**
      * Lists all competence entities.
      *
      * @Route("/", name="competence_index")
      * @Method("GET")
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
         $competences = $em->getRepository('MyFOSUserBundle:Competence')->findAll();
 
         return $this->render('competence/index.html.twig', array(
-            'competences' => $competences,
+                    'competences' => $competences,
         ));
     }
 
@@ -37,20 +37,20 @@ class CompetenceController extends Controller
      * @Route("/new", name="competence_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
-    {
+    public function newAction(Request $request) {
         $competence = new Competence();
         $form = $this->createForm('MyFOSUserBundle\Form\CompetenceType', $competence);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            
-            if($request->isXmlHttpRequest()){
-                 $data = $request->request->get('data');
-                 $em->setData($data);
-                 $em->flush($competence);
-            }else{ $em = $this->getDoctrine()->getManager();
+
+            if ($request->isXmlHttpRequest()) {
+                $data = $request->request->get('data');
+                $em->setData($data);
+                $em->flush($competence);
+            } else {
+                $em = $this->getDoctrine()->getManager();
                 $em->persist($competence);
                 $em->flush($competence);
             }
@@ -59,8 +59,8 @@ class CompetenceController extends Controller
         }
 
         return $this->render('competence/new.html.twig', array(
-            'competence' => $competence,
-            'form' => $form->createView(),
+                    'competence' => $competence,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -70,13 +70,12 @@ class CompetenceController extends Controller
      * @Route("/{id}", name="competence_show")
      * @Method("GET")
      */
-    public function showAction(Competence $competence)
-    {
+    public function showAction(Competence $competence) {
         $deleteForm = $this->createDeleteForm($competence);
 
         return $this->render('competence/show.html.twig', array(
-            'competence' => $competence,
-            'delete_form' => $deleteForm->createView(),
+                    'competence' => $competence,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -86,8 +85,7 @@ class CompetenceController extends Controller
      * @Route("/{id}/edit", name="competence_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Competence $competence)
-    {
+    public function editAction(Request $request, Competence $competence) {
         $deleteForm = $this->createDeleteForm($competence);
         $editForm = $this->createForm('MyFOSUserBundle\Form\CompetenceType', $competence);
         $editForm->handleRequest($request);
@@ -99,9 +97,9 @@ class CompetenceController extends Controller
         }
 
         return $this->render('competence/edit.html.twig', array(
-            'competence' => $competence,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'competence' => $competence,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -111,8 +109,7 @@ class CompetenceController extends Controller
      * @Route("/{id}", name="competence_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Competence $competence)
-    {
+    public function deleteAction(Request $request, Competence $competence) {
         $form = $this->createDeleteForm($competence);
         $form->handleRequest($request);
 
@@ -132,12 +129,12 @@ class CompetenceController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Competence $competence)
-    {
+    private function createDeleteForm(Competence $competence) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('competence_delete', array('id' => $competence->getIdCompetence())))
-            ->setMethod('DELETE')
-            ->getForm()
+                        ->setAction($this->generateUrl('competence_delete', array('id' => $competence->getIdCompetence())))
+                        ->setMethod('DELETE')
+                        ->getForm()
         ;
     }
+
 }

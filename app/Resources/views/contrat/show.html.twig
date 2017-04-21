@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
 
-        <h1 id="logo"><a class="bigtitle">Contrats</a></h1>  
+    <h1 id="logo"><a class="bigtitle">Contrats</a></h1>  
 
 {% endblock %}
 
 {% block body %}    
     <div class="formulairetop">
         <h2 class="mysubtitle">Afficher le contrat</h2>
-            <div class="mycontentformshow">
+        <div class="mycontentformshow">
             <ul>
                 <li class="returnlist">
-                    <a class="btn btn-default" href="{{  path('contrat_index')  }}">Retourner à la liste</a>
+                    <a class="btn btn-success" href="{{  path('contrat_index')  }}">Retourner à la liste</a>
                 </li>
             </ul>
             <table class="tableautitle">
@@ -44,7 +44,7 @@
                 </li>
                 <li class="mydeleteli">
                     {{ form_start(delete_form) }}
-                        <input type="submit" value="Delete">
+                    <input type="submit" value="Delete">
                     {{ form_end(delete_form) }}
                 </li>
             </ul>

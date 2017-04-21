@@ -12,7 +12,7 @@
             {% if is_granted("ROLE_USER") %}     
                 <ul>
                     <li class="returnlist">
-                        <a class="btn btn-default" href="{{ path('societe_index') }}">Retourner à la liste</a>
+                        <a class="btn btn-success" href="{{ path('societe_index') }}">Retourner à la liste</a>
                     </li>
                 </ul>
             {% endif %}     
@@ -21,48 +21,43 @@
                 <div style="width:30%; display:inline-block;margin-left:100px;">
 
                     <div class="mytdtabshow">
-                        <img class="myimg"  src="{% if app.request.server.get('BASE') %}
-                                {{ app.request.server.get('BASE')}}/user/logo/{{ societe.user.id }}
-                            {% else %}
-                                 {{ app.request.get('HTTP_HOST')}}/web/user/logo/{{ societe.user.id }}
-                            {% endif %}
-                        " />
-                    </div>
+                        <img class="myimg"  src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/logo/{{ societe.user.id }}{% else %}{{ app.request.get('HTTP_HOST')}}/user/logo/{{ societe.user.id }}{% endif %}" />
+                             </div>
 
-                    <div class="mytdtabshow">{{ form_row(edit_form.logo|raw) }}</div>
-                    
-                    <div class="mytdtabshow">{{ form_row(edit_form.denomination) }}</div>
-                    <div class="mytdtabshow" >{{ form_row(edit_form.presentation) }}</div>
+                             <div class="mytdtabshow">{{ form_row(edit_form.logo|raw) }}</div>
+
+                             <div class="mytdtabshow">{{ form_row(edit_form.denomination) }}</div>
+                             <div class="mytdtabshow" >{{ form_row(edit_form.presentation) }}</div>
 
 
+                        </div>
+                        <div style="width:30%; display:inline-block;margin-left:100px;">   
+
+                            <div class="mytdtabshow">{{ form_row(edit_form.adresse) }}</div>
+
+                            <div class="mytdtabshow">{{ form_row(edit_form.siret) }}</div>
+
+                            <div class="mytdtabshow">{{ form_row(edit_form.tel) }}</div>
+
+                        </div>
+
+
+
+                        <input class="myeditinput" type="submit" value="Enregistrer les modifications" />
+                        {{ form_end(edit_form) }}
+                    </div>  
+
+                    {% if is_granted("ROLE_ADMIN") %}            
+                        <ul>
+                            <li class="mydeleteli ">
+
+                                {{ form_start(delete_form) }}
+                                <input type="submit"  value="Supprimer le profil" />
+                                {{ form_end(delete_form) }}
+
+                            </li>
+                        </ul> 
+                    {% endif %}
                 </div>
-                <div style="width:30%; display:inline-block;margin-left:100px;">   
-
-                    <div class="mytdtabshow">{{ form_row(edit_form.adresse) }}</div>
-
-                    <div class="mytdtabshow">{{ form_row(edit_form.siret) }}</div>
-
-                    <div class="mytdtabshow">{{ form_row(edit_form.tel) }}</div>
-
-                </div>
-
-
-
-                <input class="myeditinput" type="submit" value="Enregistrer les modifications" />
-                {{ form_end(edit_form) }}
-            </div>  
-
-            {% if is_granted("ROLE_ADMIN") %}            
-                <ul>
-                    <li class="mydeleteli ">
-
-                        {{ form_start(delete_form) }}
-                        <input type="submit"  value="Supprimer le profil" />
-                        {{ form_end(delete_form) }}
-
-                    </li>
-                </ul> 
-            {% endif %}
-        </div>
-    </div>
-{% endblock %}
+            </div>
+            {% endblock %}

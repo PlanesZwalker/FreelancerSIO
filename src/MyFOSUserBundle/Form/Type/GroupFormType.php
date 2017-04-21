@@ -15,8 +15,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class GroupFormType extends AbstractType
-{
+class GroupFormType extends AbstractType {
+
     /**
      * @var string
      */
@@ -25,24 +25,21 @@ class GroupFormType extends AbstractType
     /**
      * @param string $class The Group class name
      */
-    public function __construct($class)
-    {
+    public function __construct($class) {
         $this->class = $class;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('name', null, array('label' => 'form.group_name', 'translation_domain' => 'FOSUserBundle'));
     }
 
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
-    {
+    public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults(array(
             'data_class' => $this->class,
             'csrf_token_id' => 'group',
@@ -55,16 +52,15 @@ class GroupFormType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->getBlockPrefix();
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
-    {
+    public function getBlockPrefix() {
         return 'fos_user_group';
     }
+
 }

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Test
  *
- * @ORM\Table(name="test")
+ * @ORM\Table(name="test", indexes={@ORM\Index(name="id_competence", columns={"competence"})})
  * @ORM\Entity
  */
 class Test
@@ -48,6 +48,16 @@ class Test
      * @ORM\Column(name="questionnaire", type="string", length=255, nullable=false)
      */
     private $questionnaire;
+
+    /**
+     * @var \Competence
+     *
+     * @ORM\ManyToOne(targetEntity="Competence")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="competence", referencedColumnName="id_competence")
+     * })
+     */
+    private $competence;
 
 
 
@@ -155,5 +165,29 @@ class Test
     public function getQuestionnaire()
     {
         return $this->questionnaire;
+    }
+
+    /**
+     * Set competence
+     *
+     * @param \MyFOSUserBundle\Entity\Competence $competence
+     *
+     * @return Test
+     */
+    public function setCompetence(\MyFOSUserBundle\Entity\Competence $competence = null)
+    {
+        $this->competence = $competence;
+
+        return $this;
+    }
+
+    /**
+     * Get competence
+     *
+     * @return \MyFOSUserBundle\Entity\Competence
+     */
+    public function getCompetence()
+    {
+        return $this->competence;
     }
 }

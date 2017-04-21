@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="contrat", indexes={@ORM\Index(name="paiement", columns={"paiement"}), @ORM\Index(name="projet", columns={"projet"})})
  * @ORM\Entity
  */
-class Contrat
-{
+class Contrat {
+
     /**
      * @var integer
      *
@@ -62,15 +62,12 @@ class Contrat
      */
     private $projet;
 
-
-
     /**
      * Get idContrat
      *
      * @return integer
      */
-    public function getIdContrat()
-    {
+    public function getIdContrat() {
         return $this->idContrat;
     }
 
@@ -81,8 +78,7 @@ class Contrat
      *
      * @return Contrat
      */
-    public function setTarif($tarif)
-    {
+    public function setTarif($tarif) {
         $this->tarif = $tarif;
 
         return $this;
@@ -93,8 +89,7 @@ class Contrat
      *
      * @return float
      */
-    public function getTarif()
-    {
+    public function getTarif() {
         return $this->tarif;
     }
 
@@ -105,8 +100,7 @@ class Contrat
      *
      * @return Contrat
      */
-    public function setDelai($delai)
-    {
+    public function setDelai($delai) {
         $this->delai = $delai;
 
         return $this;
@@ -117,8 +111,7 @@ class Contrat
      *
      * @return string
      */
-    public function getDelai()
-    {
+    public function getDelai() {
         return $this->delai;
     }
 
@@ -129,8 +122,7 @@ class Contrat
      *
      * @return Contrat
      */
-    public function setDateSign($dateSign)
-    {
+    public function setDateSign($dateSign) {
         $this->dateSign = $dateSign;
 
         return $this;
@@ -141,8 +133,7 @@ class Contrat
      *
      * @return \DateTime
      */
-    public function getDateSign()
-    {
+    public function getDateSign() {
         return $this->dateSign;
     }
 
@@ -153,8 +144,7 @@ class Contrat
      *
      * @return Contrat
      */
-    public function setPaiement(\MyFOSUserBundle\Entity\Paiement $paiement = null)
-    {
+    public function setPaiement(\MyFOSUserBundle\Entity\Paiement $paiement = null) {
         $this->paiement = $paiement;
 
         return $this;
@@ -165,8 +155,7 @@ class Contrat
      *
      * @return \MyFOSUserBundle\Entity\Paiement
      */
-    public function getPaiement()
-    {
+    public function getPaiement() {
         return $this->paiement;
     }
 
@@ -177,8 +166,7 @@ class Contrat
      *
      * @return Contrat
      */
-    public function setProjet(\MyFOSUserBundle\Entity\Projet $projet = null)
-    {
+    public function setProjet(\MyFOSUserBundle\Entity\Projet $projet = null) {
         $this->projet = $projet;
 
         return $this;
@@ -189,8 +177,8 @@ class Contrat
      *
      * @return \MyFOSUserBundle\Entity\Projet
      */
-    public function getProjet()
-    {
+    public function getProjet() {
         return $this->projet;
     }
+
 }

@@ -16,8 +16,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ResettingFormType extends AbstractType
-{
+class ResettingFormType extends AbstractType {
+
     /**
      * @var string
      */
@@ -26,16 +26,14 @@ class ResettingFormType extends AbstractType
     /**
      * @param string $class The User class name
      */
-    public function __construct($class)
-    {
+    public function __construct($class) {
         $this->class = $class;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('plainPassword', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\RepeatedType'), array(
             'type' => LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'),
             'options' => array('translation_domain' => 'FOSUserBundle'),
@@ -48,8 +46,7 @@ class ResettingFormType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
-    {
+    public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults(array(
             'data_class' => $this->class,
             'csrf_token_id' => 'resetting',
@@ -62,16 +59,15 @@ class ResettingFormType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->getBlockPrefix();
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
-    {
+    public function getBlockPrefix() {
         return 'fos_user_resetting';
     }
+
 }

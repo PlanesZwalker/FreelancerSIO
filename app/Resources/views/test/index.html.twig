@@ -1,22 +1,22 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
 
-        <h1 id="logo"><a class="bigtitle">Tests</a></h1>  
+    <h1 id="logo"><a class="bigtitle">Tests</a></h1>  
 
 {% endblock %}
 
 {% block body %}    
     <div class="formulairetop">
-        <h2 class="mysubtitle">  : liste des Tests disponibles </h2>
+        <h2 class="mysubtitle">{% if tests[0].competence.intitule is defined %}{{ tests[0].competence.intitule }} :{% endif %} Liste des Tests disponibles </h2>
         <div class="mycontentform">
-            {% if is_granted("ROLE_SUPER_AMDIN") %}
-            <ul>
-                <li>
-                    <a class="addtab"href="{{ path('test_new') }}">
-                        <span class="fa fa-plus" >&nbsp;&nbsp;Créer un nouveau Test</span>
-                    </a>
-                </li>
-            </ul>
+            {% if is_granted("ROLE_ADMIN") %}
+                <ul style="float:left; margin-left:30%; margin-top:5px; ">
+                    <li>
+                        <a class="addtab btn btn-primary" href="{{ path('test_new') }}">
+                            <span class="fa fa-plus" style="padding-left:150px; font-size:17px; padding-right:150px; padding-top:5px; padding-bottom:5px;">&nbsp;&nbsp;Créer un nouveau test</span>
+                        </a>
+                    </li>
+                </ul>
             {% endif %}
             <table class="tableautitle">
                 <thead>
@@ -24,39 +24,39 @@
 
                         <th class="center">Intitulé du Test</th>
                         <th class="center">Description</th>
-                        <th class="center">Questionnaire</th>
-                        <th class="center">Date de passage</th>
-                        <th class="center">Résultat</th>
                         <th class="center">Actions</th>
                     </tr>
                 </thead>
-                <tbody class="mytbody">{{ dump(tests) }}
-                {% for test in tests %}
-                    <tr>
-                        <a class="mydisplaynone" href="{{ path('test_show', { 'id': test.idTest }) }}">{{ test.idTest }}</a>
-                        <td class="mytdtab2">{{ test.intitule }}</td>
-                        
-                        <td class="mytdtab2">{{ test.description }}</td>
-                        <td class="mytdtab">{{ test.urlTest }}</td>
-                        <td class="mytdtab">{#% if test.datePassage %}{{ test.datePassage|date("d/m/Y h:i:s") }}{% endif %#}</td>       
-                        <td class="mytdtab"></td>
-                        
-                        <td class="mytdtab2">
-                            <ul>
-                                <li style="display:inline-block;margin-top:8px;">
-                                    <a class="btn btn-default" href="{{ path('test_show', { 'id': test.idTest }) }}">Afficher</a>
-                                </li>
-                                <li style="display:inline-block;">
-                                    <a class="btn btn-info" style="color:white;"  href="{{ path('test_edit', { 'id': test.idTest }) }}">Modifier</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                {% endfor %}
+                <tbody class="mytbody">
+                    {% for test in tests %}
+                        <tr>
+
+                            <td class="mytdtab2">{{ test.intitule }}</td>
+                            <td class="mytdtab">{{ test.description }}</td>
+                            <td class="mytdtab">{#% if test.datePassage %}{{ test.datePassage|date("d/m/Y h:i:s") }}{% endif %#}</td>       
+                            <td class="mytdtab2">{{ test.urlTest }}</td>
+                            <td class="mytdtab">
+                                <a class="btn btn-primary" href="{{ path('test_show', { 'id': test.idTest }) }}">Passer le test</a>
+                            </td>
+
+                            {% if is_granted("ROLE_ADMIN") %}
+                                <td class="mytdtab2">
+                                    <ul>
+                                        <li style="display:inline-block;margin-top:8px;">
+                                            <a class="btn btn-success" href="{{ path('test_show', { 'id': test.idTest }) }}">Afficher</a>
+                                        </li>
+                                        <li style="display:inline-block;">
+                                            <a class="btn btn-info" style="color:white;"  href="{{ path('test_edit', { 'id': test.idTest }) }}">Modifier</a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
 
-            
+
         </div>
     </div>
 {% endblock %}

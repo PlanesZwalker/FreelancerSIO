@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
 
-        <h1 id="logo"><a class="bigtitle">Sociétés</a></h1>  
+    <h1 id="logo"><a class="bigtitle">Sociétés</a></h1>  
 
 {% endblock %}
 
@@ -11,86 +11,91 @@
         <div class="mycontentformshow">
             <ul>
                 <li class="returnlist">
-                    <a class="btn btn-default" href="{{ path('societe_index') }}">Retourner à la liste</a>
+                    <a class="btn btn-success" href="{{ path('societe_index') }}">Retourner à la liste</a>
                 </li>
 
                 <li> 
-                    <a class="btn btn-info " href="{{ path('societe_projet', { 'id': societe.id }) }}">
+                    <a class="btn btn-info " href="{{ path('societe_index', { 'id': societe.id }) }}">
                         {% if is_granted('ROLE_USER') %}
                             {% if societe.user.id is defined %}
                                 {% if societe.user.id==app.user.id %} 
                                     Voir tous mes Projets
                                 {% else %}    
-                                     Voir les Projets de cette société
+                                    Voir les Projets de cette société
                                 {% endif %}
                             {% endif %}
-                          {% else %}
-                                Voir les Projets de cette société
+                        {% else %}
+                            Voir les Projets de cette société
                         {% endif %}
                     </a>
-                    
+
                     {% if is_granted('ROLE_USER') %}
-                         {% if societe.user.id is defined %}
+                        {% if societe.user.id is defined %}
                             {% if societe.user.id==app.user.id %} 
-                                <a class="btn btn-warning" href="{{ path('message_index', { 'id': societe.id }) }}">
-                                    Voir tous mes messages
+                                <a class="btn btn-warning" href="{{ path('message_index', { 'id_user_send': societe.user.id }) }}">
+                                    Voir tous mes messages reçus
+                                </a>
+                                <a class="btn btn-warning" href="{{ path('message_index', { 'id_user_received': societe.user.id }) }}">
+                                    Voir tous mes messages envoyés
                                 </a>
                             {% else %}    
-                                <a class="btn btn-warning " href="{{ path('message_new', { 'id': societe.id }) }}">
+                                <a class="btn btn-warning " href="{{ path('message_new', { 'id_user_for': societe.user.id }) }}">
                                     Envoyer un message à cette société
                                 </a>
                             {% endif %}
-                         {% endif %}
+                        {% endif %}
                     {% endif %}
-                  
+
                 </li>
-               
+
             </ul>
             <div style="margin-left:20%; text-align:center; width:60%;">
-              
+
                 <div class="mytdtabshow2">Logo</div>
                 <div class="mytdtabshow">
                     <img class="myimg" src="
-                         {% if app.request.server.get('BASE') %}
-                             {{ app.request.server.get('BASE')}}/user/logo/{{ societe.user.id }}
-                         {% else %}
-                             {{ app.request.get('HTTP_HOST')}}/web/user/logo/{{ societe.user.id }}
-                         {% endif %}" />
+                        {% if app.request.server.get('BASE') %}
+                            {{ app.request.server.get('BASE') }}/user/logo/{{ societe.user.id }}
+                        {% else %}
+                            {{ app.request.get('HTTP_HOST') }}/user/logo/{{ societe.user.id }}
+                        {% endif %}" />
                 </div>
 
                 <div class="mytdtabshow2">Societe</div>
                 <td class="mytdtabshow">{{ societe.denomination }}
 
-                <div class="mytdtabshow2">Siret</div>
-                <div class="mytdtabshow">{{ societe.siret }}</div>
+                    <div class="mytdtabshow2">Siret</div>
+                    <div class="mytdtabshow">{{ societe.siret }}</div>
 
-                <div class="mytdtabshow2">Denomination</div>
-                <div class="mytdtabshow">{{ societe.adresse }}</div>
+                    <div class="mytdtabshow2">Denomination</div>
+                    <div class="mytdtabshow">{{ societe.adresse }}</div>
 
-                <div class="mytdtabshow2">Présentation</div>
-                <div class="mytdtabshow">{{ societe.presentation }}</div>
-            
+                    <div class="mytdtabshow2">Présentation</div>
+                    <div class="mytdtabshow">{{ societe.presentation }}</div>
+
             </div>
-                            
+
             <ul style="float:right">
-               {% if is_granted("ROLE_USER")  %}
-                   {% if societe.user.id is defined %}
+                {% if is_granted("ROLE_SOCIETE")  %}
+                    {% if societe.user.id is defined %}
                         {% if societe.user.id==app.user.id %} 
                             <li>
                                 <a class="btn btn-info" href="{{ path('societe_edit', { 'id': societe.id }) }}">Modifier</a>
                             </li>
-                       {% endif %}
+                        {% endif %}
                     {% endif %}
                 {% endif %}
+            </ul>
+            <ul>
                 {% if is_granted("ROLE_ADMIN") %}
                     <li  class="mydeleteli">
                         {{ form_start(delete_form) }}
-                            <input type="submit" value="Supprimer le profil">
+                            <input style="float:left" type="submit" value="Supprimer le profil">
                         {{ form_end(delete_form) }}
                     </li>
                 {% endif %}
             </ul>  
-      
+
         </div>         
     </div>
 {% endblock %}

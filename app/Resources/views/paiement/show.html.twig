@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
 
-        <h1 id="logo"><a class="bigtitle">Paiements</a></h1>  
+    <h1 id="logo"><a class="bigtitle">Paiements</a></h1>  
 
 {% endblock %}
 
@@ -11,7 +11,7 @@
         <div class="mycontentformshow">
             <ul>
                 <li class="returnlist">
-                    <a class="btn btn-default" href="{{  path('paiement_index') }}">Retourner à la liste</a>
+                    <a class="btn btn-success" href="{{  path('paiement_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
             <table class="tableautitle">
@@ -43,7 +43,7 @@
                 </li>
                 <li class="mydeleteli">
                     {{ form_start(delete_form) }}
-                        <input type="submit" value="Delete">
+                    <input type="submit" value="Delete">
                     {{ form_end(delete_form) }}
                 </li>
             </ul>

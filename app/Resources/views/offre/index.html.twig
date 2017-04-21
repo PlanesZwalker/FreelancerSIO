@@ -1,22 +1,36 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
 
-        <h1 id="logo"><a class="bigtitle">Offres</a></h1>  
+    <h1 id="logo"><a class="bigtitle">Offres</a></h1>  
 
 {% endblock %}
 
 {% block body %}    
     <div class="formulairetop2">
-        <h2 class="mysubtitle">Liste des Offres</h2>
+
+        <h2 class="mysubtitle">
+
+        Liste des Offres 
+        
+        {% if offresByProjet[0].projet.intitule is defined %} 
+           du projet "{{ offresByProjet[0].projet.intitule }}"
+        {% endif %}   
+        {% if offresByFreelancer[0].freelancer.pseudo is defined %}
+            du freelancer {{ offresByFreelancer[0].freelancer.pseudo }}
+        {% endif %}
+        {% if is_granted("ROLE_ADMIN") and offresByProjet[0].projet.intitule is not defined and offresByFreelancer[0].freelancer.pseudo is not defined %}
+               ( toutes )
+        {% endif %}
+        </h2>
         <div class="mycontentform">
             {% if is_granted("ROLE_ADMIN") %}
-                <ul>
-                   <li>
-                       <a class="addtab" href="{{ path('offre_new') }}">
-                           <span class="fa fa-plus" >&nbsp;&nbsp;Créer une nouvelle Offre</span>
-                       </a>
-                   </li>
-               </ul>
+                <ul style="float:left; margin-left:30%; margin-top:5px; ">
+                    <li>
+                        <a class="addtab btn btn-primary" href="{{ path('offre_new', {'id_projet' : offres[0].projet.id } ) }}">
+                            <span class="fa fa-plus" style="padding-left:150px; font-size:17px; padding-right:150px; padding-top:5px; padding-bottom:5px;">&nbsp;&nbsp;Faire offre pour ce projet</span>
+                        </a>
+                    </li>
+                </ul>
             {% endif %}
             <table class="tableautitle">
                 <thead>
@@ -28,115 +42,128 @@
                         <th class="center">Proposition commerciale</th>
                         <th class="center">Particularités</th>
                         <th class="center">Nom du freelancer</th>
-                          <th class="center">Photo du freelancer</th>
+                        <th class="center">Photo du freelancer</th>
                         <th class="center">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="mytbody">
                     
-                {% if id_projet is not defined %}
-                    
-                    {% for offre in offres %}
-                        <tr>               
-                            <td class="mytdtab">
-                                <img class="myimg" src="
-                                     {% if app.request.server.get('BASE') %}
-                                         {{ app.request.server.get('BASE')}}/user/logo/{{ offre.projet.societe.user.id }}
-                                     {% else %}
-                                         {{ app.request.get('HTTP_HOST')}}/web/user/logo/{{ offre.projet.societe.user.id }}
-                                     {% endif %}
-                                " />
-                            </td>
-                            <td class="mytdtab2">{{ offre.Projet.intitule }}</td>
-                            <td class="mytdtab">{{ offre.tarif }}</td>
-                            <td class="mytdtab2">{{ offre.delai }}</td>
-                            <td class="mytdtab">
-                                 <a href="{% if app.request.server.get('BASE') %}
-                                        {{ app.request.server.get('BASE')}}/user/proposition/{{ offre.freelancer.pseudo }}
-                                     {% else %}
-                                        {{ app.request.get('HTTP_HOST')}}/web/user/proposition/{{ offre.freelancer.pseudo }}
-                                     {% endif %}">
-                                     <h1><i class="fa fa-download fa-3x"></i></h1>
-                                 </a>
-                            </td>
-                            <td class="mytdtab2">{{ offre.particularite }}</td>
-                            <td class="mytdtab">{{ offre.freelancer.pseudo }}</td>
+                    {# cas où on affiche la liste des offres en fonction du freelancer #}
+                    {% if offresByFreelancer[0].freelancer.pseudo is defined  %}
 
-                            <td class="mytdtab2">
-                                <img class="myimg" src="{% if app.request.server.get('BASE') %}
-                                     {{ app.request.server.get('BASE')}}/user/photo/{{ offre.freelancer.user.id }}
-                                     {% else %}
-                                         {{ app.request.get('HTTP_HOST')}}/web/user/photo/{{ offre.freelancer.user.id }}
-                                    {% endif %}
-                                " />
-                            </td>
-                            <td class="mytdtab">
-                                <ul>
-                                    <li style="display:inline-block;margin-top:8px;">
-                                        <a class="btn btn-default" href="{{ path('offre_show', { 'id': offre.idOffre }) }}">Afficher</a>
-                                    </li>
-                                      {% if is_granted("ROLE_ADMIN") %}
-                                        <li style="display:inline-block;">
-                                            <a class="btn btn-info" style="color:white;" href="{{ path('offre_edit', { 'id': offre.idOffre }) }}">Modifier</a>
-                                        </li>
-                                    {% endif %}
-                                </ul>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                        
-                {% else %}  
-                    
-                    {% for offre in offresById %}
-                        <tr>               
-                            <td class="mytdtab">
-                                <img class="myimg" src="
-                                     {% if app.request.server.get('BASE') %}
-                                         {{ app.request.server.get('BASE')}}/user/logo/{{ offre.projet.societe.user.id }}
-                                     {% else %}
-                                         {{ app.request.get('HTTP_HOST')}}/web/user/logo/{{ offre.projet.societe.user.id }}
-                                     {% endif %}
-                                " />
-                            </td>
-                            <td class="mytdtab2">{{ offre.Projet.intitule }}</td>
-                            <td class="mytdtab">{{ offre.tarif }}</td>
-                            <td class="mytdtab2">{{ offre.delai }}</td>
-                            <td class="mytdtab">
-                                 <a href="{% if app.request.server.get('BASE') %}
-                                        {{ app.request.server.get('BASE')}}/user/proposition/{{ offre.freelancer.pseudo }}
-                                     {% else %}
-                                        {{ app.request.get('HTTP_HOST')}}/web/user/proposition/{{ offre.freelancer.pseudo }}
-                                     {% endif %}">
-                                     <h1><i class="fa fa-download fa-3x"></i></h1>
-                                 </a>
-                            </td>
-                            <td class="mytdtab2">{{ offre.particularite }}</td>
-                            <td class="mytdtab">{{ offre.freelancer.pseudo }}</td>
+                        {% for offre in offresByFreelancer %}
+                            <tr>               
+                                <td class="mytdtab">
+                                    <img class="myimg" src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/logo/{{ offre.projet.societe.user.id }}{% else %}{{ app.request.get('HTTP_HOST')}}/user/logo/{{ offre.projet.societe.user.id }}{% endif %}" />
+                                </td>
+                                <td class="mytdtab2">{{ offre.Projet.intitule }}</td>
+                                <td class="mytdtab">{{ offre.tarif }}</td>
+                                <td class="mytdtab2">{{ offre.delai }}</td>
+                                <td class="mytdtab">
+                                    <a href="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/proposition/{{ offre.freelancer.pseudo }}{% else %}{{ app.request.get('HTTP_HOST')}}/user/proposition/{{ offre.freelancer.pseudo }}{% endif %}">
+                                        <h1><i class="fa fa-download fa-3x"></i></h1>
+                                    </a>
+                                </td>
+                                <td class="mytdtab2">{{ offre.particularite }}</td>
+                                <td class="mytdtab">{{ offre.freelancer.pseudo }}</td>
 
-                            <td class="mytdtab2">
-                                <img class="myimg" src="{% if app.request.server.get('BASE') %}
-                                     {{ app.request.server.get('BASE')}}/user/photo/{{ offre.freelancer.user.id }}
-                                     {% else %}
-                                         {{ app.request.get('HTTP_HOST')}}/web/user/photo/{{ offre.freelancer.user.id }}
-                                    {% endif %}
-                                " />
-                            </td>
-                            <td class="mytdtab">
-                                <ul>
-                                    <li style="display:inline-block;margin-top:8px;">
-                                        <a class="btn btn-default" href="{{ path('offre_show', { 'id': offre.idOffre }) }}">Afficher</a>
-                                    </li>
-                                      {% if is_granted("ROLE_ADMIN") %}
-                                        <li style="display:inline-block;">
-                                            <a class="btn btn-info" style="color:white;" href="{{ path('offre_edit', { 'id': offre.idOffre }) }}">Modifier</a>
+                                <td class="mytdtab2">
+                                    <img class="myimg" src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/photo/{{ offre.freelancer.user.id }}{% else %}{{ app.request.get('HTTP_HOST')}}/user/photo/{{ offre.freelancer.user.id }}{% endif %}" />
+                                </td>
+                                <td class="mytdtab">
+                                    <ul>
+                                        <li style="display:inline-block;margin-top:8px;">
+                                            <a class="btn btn-success" href="{{ path('offre_show', { 'id': offre.idOffre }) }}">Afficher</a>
                                         </li>
-                                    {% endif %}
-                                </ul>
-                            </td>
-                        </tr>
-                    {% endfor %}
+                                        {% if is_granted("ROLE_ADMIN") %}
+                                            <li style="display:inline-block;">
+                                                <a class="btn btn-info" style="color:white;" href="{{ path('offre_edit', { 'id': offre.idOffre }) }}">Modifier</a>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                    {% endif %}
                     
-                {% endif %}
+                    {# cas où on affiche la liste des offres en fonction d'un projet #}
+                    {% if offresByProjet[0] is defined and id_freelancer is not defined %}  
+
+                        {% for offre in offresByProjet %}
+                            <tr>               
+                                <td class="mytdtab">
+                                    <img class="myimg" src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/logo/{{ offre.projet.societe.user.id }}{% else %}{{ app.request.get('HTTP_HOST')}}/user/logo/{{ offre.projet.societe.user.id }}{% endif %}" />
+                                </td>
+                                <td class="mytdtab2">{{ offre.projet.intitule }}</td>
+                                <td class="mytdtab">{{ offre.tarif }}</td>
+                                <td class="mytdtab2">{{ offre.delai }}</td>
+                                <td class="mytdtab">
+                                    <a href="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/proposition/{{ offre.freelancer.pseudo }}{% else %}{{ app.request.get('HTTP_HOST')}}/user/proposition/{{ offre.freelancer.pseudo }}{% endif %}">
+                                        <h1><i class="fa fa-download fa-3x"></i></h1>
+                                    </a>
+                                </td>
+                                <td class="mytdtab2">{{ offre.particularite }}</td>
+                                <td class="mytdtab">{{ offre.freelancer.pseudo }}</td>
+
+                                <td class="mytdtab2">
+                                    <img class="myimg" src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/photo/{{ offre.freelancer.user.id }}{% else %}{{ app.request.get('HTTP_HOST')}}/user/photo/{{ offre.freelancer.user.id }}{% endif %}" />
+                                </td>
+                                <td class="mytdtab">
+                                    <ul>
+                                        <li style="display:inline-block;margin-top:8px;">
+                                            <a class="btn btn-success" href="{{ path('offre_show', { 'id': offre.idOffre }) }}">Afficher</a>
+                                        </li>
+                                        {% if is_granted("ROLE_ADMIN") %}
+                                            <li style="display:inline-block;">
+                                                <a class="btn btn-info" style="color:white;" href="{{ path('offre_edit', { 'id': offre.idOffre }) }}">Modifier</a>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                    {% endif %}
+                    
+                    {# cas où on affiche la liste des offres en fonction d'un projet #}
+                    {% if is_granted("ROLE_ADMIN")  and offresByProjet[0].projet.intitule is not defined and offresByFreelancer[0].freelancer.pseudo is not defined %}  
+
+                        {% for offre in offres %}
+                            <tr>               
+                                <td class="mytdtab">
+                                    <img class="myimg" src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/logo/{{ offre.projet.societe.user.id }}{% else %}{{ app.request.get('HTTP_HOST')}}/user/logo/{{ offre.projet.societe.user.id }}{% endif %}" />
+                                </td>
+                                <td class="mytdtab2">{{ offre.projet.intitule }}</td>
+                                <td class="mytdtab">{{ offre.tarif }}</td>
+                                <td class="mytdtab2">{{ offre.delai }}</td>
+                                <td class="mytdtab">
+                                    <a href="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/proposition/{{ offre.freelancer.pseudo }}{% else %}{{ app.request.get('HTTP_HOST')}}/user/proposition/{{ offre.freelancer.pseudo }}{% endif %}">
+                                        <h1><i class="fa fa-download fa-3x"></i></h1>
+                                    </a>
+                                </td>
+                                <td class="mytdtab2">{{ offre.particularite }}</td>
+                                <td class="mytdtab">{{ offre.freelancer.pseudo }}</td>
+
+                                <td class="mytdtab2">
+                                    <img class="myimg" src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/photo/{{ offre.freelancer.user.id }}{% else %}{{ app.request.get('HTTP_HOST')}}/user/photo/{{ offre.freelancer.user.id }}{% endif %}" />
+                                </td>
+                                <td class="mytdtab">
+                                    <ul>
+                                        <li style="display:inline-block; margin-top:8px;">
+                                            <a class="btn btn-success" href="{{ path('offre_show', { 'id': offre.idOffre }) }}">Afficher</a>
+                                        </li>
+                                        {% if is_granted("ROLE_ADMIN") %}
+                                            <li style="display:inline-block;">
+                                                <a class="btn btn-info" style="color:white;" href="{{ path('offre_edit', { 'id': offre.idOffre }) }}">Modifier</a>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                    {% endif %}
                 </tbody>
             </table> 
         </div>

@@ -9,30 +9,28 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
-class UserType extends AbstractType
-{
-        /**
+class UserType extends AbstractType {
+
+    /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
                 ->add('username')
                 ->add('name')
                 ->add('firstname')
                 ->add('email')
                 ->add('roles')
-                ->add('password',PasswordType::class)
-                ->add('last_login', DateTimeType::class)        
-                
-                ;
+                ->add('password', PasswordType::class)
+                ->add('last_login', DateTimeType::class)
+
+        ;
     }
-    
+
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
-    {
+    public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults(array(
             'data_class' => 'MyFOSUserBundle\Entity\User'
         ));
@@ -41,10 +39,8 @@ class UserType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
-    {
+    public function getBlockPrefix() {
         return 'myfosuserbundle_user';
     }
-
 
 }

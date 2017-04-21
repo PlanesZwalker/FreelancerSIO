@@ -31,8 +31,8 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
  */
-class MyChangePasswordController extends Controller
-{
+class MyChangePasswordController extends Controller {
+
     /**
      * Change user password
      *
@@ -40,8 +40,7 @@ class MyChangePasswordController extends Controller
      *
      * @return Response
      */
-    public function changePasswordAction(Request $request)
-    {
+    public function changePasswordAction(Request $request) {
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
@@ -85,7 +84,8 @@ class MyChangePasswordController extends Controller
         }
 
         return $this->render('FOSUserBundle:ChangePassword:change_password.html.twig', array(
-            'form' => $form->createView()
+                    'form' => $form->createView()
         ));
     }
+
 }

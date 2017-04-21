@@ -7,7 +7,7 @@
 
     {% block stylesheets %}{% endblock %}
 
-    <link rel="icon" type="image/x-icon" href="{{ asset('iconFD4.png') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/iconFD4.png') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
 
@@ -22,7 +22,7 @@
 
 <script src="{{ asset('assets/js/myjs.js') }}"></script> 
 
-{% block javascripts %}{% endblock %}
+{% block javascript %}{% endblock %}
 
 
 </head>
@@ -31,7 +31,7 @@
 
     <header id="header-wrapper" style="height:200px;display:inline-block;">
 
-        <div id="header" class="container" style=" width:100%; height:200px ;background-image: url('{{ asset('fondcercle.png') }}'); ">
+        <div id="header" class="container" style=" width:100%; height:200px ;background-image: url('{{ asset('images/fondcercle.png') }}'); ">
 
             {# NAVIGATION #}
             <nav style="position:absolute;top:-5px;width:98vw; left:1vw; right:1vw;height:140px;">
@@ -40,32 +40,46 @@
             {# EN TETE #}
 
             <div style="text-align:center; width:100vw; "> 
-                {% block titre %}{% endblock %}  
-                <div style="position:absolute; top:100px;">
-                    {% if not (app.request.attributes.get('_route')=='front') %}
-                        {% if app.request.pathInfo != '/web' %}
-                            <a   href="{{  path('front') }}" class="visible "  >
-                                <img src="{{ asset('iconAccueil.png') }}" style="height:130px; width:130px; position:absolute; top:70px; left:0.5vw;"/>  
-                            </a> 
-                        {% endif %}
+            {% block titre %}{% endblock %}  
+            <div style="position:absolute; top:100px;">
+                {% if not (app.request.attributes.get('_route')=='front') %}
+                    {% if app.request.pathInfo != '/web' %}
+                        <a   href="{{  path('front') }}" class="visible "  >
+                            <img src="{{ asset('images/iconAccueil.png') }}" style="height:130px; width:130px; position:absolute; top:70px; left:0.5vw;"/>  
+                        </a> 
                     {% endif %}
-                    <a   href="{{  path('front') }}" class="visible "  >
-                        <img src="{{ asset('/iconFD4.png') }}" id="monico" style="height:130px; width:130px; position:absolute; top:70px; left:0.5vw;"/> 
-                    </a> 
+                {% endif %}
+                <a   href="{{  path('front') }}" class="visible "  >
+                    <img src="{{ asset('images/iconFD4.png') }}" id="monico" style="height:130px; width:130px; position:absolute; top:70px; left:0.5vw;"/> 
+                </a> 
+                {% if is_granted("ROLE_USER") %}
+                    <h2 id="monSousTitre" >
+                        <strong style="color:white; text-shadow:1px 1px 1px black; ">
+                            Free Demat'Lancer's   
+                        </strong> 
+                        <br /><br />
+                        <strong style="color:white; text-shadow:1px 1px 1px black;  ">
+                            Espace personnel de {{ app.user }} 
+                        </strong> 
+                    </h2>
+
+                {% else %}
                     <h2 id="monSousTitre" >
                         Plateforme de Projets de <br>Développements Informatiques en Ligne
                     </h2>
-                    <h3 id="slog" style="margin-top:-25px; width:12vw; font-size:0.75vw; margin-left:8vw; color:white; text-shadow:1px 1px 1px black" >                  
+                    <h3 id="slog" style="margin-top:-2.8vw; width:12vw; font-size:0.75vw; margin-left:9.5vw; color:white; text-shadow:1px 1px 1px black" >                  
                         <strong style="color:white; text-shadow:1px 1px 1px black; ">
                             Free Demat'Lancer's   </strong>  <br />Rapide 
                         et <strong style="color:white; text-shadow:1px 1px 1px black;  ">
                             accessible </strong> gratuitement
                     </h3>
-                </div>
+
+                {% endif %}
             </div>
-        </div> 
-        {% block header %} {% endblock %}  
-    </div>    
+        </div>
+    </div> 
+    {% block header %} {% endblock %}  
+</div>    
 
 </header>  
 

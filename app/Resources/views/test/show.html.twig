@@ -1,24 +1,56 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
 
-        <h1 id="logo"><a class="bigtitle">Tests</a></h1>  
+    <h1 id="logo"><a class="bigtitle">Tests</a></h1>  
 
 {% endblock %}
+{% block javascript %}
+    <script>
 
+        // Create a new form, then add a checkbox question, a multiple choice question,
+        // a page break, then a date question and a grid of questions.
+        var form = FormApp.create('New Form');
+        var item = form.addCheckboxItem();
+        item.setTitle('What condiments would you like on your hot dog?');
+        item.setChoices([
+            item.createChoice('Ketchup'),
+            item.createChoice('Mustard'),
+            item.createChoice('Relish')
+        ]);
+        form.addMultipleChoiceItem()
+                .setTitle('Do you prefer cats or dogs?')
+                .setChoiceValues(['Cats', 'Dogs'])
+                .showOtherOption(true);
+        form.addPageBreakItem()
+                .setTitle('Getting to know you');
+        form.addDateItem()
+                .setTitle('When were you born?');
+        form.addGridItem()
+                .setTitle('Rate your interests')
+                .setRows(['Cars', 'Computers', 'Celebrities'])
+                .setColumns(['Boring', 'So-so', 'Interesting']);
+        Logger.log('Published URL: ' + form.getPublishedUrl());
+        Logger.log('Editor URL: ' + form.getEditUrl());
+
+    </script>
+{% endblock %}
 {% block body %}    
-    <div class="formulairetop">
-        <h2 class="mysubtitle">Test</h2>
+    <div class="formulairetop" style="margin-top:20px;">
+        <h2 class="mysubtitle">Test  : {{ test.competence.intitule }}</h2>
         <div class="mycontentformshow">
             <ul>
                 <li class="returnlist">
-                    <a class="btn btn-default" href="{{ path('test_index') }}">Retourner à la liste</a>
+                    <a class="btn btn-success" href="{{ path('test_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
-            <table class="tableautitle">
+         {#   <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdLlogkl7zvTyKSXos3itoztS3NR0PcVo1aiFG5Tm2sKv7D8Q/viewform?embedded=true"  style="z-index:0 !important;margin-left:13%; background-color: rgba(1,1,1,0)" width="1060" height="1200" frameborder="0" marginheight="0" marginwidth="0">Chargement en cours...</iframe> 
+         #}
+         
+            <table class="tableautitle" >
                 <tbody>
                     <tr>
                         <th class="mytdtabshow">Competence</th>
-                        <td class="mytdtabshow">{{ testcompetence.Competence.intitule }}</td>
+                        <td class="mytdtabshow">{{ test.competence.intitule }}</td>
                     </tr>
                     <tr>
                         <th class="mytdtabshow2">Intitulé</th>
@@ -36,26 +68,31 @@
                         <th class="mytdtabshow">Résultats au questionnaire</th>
                         <td class="mytdtabshow">{{ test.questionnaire }}</td>
                     </tr>
-                    <tr>
-                        <th class="mytdtabshow2">Date de Passage</th>
-                        <td class="mytdtabshow2">{% if testfreelancer.datePassage %}{{ testfreelancer.datePassage|date('d-m-Y H:i:s') }}{% endif %}</td>
-                    </tr>
-                    <tr>
-                        <th class="mytdtabshow">Freelancer</th>
-                        <td class="mytdtabshow">{{ testfreelancer.Freelancer.pseudo }}</td>
-                    </tr>
+                    {#<tr>
+                           <th class="mytdtabshow2">Date de Passage</th>
+                           <td class="mytdtabshow2">{% if testfreelancer.datePassage %}{{ testfreelancer.datePassage|date('d-m-Y H:i:s') }}{% endif %}</td>
+                       </tr>
+                    
+                       <tr>
+                           <th class="mytdtabshow">Freelancer</th>
+                           <td class="mytdtabshow">{{ test.freelancer.pseudo }}</td>
+                       </tr>   #}
                 </tbody>
             </table>
-            <ul>
-                <li class="myeditli">
-                    <a  class="btn btn-default" href="{{ path('test_edit', { 'id': test.idTest }) }}">Modifier</a>
-                </li>
-                <li class="mydeleteli">
-                    {{ form_start(delete_form) }}
+         <div style="background-color: white; margin-top: 20px; height:800px; z-index:99!important;"></div>
+
+            {% if is_granted("ROLE_ADMIN") %}
+                <ul>
+                    <li class="myeditli">
+                        <a  class="btn btn-success" href="{{ path('test_edit', { 'id': test.idTest }) }}">Modifier</a>
+                    </li>
+                    <li class="mydeleteli">
+                        {{ form_start(delete_form) }}
                         <input type="submit" value="Supprimer le test">
-                    {{ form_end(delete_form) }}
-                </li>
-            </ul>
+                        {{ form_end(delete_form) }}
+                    </li>
+                </ul>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

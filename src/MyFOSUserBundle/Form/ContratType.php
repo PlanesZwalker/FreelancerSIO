@@ -6,21 +6,19 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ContratType extends AbstractType
-{
+class ContratType extends AbstractType {
+
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder->add('tarif')->add('delai')->add('dateSign')->add('paiement')->add('projet')        ;
+    public function buildForm(FormBuilderInterface $builder, array $options) {
+        $builder->add('tarif')->add('delai')->add('dateSign')->add('paiement')->add('projet');
     }
-    
+
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
-    {
+    public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults(array(
             'data_class' => 'MyFOSUserBundle\Entity\Contrat'
         ));
@@ -29,10 +27,8 @@ class ContratType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
-    {
+    public function getBlockPrefix() {
         return 'myfosuserbundle_contrat';
     }
-
 
 }

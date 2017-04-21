@@ -1,23 +1,23 @@
-{% trans_default_domain 'FOSUserBundle' %}
+{% trans_success_domain 'FOSUserBundle' %}
 
 
-             
-
-            <!-- Banner -->
-      
-  {% block soustitre %}  
-      <h2 class="mysubtitle">Formulaire d'édition du Profil </h2> 
-  {% endblock %}
-  
-
-  
-    <div class="fos_user_user_show monform" >
-
-        <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-        <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
-    </div>
-           
-  
 
 
-    
+<!-- Banner -->
+
+{% block soustitre %}  
+    <h2 class="mysubtitle">Formulaire d'édition du Profil </h2> 
+{% endblock %}
+
+
+
+<div class="fos_user_user_show monform" >
+
+    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+</div>
+
+
+
+
+

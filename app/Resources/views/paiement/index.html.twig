@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
 
-        <h1 id="logo"><a class="bigtitle">Paiements</a></h1>  
+    <h1 id="logo"><a class="bigtitle">Paiements</a></h1>  
 
 {% endblock %}
 
@@ -27,23 +27,23 @@
                     </tr>
                 </thead>
                 <tbody class="mytbody">
-                {% for paiement in paiements %}
-                    <tr>
-                        <a class="mydisplaynone" href="{{ path('paiement_show', { 'id': paiement.idPaiement }) }}">{{ paiement.idPaiement }}</a>
-                        <td class="mytdtab2">{{ paiement.idPaiement }}</td>
-                        <td class="mytdtab">{{ paiement.etat }}</td>
-                        <td class="mytdtab2">{{ paiement.dpSociete|date("d/m/Y") }}</td>
-                        <td class="mytdtab">{{ paiement.dpFreelancer|date("d/m/Y") }}</td>
-                        <td class="mytdtab2">
-                            <ul>
-                                <li style="display:inline-block;margin-top:8px;">
-                                    <a class="btn btn-default" href="{{ path('paiement_show', { 'id': paiement.idPaiement }) }}">Afficher</a>
-                                </li>
-                                <li style="display:inline-block;">
-                                    <a class="btn btn-info" style="color:white;" href="{{ path('paiement_edit', { 'id': paiement.idPaiement }) }}">Modifier</a>
-                                </li>
-                            </ul>
-                        </td>
+                    {% for paiement in paiements %}
+                        <tr>
+                    <a class="mydisplaynone" href="{{ path('paiement_show', { 'id': paiement.idPaiement }) }}">{{ paiement.idPaiement }}</a>
+                    <td class="mytdtab2">{{ paiement.idPaiement }}</td>
+                    <td class="mytdtab">{{ paiement.etat }}</td>
+                    <td class="mytdtab2">{{ paiement.dpSociete|date("d/m/Y") }}</td>
+                    <td class="mytdtab">{{ paiement.dpFreelancer|date("d/m/Y") }}</td>
+                    <td class="mytdtab2">
+                        <ul>
+                            <li style="display:inline-block;margin-top:8px;">
+                                <a class="btn btn-success" href="{{ path('paiement_show', { 'id': paiement.idPaiement }) }}">Afficher</a>
+                            </li>
+                            <li style="display:inline-block;">
+                                <a class="btn btn-info" style="color:white;" href="{{ path('paiement_edit', { 'id': paiement.idPaiement }) }}">Modifier</a>
+                            </li>
+                        </ul>
+                    </td>
                     </tr>
                 {% endfor %}
                 </tbody>

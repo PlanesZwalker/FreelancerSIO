@@ -1,8 +1,8 @@
 <?php
 
 namespace MyFOSUserBundle\Entity;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -11,8 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="societe", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_19653DBD8D93D649", columns={"user"})})
  * @ORM\Entity
  */
-class Societe
-{
+class Societe {
+
     /**
      * @var integer
      *
@@ -56,8 +56,8 @@ class Societe
      * @ORM\Column(name="tel", type="string", length=255, nullable=false)
      */
     private $tel;
-
-
+    
+    
     private $logo;
 
     /**
@@ -70,15 +70,12 @@ class Societe
      */
     private $user;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -89,8 +86,7 @@ class Societe
      *
      * @return Societe
      */
-    public function setDenomination($denomination)
-    {
+    public function setDenomination($denomination) {
         $this->denomination = $denomination;
 
         return $this;
@@ -101,8 +97,7 @@ class Societe
      *
      * @return string
      */
-    public function getDenomination()
-    {
+    public function getDenomination() {
         return $this->denomination;
     }
 
@@ -113,8 +108,7 @@ class Societe
      *
      * @return Societe
      */
-    public function setPresentation($presentation)
-    {
+    public function setPresentation($presentation) {
         $this->presentation = $presentation;
 
         return $this;
@@ -125,8 +119,7 @@ class Societe
      *
      * @return string
      */
-    public function getPresentation()
-    {
+    public function getPresentation() {
         return $this->presentation;
     }
 
@@ -137,8 +130,7 @@ class Societe
      *
      * @return Societe
      */
-    public function setAdresse($adresse)
-    {
+    public function setAdresse($adresse) {
         $this->adresse = $adresse;
 
         return $this;
@@ -149,8 +141,7 @@ class Societe
      *
      * @return string
      */
-    public function getAdresse()
-    {
+    public function getAdresse() {
         return $this->adresse;
     }
 
@@ -161,8 +152,7 @@ class Societe
      *
      * @return Societe
      */
-    public function setSiret($siret)
-    {
+    public function setSiret($siret) {
         $this->siret = $siret;
 
         return $this;
@@ -173,8 +163,7 @@ class Societe
      *
      * @return string
      */
-    public function getSiret()
-    {
+    public function getSiret() {
         return $this->siret;
     }
 
@@ -185,8 +174,7 @@ class Societe
      *
      * @return Societe
      */
-    public function setTel($tel)
-    {
+    public function setTel($tel) {
         $this->tel = $tel;
 
         return $this;
@@ -197,8 +185,7 @@ class Societe
      *
      * @return string
      */
-    public function getTel()
-    {
+    public function getTel() {
         return $this->tel;
     }
 
@@ -209,8 +196,7 @@ class Societe
      *
      * @return Societe
      */
-    public function setLogo(UploadedFile $logo)
-    {
+    public function setLogo(UploadedFile $logo) {
         $this->logo = $logo;
 
         return $this;
@@ -221,47 +207,43 @@ class Societe
      *
      * @return string
      */
-    public function getLogo()
-    {
+    public function getLogo() {
         return $this->logo;
     }
-    
-    
+
     /*
      *  UPLOAD DU LOGO
      * 
      */
-    
-    public function getUploadLogoDir(){
+
+    public function getUploadLogoDir() {
         return '/user/logo';
     }
- 
-    public function getAbsoluteLogoRoot(){
-        return $this->getUploadLogoRoot().$this->getUser()->getId();
+
+    public function getAbsoluteLogoRoot() {
+        return $this->getUploadLogoRoot() . $this->getUser()->getId();
     }
 
-    public function getWebLogoPath(){
-        return $this->getUploadLogoDir().'/'.$this->getUser()->getId();
+    public function getWebLogoPath() {
+        return $this->getUploadLogoDir() . '/' . $this->getUser()->getId();
     }
 
-    public function getUploadLogoRoot(){
-         return __DIR__.'/../../../web'. $this->getUploadLogoDir().'/';
-    }   
-    
-    public function uploadLogo(){
+    public function getUploadLogoRoot() {
+        return __DIR__ . '/../../../web' . $this->getUploadLogoDir() . '/';
+    }
 
-        
-        if(!is_dir($this->getWebLogoPath())){
-   
-             mkdir($this->getWebLogoPath(), '0777',true);
-              
+    public function uploadLogo() {
+
+/*
+        if (!is_dir($this->getWebLogoPath())) {
+
+            mkdir($this->getWebLogoPath(), '0777', true);
         }
-              
+*/
         $this->logo->move($this->getUploadLogoRoot(), $this->getUser()->getId());
-   
+
         unset($this->logo);
     }
-        
 
     /**
      * Set user
@@ -270,8 +252,7 @@ class Societe
      *
      * @return Societe
      */
-    public function setUser(\MyFOSUserBundle\Entity\User $user)
-    {
+    public function setUser(\MyFOSUserBundle\Entity\User $user) {
         $this->user = $user;
 
         return $this;
@@ -282,8 +263,8 @@ class Societe
      *
      * @return \MyFOSUserBundle\Entity\User
      */
-    public function getUser()
-    {
+    public function getUser() {
         return $this->user;
     }
+
 }

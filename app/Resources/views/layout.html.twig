@@ -1,24 +1,24 @@
 
-    
-    {% extends '::base.html.twig' %}
 
-   
-        
-    {% block body %}
+{% extends '::base.html.twig' %}
 
-        {% if app.request.hasPreviousSession %}
-            {% for type, messages in app.session.flashbag.all() %}
-                {% for message in messages %}
-                    <div class="flash-{{ type }}">
-                        {{ message }}
-                    </div>
-                {% endfor %}
+
+
+{% block body %}
+
+    {% if app.request.hasPreviousSession %}
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="flash-{{ type }}">
+                    {{ message }}
+                </div>
             {% endfor %}
-        {% endif %}
+        {% endfor %}
+    {% endif %}
 
-        <div class="container" style="margin-top:1%">
-            {% block fos_user_content %}
-            {% endblock fos_user_content %}
-        </div>
-    {% endblock %}
+    <div class="container" style="margin-top:1%">
+        {% block fos_user_content %}
+        {% endblock fos_user_content %}
+    </div>
+{% endblock %}
 

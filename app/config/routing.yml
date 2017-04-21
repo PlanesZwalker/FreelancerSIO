@@ -44,6 +44,15 @@ re_service:
     path: /service
     defaults: {_controller:MyFOSUserBundle:Default:service }
   
+      
+re_code:
+    path: /code
+    defaults: {_controller:MyFOSUserBundle:Default:code }
+    
+re_doc:
+    path: /documentation
+    defaults: {_controller:MyFOSUserBundle:Default:doc }    
+    
 re_fos_user:   
    path: /change-password
    defaults: {_controller:MyFOSUserBundle:MyChangePassword:changePassword }

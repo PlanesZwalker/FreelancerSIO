@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Message
  *
- * @ORM\Table(name="message", indexes={@ORM\Index(name="id_user", columns={"id_user"})})
+ * @ORM\Table(name="message", indexes={@ORM\Index(name="id_user", columns={"id_user_for"}), @ORM\Index(name="id_user_from", columns={"id_user_from"})})
  * @ORM\Entity
  */
 class Message
@@ -54,10 +54,20 @@ class Message
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id_user_for", referencedColumnName="id")
      * })
      */
-    private $idUser;
+    private $idUserFor;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user_from", referencedColumnName="id")
+     * })
+     */
+    private $idUserFrom;
 
 
 
@@ -168,26 +178,50 @@ class Message
     }
 
     /**
-     * Set idUser
+     * Set idUserFor
      *
-     * @param \MyFOSUserBundle\Entity\User $idUser
+     * @param \MyFOSUserBundle\Entity\User $idUserFor
      *
      * @return Message
      */
-    public function setIdUser(\MyFOSUserBundle\Entity\User $idUser = null)
+    public function setIdUserFor($idUserFor = null)
     {
-        $this->idUser = $idUser;
+        $this->idUserFor = $idUserFor;
 
         return $this;
     }
 
     /**
-     * Get idUser
+     * Get idUserFor
      *
      * @return \MyFOSUserBundle\Entity\User
      */
-    public function getIdUser()
+    public function getIdUserFor()
     {
-        return $this->idUser;
+        return $this->idUserFor;
+    }
+
+    /**
+     * Set idUserFrom
+     *
+     * @param \MyFOSUserBundle\Entity\User $idUserFrom
+     *
+     * @return Message
+     */
+    public function setIdUserFrom($idUserFrom = null)
+    {
+        $this->idUserFrom = $idUserFrom;
+
+        return $this;
+    }
+
+    /**
+     * Get idUserFrom
+     *
+     * @return \MyFOSUserBundle\Entity\User
+     */
+    public function getIdUserFrom()
+    {
+        return $this->idUserFrom;
     }
 }

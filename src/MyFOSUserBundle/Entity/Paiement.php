@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="paiement")
  * @ORM\Entity
  */
-class Paiement
-{
+class Paiement {
+
     /**
      * @var integer
      *
@@ -42,15 +42,12 @@ class Paiement
      */
     private $dpFreelancer;
 
-
-
     /**
      * Get idPaiement
      *
      * @return integer
      */
-    public function getIdPaiement()
-    {
+    public function getIdPaiement() {
         return $this->idPaiement;
     }
 
@@ -61,8 +58,7 @@ class Paiement
      *
      * @return Paiement
      */
-    public function setEtat($etat)
-    {
+    public function setEtat($etat) {
         $this->etat = $etat;
 
         return $this;
@@ -73,8 +69,7 @@ class Paiement
      *
      * @return string
      */
-    public function getEtat()
-    {
+    public function getEtat() {
         return $this->etat;
     }
 
@@ -85,8 +80,7 @@ class Paiement
      *
      * @return Paiement
      */
-    public function setDpSociete($dpSociete)
-    {
+    public function setDpSociete($dpSociete) {
         $this->dpSociete = $dpSociete;
 
         return $this;
@@ -97,8 +91,7 @@ class Paiement
      *
      * @return \DateTime
      */
-    public function getDpSociete()
-    {
+    public function getDpSociete() {
         return $this->dpSociete;
     }
 
@@ -109,8 +102,7 @@ class Paiement
      *
      * @return Paiement
      */
-    public function setDpFreelancer($dpFreelancer)
-    {
+    public function setDpFreelancer($dpFreelancer) {
         $this->dpFreelancer = $dpFreelancer;
 
         return $this;
@@ -121,8 +113,8 @@ class Paiement
      *
      * @return \DateTime
      */
-    public function getDpFreelancer()
-    {
+    public function getDpFreelancer() {
         return $this->dpFreelancer;
     }
+
 }

@@ -17,8 +17,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-class RegistrationFormType extends AbstractType
-{
+class RegistrationFormType extends AbstractType {
+
     /**
      * @var string
      */
@@ -26,20 +26,15 @@ class RegistrationFormType extends AbstractType
 
     /**
      * {@inheritdoc}
-    */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-
-                            
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options) {
+        
     }
-                            
-
 
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
-    {
+    public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults(array(
             'data_class' => $this->class,
             'csrf_token_id' => 'registration',
@@ -52,16 +47,15 @@ class RegistrationFormType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->getBlockPrefix();
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
-    {
+    public function getBlockPrefix() {
         return 'fos_user_registration';
     }
+
 }

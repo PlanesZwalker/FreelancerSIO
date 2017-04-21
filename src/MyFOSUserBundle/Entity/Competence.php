@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="competence")
  * @ORM\Entity
  */
-class Competence
-{
+class Competence {
+
     /**
      * @var integer
      *
@@ -42,15 +42,12 @@ class Competence
      */
     private $intitule;
 
-
-
     /**
      * Get idCompetence
      *
      * @return integer
      */
-    public function getIdCompetence()
-    {
+    public function getIdCompetence() {
         return $this->idCompetence;
     }
 
@@ -61,8 +58,7 @@ class Competence
      *
      * @return Competence
      */
-    public function setCategorie($categorie)
-    {
+    public function setCategorie($categorie) {
         $this->categorie = $categorie;
 
         return $this;
@@ -73,8 +69,7 @@ class Competence
      *
      * @return string
      */
-    public function getCategorie()
-    {
+    public function getCategorie() {
         return $this->categorie;
     }
 
@@ -85,8 +80,7 @@ class Competence
      *
      * @return Competence
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
 
         return $this;
@@ -97,8 +91,7 @@ class Competence
      *
      * @return string
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
@@ -109,8 +102,7 @@ class Competence
      *
      * @return Competence
      */
-    public function setIntitule($intitule)
-    {
+    public function setIntitule($intitule) {
         $this->intitule = $intitule;
 
         return $this;
@@ -121,8 +113,8 @@ class Competence
      *
      * @return string
      */
-    public function getIntitule()
-    {
+    public function getIntitule() {
         return $this->intitule;
     }
+
 }

@@ -5,29 +5,30 @@ namespace MyFOSUserBundle\Controller;
 use MyFOSUserBundle\Entity\Cahierdescharges;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 use MyFOSUserBundle\Controller\ProjetController;
+
 /**
  * Cahierdescharge controller.
  *
  * @Route("cahierdescharges")
  */
-class CahierdeschargesController extends Controller
-{
+class CahierdeschargesController extends Controller {
+
     /**
      * Lists all cahierdescharge entities.
      *
      * @Route("/", name="cahierdescharges_index")
      * @Method("GET")
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
         $cahierdescharges = $em->getRepository('MyFOSUserBundle:Cahierdescharges')->findAll();
 
         return $this->render('cahierdescharges/index.html.twig', array(
-            'cahierdescharges' => $cahierdescharges,
+                    'cahierdescharges' => $cahierdescharges,
         ));
     }
 
@@ -37,8 +38,7 @@ class CahierdeschargesController extends Controller
      * @Route("/new", name="cahierdescharges_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
-    {
+    public function newAction(Request $request) {
         $cahierdescharges = new Cahierdescharges();
         $form = $this->createForm('MyFOSUserBundle\Form\CahierdeschargesType', $cahierdescharges);
         $form->handleRequest($request);
@@ -52,8 +52,8 @@ class CahierdeschargesController extends Controller
         }
 
         return $this->render('cahierdescharges/new.html.twig', array(
-            'cahierdescharges' => $cahierdescharges,
-            'form' => $form->createView(),
+                    'cahierdescharges' => $cahierdescharges,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -63,20 +63,19 @@ class CahierdeschargesController extends Controller
      * @Route("/{id}", name="cahierdescharges_show")
      * @Method("GET")
      */
-    public function showAction(Cahierdescharges $cahierdescharges)
-    {
+    public function showAction(Cahierdescharges $cahierdescharges) {
         $deleteForm = $this->createDeleteForm($cahierdescharges);
-        
+
         $em = $this->getDoctrine()->getManager();
-              
+
         $projets = $em->getRepository('MyFOSUserBundle:Projet')->findAll();
         $societes = $em->getRepository('MyFOSUserBundle:Societe')->findAll();
-        
+
         return $this->render('cahierdescharges/show.html.twig', array(
-            'projets' => $projets,
-            'societes' => $societes,
-            'cahierdescharges' => $cahierdescharges,
-            'delete_form' => $deleteForm->createView(),
+                    'projets' => $projets,
+                    'societes' => $societes,
+                    'cahierdescharges' => $cahierdescharges,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -86,8 +85,7 @@ class CahierdeschargesController extends Controller
      * @Route("/{id}/edit", name="cahierdescharges_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Cahierdescharges $cahierdescharges)
-    {
+    public function editAction(Request $request, Cahierdescharges $cahierdescharges) {
         $deleteForm = $this->createDeleteForm($cahierdescharges);
         $editForm = $this->createForm('MyFOSUserBundle\Form\CahierdeschargesType', $cahierdescharges);
         $editForm->handleRequest($request);
@@ -99,9 +97,9 @@ class CahierdeschargesController extends Controller
         }
 
         return $this->render('cahierdescharges/edit.html.twig', array(
-            'cahierdescharges' => $cahierdescharges,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'cahierdescharges' => $cahierdescharges,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -111,8 +109,7 @@ class CahierdeschargesController extends Controller
      * @Route("/{id}", name="cahierdescharges_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Cahierdescharges $cahierdescharge)
-    {
+    public function deleteAction(Request $request, Cahierdescharges $cahierdescharge) {
         $form = $this->createDeleteForm($cahierdescharge);
         $form->handleRequest($request);
 
@@ -132,12 +129,12 @@ class CahierdeschargesController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Cahierdescharges $cahierdescharge)
-    {
+    private function createDeleteForm(Cahierdescharges $cahierdescharge) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('cahierdescharges_delete', array('id' => $cahierdescharge->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
+                        ->setAction($this->generateUrl('cahierdescharges_delete', array('id' => $cahierdescharge->getId())))
+                        ->setMethod('DELETE')
+                        ->getForm()
         ;
     }
+
 }

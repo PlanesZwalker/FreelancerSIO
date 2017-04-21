@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
 
-        <h1 id="logo"><a class="bigtitle">Sociétés</a></h1>  
+    <h1 id="logo"><a class="bigtitle">Sociétés</a></h1>  
 
 {% endblock %}
 
@@ -9,41 +9,41 @@
     <div class="formulairetop">
         <h2 class="mysubtitle">Liste des Sociétés</h2>
         <div class="mycontentform">
-          
+
             <table class="tableautitle">
                 <thead>
                     <tr class="tableautitlecontent">
                         <th class="center">Societe</th>
                         <th class="center">Siret</th>
-                           <th class="center">Présentation</th>
+                        <th class="center">Présentation</th>
                         <th class="center">Logo</th>
                         <th class="center">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="mytbody">
-                {% for societe in societes %}
-                    <tr>
-                        <a class="mydisplaynone" href="{{ path('societe_show', { 'id': societe.id }) }}">{{ societe.id }}</a>
+                    {% for societe in societes %}
+                    <tr>                   
                         <td class="mytdtab">{{ societe.denomination }}</td>
                         <td class="mytdtab2">{{ societe.siret }}</td>
                         <td class="mytdtab">{{ societe.presentation }}</td>
                         <td class="mytdtab2">
-                            <img class="myimg" src="
-                                 {% if app.request.server.get('BASE') %}
-                                     {{ app.request.server.get('BASE')}}/user/logo/{{ societe.user.id }}
-                                 {% else %}
-                                     {{ app.request.get('HTTP_HOST')}}/web/user/logo/{{ societe.user.id }}
-                                 {% endif %}" />
+                            <img class="myimg" src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/logo/{{ societe.user.id }}{% else %}{{ app.request.get('HTTP_HOST')}}/user/logo/{{ societe.user.id }}{% endif %}" />
                         </td>
                         <td class="mytdtab">
                             <ul>
                                 <li style="display:inline-block;margin-top:8px;">
-                                    <a class="btn btn-default" href="{{ path('societe_show', { 'id': societe.id }) }}">Afficher</a>
+                                    <a class="btn btn-success" href="{{ path('societe_show', { 'id': societe.id }) }}">Afficher</a>
                                 </li>
                                 {% if is_granted('ROLE_ADMIN') %}
-                                <li style="display:inline-block;">
-                                    <a class="btn btn-info" style="color:white;"  href="{{ path('societe_edit', { 'id': societe.id }) }}">Modifier</a>
-                                </li>
+                                    <li style="display:inline-block;">
+                                        <a class="btn btn-info" style="color:white;"  href="{{ path('societe_edit', { 'id': societe.id }) }}">Modifier</a>
+                                    </li>
+                                {% elseif is_granted('ROLE_SOCIETE') and maSociete is defined %}
+                                    {% if maSociete.id  == societe.id %}
+                                        <li style="display:inline-block;">
+                                            <a class="btn btn-info" style="color:white;"  href="{{ path('societe_edit', { 'id': societe.id }) }}">Modifier</a>
+                                        </li>
+                                    {% endif %}
                                 {% endif %}
                             </ul>
                         </td>
@@ -52,7 +52,7 @@
                 </tbody>
             </table>
 
-            
+
         </div>
     </div>
 {% endblock %}

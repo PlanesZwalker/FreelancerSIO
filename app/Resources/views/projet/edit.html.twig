@@ -1,77 +1,77 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
 
-        <h1 id="logo"><a class="bigtitle">Projets</a></h1>  
+    <h1 id="logo"><a class="bigtitle">Projets</a></h1>  
 
 {% endblock %}
 
 {% block body %}    
     <div class="formulairetop">
         <h2 class="mysubtitle">Edition d'un Projet</h2>
-            <div class="mycontentform">
+        <div class="mycontentform">
             <ul>
                 <li class="returnlist">
-                    <a class="btn btn-default" href="{{ path('user_index') }}">Retourner à la liste</a>
+                    <a class="btn btn-success" href="{{ path('user_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
-            
-                     <table class="tableauInfo">
-                        <th class="tititretab">Société</th>
-                        <tr>
-                            <td class="mytdtabshow2">Présentation de la société</td>
-                            <td class="mytdtabshow2"> {{ projet.Societe.presentation }}</td>
-                        </tr>
-                        <tr>
-                            <td class="mytdtabshow">Adresse de la société</td>
-                            <td class="mytdtabshow"> {{ projet.Societe.adresse }}</td>
-                        </tr>
-                        <tr>
-                            <td class="mytdtabshow2">Siret de la société</td>
-                            <td class="mytdtabshow2"> {{ projet.Societe.siret }}</td>
-                        </tr>
-                    </table>
-                    <table class="tableauInfo">
-                        <th class="tititretab">Cahier des Charges</th>
-                         <tr>
-                            <td class="mytdtabshow2">Intitulé du Cahier des Charges</td>
-                            <td class="mytdtabshow2"> {{ projet.Cahierdescharges.intitule }}</td>
-                        </tr>
-                        <tr>
-                            <td class="mytdtabshow">Tarif du Cahier des Charges</td>
-                            <td class="mytdtabshow"> {{ projet.Cahierdescharges.tarif }}</td>
-                        </tr>
-                        <tr>
-                            <td class="mytdtabshow2">Délai du Cahier des Charges</td>
-                            <td class="mytdtabshow2"> {{ projet.Cahierdescharges.delai }}</td>
-                        </tr>
-                        <tr>
-                            <td class="mytdtabshow">Intitulé du Cahier des Charges</td>
-                            <td class="mytdtabshow"> {{ projet.Societe.denomination }}</td>
-                        </tr>
-                    </table>
-                   <table class="tableautitle">{{ form_start(edit_form) }}
-                        <tbody>
-                            <tr>
 
-                                {{ form_row(edit_form.intitule) }}
-                                {{ form_row(edit_form.description) }}
-                                {{ form_row(edit_form.prix) }}
-                                {{ form_row(edit_form.etat) }}
-                            </tr>
-                        </tbody>         
-                        <input type="submit" class="myeditinput" value="Enregistrer les modifications" />
-                   </table>
-                 {{ form_end(edit_form) }}      
+            <table class="tableauInfo">
+                <th class="tititretab">Société</th>
+                <tr>
+                    <td class="mytdtabshow2">Présentation de la société</td>
+                    <td class="mytdtabshow2"> {{ projet.Societe.presentation }}</td>
+                </tr>
+                <tr>
+                    <td class="mytdtabshow">Adresse de la société</td>
+                    <td class="mytdtabshow"> {{ projet.Societe.adresse }}</td>
+                </tr>
+                <tr>
+                    <td class="mytdtabshow2">Siret de la société</td>
+                    <td class="mytdtabshow2"> {{ projet.Societe.siret }}</td>
+                </tr>
+            </table>
+            <table class="tableauInfo">
+                <th class="tititretab">Cahier des Charges</th>
+                <tr>
+                    <td class="mytdtabshow2">Intitulé du Cahier des Charges</td>
+                    <td class="mytdtabshow2"> {{ projet.Cahierdescharges.intitule }}</td>
+                </tr>
+                <tr>
+                    <td class="mytdtabshow">Tarif du Cahier des Charges</td>
+                    <td class="mytdtabshow"> {{ projet.Cahierdescharges.tarif }}</td>
+                </tr>
+                <tr>
+                    <td class="mytdtabshow2">Délai du Cahier des Charges</td>
+                    <td class="mytdtabshow2"> {{ projet.Cahierdescharges.delai }}</td>
+                </tr>
+                <tr>
+                    <td class="mytdtabshow">Intitulé du Cahier des Charges</td>
+                    <td class="mytdtabshow"> {{ projet.Societe.denomination }}</td>
+                </tr>
+            </table>
+            <table class="tableautitle">{{ form_start(edit_form) }}
+                <tbody>
+                    <tr>
+
+                        {{ form_row(edit_form.intitule) }}
+                        {{ form_row(edit_form.description) }}
+                        {{ form_row(edit_form.prix) }}
+                        {{ form_row(edit_form.etat) }}
+                    </tr>
+                </tbody>         
+                <input type="submit" class="myeditinput" value="Enregistrer les modifications" />
+            </table>
+            {{ form_end(edit_form) }}      
             <ul>
                 <li class="myeditli">
                     <a class="btn btn-info" style="color:white;"  href="{{ path('cahierdescharges_show', { 'id': projet.Cahierdescharges.id } ) }}">Voir le cahier des charges</a>
                 </li>
                 {% if is_granted("ROLE_ADMIN") %}
-                <li  class="mydeleteli">
-                    {{ form_start(delete_form) }}
+                    <li  class="mydeleteli">
+                        {{ form_start(delete_form) }}
                         <input type="submit" value="Supprimer le projet">
-                    {{ form_end(delete_form) }}
-                </li>
+                        {{ form_end(delete_form) }}
+                    </li>
                 {% endif %}
             </ul>
         </div>

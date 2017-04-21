@@ -5,27 +5,27 @@ namespace MyFOSUserBundle\Controller;
 use MyFOSUserBundle\Entity\Testfreelancer;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Testfreelancer controller.
  *
  * @Route("testfreelancer")
  */
-class TestfreelancerController extends Controller
-{
+class TestfreelancerController extends Controller {
+
     /**
      * Lists all testfreelancer entities.
      *
      * @Route("/", name="testfreelancer_index")
      * @Method("GET")
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
         $testfreelancers = $em->getRepository('MyFOSUserBundle:Testfreelancer')->findAll();
         return $this->render('testfreelancer/index.html.twig', array(
-            'testfreelancers' => $testfreelancers,
+                    'testfreelancers' => $testfreelancers,
         ));
     }
 
@@ -35,8 +35,7 @@ class TestfreelancerController extends Controller
      * @Route("/new", name="testfreelancer_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
-    {
+    public function newAction(Request $request) {
         $testfreelancer = new Testfreelancer();
         $form = $this->createForm('MyFOSUserBundle\Form\TestfreelancerType', $testfreelancer);
         $form->handleRequest($request);
@@ -50,8 +49,8 @@ class TestfreelancerController extends Controller
         }
 
         return $this->render('testfreelancer/new.html.twig', array(
-            'testfreelancer' => $testfreelancer,
-            'form' => $form->createView(),
+                    'testfreelancer' => $testfreelancer,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -61,13 +60,12 @@ class TestfreelancerController extends Controller
      * @Route("/{id}", name="testfreelancer_show")
      * @Method("GET")
      */
-    public function showAction(Testfreelancer $testfreelancer)
-    {
+    public function showAction(Testfreelancer $testfreelancer) {
         $deleteForm = $this->createDeleteForm($testfreelancer);
 
         return $this->render('testfreelancer/show.html.twig', array(
-            'testfreelancer' => $testfreelancer,
-            'delete_form' => $deleteForm->createView(),
+                    'testfreelancer' => $testfreelancer,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -77,8 +75,7 @@ class TestfreelancerController extends Controller
      * @Route("/{id}/edit", name="testfreelancer_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Testfreelancer $testfreelancer)
-    {
+    public function editAction(Request $request, Testfreelancer $testfreelancer) {
         $deleteForm = $this->createDeleteForm($testfreelancer);
         $editForm = $this->createForm('MyFOSUserBundle\Form\TestfreelancerType', $testfreelancer);
         $editForm->handleRequest($request);
@@ -90,9 +87,9 @@ class TestfreelancerController extends Controller
         }
 
         return $this->render('testfreelancer/edit.html.twig', array(
-            'testfreelancer' => $testfreelancer,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'testfreelancer' => $testfreelancer,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -102,8 +99,7 @@ class TestfreelancerController extends Controller
      * @Route("/{id}", name="testfreelancer_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Testfreelancer $testfreelancer)
-    {
+    public function deleteAction(Request $request, Testfreelancer $testfreelancer) {
         $form = $this->createDeleteForm($testfreelancer);
         $form->handleRequest($request);
 
@@ -123,12 +119,12 @@ class TestfreelancerController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Testfreelancer $testfreelancer)
-    {
+    private function createDeleteForm(Testfreelancer $testfreelancer) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('testfreelancer_delete', array('id' => $testfreelancer->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
+                        ->setAction($this->generateUrl('testfreelancer_delete', array('id' => $testfreelancer->getId())))
+                        ->setMethod('DELETE')
+                        ->getForm()
         ;
     }
+
 }

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
 
-        <h1 id="logo"><a class="bigtitle">Messages</a></h1>  
+    <h1 id="logo"><a class="bigtitle">Messages</a></h1>  
 
 {% endblock %}
 
@@ -10,8 +10,8 @@
         <h2 class="mysubtitle">Edition d'un Message</h2>
         <div class="mycontentform">
             {{ form_start(edit_form) }}
-                {{ form_widget(edit_form) }}
-                <input type="submit" value="Edit" />
+            {{ form_widget(edit_form) }}
+            <input type="submit" value="Edit" />
             {{ form_end(edit_form) }}
 
             <ul>
@@ -20,7 +20,7 @@
                 </li>
                 <li>
                     {{ form_start(delete_form) }}
-                        <input type="submit" value="Delete">
+                    <input type="submit" value="Delete">
                     {{ form_end(delete_form) }}
                 </li>
             </ul>

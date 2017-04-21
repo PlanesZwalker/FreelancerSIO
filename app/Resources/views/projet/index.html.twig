@@ -1,23 +1,24 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
-
-        <h1 id="logo"><a class="bigtitle">Projets</a></h1>  
-
+    <h1 id="logo"><a class="bigtitle">Projets</a></h1>  
 {% endblock %}
 
 {% block body %}    
     <div class="formulairetop">
-        <h2 class="mysubtitle">Liste des Projets {% if societe is defined %} de la société {{ societe.denomination }} {% endif %}</h2>
-        <div class="mycontentform">
-            {% if is_granted('ROLE_SOCIETE') or  is_granted('ROLE_ADMIN') %}
-             <ul>
-                <li>
-                    <a  class="addtab"  href="{{ path('projet_new') }}">
-                        <span class="fa fa-plus" >&nbsp;&nbsp;Créer un nouveau Projet</span>
+        {% if is_granted('ROLE_SOCIETE') or  is_granted('ROLE_ADMIN') %}
+            <ul style="float:left; margin-left:30%; margin-top:50px; " >
+                <li >
+                    <a class="addtab btn btn-primary" style="padding-left:150px; font-size:17px; padding-right:150px; padding-top:5px; padding-bottom:5px;" href="{{ path('projet_new') }}">
+                        <span class="fa fa-plus " >&nbsp;&nbsp;Créer un nouveau Projet</span>
                     </a>
                 </li>
-            </ul>
-            {% endif %}
+            </ul> 
+        {% endif %}
+        <h2 class="mysubtitle">Projets {% if societe is defined %} de la société {{ societe.denomination }} {% endif %} {% if projetsBySociete is defined %}: {{ projetsBySociete|length}} en cours {%endif %}</h2>
+
+        <div class="mycontentform">
+
+
             <table class="tableautitle">
                 <thead>
                     <tr class="tableautitlecontent">
@@ -31,8 +32,8 @@
                     </tr>
                 </thead>
                 <tbody class="mytbody">
-                    {% if projets is defined %}
-                        {% for projet in projets %}
+                    {% if projetsBySociete is defined %}
+                          {% for projet in projetsBySociete %}
                             <tr>
                                 <a class="mydisplaynone" href="{{ path('projet_show', { 'id': projet.id }) }}">{{ projet.id }}</a>
                                 <td class="mytdtab">{{ projet.intitule }}</td>
@@ -41,47 +42,89 @@
                                 <td class="mytdtab2">{{ projet.description }}</td>
                                 <td class="mytdtab">{{ projet.societe.denomination }}</td>
                                 <td class="mytdtab2">                                    
-                                        <a href="
-                                           {% if projet.cahierdescharges is defined %}
-                                               {{ projet.cahierdescharges }}
-                                           {% endif %}
-                                        ">
-                                        <i class="fa fa-download fa-3x"></i>
+                                    <a href="{{ path('projet_showCdc', { 'id': projet.id }) }}">
+                                        <i class="fa fa-file fa-2x"></i>
                                     </a>
                                 </td>
                                 <td class="mytdtab">
                                     <ul>
                                         <li style="display:inline-block;margin-top:8px;">
-                                            <a  class="btn btn-info" href="{{ path('projet_show', { 'id': projet.id }) }}">Afficher</a>
+                                            <a  class="btn btn-primary" style="color:white;" href="{{ path('projet_show', { 'id': projet.id }) }}">Afficher</a>
                                         </li>
-                                         <li style="display:inline-block;margin-top:8px;">
-                                            <a  class="btn btn-default" href="{{ path('societe_show', { 'id': projet.societe.id  }) }}">Voir le profil de la société</a>
+                                        <li style="display:inline-block;margin-top:8px;">
+                                            <a  class="btn btn-info" style="color:white;"href="{{ path('societe_show', { 'id': projet.societe.id  }) }}">Voir le profil de la société</a>
                                         </li>
                                         {% if is_granted('ROLE_FREELANCER') or  is_granted('ROLE_ADMIN') %}
-                                        <li style="display:inline-block;margin-top:8px;">
-                                            <a  class="btn btn-warning" href="{{ path('offre_new', { 'id': projet.id }) }}">Faire une Offre</a>
-                                        </li>
+                                            <li style="display:inline-block;margin-top:8px;">
+                                                <a  class="btn btn-success" style="color:white;" href="{{ path('offre_new', { 'id_projet': projet.id }) }}">Faire une Offre</a>
+                                            </li>
                                         {% elseif not is_granted('ROLE_SOCIETE') %}
                                             <li style="display:inline-block;margin-top:8px;">
-                                                <a  class="btn btn-warning" href="{{ path('fos_user_security_login') }}">Faire une Offre</a>
+                                                <a  class="btn btn-success" style="color:white;" href="{{ path('fos_user_security_login') }}">Faire une Offre</a>
                                             </li>
                                         {% endif %}
                                         {% if is_granted('ROLE_ADMIN') %}
-                                        <li style="display:inline-block;">
-                                            <a  class="btn btn-info" style="color:white;" href="{{ path('projet_edit', { 'id': projet.id }) }}">Modifier</a>
-                                        </li>
+                                            <li style="display:inline-block;">
+                                                <a  class="btn btn-warning" style="color:white;" href="{{ path('projet_edit', { 'id': projet.id }) }}">Modifier</a>
+                                            </li>
                                         {% endif %}
                                         <li style="display:inline-block;margin-top:8px;">
-                                            <a  class="btn btn-success" href="{{ path('offre_index', { 'id': projet.id }) }}">Voir les Offres</a>
+                                            <a  class="btn btn-info" style="color:white;" href="{{ path('offre_index', { 'id_projet': projet.id }) }}">Voir les Offres</a>
                                         </li>
                                     </ul>
                                 </td>
                             </tr>
                         {% endfor %}
                     {% endif %}
+                
+                
+                    {% if projets is defined and projetsBySociete is not defined %}
+                        {% for projet in projets %}
+                        <tr>
+                            <a class="mydisplaynone" href="{{ path('projet_show', { 'id': projet.id }) }}">{{ projet.id }}</a>
+                            <td class="mytdtab">{{ projet.intitule }}</td>
+                            <td class="mytdtab2">{{ projet.prix }}</td>
+                            <td class="mytdtab">{{ projet.etat }}</td>
+                            <td class="mytdtab2">{{ projet.description }}</td>
+                            <td class="mytdtab">{{ projet.societe.denomination }}</td>
+                            <td class="mytdtab2">                                    
+                                <a href="{{ path('projet_showCdc', { 'id': projet.id }) }}">
+                                    <i class="fa fa-file fa-2x"></i>
+                                </a>
+                            </td>
+                            <td class="mytdtab">
+                                <ul>
+                                    <li style="display:inline-block;margin-top:8px;">
+                                        <a  class="btn btn-primary" style="color:white;" href="{{ path('projet_show', { 'id': projet.id }) }}">Afficher</a>
+                                    </li>
+                                    <li style="display:inline-block;margin-top:8px;">
+                                        <a  class="btn btn-info" style="color:white;"href="{{ path('societe_show', { 'id': projet.societe.id  }) }}">Voir le profil de la société</a>
+                                    </li>
+                                    {% if is_granted('ROLE_FREELANCER') or  is_granted('ROLE_ADMIN') %}
+                                        <li style="display:inline-block;margin-top:8px;">
+                                            <a  class="btn btn-success" style="color:white;" href="{{ path('offre_new', { 'id_projet': projet.id }) }}">Faire une Offre</a>
+                                        </li>
+                                    {% elseif not is_granted('ROLE_SOCIETE') %}
+                                        <li style="display:inline-block;margin-top:8px;">
+                                            <a  class="btn btn-success" style="color:white;" href="{{ path('fos_user_security_login') }}">Faire une Offre</a>
+                                        </li>
+                                    {% endif %}
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <li style="display:inline-block;">
+                                            <a  class="btn btn-warning" style="color:white;" href="{{ path('projet_edit', { 'id': projet.id }) }}">Modifier</a>
+                                        </li>
+                                    {% endif %}
+                                    <li style="display:inline-block;margin-top:8px;">
+                                        <a  class="btn btn-info" style="color:white;" href="{{ path('offre_index', { 'id_projet': projet.id }) }}">Voir les Offres</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
                 </tbody>
             </table>
-          
+
         </div>
     </div>
 {% endblock %}

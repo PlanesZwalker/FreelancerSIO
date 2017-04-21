@@ -35,52 +35,5 @@ class Testcompetence
     private $test;
 
 
-
-    /**
-     * Set competence
-     *
-     * @param \MyFOSUserBundle\Entity\Competence $competence
-     *
-     * @return Testcompetence
-     */
-    public function setCompetence(\MyFOSUserBundle\Entity\Competence $competence)
-    {
-        $this->competence = $competence;
-
-        return $this;
-    }
-
-    /**
-     * Get competence
-     *
-     * @return \MyFOSUserBundle\Entity\Competence
-     */
-    public function getCompetence()
-    {
-        return $this->competence;
-    }
-
-    /**
-     * Set test
-     *
-     * @param \MyFOSUserBundle\Entity\Test $test
-     *
-     * @return Testcompetence
-     */
-    public function setTest(\MyFOSUserBundle\Entity\Test $test = null)
-    {
-        $this->test = $test;
-
-        return $this;
-    }
-
-    /**
-     * Get test
-     *
-     * @return \MyFOSUserBundle\Entity\Test
-     */
-    public function getTest()
-    {
-        return $this->test;
-    }
 }
+

@@ -13,22 +13,21 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @Route("paiement")
  */
-class PaiementController extends Controller
-{
+class PaiementController extends Controller {
+
     /**
      * Lists all paiement entities.
      *
      * @Route("/", name="paiement_index")
      * @Method("GET")
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
         $paiements = $em->getRepository('MyFOSUserBundle:Paiement')->findAll();
 
         return $this->render('paiement/index.html.twig', array(
-            'paiements' => $paiements,
+                    'paiements' => $paiements,
         ));
     }
 
@@ -38,8 +37,7 @@ class PaiementController extends Controller
      * @Route("/new", name="paiement_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
-    {
+    public function newAction(Request $request) {
         $paiement = new Paiement();
         $form = $this->createForm('MyFOSUserBundle\Form\PaiementType', $paiement);
         $form->handleRequest($request);
@@ -53,8 +51,8 @@ class PaiementController extends Controller
         }
 
         return $this->render('paiement/new.html.twig', array(
-            'paiement' => $paiement,
-            'form' => $form->createView(),
+                    'paiement' => $paiement,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -64,13 +62,12 @@ class PaiementController extends Controller
      * @Route("/{id}", name="paiement_show")
      * @Method("GET")
      */
-    public function showAction(Paiement $paiement)
-    {
+    public function showAction(Paiement $paiement) {
         $deleteForm = $this->createDeleteForm($paiement);
 
         return $this->render('paiement/show.html.twig', array(
-            'paiement' => $paiement,
-            'delete_form' => $deleteForm->createView(),
+                    'paiement' => $paiement,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -80,8 +77,7 @@ class PaiementController extends Controller
      * @Route("/{id}/edit", name="paiement_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Paiement $paiement)
-    {
+    public function editAction(Request $request, Paiement $paiement) {
         $deleteForm = $this->createDeleteForm($paiement);
         $editForm = $this->createForm('MyFOSUserBundle\Form\PaiementType', $paiement);
         $editForm->handleRequest($request);
@@ -93,9 +89,9 @@ class PaiementController extends Controller
         }
 
         return $this->render('paiement/edit.html.twig', array(
-            'paiement' => $paiement,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'paiement' => $paiement,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -105,8 +101,7 @@ class PaiementController extends Controller
      * @Route("/{id}", name="paiement_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Paiement $paiement)
-    {
+    public function deleteAction(Request $request, Paiement $paiement) {
         $form = $this->createDeleteForm($paiement);
         $form->handleRequest($request);
 
@@ -126,12 +121,12 @@ class PaiementController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Paiement $paiement)
-    {
+    private function createDeleteForm(Paiement $paiement) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('paiement_delete', array('id' => $paiement->getIdPaiement())))
-            ->setMethod('DELETE')
-            ->getForm()
+                        ->setAction($this->generateUrl('paiement_delete', array('id' => $paiement->getIdPaiement())))
+                        ->setMethod('DELETE')
+                        ->getForm()
         ;
     }
+
 }

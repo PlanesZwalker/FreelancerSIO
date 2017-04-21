@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="freelancer", indexes={@ORM\Index(name="user", columns={"user"})})
  * @ORM\Entity
  */
-class Freelancer
-{
+class Freelancer {
+
     /**
      * @var integer
      *
@@ -48,11 +48,9 @@ class Freelancer
      * @ORM\Column(name="age", type="integer", nullable=false)
      */
     private $age;
-
     private $cv;
-    
     private $photo;
-    
+
     /**
      * @var \User
      *
@@ -83,7 +81,7 @@ class Freelancer
         return $this->age;
     }
 
-    function getUser(){
+    function getUser() {
         return $this->user;
     }
 
@@ -107,82 +105,80 @@ class Freelancer
         $this->age = $age;
     }
 
-        function setUser($user) {
+    function setUser($user) {
         $this->user = $user;
     }
 
- 
     /*
      *  UPLOAD DE LA PHOTO
      * 
      */
-    
-    public function getUploadPhotoDir(){
+
+    public function getUploadPhotoDir() {
         return '/user/photo';
     }
- 
-    public function getAbsolutePhotoRoot(){ 
-            return $this->getUploadPhotoRoot().$this->getUser()->getId();
+
+    public function getAbsolutePhotoRoot() {
+        return $this->getUploadPhotoRoot() . $this->getUser()->getId();
     }
 
-    public function getWebPhotoPath(){
+    public function getWebPhotoPath() {
 
-        return $this->getUploadPhotoDir().'/'.$this->getUser()->getId();
+        return $this->getUploadPhotoDir() . '/' . $this->getUser()->getId();
     }
 
-    public function getUploadPhotoRoot(){
-         return __DIR__.'/../../../web'. $this->getUploadPhotoDir().'/';
-    }   
-    
-    public function uploadPhoto(){
+    public function getUploadPhotoRoot() {
+        return __DIR__ . '/../../../web' . $this->getUploadPhotoDir() . '/';
+    }
 
-        
-        if(!is_dir($this->getWebPhotoPath())){
-             
-            mkdir($this->getWebPhotoPath(), '0777',true); 
+    public function uploadPhoto() {
+
+
+        if (!is_dir($this->getWebPhotoPath())) {
+
+            mkdir($this->getWebPhotoPath(), '0777', true);
         }
-              
+
         $this->photo->move($this->getUploadPhotoRoot(), $this->getUser()->getId());
-   
+
         unset($this->photo);
-        
     }
-        
-    
+
     /*
      * 
      *      UPLOAD DU CV
      */
-    public function getUploadCvDir(){
+
+    public function getUploadCvDir() {
         return '/user/cv';
     }
-  
-    public function getAbsoluteCvRoot(){
-        return $this->getUploadCvRoot().$this->getUser()->getId();
-    }
-    
-    public function getWebCvPath(){
 
-        return $this->getUploadCvDir().'/'.$this->getUser()->getId();
+    public function getAbsoluteCvRoot() {
+        return $this->getUploadCvRoot() . $this->getUser()->getId();
     }
-    
-    public function getUploadCvRoot(){
-         return __DIR__.'/../../../web'. $this->getUploadCvDir().'/';
+
+    public function getWebCvPath() {
+
+        return $this->getUploadCvDir() . '/' . $this->getUser()->getId();
     }
- 
-    public function uploadCv(){
-        
-     
-        if(!is_dir($this->getWebCvPath())){
-            
-             mkdir($this->getWebCvPath(), '0777', true);
+
+    public function getUploadCvRoot() {
+        return __DIR__ . '/../../../web' . $this->getUploadCvDir() . '/';
+    }
+
+    public function uploadCv() {
+
+/*
+        if (!is_dir($this->getWebCvPath())) {
+
+            mkdir($this->getWebCvPath(), '0777', true);
         }
-              
+*/
         $this->cv->move($this->getUploadCvRoot(), $this->getUser()->getId());
-   
+
         unset($this->cv);
     }
-    
+
     function getCv() {
         return $this->cv;
     }
@@ -199,7 +195,4 @@ class Freelancer
         $this->photo = $photo;
     }
 
-
-
 }
-

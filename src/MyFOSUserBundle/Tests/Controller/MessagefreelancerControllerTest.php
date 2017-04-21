@@ -4,22 +4,21 @@ namespace MyFOSUserBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class MessagefreelancerControllerTest extends WebTestCase
-{
+class MessagefreelancerControllerTest extends WebTestCase {
     /*
-    public function testCompleteScenario()
-    {
-        // Create a new client to browse the application
-        $client = static::createClient();
+      public function testCompleteScenario()
+      {
+      // Create a new client to browse the application
+      $client = static::createClient();
 
-        // Go to the list view
-        $crawler = $client->request('GET', '/messagefreelancer/');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /messagefreelancer/");
+      // Go to the list view
+      $crawler = $client->request('GET', '/messagefreelancer/');
+      $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /messagefreelancer/");
 
-        // Go to the show view
-        $crawler = $client->click($crawler->selectLink('show')->link());
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code");
-    }
+      // Go to the show view
+      $crawler = $client->click($crawler->selectLink('show')->link());
+      $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code");
+      }
 
-    */
+     */
 }

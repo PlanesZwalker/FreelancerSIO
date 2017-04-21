@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
 
-        <h1 id="logo"><a class="bigtitle">Cahier des charges</a></h1>  
+    <h1 id="logo"><a class="bigtitle">Cahier des charges</a></h1>  
 
 {% endblock %}
 
@@ -20,30 +20,30 @@
                 <thead>
                     <tr class="tableautitlecontent">
                         <th class="center">Intitulé du Cahier des Charges</th>
-                                 
+
                         <th class="center">Tarif</th>
                         <th class="center">Delai</th>
                         <th class="center">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="mytbody">
-                {% for cahierdescharge in cahierdescharges %}
-                    <tr>
-                        <a class="mydisplaynone" href="{{ path('cahierdescharges_show', { 'id': cahierdescharge.id }) }}">{{ cahierdescharge.id }}</a>
-                        <td class="mytdtab2">{{ cahierdescharge.intitule }}</td>
-                        <td class="mytdtab">{{ cahierdescharge.tarif }}</td>
-                        <td class="mytdtab2">{{ cahierdescharge.delai }}</td>
-            
-                        <td class="mytdtab">
-                            <ul>
-                                <li style="display:inline-block;margin-top:8px;">
-                                    <a data-ajax="false" class="btn btn-default"  href="{{ path('cahierdescharges_show', { 'id': cahierdescharge.id }) }}">Afficher</a>
-                                </li>
-                                <li style="display:inline-block;">
-                                    <a data-ajax="false" class="btn btn-info" style="color:white;" href="{{ path('cahierdescharges_edit', { 'id': cahierdescharge.id }) }}">Modifier</a>
-                                </li>
-                            </ul>
-                        </td>
+                    {% for cahierdescharge in cahierdescharges %}
+                        <tr>
+                    <a class="mydisplaynone" href="{{ path('cahierdescharges_show', { 'id': cahierdescharge.id }) }}">{{ cahierdescharge.id }}</a>
+                    <td class="mytdtab2">{{ cahierdescharge.intitule }}</td>
+                    <td class="mytdtab">{{ cahierdescharge.tarif }}</td>
+                    <td class="mytdtab2">{{ cahierdescharge.delai }}</td>
+
+                    <td class="mytdtab">
+                        <ul>
+                            <li style="display:inline-block;margin-top:8px;">
+                                <a data-ajax="false" class="btn btn-success"  href="{{ path('cahierdescharges_show', { 'id': cahierdescharge.id }) }}">Afficher</a>
+                            </li>
+                            <li style="display:inline-block;">
+                                <a data-ajax="false" class="btn btn-info" style="color:white;" href="{{ path('cahierdescharges_edit', { 'id': cahierdescharge.id }) }}">Modifier</a>
+                            </li>
+                        </ul>
+                    </td>
                     </tr>
                 {% endfor %}
                 </tbody>

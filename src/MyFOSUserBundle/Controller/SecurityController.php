@@ -19,22 +19,23 @@ use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
-class SecurityController extends Controller
-{
+class SecurityController extends Controller {
+
     /**
      * @param Request $request
      *
      * @return Response
      */
-    public function loginAction(Request $request)
-    {
+    public function loginAction(Request $request) {
+        
         if ($this->getUser() instanceof UserInterface) {
+           
             return $this->redirectToRoute($this->getParameter('fos_user.user.default_route'));
         }
 
         /** @var $session \Symfony\Component\HttpFoundation\Session\Session */
         $session = $request->getSession();
-
+        
         if (class_exists('\Symfony\Component\Security\Core\Security')) {
             $authErrorKey = Security::AUTHENTICATION_ERROR;
             $lastUsernameKey = Security::LAST_USERNAME;
@@ -63,17 +64,18 @@ class SecurityController extends Controller
 
         if ($this->has('security.csrf.token_manager')) {
             $csrfToken = $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue();
+
         } else {
             // BC for SF < 2.4
-            $csrfToken = $this->has('form.csrf_provider')
-                ? $this->get('form.csrf_provider')->generateCsrfToken('authenticate')
-                : null;
+            $csrfToken = $this->has('form.csrf_provider') ? $this->get('form.csrf_provider')->generateCsrfToken('authenticate') : null;
         }
-
+        
+   
+                    
         return $this->renderLogin(array(
-            'last_username' => $lastUsername,
-            'error' => $error,
-            'csrf_token' => $csrfToken,
+                    'last_username' => $lastUsername,
+                    'error' => $error,
+                    'csrf_token' => $csrfToken,
         ));
     }
 
@@ -85,18 +87,16 @@ class SecurityController extends Controller
      *
      * @return Response
      */
-    protected function renderLogin(array $data)
-    {
+    protected function renderLogin(array $data) {             
         return $this->render('FOSUserBundle:Security:login.html.twig', $data);
     }
 
-    public function checkAction()
-    {
+    public function checkAction() {
         throw new \RuntimeException('You must configure the check path to be handled by the firewall using form_login in your security firewall configuration.');
     }
 
-    public function logoutAction()
-    {
+    public function logoutAction() {
         throw new \RuntimeException('You must activate the logout in your security firewall configuration.');
     }
+
 }

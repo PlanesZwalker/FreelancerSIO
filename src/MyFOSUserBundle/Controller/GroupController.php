@@ -31,17 +31,16 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
  */
-class GroupController extends Controller
-{
+class GroupController extends Controller {
+
     /**
      * Show all groups
      */
-    public function listAction()
-    {
+    public function listAction() {
         $groups = $this->get('fos_user.group_manager')->findGroups();
 
         return $this->render('FOSUserBundle:Group:list.html.twig', array(
-            'groups' => $groups
+                    'groups' => $groups
         ));
     }
 
@@ -52,12 +51,11 @@ class GroupController extends Controller
      *
      * @return Response
      */
-    public function showAction($groupName)
-    {
+    public function showAction($groupName) {
         $group = $this->findGroupBy('name', $groupName);
 
         return $this->render('FOSUserBundle:Group:show.html.twig', array(
-            'group' => $group
+                    'group' => $group
         ));
     }
 
@@ -69,8 +67,7 @@ class GroupController extends Controller
      *
      * @return Response
      */
-    public function editAction(Request $request, $groupName)
-    {
+    public function editAction(Request $request, $groupName) {
         $group = $this->findGroupBy('name', $groupName);
 
         /** @var $dispatcher EventDispatcherInterface */
@@ -111,8 +108,8 @@ class GroupController extends Controller
         }
 
         return $this->render('FOSUserBundle:Group:edit.html.twig', array(
-            'form'      => $form->createView(),
-            'group_name'  => $group->getName(),
+                    'form' => $form->createView(),
+                    'group_name' => $group->getName(),
         ));
     }
 
@@ -123,8 +120,7 @@ class GroupController extends Controller
      *
      * @return Response
      */
-    public function newAction(Request $request)
-    {
+    public function newAction(Request $request) {
         /** @var $groupManager \FOS\UserBundle\Model\GroupManagerInterface */
         $groupManager = $this->get('fos_user.group_manager');
         /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
@@ -158,7 +154,7 @@ class GroupController extends Controller
         }
 
         return $this->render('FOSUserBundle:Group:new.html.twig', array(
-            'form' => $form->createView(),
+                    'form' => $form->createView(),
         ));
     }
 
@@ -170,8 +166,7 @@ class GroupController extends Controller
      *
      * @return RedirectResponse
      */
-    public function deleteAction(Request $request, $groupName)
-    {
+    public function deleteAction(Request $request, $groupName) {
         $group = $this->findGroupBy('name', $groupName);
         $this->get('fos_user.group_manager')->deleteGroup($group);
 
@@ -193,10 +188,9 @@ class GroupController extends Controller
      * @throws NotFoundHttpException                if user does not exist
      * @return GroupInterface
      */
-    protected function findGroupBy($key, $value)
-    {
+    protected function findGroupBy($key, $value) {
         if (!empty($value)) {
-            $group = $this->get('fos_user.group_manager')->{'findGroupBy'.ucfirst($key)}($value);
+            $group = $this->get('fos_user.group_manager')->{'findGroupBy' . ucfirst($key)}($value);
         }
 
         if (empty($group)) {
@@ -205,4 +199,5 @@ class GroupController extends Controller
 
         return $group;
     }
+
 }
