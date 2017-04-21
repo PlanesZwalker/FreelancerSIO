@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
 
-        <h1 id="logo"><a class="bigtitle">Compétences</a></h1>  
+    <h1 id="logo"><a class="bigtitle">Compétences</a></h1>  
 
 {% endblock %}
 
@@ -11,30 +11,30 @@
         <div class="mycontentform">
             <ul>
                 <li class="returnlist">
-                    <a class="btn btn-default" href="{{ path('competence_index') }}">Retourner à la liste</a>
+                    <a class="btn btn-success" href="{{ path('competence_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
             <table  class="tableautitle">
                 <tbody>
-            {{ form_start(edit_form) }}
-                <tr>
-                    <th class="mytdtabshow">{{ form_row(edit_form.intitule) }}</th>
-                </tr>        
-                <tr>
-                    <th class="mytdtabshow">{{ form_row(edit_form.categorie) }}</th>
-                </tr>        
-                <tr>
-                    <th class="mytdtabshow" >{{ form_row(edit_form.description) }}</th>
-                </tr>
+                    {{ form_start(edit_form) }}
+                    <tr>
+                        <th class="mytdtabshow">{{ form_row(edit_form.intitule) }}</th>
+                    </tr>        
+                    <tr>
+                        <th class="mytdtabshow">{{ form_row(edit_form.categorie) }}</th>
+                    </tr>        
+                    <tr>
+                        <th class="mytdtabshow" >{{ form_row(edit_form.description) }}</th>
+                    </tr>
                 </tbody>
             </table>   
             <input class="myeditinput" type="submit" value="Enregistrer les modifications" />
             {{ form_end(edit_form) }}
-          
+
             <ul>
                 <li class="mydeleteli ">
                     {{ form_start(delete_form) }}
-                        <input type="submit" value="Supprimer la compétence">
+                    <input type="submit" value="Supprimer la compétence">
                     {{ form_end(delete_form) }}
                 </li>
             </ul>

@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="projet", indexes={@ORM\Index(name="societe", columns={"societe"})})
  * @ORM\Entity
  */
-class Projet
-{
+class Projet {
+
     /**
      * @var integer
      *
@@ -58,9 +58,7 @@ class Projet
      * })
      */
     private $societe;
-    
     private $cahierdescharges;
-
 
     function getId() {
         return $this->id;
@@ -114,7 +112,4 @@ class Projet
         $this->cahierdescharges = $cahierdescharges;
     }
 
-
-
 }
-

@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="offre", indexes={@ORM\Index(name="freelancer", columns={"freelancer"}), @ORM\Index(name="projet", columns={"projet"})})
  * @ORM\Entity
  */
-class Offre
-{
+class Offre {
+
     /**
      * @var integer
      *
@@ -69,15 +69,12 @@ class Offre
      */
     private $projet;
 
-
-
     /**
      * Get idOffre
      *
      * @return integer
      */
-    public function getIdOffre()
-    {
+    public function getIdOffre() {
         return $this->idOffre;
     }
 
@@ -88,8 +85,7 @@ class Offre
      *
      * @return Offre
      */
-    public function setTarif($tarif)
-    {
+    public function setTarif($tarif) {
         $this->tarif = $tarif;
 
         return $this;
@@ -100,8 +96,7 @@ class Offre
      *
      * @return float
      */
-    public function getTarif()
-    {
+    public function getTarif() {
         return $this->tarif;
     }
 
@@ -112,8 +107,7 @@ class Offre
      *
      * @return Offre
      */
-    public function setDelai($delai)
-    {
+    public function setDelai($delai) {
         $this->delai = $delai;
 
         return $this;
@@ -124,8 +118,7 @@ class Offre
      *
      * @return string
      */
-    public function getDelai()
-    {
+    public function getDelai() {
         return $this->delai;
     }
 
@@ -136,8 +129,7 @@ class Offre
      *
      * @return Offre
      */
-    public function setProposition($proposition)
-    {
+    public function setProposition($proposition) {
         $this->proposition = $proposition;
 
         return $this;
@@ -148,8 +140,7 @@ class Offre
      *
      * @return string
      */
-    public function getProposition()
-    {
+    public function getProposition() {
         return $this->proposition;
     }
 
@@ -160,8 +151,7 @@ class Offre
      *
      * @return Offre
      */
-    public function setParticularite($particularite)
-    {
+    public function setParticularite($particularite) {
         $this->particularite = $particularite;
 
         return $this;
@@ -172,8 +162,7 @@ class Offre
      *
      * @return string
      */
-    public function getParticularite()
-    {
+    public function getParticularite() {
         return $this->particularite;
     }
 
@@ -184,8 +173,7 @@ class Offre
      *
      * @return Offre
      */
-    public function setFreelancer(\MyFOSUserBundle\Entity\Freelancer $freelancer = null)
-    {
+    public function setFreelancer(\MyFOSUserBundle\Entity\Freelancer $freelancer = null) {
         $this->freelancer = $freelancer;
 
         return $this;
@@ -196,8 +184,7 @@ class Offre
      *
      * @return \MyFOSUserBundle\Entity\Freelancer
      */
-    public function getFreelancer()
-    {
+    public function getFreelancer() {
         return $this->freelancer;
     }
 
@@ -208,8 +195,7 @@ class Offre
      *
      * @return Offre
      */
-    public function setProjet(\MyFOSUserBundle\Entity\Projet $projet = null)
-    {
+    public function setProjet(\MyFOSUserBundle\Entity\Projet $projet = null) {
         $this->projet = $projet;
 
         return $this;
@@ -220,8 +206,8 @@ class Offre
      *
      * @return \MyFOSUserBundle\Entity\Projet
      */
-    public function getProjet()
-    {
+    public function getProjet() {
         return $this->projet;
     }
+
 }

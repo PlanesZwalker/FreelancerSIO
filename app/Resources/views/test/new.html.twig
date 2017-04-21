@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
 
-        <h1 id="logo"><a class="bigtitle">Tests</a></h1>  
+    <h1 id="logo"><a class="bigtitle">Tests</a></h1>  
 
 {% endblock %}
 
@@ -11,23 +11,24 @@
         <div class="mycontentform">
             <ul>
                 <li class="returnlist">
-                    <a  class="btn btn-default" href="{{ path('test_index') }}">Retourner à la liste</a>
+                    <a  class="btn btn-success" href="{{ path('test_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
             <table  class="tableautitle">
                 <tbody>
-                {{ form_start(form) }}
-                      {{ form_row(form.intitule) }}
-                        {{ form_row(form.description) }}
-                        {{ form_row(form.urlTest) }}
-                       {{ form_row(form.questionnaire) }}
-                 
-                    <input type="submit" class="myeditinput" value="Ajouter le Test" />
-                {{ form_end(form) }}
-                 </tbody>
-             </table> 
+                    {{ form_start(form) }}
+                       <div style="width:15%;margin-left:15%;  float:left; margin-right:2%;display:inline-grid;">
+                            {{ form_row(form.intitule) }}
+                            {{ form_row(form.description) }}
+                            
+                            {{ form_row(form.questionnaire) }}
+                       </div>
+                        <input type="submit" class="myeditinput" value="Ajouter le Test" />
+                    {{ form_end(form) }}
+                </tbody>
+            </table> 
             <ul>
-               
+
             </ul>
         </div>
     </div>

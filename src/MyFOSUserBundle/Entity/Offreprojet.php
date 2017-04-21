@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="offreprojet", indexes={@ORM\Index(name="id_offre", columns={"id_offre"}), @ORM\Index(name="id_projet", columns={"id_projet"})})
  * @ORM\Entity
  */
-class Offreprojet
-{
+class Offreprojet {
+
     /**
      * @var \Offre
      *
@@ -34,8 +34,6 @@ class Offreprojet
      */
     private $idProjet;
 
-
-
     /**
      * Set idOffre
      *
@@ -43,8 +41,7 @@ class Offreprojet
      *
      * @return Offreprojet
      */
-    public function setIdOffre(\MyFOSUserBundle\Entity\Offre $idOffre)
-    {
+    public function setIdOffre(\MyFOSUserBundle\Entity\Offre $idOffre) {
         $this->idOffre = $idOffre;
 
         return $this;
@@ -55,8 +52,7 @@ class Offreprojet
      *
      * @return \MyFOSUserBundle\Entity\Offre
      */
-    public function getIdOffre()
-    {
+    public function getIdOffre() {
         return $this->idOffre;
     }
 
@@ -67,8 +63,7 @@ class Offreprojet
      *
      * @return Offreprojet
      */
-    public function setIdProjet(\MyFOSUserBundle\Entity\Projet $idProjet = null)
-    {
+    public function setIdProjet(\MyFOSUserBundle\Entity\Projet $idProjet = null) {
         $this->idProjet = $idProjet;
 
         return $this;
@@ -79,8 +74,8 @@ class Offreprojet
      *
      * @return \MyFOSUserBundle\Entity\Projet
      */
-    public function getIdProjet()
-    {
+    public function getIdProjet() {
         return $this->idProjet;
     }
+
 }

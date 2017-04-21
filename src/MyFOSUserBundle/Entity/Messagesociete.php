@@ -35,52 +35,5 @@ class Messagesociete
     private $societe;
 
 
-
-    /**
-     * Set message
-     *
-     * @param \MyFOSUserBundle\Entity\Message $message
-     *
-     * @return Messagesociete
-     */
-    public function setMessage(\MyFOSUserBundle\Entity\Message $message)
-    {
-        $this->message = $message;
-
-        return $this;
-    }
-
-    /**
-     * Get message
-     *
-     * @return \MyFOSUserBundle\Entity\Message
-     */
-    public function getMessage()
-    {
-        return $this->message;
-    }
-
-    /**
-     * Set societe
-     *
-     * @param \MyFOSUserBundle\Entity\Societe $societe
-     *
-     * @return Messagesociete
-     */
-    public function setSociete(\MyFOSUserBundle\Entity\Societe $societe = null)
-    {
-        $this->societe = $societe;
-
-        return $this;
-    }
-
-    /**
-     * Get societe
-     *
-     * @return \MyFOSUserBundle\Entity\Societe
-     */
-    public function getSociete()
-    {
-        return $this->societe;
-    }
 }
+

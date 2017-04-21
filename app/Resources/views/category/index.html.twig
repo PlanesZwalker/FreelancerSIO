@@ -15,25 +15,25 @@
             </tr>
         </thead>
         <tbody>
-        {% for category in categories %}
-            <tr>
-                <td><a href="{{ path('category_show', { 'id': category.id }) }}">{{ category.id }}</a></td>
-                <td>{{ category.name }}</td>
-                <td>{{ category.blogPost }}</td>
-                <td>{{ category.category }}</td>
-                <td>{% if category.draft %}Yes{% else %}No{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('category_show', { 'id': category.id }) }}">Afficher</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('category_edit', { 'id': category.id }) }}">Modifier</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
+            {% for category in categories %}
+                <tr>
+                    <td><a href="{{ path('category_show', { 'id': category.id }) }}">{{ category.id }}</a></td>
+                    <td>{{ category.name }}</td>
+                    <td>{{ category.blogPost }}</td>
+                    <td>{{ category.category }}</td>
+                    <td>{% if category.draft %}Yes{% else %}No{% endif %}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('category_show', { 'id': category.id }) }}">Afficher</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('category_edit', { 'id': category.id }) }}">Modifier</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 

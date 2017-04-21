@@ -17,7 +17,7 @@
         {% endif %}
         {% if is_granted("ROLE_SOCIETE") %}
             <a class="btn btn-success" href="{{ path('societe_new') }}">
-             Créer mon profil "Societe"
+                Créer mon profil "Societe"
             </a> 
         {% endif %}
 
@@ -28,6 +28,6 @@
 {% block fos_user_content %}
     <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
     {% if targetUrl %}
-    <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
-    {% endif %}
-{% endblock fos_user_content %}
+        <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+        {% endif %}
+    {% endblock fos_user_content %}

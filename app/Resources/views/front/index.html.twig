@@ -1,139 +1,106 @@
 {% extends "layout.html.twig" %}
 
 {% block style %}{% endblock %}
+{% block javascript %}
+    <script>
+     $(document).ready(function(){  
+         
+       $(".alert-success").fadeToggle(8000);
+
+  
     
+    });
+    </script>
+{% endblock %}
 {% block titre %}
-        <h1 id="logo"><a class="bigtitle">Free Demat'Lancer's</a></h1>
+    <h1 id="logo"><a class="bigtitle">Free Demat'Lancer's</a></h1>
 {% endblock %}
 
 
+
 {% block body %}
-    <!-- Main -->
+    <div style="margin-left:15%;width:80%; ">
+        {% if is_granted("ROLE_USER") %}
+            <div class="inner" style="padding-bottom:0vw; margin-top:30px;"></div>
+        {% else %}
+            <div class="inner" style="padding-bottom:0vw; margin-top:80px;"></div>
+        {% endif %}
+        <div style="margin-left:10%;">
+            {% for success in app.session.getFlashBag.get('success') %}
+                <div class="alert alert-success" >
+                    {{ success }}
+                </div>
+            {% endfor %}
 
-    <!-- Banner -->
-    <div id="banner-wrapper" style="margin-left:4%;width:93%;">
-           
-            {% if is_granted("ROLE_SUPER_ADMIN") %}
-                <h1 class="mysubtitle" style="margin-top:0px; margin-bottom: 100px">
-                   Espace personnel "ADMINISTRATEUR"
-                </h1> 
-            {% endif %}
-            
-             {% if is_granted("ROLE_FREELANCER") and not is_granted("ROLE_SUPER_ADMIN")%}
-                <h1>
-                   Espace personnel "FREELANCER"
-                </h1> 
-            {% endif %}
-            
-             {% if is_granted("ROLE_SUPER_ADMIN") and not is_granted("ROLE_SUPER_ADMIN") %}
-                <h1>
-                   Espace personnel "SOCIETE"
-                </h1> 
-            {% endif %}
-            
-            
-        <div class="inner" style="padding-bottom:0vw;">
-         
-            <section id="banner" class="container">
-                <p>Projet en ligne / &nbsp;Développeurs Connectés
-                    <br />
-                </p>
-          
-                <ul class="actions">
-                    <li><a href="{{ path('projet_index') }}"  class="button btn btn-info icon fa-info" >Consulter les projets</a></li>
-                    <li><a href="{{ path('freelancer_index') }}"  class="button btn btn-success icon fa-female">Voir les profils des Freelancers</a></li>
-                </ul>
-                  
-            </section>
+            {% for error in app.session.getFlashBag.get('success') %}
+                <div class="alert alert-error">
+                    {{ error }}
+                </div>
+            {% endfor %}
         </div>
-    </div> 
-
-    <!-- Banner 
-    <div id="banner-wrapper" style=" margin-left:4%;width:93%;">
-        <div class="inner">
-            <div class="inner">
-                <section id="banner" class="container">
-                    <p>Elaboration de cahier des charges <strong>Contrat</strong>.<br />
-                        Paiement en ligne</p>
-
-         
-                    {{ form_start(form) }}
-                    {{ form_widget(form) }}
-                    {{ form_end(form) }}
-
-                </section>
+        <section id="banner" style="" >
+            <div style="display: inline-block; margin-right:5%; width:40%;color:white; {% if is_granted("ROLE_USER") %} margin-top: 50px; {% endif %}">
+                <p style=" font-size:1.2vw; text-align: center; ">Projets web - Logiciels</p>
+                <a href="{{ path('projet_index') }}"  class="button btn btn-primary icon fa-info" style=" padding:1vw 4vw 2vw 4vw  ;border-radius:8px;">
+                    Consulter les projets en ligne
+                    <br><br>
+                    <img style="width:25vw" src="images/projet.png">
+                </a>
             </div>
-        </div>
+
+            <div style=" display: inline-block;color:white; width:40%; ">
+                <p style=" font-size:1.2vw; text-align: center; ">Développeurs et Programmeurs</p>
+                <a href="{{ path('freelancer_index') }}"  class="button btn btn-primary icon fa-female" style=" padding:1vw 4vw 2vw 4vw  ; border-radius:8px;">
+                    Voir les profils des Freelancers
+                    <br><br>
+                    <img style="width:25vw"  src="images/profil.png">
+                </a>
+            </div>
+
+        </section>
     </div>
--->
-    <!-- Footer              
-    <div id="banner-wrapper"  style="margin-left:15vw;width:70vw;margin-bottom:5%;">
-        <div class="inner">
+
+    <div id="banner-wrapper" style="margin-left:14vw; width:73%;margin-bottom:5%;">
+        <div class="inner" >
+            <div style="font-weight:100; font-size:2rem;  margin-left:-100px;"> <i class="fa-laptop  icon"></i><strong> &nbsp;&nbsp;  Formulaire de Contact :&nbsp;&nbsp; </strong>Mot de passe perdu ? </div>
             <section id="banner" class="container">           
-                <header>
-                    <h2 >Questions ou Commentaires ? <strong>C'est ici:</strong></h2>
-                </header>
-                <div class="row">
-                    <div class="6u 12u(mobile)" style="margin-left:20%;"> 
-                        <section>
-                            <form method="post" action="">
-                                <div class="row 50%">
-                                    <div class="6u 12u(mobile)">
-                                        <label>Pseudo</label>
-                                        <input name="name" style="width:14vw; background-color:#216FCD" type="text" />
-                                    </div>
-                                    <div class="6u 12u(mobile)">
-                                        <label>Email</label>
-                                        <input name="email" style="width:14.1vw; background-color:#216FCD;" type="text" />
-                                    </div>
-                                    <div>
-                                        <label>Objet</label>
-                                        <input name="objet"style="width:29vw; background-color:#216FCD" type="text" />
-                                    </div>
+                <div class="row" >
+                    <div class="6u 12u(mobile)"  style="margin-left:20%"> 
+                        <section >
+                            <form method="post" action="{{ path('front', {'etat' : 'EmailEnvoye' }) }}" >
+
+                                <div style="width:15vw; display:inline-block;">
+                                    <label>Pseudo</label>
+                                    <input class="btn btn-info" required name="name" style="width:15vw;border-radius:8px;  " type="text" />
                                 </div>
-                                <div class="row 50%">
+                                <div style="display:inline-block;  width:15vw; " >
+                                    <label>Email</label>
+                                    <input class="btn btn-info" required name="email" type="email" style="width:15vw;  border-radius:8px;border:none;padding-bottom:8px; padding-top:8px; " type="text" />
+                                </div>
+
+                                <div style=" width:30vw; " >
+                                    <label>Objet</label>
+                                    <input class="btn btn-info" required name="objet" style="width:30vw; border-radius:8px; " type="text" />
+                                </div>
+                                <div>
                                     <div>
                                         <label>Message</label>
-                                        <textarea name="message"  style="width:29vw;height:50px; background-color:#0186E2;"  ></textarea>
+                                        <textarea rows="4" cols="50" name="body"></textarea>
                                     </div>
                                 </div>
-                                <div class="row 40%">
+                                <div style=" width:30vw; " >
                                     <div >
                                         <input type="submit" class="myeditinput icon fa-envelope" style="margin-left:80%;"  value="Envoyer">
                                     </div>
                                 </div>
                             </form>
                         </section>
-                    </div>             
+                    </div>
+                </div>                
             </section>
         </div> 
-        <div class="6u 12u(mobile)">
-                <section>
-
-                    <div class="row" style="margin-left:50vw;">
-
-                        <div class="6u 12u(mobile)">
-                            <ul class="icons" >
-                                <li class="icon fa-twitter">
-                                    <a href="#" style="color:white;text-shadow:1px 1px black;">@freelancer</a>
-                                </li>
-                                <li class="icon fa-instagram">
-                                    <a href="#" style="color:white;text-shadow:1px 1px black;">instagram.com/freelancer</a>
-                                </li>
-                                <li class="icon fa-dribbble">
-                                    <a href="#" style="color:white;text-shadow:1px 1px black;">dribbble.com/freelancer</a>
-                                </li>
-                                <li class="icon fa-facebook">
-                                    <a href="#" style="color:white;text-shadow:1px 1px black;">facebook.com/freelancer</a>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </section>
-            </div>
-        </div>
-    </div>  -->    
+    </div> 
 {% endblock %}
+
 
 

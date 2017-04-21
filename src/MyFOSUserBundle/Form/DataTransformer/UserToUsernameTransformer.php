@@ -21,8 +21,8 @@ use Symfony\Component\Form\Exception\UnexpectedTypeException;
  *
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  */
-class UserToUsernameTransformer implements DataTransformerInterface
-{
+class UserToUsernameTransformer implements DataTransformerInterface {
+
     /**
      * @var UserManagerInterface
      */
@@ -33,8 +33,7 @@ class UserToUsernameTransformer implements DataTransformerInterface
      *
      * @param UserManagerInterface $userManager
      */
-    public function __construct(UserManagerInterface $userManager)
-    {
+    public function __construct(UserManagerInterface $userManager) {
         $this->userManager = $userManager;
     }
 
@@ -47,8 +46,7 @@ class UserToUsernameTransformer implements DataTransformerInterface
      *
      * @throws UnexpectedTypeException if the given value is not a UserInterface instance
      */
-    public function transform($value)
-    {
+    public function transform($value) {
         if (null === $value) {
             return null;
         }
@@ -69,8 +67,7 @@ class UserToUsernameTransformer implements DataTransformerInterface
      *
      * @throws UnexpectedTypeException if the given value is not a string
      */
-    public function reverseTransform($value)
-    {
+    public function reverseTransform($value) {
         if (null === $value || '' === $value) {
             return null;
         }
@@ -81,4 +78,5 @@ class UserToUsernameTransformer implements DataTransformerInterface
 
         return $this->userManager->findUserByUsername($value);
     }
+
 }

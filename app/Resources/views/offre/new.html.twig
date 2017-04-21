@@ -1,37 +1,40 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
 
-        <h1 id="logo"><a class="bigtitle">Offres</a></h1>  
+    <h1 id="logo"><a class="bigtitle">Offres</a></h1>  
 
 {% endblock %}
 
-{% block body %}    
+{% block body %}  
     <div class="formulairetop">
-        <h2 class="mysubtitle">Ajouter une Offre</h2>
-         <div class="mycontentformshow">
+        <h2 class="mysubtitle">Ajouter une Offre au projet {{ projet.intitule }} </h2>
+        <div class="mycontentformshow">
             <ul>
                 <li class="returnlist">
-                    <a class="btn btn-default" href="{{ path('offre_index') }}">Retourner à la liste</a>
+                    <a class="btn btn-success" href="{{ path('offre_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
-            <table class="tableautitle">
+            <div style="font-size:17px; text-shadow:2px 2px black;margin-left:50px;">
+                <img class="myimg"  src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/logo/{{ projet.societe.user.id }}{% else %}{{ app.request.get('HTTP_HOST')}}/user/logo/{{ projet.societe.user.id }}{% endif %}" />
+                <i style="margin-left:50px">Projet publié par la société : {{ projet.societe.denomination }}</i>
+            </div>
+            <table class="tableautitle" >
                 <tbody>
                     <tr>
-                    {{ form_start(form) }}
-                        <div style="width:40%; display:inline-block;">
-                            {{ form_row(form.tarif) }}
-                            {{ form_row(form.delai) }}
-                        </div>
-                     
-                        <div style="margin-top:50px;">
-                            {{ form_row(form.proposition) }}
-                        </div>
-                        <div style="width:40%;display:inline-block;">
-                             {{ form_row(form.particularite) }} 
-                        </div>
-
-                        <input type="submit" class="myeditinput" value="Envoyer l'offre" />
-                    {{ form_end(form) }}
+                        {{ form_start(form) }}
+                            <div style="width:40%; display:inline-block;">
+                                {{ form_row(form.tarif, {'attr': {'class': 'btn'}} ) }}
+                                {{ form_row(form.delai, {'attr': {'class': 'btn'}} )  }}
+                            </div>
+                            <div style="margin-top:50px;">
+                                {{ form_row(form.proposition) }}
+                            </div>
+                            <div style="width:40%;display:inline-block;">
+                                {{ form_row(form.particularite) }} 
+                            </div>
+                            <input type="hidden" value="">
+                            <input type="submit" class="myeditinput" value="Envoyer l'offre" />
+                        {{ form_end(form) }}
                     </tr>
                 </tbody>
             </table>

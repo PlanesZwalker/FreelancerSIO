@@ -17,8 +17,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 
-class ProfileFormType extends AbstractType
-{
+class ProfileFormType extends AbstractType {
+
     /**
      * @var string
      */
@@ -27,16 +27,14 @@ class ProfileFormType extends AbstractType
     /**
      * @param string $class The User class name
      */
-    public function __construct($class)
-    {
+    public function __construct($class) {
         $this->class = $class;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options) {
         $this->buildUserForm($builder, $options);
 
         $constraintsOptions = array(
@@ -58,8 +56,7 @@ class ProfileFormType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
-    {
+    public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults(array(
             'data_class' => $this->class,
             'csrf_token_id' => 'profile',
@@ -72,16 +69,14 @@ class ProfileFormType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->getBlockPrefix();
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
-    {
+    public function getBlockPrefix() {
         return 'fos_user_profile';
     }
 
@@ -91,11 +86,11 @@ class ProfileFormType extends AbstractType
      * @param FormBuilderInterface $builder
      * @param array                $options
      */
-    protected function buildUserForm(FormBuilderInterface $builder, array $options)
-    {
+    protected function buildUserForm(FormBuilderInterface $builder, array $options) {
         $builder
-            ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
-            ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
+                ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
+                ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
         ;
     }
+
 }

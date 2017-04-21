@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
 
-        <h1 id="logo"><a class="bigtitle">Projets</a></h1>  
+    <h1 id="logo"><a class="bigtitle">Projets</a></h1>  
 
 {% endblock %}
 
@@ -11,7 +11,7 @@
         <div class="mycontentformshow">
             <ul>
                 <li class="returnlist">
-                    <a data-ajax="false" class="btn btn-default" href="{{ path('projet_index') }}">Retourner à la liste</a>
+                    <a class="btn btn-success" href="{{ path('projet_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
             <table class="tableautitle" style="margin-top:50px">
@@ -50,17 +50,17 @@
 
             <ul> 
                 {% if is_granted("ROLE_ADMIN") %}
-                <li class="myeditli">
-                    <a data-ajax="false" class="btn btn-info" style="color:white;" href="{{ path('projet_edit', { 'id': projet.id }) }}">Modifier</a>
-                </li>  
-                <li  class="mydeleteli">
-                    {{ form_start(delete_form) }}
-                        <input type="submit" rel="external" value="Supprimer le projet">
-                    {{ form_end(delete_form) }}
-                </li>
+                    <li class="myeditli">
+                        <a class="btn btn-info" style="color:white;" href="{{ path('projet_edit', { 'id': projet.id }) }}">Modifier</a>
+                    </li>  
+                    <li  class="mydeleteli">
+                        {{ form_start(delete_form) }}
+                        <input type="submit"  value="Supprimer le projet">
+                        {{ form_end(delete_form) }}
+                    </li>
                 {% endif %}
             </ul>
         </div>
-                
+
     </div>
 {% endblock %}

@@ -13,8 +13,8 @@ namespace MyFOSUserBundle\Form\Factory;
 
 use Symfony\Component\Form\FormInterface;
 
-interface FactoryInterface
-{
+interface FactoryInterface {
+
     /**
      * @return FormInterface
      */

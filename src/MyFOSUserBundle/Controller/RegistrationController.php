@@ -35,19 +35,18 @@ use MyFOSUserBundle\Entity\Societe;
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
  */
-class RegistrationController extends Controller
-{
+class RegistrationController extends Controller {
+
     /**
      * @param Request $request
      *
      * @return Response
      */
-    public function registerAction(Request $request)
-    {
+    public function registerAction(Request $request) {
         if ($this->getUser() instanceof UserInterface) {
-                  $url = $this->generateUrl('fos_user_registration_confirmed');
+            $url = $this->generateUrl('fos_user_registration_confirmed');
         }
-        
+
         /** @var $formFactory FactoryInterface */
         $formFactory = $this->get('fos_user.registration.form.factory');
         /** @var $userManager UserManagerInterface */
@@ -71,7 +70,7 @@ class RegistrationController extends Controller
 
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
-                
+
                 $event = new FormEvent($form, $request);
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
                 $userManager->updateUser($user);
@@ -92,15 +91,14 @@ class RegistrationController extends Controller
             }
         }
         return $this->render('FOSUserBundle:Registration:register.html.twig', array(
-            'form' => $form->createView(),
+                    'form' => $form->createView(),
         ));
     }
 
     /**
      * Tell the user to check his email provider
      */
-    public function checkEmailAction()
-    {
+    public function checkEmailAction() {
         if ($this->getUser() instanceof UserInterface) {
             return $this->redirectToRoute($this->getParameter('fos_user.user.default_route'));
         }
@@ -118,7 +116,7 @@ class RegistrationController extends Controller
         }
 
         return $this->render('FOSUserBundle:Registration:check_email.html.twig', array(
-            'user' => $user,
+                    'user' => $user,
         ));
     }
 
@@ -130,8 +128,7 @@ class RegistrationController extends Controller
      *
      * @return Response
      */
-    public function confirmAction(Request $request, $token)
-    {
+    public function confirmAction(Request $request, $token) {
         if ($this->getUser() instanceof UserInterface) {
             return $this->redirectToRoute($this->getParameter('fos_user.user.default_route'));
         }
@@ -162,31 +159,29 @@ class RegistrationController extends Controller
         }
 
         $dispatcher->dispatch(FOSUserEvents::REGISTRATION_CONFIRMED, new FilterUserResponseEvent($user, $request, $response));
-        
+
         return $response;
     }
 
     /**
      * Tell the user his account is now confirmed
      */
-    public function confirmedAction()
-    {
+    public function confirmedAction() {
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
         return $this->render('FOSUserBundle:Registration:confirmed.html.twig', array(
-            'user' => $user,
-            'targetUrl' => $this->getTargetUrlFromSession(),
+                    'user' => $user,
+                    'targetUrl' => $this->getTargetUrlFromSession(),
         ));
     }
 
     /**
      * @return mixed
      */
-    private function getTargetUrlFromSession()
-    {
+    private function getTargetUrlFromSession() {
         // Set the SecurityContext for Symfony <2.6
         if (interface_exists('Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface')) {
             $tokenStorage = $this->get('security.token_storage');
@@ -200,4 +195,5 @@ class RegistrationController extends Controller
             return $this->get('session')->get($key);
         }
     }
+
 }

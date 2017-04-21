@@ -12,22 +12,21 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
  *
  * @Route("testcompetence")
  */
-class TestcompetenceController extends Controller
-{
+class TestcompetenceController extends Controller {
+
     /**
      * Lists all testcompetence entities.
      *
      * @Route("/", name="testcompetence_index")
      * @Method("GET")
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
         $testcompetences = $em->getRepository('MyFOSUserBundle:Testcompetence')->findAll();
 
         return $this->render('testcompetence/index.html.twig', array(
-            'testcompetences' => $testcompetences,
+                    'testcompetences' => $testcompetences,
         ));
     }
 
@@ -37,11 +36,11 @@ class TestcompetenceController extends Controller
      * @Route("/{id}", name="testcompetence_show")
      * @Method("GET")
      */
-    public function showAction(Testcompetence $testcompetence)
-    {
+    public function showAction(Testcompetence $testcompetence) {
 
         return $this->render('testcompetence/show.html.twig', array(
-            'testcompetence' => $testcompetence,
+                    'testcompetence' => $testcompetence,
         ));
     }
+
 }

@@ -1,26 +1,26 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
 
-        <h1 id="logo"><a class="bigtitle">Compétences</a></h1>  
+    <h1 id="logo"><a class="bigtitle">Compétences</a></h1>  
 
 {% endblock %}
 
 {% block body %}    
-        <div class="formulairetop">
-            <h2 class="mysubtitle">Ajouter une compétence</h2>
-            <div class="mycontentform">
+    <div class="formulairetop">
+        <h2 class="mysubtitle">Ajouter une compétence</h2>
+        <div class="mycontentform">
             <ul>
                 <li class="returnlist">
-                    <a data-ajax="false" class="btn btn-default" href="{{ path('competence_index') }}">Retourner à la liste</a>
+                    <a data-ajax="false" class="btn btn-success" href="{{ path('competence_index') }}">Retourner à la liste</a>
                 </li>
             </ul>
             <table  class="tableautitle">
                 <tbody>
                     {{ form_start(form) }}
-                        {{ form_widget(form) }}
-                        <input class="myeditinput" rel="external" type="submit" value="Ajouter la compétence" />
-                    {{ form_end(form) }}
+                    {{ form_widget(form) }}
+                <input class="myeditinput" rel="external" type="submit" value="Ajouter la compétence" />
+                {{ form_end(form) }}
                 </tbody>
             </table>
         </div>
-{% endblock %}
+    {% endblock %}

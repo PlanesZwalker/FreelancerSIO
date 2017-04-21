@@ -5,29 +5,29 @@ namespace MyFOSUserBundle\Controller;
 use MyFOSUserBundle\Entity\Test;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 /**
  * Test controller.
  *
  * @Route("test")
  */
-class TestController extends Controller
-{
+class TestController extends Controller {
+
     /**
      * Lists all test entities.
      *
      * @Route("/", name="test_index")
      * @Method("GET")
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
         $tests = $em->getRepository('MyFOSUserBundle:Test')->findAll();
 
         return $this->render('test/index.html.twig', array(
-            'tests' => $tests,
+                    'tests' => $tests,
         ));
     }
 
@@ -37,13 +37,42 @@ class TestController extends Controller
      * @Route("/new", name="test_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
-    {
+    public function newAction(Request $request) {
+        
+        if($request->get('id')){
+            $id_competence = $request->get('id');
+        }
+        $em=$this->getDoctrine()->getManager();
+        
+        $competences = $em->getRepository('MyFOSUserBundle:Competence')->findAll();
+        
+        // on recupere les elements du tableau des compétences
+        foreach($competences as $key=>$competence){
+            $tabCompetenceId[$key]  = $competences[$key]->getIdCompetence();
+            $tabCompetenceIntitule[$key]  = $competences[$key]->getIntitule();
+            $tabCompetence[$key] = array($tabCompetenceIntitule[$key]=>$tabCompetenceId[$key]);
+        }
+
         $test = new Test();
-        $form = $this->createForm('MyFOSUserBundle\Form\TestType', $test);
+        $form = $this->createFormBuilder($test)
+                ->add('intitule')
+                ->add('description')
+                ->add('questionnaire')
+                ->add('competence', ChoiceType::class,[
+                        'label' => 'Selectionnez la compétence rattachée',
+                       'attr' => array(
+                            'class' => 'mySelectMenu'
+                        ),
+                        'multiple' => true,
+                        'choices' => $tabCompetence
+                    ])
+                
+                ->getForm();
+        
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+                        
             $em = $this->getDoctrine()->getManager();
             $em->persist($test);
             $em->flush($test);
@@ -52,8 +81,8 @@ class TestController extends Controller
         }
 
         return $this->render('test/new.html.twig', array(
-            'test' => $test,
-            'form' => $form->createView(),
+                    'test' => $test,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -63,32 +92,32 @@ class TestController extends Controller
      * @Route("/{id}", name="test_show")
      * @Method("GET")
      */
-    public function showAction(Test $test)
-    {
+    public function showAction(Test $test) {
         $deleteForm = $this->createDeleteForm($test);
-        
+
         $em = $this->getDoctrine()->getManager();
-           
+
         $user = $this->getUser();
         $myuser = $user->getId();
-        var_dump($myuser);
-           
-        $iduser = array('user'=> $myuser);
-     
-        $myfreelancer =  $em->getRepository('MyFOSUserBundle:Freelancer')->findOneBy($iduser);
+        //  var_dump($myuser);
+
+        $iduser = array('user' => $myuser);
+
+        $myfreelancer = $em->getRepository('MyFOSUserBundle:Freelancer')->findOneBy($iduser);
         $idfreelancer = $myfreelancer->getId();
-        $freelancer=array('freelancer'=> $idfreelancer);// recuperer l'id de l'utilisateur en cours
-        $testfreelancer = $em->getRepository('MyFOSUserBundle:Testfreelancer')->findOneBy($freelancer);
-        
-        $competence=array('competence'=>1);// recuperer l'id de la competence en cours
-        $testcompetence = $em->getRepository('MyFOSUserBundle:Testcompetence')->findOneBy($competence);
+
+        $freelancer = array('freelancer' => $idfreelancer); // recuperer l'id de l'utilisateur en cours
+        //     $testfreelancer = $em->getRepository('MyFOSUserBundle:Testfreelancer')->findOneBy($freelancer);
+
+        $competence = array('competence' => 1); // recuperer l'id de la competence en cours
+        //   $testcompetence = $em->getRepository('MyFOSUserBundle:Testcompetence')->findOneBy($competence);
         //$testcompetence->getCompetence();
-        
+
         return $this->render('test/show.html.twig', array(
-            'test' => $test,
-            'testfreelancer' => $testfreelancer,
-            'testcompetence' => $testcompetence,
-            'delete_form' => $deleteForm->createView(),
+                    'test' => $test,
+                    //     'testfreelancer' => $testfreelancer,
+                    //     'testcompetence' => $testcompetence,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -98,8 +127,7 @@ class TestController extends Controller
      * @Route("/{id}/edit", name="test_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Test $test)
-    {
+    public function editAction(Request $request, Test $test) {
         $deleteForm = $this->createDeleteForm($test);
         $editForm = $this->createForm('MyFOSUserBundle\Form\TestType', $test);
         $editForm->handleRequest($request);
@@ -111,9 +139,9 @@ class TestController extends Controller
         }
 
         return $this->render('test/edit.html.twig', array(
-            'test' => $test,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'test' => $test,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -123,8 +151,7 @@ class TestController extends Controller
      * @Route("/{id}", name="test_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Test $test)
-    {
+    public function deleteAction(Request $request, Test $test) {
         $form = $this->createDeleteForm($test);
         $form->handleRequest($request);
 
@@ -144,12 +171,12 @@ class TestController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Test $test)
-    {
+    private function createDeleteForm(Test $test) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('test_delete', array('id' => $test->getIdTest())))
-            ->setMethod('DELETE')
-            ->getForm()
+                        ->setAction($this->generateUrl('test_delete', array('id' => $test->getIdTest())))
+                        ->setMethod('DELETE')
+                        ->getForm()
         ;
     }
+
 }

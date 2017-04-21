@@ -1,33 +1,26 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
 
-        <h1 id="logo"><a class="bigtitle">Messages</a></h1>  
+    <h1 id="logo"><a class="bigtitle">Messages</a></h1>  
 
 {% endblock %}
 
-{% block body %}    
+{% block body %}   
     <div class="formulairetop">
-        <h2 class="mysubtitle">Afficher un Message</h2>
+        <h2 class="mysubtitle">Détail du Message de '{{ message.idUserFrom.username }}' pour '{{ message.idUserFor.username }}'</h2>
         <div class="mycontentformshow">           
-            <ul>
-                <li class="returnlist">
-                    <a class="btn btn-default"  href="{{ path('message_index') }}">Retourner à la liste</a>
-                </li>
-            </ul>
+          
             <table class="tableautitle">
                 <tbody>
                     <tr>
-                        <th class="mytdtabshow">De</th>
-                        <td class="mytdtabshow">{{ message.idMessage }}</td>
-                    </tr>
-                    <tr>
-                        <th class="mytdtabshow2">Pour</th>
-                        <td class="mytdtabshow2">{{ message.id_freelancer }}</td>
+                        <th class="mytdtabshow2">De</th>
+                        <td class="mytdtabshow2">{{ message.idUserFrom.username }}</td>
                     </tr>
                     <tr>
                         <th class="mytdtabshow">Pour</th>
-                        <td class="mytdtabshow">{{ message.id_societe }}</td>
+                        <td class="mytdtabshow">{{ message.idUserFor.username }}</td>
                     </tr>
+                  
                     <tr>
                         <th class="mytdtabshow2">Type</th>
                         <td class="mytdtabshow2">{{ message.type }}</td>
@@ -36,31 +29,19 @@
                         <th class="mytdtabshow">Sujet</th>
                         <td class="mytdtabshow">{{ message.sujet }}</td>
                     </tr>
+           
                     <tr>
-                        <th class="mytdtabshow2">Contenu</th>
-                        <td class="mytdtabshow2">{{ message.contenu }}</td>
+                        <th class="mytdtabshow2">Date</th>
+                        <td class="mytdtabshow2">{% if message.date %}{{ message.date|date('d/m/Y H:i:s') }}{% endif %}</td>
                     </tr>
+                    
                     <tr>
-                        <th class="mytdtabshow">Date</th>
-                        <td class="mytdtabshow">{% if message.date %}{{ message.date|date('d/m/Y H:i:s') }}{% endif %}</td>
-                    </tr>
-                    <tr>
-                        <th class="mytdtabshow2">Pour</th>
-                        <td class="mytdtabshow2">{{ message.idAdmin }}</td>
+                        <th class="mytdtabshow">Contenu</th>
+                        <td class="mytdtabshow">{{ message.contenu }}</td>
                     </tr>
                 </tbody>
             </table>
 
-            <ul> 
-                <li class="myeditli">
-                    <a  class="myeditinput" href="{{ path('message_edit', { 'id': message.idMessage }) }}">Modifier</a>
-                </li>
-                <li  class="mydeleteli">
-                    {{ form_start(delete_form) }}
-                        <input type="submit" value="Supprimer le message">
-                    {{ form_end(delete_form) }}
-                </li>
-            </ul>
         </div>
     </div>
 {% endblock %}

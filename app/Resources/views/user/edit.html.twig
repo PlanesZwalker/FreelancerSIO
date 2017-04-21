@@ -7,7 +7,7 @@
 
 {% block body %}    
     <div class="formulairetop">
-        <h2 class="mysubtitle">Profil {% if freelancer %} de  {{ freelancer.pseudo }} {% endif %} </h2>
+        <h2 class="mysubtitle">Profil Utilisateur {% if user %} de  {{ user.username }} {% endif %} </h2>
         <div class="mycontentform" >
             {% if is_granted("ROLE_ADMIN") %}     
                 <ul>
@@ -18,38 +18,35 @@
             {% endif %}     
             <ul>
                 <li class="returnlist">
-                    <a class="btn btn-default" href="{{ path('user_show', { 'id': user.id }) }}">Retourner au profil Utilisateur</a>
+                    <a class="btn btn-success" href="{{ path('user_show', { 'id': user.id }) }}">Retourner au profil Utilisateur</a>
                 </li>
             </ul>
             <div style="display:inline-table; margin-left:10%;">    
                 {{ form_start(edit_form) }} 
-                 <div style="margin-top:-10px; float:left; width:40%; margin-left:50px;display:inline-table">
-                     {{ form_row(edit_form.roles,{
+                <div style="margin-top:-10px; float:left; width:40%; margin-left:50px;display:inline-table">
+                    {{ form_row(edit_form.roles,{
                                                  'label': 'Type de compte',
                                                   'label_attr': {'style':'padding:10px;'},
                                                  })
-                     }}
+                    }}
 
 
-                     {{ form_row(edit_form.username,{'label': 'Nom Utilisateur'}) }}
+                    {{ form_row(edit_form.username,{'label': 'Nom Utilisateur'}) }}
 
-                 </div>
-                 <div style="width:40%; float:right; display:inline-table">
-                     {{ form_row(edit_form.name,{'label': 'Nom'}) }}
-                     {{ form_row(edit_form.firstname,{'label': 'Prenom'}) }}
-                     {{ form_row(edit_form.email,{'label': 'Email'}) }}
-                 </div>  
+                </div>
+                <div style="width:40%; float:right; display:inline-table">
+                    {{ form_row(edit_form.name,{'label': 'Nom'}) }}
+                    {{ form_row(edit_form.firstname,{'label': 'Prenom'}) }}
+                    {{ form_row(edit_form.email,{'label': 'Email'}) }}
+                </div>  
 
                 <input type="submit" class="myeditinput"  style="margin-left:250px; margin-top:50px;" value="Enregistrer les modifications" />
-                
+
                 {{ form_end(edit_form) }}
             </div>
-            
-                            
 
-                             
             <ul>
-                <li style="float:right">
+                <li style="float:left">
                     <a class="btn btn-warning" href="{{ path('fos_user_change_password', { 'id': user.id }) }}">Changer de Mot de Passe</a>
                 </li>
                 {% if is_granted("ROLE_ADMIN") %}     
@@ -58,7 +55,7 @@
                         <input type="submit" value="Supprimer l'utilisateur">
                         {{ form_end(delete_form) }}
                     </li>
-                 {% endif %}     
+                {% endif %}     
             </ul>
         </div>
     </div>

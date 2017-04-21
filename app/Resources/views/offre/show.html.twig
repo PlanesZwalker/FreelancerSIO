@@ -11,22 +11,22 @@
         <div class="mycontentformshow">
             <ul>
                 <li class="returnlist">
-                    <a class="btn btn-default" href="{{ path('offre_index') }}">Retourner à la liste</a>
+                    <a class="btn btn-success" href="{{ path('offre_index', { 'id': offre.projet.id }) }}">Liste des offres pour ce projet</a>
                 </li>
             </ul>
             <ul>
-            {% if is_granted("ROLE_ADMIN") %}
-                <li>
-                    <a class="btn btn-info" href="{{ path('offre_edit', { 'id': offre.idOffre }) }}">Modifier l'offre</a>
-                </li>
-                <li  class="mydeleteli">
-                    {{ form_start(delete_form) }}
-                    <input type="submit" value="Supprimer l'offre">
-                    {{ form_end(delete_form) }}
-                </li>
-            {% endif %}
+                {% if is_granted("ROLE_ADMIN") %}
+                    <li>
+                        <a class="btn btn-info" href="{{ path('offre_edit', { 'id': offre.idOffre }) }}">Modifier l'offre</a>
+                    </li>
+                    <li  class="mydeleteli">
+                        {{ form_start(delete_form) }}
+                        <input type="submit" value="Supprimer l'offre">
+                        {{ form_end(delete_form) }}
+                    </li>
+                {% endif %}
             </ul>
-            <table style="width:35%; display:inline-table; margin:1%;margin-left:10%;">
+            <table style="width:35%; display:inline-table; margin:1%;margin-left:5%;">
                 <tr>
                     <th class="mytdtabshow">Intitulé du projet rattaché</th>
                     <td class="mytdtabshow">{{ offre.projet.intitule }}</td>
@@ -34,12 +34,8 @@
                 <tr>
                     <th class="mytdtabshow">Logo de la société du projet rattaché</th>
                     <td class="mytdtabshow">            
-                        <img class="myimg" src="{% if app.request.server.get('BASE') %}
-                                {{ app.request.server.get('BASE')}}/user/logo/{{ offre.projet.societe.user.id }}
-                            {% else %}
-                                 {{ app.request.get('HTTP_HOST')}}/web/user/logo/{{ offre.projet.societe.user.id }}
-                            {% endif %}" 
-                        />
+                        <img class="myimg" src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/logo/{{ offre.projet.societe.user.id }}{% else %}{{ app.request.get('HTTP_HOST')}}/user/logo/{{ offre.projet.societe.user.id }}{% endif %}" 
+                             />
                     </td>
                 </tr>
                 <tr>
@@ -58,16 +54,14 @@
             <table style="width:35%; display:inline-table; margin:1%;">
                 <tr>
                     <th class="mytdtabshow">Nom du freelancer</th>
-                    <td class="mytdtabshow">{{ offre.freelancer.pseudo }}</td>
+                    <td class="mytdtabshow">{% if offre.freelancer.pseudo is defined %}{{ offre.freelancer.pseudo }}{% else %}{{ offre.tarif }}{% endif %}</td>
                 </tr>
                 <tr>
                     <th class="mytdtabshow">Photo du freelancer</th>
                     <td class="mytdtabshow">
-                        <img class="myimg" src="{% if app.request.server.get('BASE') %}
-                                {{ app.request.server.get('BASE')}}/user/photo/{{ offre.freelancer.user.id }}
-                            {% else %}
-                                 {{ app.request.get('HTTP_HOST')}}/web/user/photo/{{ offre.freelancer.user.id }}
-                            {% endif %}" />
+                        {% if offre.freelancer.pseudo is defined  %}
+                            <img class="myimg" src="{% if app.request.server.get('BASE') %}{{ app.request.server.get('BASE')}}/user/photo/{{ offre.freelancer.user.id }}{% else %}{{ app.request.get('HTTP_HOST')}}/user/photo/{{ offre.freelancer.user.id }}{% endif %}" />
+                        {% endif %}
                     </td>
                 </tr>
             </table>

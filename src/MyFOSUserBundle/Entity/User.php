@@ -4,14 +4,15 @@ namespace MyFOSUserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+
 /**
  * User
  *
  * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_8D93D64992FC23A8", columns={"username_canonical"}), @ORM\UniqueConstraint(name="UNIQ_8D93D649A0D96FBF", columns={"email_canonical"}), @ORM\UniqueConstraint(name="UNIQ_8D93D649C05FB297", columns={"confirmation_token"})})
  * @ORM\Entity
  */
-class User extends BaseUser
-{
+class User extends BaseUser {
+
     /**
      * @var integer
      *
@@ -21,7 +22,6 @@ class User extends BaseUser
      */
     protected $id;
 
-    
     /**
      * @var string
      *
@@ -41,8 +41,7 @@ class User extends BaseUser
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -53,8 +52,7 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function setUsername($username)
-    {
+    public function setUsername($username) {
         $this->username = $username;
 
         return $this;
@@ -65,8 +63,7 @@ class User extends BaseUser
      *
      * @return string
      */
-    public function getUsername()
-    {
+    public function getUsername() {
         return $this->username;
     }
 
@@ -77,8 +74,7 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -89,8 +85,7 @@ class User extends BaseUser
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -101,8 +96,7 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function setFirstname($firstname)
-    {
+    public function setFirstname($firstname) {
         $this->firstname = $firstname;
 
         return $this;
@@ -113,8 +107,7 @@ class User extends BaseUser
      *
      * @return string
      */
-    public function getFirstname()
-    {
+    public function getFirstname() {
         return $this->firstname;
     }
 
@@ -125,8 +118,7 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function setEmail($email)
-    {
+    public function setEmail($email) {
         $this->email = $email;
 
         return $this;
@@ -137,8 +129,7 @@ class User extends BaseUser
      *
      * @return string
      */
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
 
@@ -149,8 +140,7 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function setPassword($password)
-    {
+    public function setPassword($password) {
         $this->password = $password;
 
         return $this;
@@ -161,15 +151,11 @@ class User extends BaseUser
      *
      * @return string
      */
-    public function getPassword()
-    {
+    public function getPassword() {
         return $this->password;
     }
-    
-    
 
-    public function setRoles(array $roles)
-    {
+    public function setRoles(array $roles) {
         $this->roles = array();
 
         foreach ($roles as $role) {
@@ -184,8 +170,7 @@ class User extends BaseUser
      *
      * @return array
      */
-    public function getRoles()
-    {
+    public function getRoles() {
         return $this->roles;
     }
 
@@ -196,8 +181,7 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function setUsernameCanonical($usernameCanonical)
-    {
+    public function setUsernameCanonical($usernameCanonical) {
         $this->usernameCanonical = $usernameCanonical;
 
         return $this;
@@ -208,8 +192,7 @@ class User extends BaseUser
      *
      * @return string
      */
-    public function getUsernameCanonical()
-    {
+    public function getUsernameCanonical() {
         return $this->usernameCanonical;
     }
 
@@ -220,8 +203,7 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function setEmailCanonical($emailCanonical)
-    {
+    public function setEmailCanonical($emailCanonical) {
         $this->emailCanonical = $emailCanonical;
 
         return $this;
@@ -232,8 +214,7 @@ class User extends BaseUser
      *
      * @return string
      */
-    public function getEmailCanonical()
-    {
+    public function getEmailCanonical() {
         return $this->emailCanonical;
     }
 
@@ -244,8 +225,7 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function setEnabled($enabled)
-    {
+    public function setEnabled($enabled) {
         $this->enabled = $enabled;
 
         return $this;
@@ -256,8 +236,7 @@ class User extends BaseUser
      *
      * @return boolean
      */
-    public function getEnabled()
-    {
+    public function getEnabled() {
         return $this->enabled;
     }
 
@@ -268,8 +247,7 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function setSalt($salt)
-    {
+    public function setSalt($salt) {
         $this->salt = $salt;
 
         return $this;
@@ -280,8 +258,7 @@ class User extends BaseUser
      *
      * @return string
      */
-    public function getSalt()
-    {
+    public function getSalt() {
         return $this->salt;
     }
 
@@ -292,8 +269,7 @@ class User extends BaseUser
      *
      * @return User
      */
-     public function setLastLogin(\DateTime $lastLogin = null)
-    {
+    public function setLastLogin(\DateTime $lastLogin = null) {
         $this->lastLogin = $lastLogin;
 
         return $this;
@@ -304,8 +280,7 @@ class User extends BaseUser
      *
      * @return \DateTime
      */
-    public function getLastLogin()
-    {
+    public function getLastLogin() {
         return $this->lastLogin;
     }
 
@@ -316,8 +291,7 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function setConfirmationToken($confirmationToken)
-    {
+    public function setConfirmationToken($confirmationToken) {
         $this->confirmationToken = $confirmationToken;
 
         return $this;
@@ -328,8 +302,7 @@ class User extends BaseUser
      *
      * @return string
      */
-    public function getConfirmationToken()
-    {
+    public function getConfirmationToken() {
         return $this->confirmationToken;
     }
 
@@ -340,8 +313,7 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function setPasswordRequestedAt(\DateTime $passwordRequestedAt = null)
-    {
+    public function setPasswordRequestedAt(\DateTime $passwordRequestedAt = null) {
         $this->passwordRequestedAt = $passwordRequestedAt;
 
         return $this;
@@ -352,8 +324,8 @@ class User extends BaseUser
      *
      * @return \DateTime
      */
-    public function getPasswordRequestedAt()
-    {
+    public function getPasswordRequestedAt() {
         return $this->passwordRequestedAt;
     }
+
 }

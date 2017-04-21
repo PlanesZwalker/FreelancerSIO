@@ -5,29 +5,29 @@ namespace MyFOSUserBundle\Controller;
 use MyFOSUserBundle\Entity\Contrat;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Contrat controller.
  *
  * @Route("contrat")
  */
-class ContratController extends Controller
-{
+class ContratController extends Controller {
+
     /**
      * Lists all contrat entities.
      *
      * @Route("/", name="contrat_index")
      * @Method("GET")
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
         $contrats = $em->getRepository('MyFOSUserBundle:Contrat')->findAll();
 
         return $this->render('contrat/index.html.twig', array(
-            'contrats' => $contrats,
+                    'contrats' => $contrats,
         ));
     }
 
@@ -37,8 +37,7 @@ class ContratController extends Controller
      * @Route("/new", name="contrat_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
-    {
+    public function newAction(Request $request) {
         $contrat = new Contrat();
         $form = $this->createForm('MyFOSUserBundle\Form\ContratType', $contrat);
         $form->handleRequest($request);
@@ -52,8 +51,8 @@ class ContratController extends Controller
         }
 
         return $this->render('contrat/new.html.twig', array(
-            'contrat' => $contrat,
-            'form' => $form->createView(),
+                    'contrat' => $contrat,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -63,13 +62,12 @@ class ContratController extends Controller
      * @Route("/{id}", name="contrat_show")
      * @Method("GET")
      */
-    public function showAction(Contrat $contrat)
-    {
+    public function showAction(Contrat $contrat) {
         $deleteForm = $this->createDeleteForm($contrat);
 
         return $this->render('contrat/show.html.twig', array(
-            'contrat' => $contrat,
-            'delete_form' => $deleteForm->createView(),
+                    'contrat' => $contrat,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -79,8 +77,7 @@ class ContratController extends Controller
      * @Route("/{id}/edit", name="contrat_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Contrat $contrat)
-    {
+    public function editAction(Request $request, Contrat $contrat) {
         $deleteForm = $this->createDeleteForm($contrat);
         $editForm = $this->createForm('MyFOSUserBundle\Form\ContratType', $contrat);
         $editForm->handleRequest($request);
@@ -92,9 +89,9 @@ class ContratController extends Controller
         }
 
         return $this->render('contrat/edit.html.twig', array(
-            'contrat' => $contrat,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'contrat' => $contrat,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -104,8 +101,7 @@ class ContratController extends Controller
      * @Route("/{id}", name="contrat_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Contrat $contrat)
-    {
+    public function deleteAction(Request $request, Contrat $contrat) {
         $form = $this->createDeleteForm($contrat);
         $form->handleRequest($request);
 
@@ -125,12 +121,12 @@ class ContratController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Contrat $contrat)
-    {
+    private function createDeleteForm(Contrat $contrat) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('contrat_delete', array('id' => $contrat->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
+                        ->setAction($this->generateUrl('contrat_delete', array('id' => $contrat->getId())))
+                        ->setMethod('DELETE')
+                        ->getForm()
         ;
     }
+
 }

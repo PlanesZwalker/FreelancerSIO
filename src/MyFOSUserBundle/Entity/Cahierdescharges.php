@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="cahierdescharges")
  * @ORM\Entity
  */
-class Cahierdescharges
-{
+class Cahierdescharges {
+
     /**
      * @var integer
      *
@@ -42,15 +42,12 @@ class Cahierdescharges
      */
     private $delai;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -61,8 +58,7 @@ class Cahierdescharges
      *
      * @return Cahierdescharges
      */
-    public function setIntitule($intitule)
-    {
+    public function setIntitule($intitule) {
         $this->intitule = $intitule;
 
         return $this;
@@ -73,8 +69,7 @@ class Cahierdescharges
      *
      * @return string
      */
-    public function getIntitule()
-    {
+    public function getIntitule() {
         return $this->intitule;
     }
 
@@ -85,8 +80,7 @@ class Cahierdescharges
      *
      * @return Cahierdescharges
      */
-    public function setTarif($tarif)
-    {
+    public function setTarif($tarif) {
         $this->tarif = $tarif;
 
         return $this;
@@ -97,8 +91,7 @@ class Cahierdescharges
      *
      * @return float
      */
-    public function getTarif()
-    {
+    public function getTarif() {
         return $this->tarif;
     }
 
@@ -109,8 +102,7 @@ class Cahierdescharges
      *
      * @return Cahierdescharges
      */
-    public function setDelai($delai)
-    {
+    public function setDelai($delai) {
         $this->delai = $delai;
 
         return $this;
@@ -121,8 +113,8 @@ class Cahierdescharges
      *
      * @return string
      */
-    public function getDelai()
-    {
+    public function getDelai() {
         return $this->delai;
     }
+
 }

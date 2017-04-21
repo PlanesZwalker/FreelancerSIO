@@ -17,8 +17,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 
-class ChangePasswordFormType extends AbstractType
-{
+class ChangePasswordFormType extends AbstractType {
+
     /**
      * @var string
      */
@@ -27,16 +27,14 @@ class ChangePasswordFormType extends AbstractType
     /**
      * @param string $class The User class name
      */
-    public function __construct($class)
-    {
+    public function __construct($class) {
         $this->class = $class;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options) {
         $constraintsOptions = array(
             'message' => 'fos_user.current_password.invalid',
         );
@@ -64,8 +62,7 @@ class ChangePasswordFormType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
-    {
+    public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults(array(
             'data_class' => $this->class,
             'csrf_token_id' => 'change_password',
@@ -78,16 +75,15 @@ class ChangePasswordFormType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->getBlockPrefix();
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
-    {
+    public function getBlockPrefix() {
         return 'fos_user_change_password';
     }
+
 }

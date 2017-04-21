@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block titre %}
 
-        <h1 id="logo"><a class="bigtitle">Compétences</a></h1>  
+    <h1 id="logo"><a class="bigtitle">Compétences</a></h1>  
 
 {% endblock %}
 
@@ -10,50 +10,65 @@
         <h2 class="mysubtitle">Liste des Compétences</h2>
         <div class="mycontentform">
             {% if is_granted('ROLE_ADMIN') %}
-            <ul>
-                <li>
-                    <a class="addtab" href="{{ path('competence_new') }}">
-                         <span class="fa fa-plus" data-ajax="false" >&nbsp;&nbsp;Créer une nouvelle Compétence</span>
-                    </a>
-                </li>
-            </ul>
+                <ul style="float:left; margin-left:30%; margin-top:5px; ">
+                    <li>
+                        <a class="addtab btn  btn-primary" href="{{ path('competence_new') }}">
+                            <span class="fa fa-plus" style="padding-left:150px; font-size:17px; padding-right:150px; padding-top:5px; padding-bottom:5px;">&nbsp;&nbsp;Créer une nouvelle Compétence</span>
+                        </a>
+                    </li>
+
+                </ul>
             {% endif %}
             <table class="tableautitle">
                 <thead>
                     <tr class="tableautitlecontent">
-                        <th class="center" data-transition="fade">Intitulé de la Compétence</th>
+                        <th class="center">Intitulé de la Compétence</th>
+                        <th class="center">Logo</th>
                         <th class="center">Categorie</th>
                         <th class="center">Description</th>
                         <th class="center">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="mytbody">
-                {% for competence in competences %}
-                    <tr>
-                        <a class="mydisplaynone" href="{{ path('competence_show', { 'id': competence.idCompetence }) }}">{{ competence.idCompetence }}</a>
-                           <td class="mytdtab2">{{ competence.intitule }}</td>
-                        <td class="mytdtab">{{ competence.categorie }}</td>
-                        <td class="mytdtab2">{{ competence.description }}</td>
-                        <input type="hidden" value=" " />
-                        <td class="mytdtab">
-                            <ul>
-                                <li style="display:inline-block;margin-top:8px;">
-                                    <a class="btn btn-default" href="{{ path('competence_show', { 'id': competence.idCompetence }) }}">Afficher</a>
-                                </li>
-                                <li style="display:inline-block;">
-                                    <a class="btn btn-info" style="color:white;"  href="{{ path('competence_edit', { 'id': competence.idCompetence }) }}">Modifier</a>
-                                </li>
-                                <li style="display:inline-block;">
-                                    <a class="btn btn-success" style="color:white;"  href="{{ path('test_index', { 'id': competence.idCompetence }) }}">Passer un Test</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                {% endfor %}
+                    {% for competence in competences %}
+                        <tr>
+                            <td class="mytdtab">
+                                <img class="mydrapeau" style="display:inline-block; width:150px; height:100px; margin-top:0px;"  
+                                     {% if app.request.server.get('BASE') and competence %}
+                                         src="{{ app.request.server.get('BASE')}}/user/competence/{{ competence.intitule }}.gif" 
+                                     {% elseif competence %} 
+                                         src="{{ app.request.get('HTTP_HOST')}}/user/competence/{{ competence.intitule }}.gif" 
+                                     {% endif %}
+                                     />
+                            </td>
+                            <td class="mytdtab2">{{ competence.intitule }}</td>
+                            <td class="mytdtab">{{ competence.categorie }}</td>
+                            <td class="mytdtab2">{{ competence.description }}</td>
+
+                            <td class="mytdtab">
+                                <ul>
+                                    <li style="display:inline-block;margin-top:8px;">
+                                        <a class="btn btn-success" href="{{ path('competence_show', { 'id': competence.idCompetence }) }}">Afficher</a>
+                                    </li>
+                                    <li style="display:inline-block;">
+                                        <a class="btn btn-info" style="color:white;"  href="{{ path('competence_edit', { 'id': competence.idCompetence }) }}">Modifier</a>
+                                    </li>
+                                    <li style="display:inline-block;">
+                                        <a class="btn btn-primary" style="color:white;"  href="{{ path('test_index', { 'id': competence.idCompetence }) }}">Passer un Test</a>
+                                    </li>
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <li style="display:inline-block;">
+                                            <a class="btn btn-info" style="color:white;"  href="{{ path('test_new', { 'id': competence.idCompetence }) }}">Ajouter un test à cette compétence</a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
 
-            
+
         </div>
     </div>
 {% endblock %}
