@@ -16,10 +16,9 @@
 /web/bundles/
 /app/config/parameters
 
-/nbproject/*
-/fpdf/*
-/phpdocumentor/*
+/nbproject/
+/fpdf/
+/phpdocumentor/
 phpunit.xml.dist
 
-
-/bin/*
+/bin/
